@@ -9,7 +9,7 @@
 
 
 ;; <----------------------------------------------------------------------------------------------------
-;; custom
+;; custom-file
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
@@ -64,7 +64,6 @@
 ;; flyspell
 
 (add-hook 'prog-mode-hook 'flyspell-mode)
-(add-hook 'markdown-mode-hook 'flyspell-mode)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -174,6 +173,9 @@
 (define-key lsp-mode-map (kbd "s-l g s") 'lsp-java-open-super-implementation)
 (define-key lsp-mode-map (kbd "s-l h s") 'lsp-ui-doc-show)
 ;; >>>
+
+(define-key lsp-signature-mode-map (kbd "M-n") nil)
+(define-key lsp-signature-mode-map (kbd "M-p") nil)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -222,11 +224,6 @@
 (global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
 (global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
 (global-set-key [f2] 'symbol-overlay-put)
-
-(define-key markdown-mode-map (kbd "M-n") nil)
-(define-key markdown-mode-map (kbd "M-p") nil)
-(define-key lsp-signature-mode-map (kbd "M-n") nil)
-(define-key lsp-signature-mode-map (kbd "M-p") nil)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -342,6 +339,16 @@
 ;; (require 'helm-projectile)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
+;; >----------------------------------------------------------------------------------------------------
+
+
+
+;; <----------------------------------------------------------------------------------------------------
+;; markdown-mode
+
+(add-hook 'markdown-mode-hook 'flyspell-mode)
+(define-key markdown-mode-map (kbd "M-n") nil)
+(define-key markdown-mode-map (kbd "M-p") nil)
 ;; >----------------------------------------------------------------------------------------------------
 
 
