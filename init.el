@@ -1,0 +1,253 @@
+;; ----------
+;;   BASE
+;; ----------
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
+;; https://www.emacswiki.org/emacs/LoadPath
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
+;; fail fast before unset keys when refresh install emacs
+;; (require 'company)
+(global-company-mode)
+
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
+(load-theme 'dichromacy)
+
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
+(add-hook 'prog-mode-hook 'flyspell-mode)
+(add-hook 'markdown-mode-hook 'flyspell-mode)
+
+(add-hook 'yaml-mode-hook 'flyspell-mode)
+(add-hook 'yaml-mode-hook 'highlight-indentation-mode)
+
+;; causes git diff noises
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(add-hook 'minibuffer-setup-hook 'subword-mode)
+
+;; <-- keys
+
+(global-unset-key (kbd "s-h"))
+(global-unset-key (kbd "M-x"))
+(global-unset-key (kbd "C-x"))
+(global-set-key (kbd "C-z") ctl-x-map)
+(global-unset-key (kbd "C-z C-c"))
+(global-unset-key (kbd "C-z C-z"))
+
+(global-set-key [f1] 'flycheck-list-errors)
+(global-set-key [f2] 'symbol-overlay-put)
+(global-set-key [f3] 'toggle-truncate-lines)
+(global-set-key [f4] 'kmacro-end-or-call-macro)
+(global-set-key [f5] 'delete-trailing-whitespace)
+(global-set-key [f6] 'mc/edit-lines)
+(global-set-key [f7] 'ace-window)
+(global-set-key [f8] 'helm-occur)
+(global-set-key [f9] 'subword-mode)
+(global-set-key [f10] 'replace-string)
+(global-set-key [f11] 'helm-do-ag)
+
+;; -->
+
+;; (require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+;; ----------
+;;    LSP
+;; ----------
+
+;; https://emacs-lsp.github.io/lsp-mode/page/performance/
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+;; (setq lsp-idle-delay 0.500)
+
+;; <<< lsp-java
+
+;; https://emacs-lsp.github.io/lsp-java/#quick-start
+;; (require 'use-package)
+(use-package projectile)
+(use-package flycheck)
+(use-package yasnippet :config (yas-global-mode))
+(use-package lsp-mode
+  ;; :hook ((lsp-mode . lsp-enable-which-key-integration))
+
+  ;; or no imports
+  ;; :config (setq lsp-completion-enable-additional-text-edit nil)
+  )
+(use-package hydra)
+(use-package company)
+(use-package lsp-ui)
+;; (use-package which-key :config (which-key-mode))
+(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
+(use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
+(use-package dap-java :ensure nil)
+(use-package helm-lsp)
+(use-package helm
+  :config (helm-mode))
+(use-package lsp-treemacs)
+;; >>>
+
+;; <<< lsp keys
+(require 'lsp-mode)
+;; (require 'lsp-ui)
+
+;; https://github.com/emacs-lsp/lsp-ui#lsp-ui-peek
+;; You may remap xref-find-{definitions,references} (bound to M-. M-? by default):
+;; (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+(define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+
+(define-key lsp-mode-map (kbd "s-l g i") 'lsp-ui-peek-find-implementation)
+(define-key lsp-mode-map (kbd "s-l g s") 'lsp-java-open-super-implementation)
+(define-key lsp-mode-map (kbd "s-l h s") 'lsp-ui-doc-show)
+;; >>>
+
+;; https://stackoverflow.com/a/6952408
+(defun my-indent-setup ()
+  (c-set-offset 'arglist-intro '+))
+(add-hook 'java-mode-hook 'my-indent-setup)
+
+;; https://www.emacswiki.org/emacs/java-mode-indent-annotations.el
+(require 'java-mode-indent-annotations)
+(add-hook 'java-mode-hook 'java-mode-indent-annotations-setup)
+
+;; --- js ---
+
+;; (require 'js)
+;; (add-hook 'js-mode-hook 'lsp)
+;; (define-key js-mode-map (kbd "M-.") 'lsp-find-definition)
+;; (define-key js-mode-map (kbd "M-?") 'lsp-find-references)
+
+
+;; (require 'flycheck)
+(global-flycheck-mode)
+;; https://www.flycheck.org/en/latest/user/error-interaction.html#navigate-errors
+;; By default Flycheck hooks into Emacs’ standard error navigation on M-g n (next-error) and M-g p (previous-error).
+
+;; (require 'highlight-parentheses)
+(global-highlight-parentheses-mode)
+
+;; (require 'symbol-overlay)
+(global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
+(global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
+(define-key markdown-mode-map (kbd "M-n") nil)
+(define-key markdown-mode-map (kbd "M-p") nil)
+(define-key lsp-signature-mode-map (kbd "M-n") nil)
+(define-key lsp-signature-mode-map (kbd "M-p") nil)
+
+;; (require 'magit)
+(global-set-key (kbd "C-z g") 'magit-status)
+
+;; (require 'embrace)
+
+;; (require 'ace-window)
+
+;; https://stackoverflow.com/a/20788623
+(ignore-errors
+  (require 'ansi-color)
+  (defun my-colorize-compilation-buffer ()
+    (when (eq major-mode 'compilation-mode)
+      (ansi-color-apply-on-region compilation-filter-start (point-max))))
+  (add-hook 'compilation-filter-hook 'my-colorize-compilation-buffer))
+
+;; (require 'multiple-cursors)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;; (require 'ztree)
+
+;; (require 'all-the-icons)
+;; M-x all-the-icons-install-fonts
+
+;; (require 'doom-modeline)
+(add-hook 'after-init-hook 'doom-modeline-mode)
+
+;; --------------------
+;;  HELM & PROJECTILE
+;; --------------------
+
+;; http://tuhdo.github.io/helm-intro.html
+
+;; (require 'helm)
+;; (require 'helm-config)
+(global-unset-key (kbd "C-x c"))
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-set-key (kbd "s-z") 'helm-M-x)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-z b") 'helm-mini)
+(global-set-key (kbd "C-z C-f") 'helm-find-files)
+;; (global-set-key (kbd "C-c h o") 'helm-occur) ; use f8 instead
+(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+(define-key helm-map (kbd "C-z") 'helm-select-action)
+;; (helm-mode 1)
+
+;; (require 'helm-ag)
+
+;; (require 'helm-ls-git)
+(global-set-key (kbd "C-z C-d") 'helm-browse-project)
+
+;; http://projectile.readthedocs.io/en/latest/usage/
+
+;; (require 'projectile)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(projectile-mode 1)
+
+;; http://tuhdo.github.io/helm-projectile.html
+
+;; (require 'helm-projectile)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
+;; ----------
+;;     md
+;; ----------
+
+;; (require 'markdown-preview-mode)
+
+(setq markdown-preview-stylesheets
+        (list "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.9.0/github-markdown.min.css"
+              "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" "
+<style>
+ .markdown-body {
+   box-sizing: border-box;
+   min-width: 200px;
+   max-width: 980px;
+   margin: 0 auto;
+   padding: 45px;
+ }
+
+ @media (max-width: 767px) {
+   .markdown-body {
+     padding: 15px;
+   }
+ }
+</style>
+  "))
+
+(setq markdown-preview-javascript
+        (list "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" "
+<script>
+ $(document).on('mdContentChange', function() {
+   $('pre code').each(function(i, block) {
+     hljs.highlightBlock(block);
+   });
+ });
+</script>
+  "))
+
+(electric-pair-mode)
+
+;; (global-display-line-numbers-mode)
+
+;; magit-delta
+;; https://github.com/dandavison/magit-delta
+;; https://github.com/dandavison/magit-delta/issues/9
+;; (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
