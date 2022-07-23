@@ -70,6 +70,19 @@
 
 
 ;; <----------------------------------------------------------------------------------------------------
+;; flycheck
+
+;; (require 'flycheck)
+(global-flycheck-mode)
+;; https://www.flycheck.org/en/latest/user/error-interaction.html#navigate-errors
+;; By default Flycheck hooks into Emacs’ standard error navigation on M-g n (next-error) and M-g p (previous-error).
+
+(global-set-key [f1] 'flycheck-list-errors)
+;; >----------------------------------------------------------------------------------------------------
+
+
+
+;; <----------------------------------------------------------------------------------------------------
 ;; yaml-mode
 
 (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
@@ -96,17 +109,11 @@
 (global-unset-key (kbd "C-z C-c"))
 (global-unset-key (kbd "C-z C-z"))
 
-(global-set-key [f1] 'flycheck-list-errors)
-(global-set-key [f2] 'symbol-overlay-put)
 (global-set-key [f3] 'toggle-truncate-lines)
 (global-set-key [f4] 'kmacro-end-or-call-macro)
 (global-set-key [f5] 'delete-trailing-whitespace)
-(global-set-key [f6] 'mc/edit-lines)
-(global-set-key [f7] 'ace-window)
-(global-set-key [f8] 'helm-occur)
 (global-set-key [f9] 'subword-mode)
 (global-set-key [f10] 'replace-string)
-(global-set-key [f11] 'helm-do-ag)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -199,17 +206,6 @@
 
 
 ;; <----------------------------------------------------------------------------------------------------
-;; flycheck
-
-;; (require 'flycheck)
-(global-flycheck-mode)
-;; https://www.flycheck.org/en/latest/user/error-interaction.html#navigate-errors
-;; By default Flycheck hooks into Emacs’ standard error navigation on M-g n (next-error) and M-g p (previous-error).
-;; >----------------------------------------------------------------------------------------------------
-
-
-
-;; <----------------------------------------------------------------------------------------------------
 ;; highlight-parentheses
 
 ;; (require 'highlight-parentheses)
@@ -222,8 +218,11 @@
 ;; symbol-overlay
 
 ;; (require 'symbol-overlay)
+
 (global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
 (global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
+(global-set-key [f2] 'symbol-overlay-put)
+
 (define-key markdown-mode-map (kbd "M-n") nil)
 (define-key markdown-mode-map (kbd "M-p") nil)
 (define-key lsp-signature-mode-map (kbd "M-n") nil)
@@ -245,6 +244,8 @@
 ;; ace-window
 
 ;; (require 'ace-window)
+
+(global-set-key [f7] 'ace-window)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -267,9 +268,11 @@
 ;; multiple-cursors
 
 ;; (require 'multiple-cursors)
+
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key [f6] 'mc/edit-lines)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -307,19 +310,23 @@
 
 ;; (require 'helm)
 ;; (require 'helm-config)
+
 (global-unset-key (kbd "C-x c"))
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-set-key (kbd "s-z") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-z b") 'helm-mini)
 (global-set-key (kbd "C-z C-f") 'helm-find-files)
-;; (global-set-key (kbd "C-c h o") 'helm-occur) ; use f8 instead
+;; (global-set-key (kbd "C-c h o") 'helm-occur)
+(global-set-key [f8] 'helm-occur)
+
 (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 (define-key helm-map (kbd "C-z") 'helm-select-action)
 ;; (helm-mode 1)
 
 ;; (require 'helm-ag)
+(global-set-key [f11] 'helm-do-ag)
 
 ;; (require 'helm-ls-git)
 (global-set-key (kbd "C-z C-d") 'helm-browse-project)
