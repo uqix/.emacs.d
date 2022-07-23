@@ -160,19 +160,18 @@
 (use-package lsp-treemacs)
 ;; >>>
 
-;; <<< lsp keys
 (require 'lsp-mode)
 ;; (require 'lsp-ui)
 
 ;; https://github.com/emacs-lsp/lsp-ui#lsp-ui-peek
+
 ;; You may remap xref-find-{definitions,references} (bound to M-. M-? by default):
 ;; (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
 (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
 
-(define-key lsp-mode-map (kbd "s-l g i") 'lsp-ui-peek-find-implementation)
-(define-key lsp-mode-map (kbd "s-l g s") 'lsp-java-open-super-implementation)
+(define-key lsp-mode-map (kbd "s-l g d") 'lsp-ui-peek-find-implementation)
+(define-key lsp-mode-map (kbd "s-l g u") 'lsp-java-open-super-implementation)
 (define-key lsp-mode-map (kbd "s-l h s") 'lsp-ui-doc-show)
-;; >>>
 
 (define-key lsp-signature-mode-map (kbd "M-n") nil)
 (define-key lsp-signature-mode-map (kbd "M-p") nil)
