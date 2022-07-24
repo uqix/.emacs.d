@@ -308,8 +308,8 @@
 (global-set-key (kbd "C-x b") 'helm-mini)
 
 ;; https://github.com/emacs-helm/helm/wiki#helm-mode
-;; remap M-x to s-z
-(global-unset-key (kbd "M-x"))
+;; alias s-z=M-x
+(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "s-z") 'helm-M-x)
 
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
