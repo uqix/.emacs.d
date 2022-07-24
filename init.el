@@ -144,19 +144,97 @@
 
 
 ;; <----------------------------------------------------------------------------------------------------
+;; helm
+
+;; https://github.com/emacs-helm/helm/wiki#if-installed-from-emacs-package-manager-packageel
+;; not have the global bindings enabled until you require helm with either require or use-package.
+
+(require 'helm)
+
+;; https://github.com/emacs-helm/helm/wiki#general-helm-commands
+;; <tab> or C-i lists available actions
+;; C-j or C-z invokes the persistent action
+
+;; https://github.com/emacs-helm/helm/wiki#preconfigured-helm-commands
+;;
+(global-set-key (kbd "s-h") 'helm-command-prefix)
+
+;; https://github.com/emacs-helm/helm/wiki#helm-mode
+;;
+;; alias s-z=M-x
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "s-z") 'helm-M-x)
+;;
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key [f8] 'helm-occur)
+;; (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+
+(helm-mode 1)
+;; >----------------------------------------------------------------------------------------------------
+
+
+
+;; <----------------------------------------------------------------------------------------------------
+;; helm-ag
+
+(global-set-key [f11] 'helm-do-ag)
+;; >----------------------------------------------------------------------------------------------------
+
+
+
+;; <----------------------------------------------------------------------------------------------------
+;; helm-ls-git
+
+(global-set-key (kbd "C-x C-d") 'helm-browse-project)
+;; >----------------------------------------------------------------------------------------------------
+
+
+
+;; <----------------------------------------------------------------------------------------------------
+;; projectile
+
+;; https://docs.projectile.mx/projectile/usage.html#basic-usage
+
+;; https://docs.projectile.mx/projectile/installation.html#installation-via-package-el
+;;
+(require 'projectile)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(projectile-mode +1)
+;; >----------------------------------------------------------------------------------------------------
+
+
+
+;; <----------------------------------------------------------------------------------------------------
+;; helm-projectile
+
+;; https://github.com/bbatsov/helm-projectile#usage
+
+;; * capable of opening multiple files by marking
+;; * can fire many actions
+;;
+;; replace the normal Projectile commands:
+;;
+;; (setq helm-projectile-fuzzy-match nil)
+(require 'helm-projectile)
+(helm-projectile-on)
+;; >----------------------------------------------------------------------------------------------------
+
+
+
+;; <----------------------------------------------------------------------------------------------------
 ;; LSP
 
 ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
+;;
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 ;; (setq lsp-idle-delay 0.500)
 
-;; <<< lsp-java
-
 ;; https://emacs-lsp.github.io/lsp-java/#quick-start
-
-(use-package projectile)
-(use-package flycheck)
+;;
 (use-package yasnippet :config (yas-global-mode))
 (use-package lsp-mode
   ;; :hook ((lsp-mode . lsp-enable-which-key-integration))
@@ -165,17 +243,13 @@
   ;; :config (setq lsp-completion-enable-additional-text-edit nil)
   )
 (use-package hydra)
-(use-package company)
 (use-package lsp-ui)
 ;; (use-package which-key :config (which-key-mode))
 (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
 (use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
 (use-package dap-java :ensure nil)
 (use-package helm-lsp)
-(use-package helm
-  :config (helm-mode))
 (use-package lsp-treemacs)
-;; >>>
 
 (require 'lsp-mode)
 
@@ -314,82 +388,6 @@
 
 
 ;; <----------------------------------------------------------------------------------------------------
-;; helm
-
-;; https://github.com/emacs-helm/helm/wiki#if-installed-from-emacs-package-manager-packageel
-;; not have the global bindings enabled until you require helm with either require or use-package.
-
-;; (require 'helm)
-
-;; https://github.com/emacs-helm/helm/wiki#preconfigured-helm-commands
-(global-set-key (kbd "s-h") 'helm-command-prefix)
-
-;; https://github.com/emacs-helm/helm/wiki#helm-mode
-;; alias s-z=M-x
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "s-z") 'helm-M-x)
-
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key [f8] 'helm-occur)
-;; (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
-
-;; https://github.com/emacs-helm/helm/wiki#general-helm-commands
-;; <tab> or C-i lists available actions
-;; C-j or C-z invokes the persistent action
-
-;; (helm-mode 1)
-;; >----------------------------------------------------------------------------------------------------
-
-
-
-;; <----------------------------------------------------------------------------------------------------
-;; helm-ag
-
-(global-set-key [f11] 'helm-do-ag)
-;; >----------------------------------------------------------------------------------------------------
-
-
-
-;; <----------------------------------------------------------------------------------------------------
-;; helm-ls-git
-
-(global-set-key (kbd "C-x C-d") 'helm-browse-project)
-;; >----------------------------------------------------------------------------------------------------
-
-
-
-;; <----------------------------------------------------------------------------------------------------
-;; projectile
-
-;; https://docs.projectile.mx/projectile/usage.html#basic-usage
-
-;; https://docs.projectile.mx/projectile/installation.html#installation-via-package-el
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(projectile-mode +1)
-;; >----------------------------------------------------------------------------------------------------
-
-
-
-;; <----------------------------------------------------------------------------------------------------
-;; helm-projectile
-
-;; https://github.com/bbatsov/helm-projectile#usage
-
-;; * capable of opening multiple files by marking
-;; * can fire many actions
-;;
-;; replace the normal Projectile commands:
-;;
-;; (setq helm-projectile-fuzzy-match nil)
-(require 'helm-projectile)
-(helm-projectile-on)
-;; >----------------------------------------------------------------------------------------------------
-
-
-
-;; <----------------------------------------------------------------------------------------------------
 ;; markdown-mode
 
 (add-hook 'markdown-mode-hook 'flyspell-mode)
@@ -439,7 +437,7 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; misc
 
-;; (electric-pair-mode)
+(electric-pair-mode)
 ;; (global-display-line-numbers-mode)
 ;; >----------------------------------------------------------------------------------------------------
 
