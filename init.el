@@ -71,8 +71,11 @@
 ;; flycheck
 
 (global-flycheck-mode)
+
 ;; https://www.flycheck.org/en/latest/user/error-interaction.html#navigate-errors
-;; By default Flycheck hooks into Emacs’ standard error navigation on M-g n (next-error) and M-g p (previous-error).
+;; By default Flycheck hooks into Emacs’ standard error navigation:
+;; M-g n (next-error)
+;; M-g p (previous-error)
 
 (global-set-key [f1] 'flycheck-list-errors)
 ;; >----------------------------------------------------------------------------------------------------
@@ -169,10 +172,11 @@
 ;; (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
 (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
 
-(define-key lsp-mode-map (kbd "s-l g d") 'lsp-ui-peek-find-implementation)
-(define-key lsp-mode-map (kbd "s-l g u") 'lsp-java-open-super-implementation)
-(define-key lsp-mode-map (kbd "s-l h s") 'lsp-ui-doc-show)
+(define-key lsp-mode-map (kbd "s-l d") 'lsp-ui-peek-find-implementation)
+(define-key lsp-mode-map (kbd "s-l u") 'lsp-java-open-super-implementation)
+(define-key lsp-mode-map (kbd "s-l d") 'lsp-ui-doc-show)
 
+;; TODO what's this?
 (define-key lsp-signature-mode-map (kbd "M-n") nil)
 (define-key lsp-signature-mode-map (kbd "M-p") nil)
 ;; >----------------------------------------------------------------------------------------------------
@@ -244,6 +248,8 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; compilation-mode
 
+;; TODO still needed?
+
 ;; https://stackoverflow.com/a/20788623
 (ignore-errors
   (require 'ansi-color)
@@ -258,10 +264,13 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; multiple-cursors
 
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (global-set-key [f6] 'mc/edit-lines)
+
+;; add multiple cursors not based on continuous lines, but based on keywords in the buffer, use:
+;;
+;; (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+;; (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+;; (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -292,13 +301,10 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; helm
 
-;; http://tuhdo.github.io/helm-intro.html
-
 ;; https://github.com/emacs-helm/helm/wiki#if-installed-from-emacs-package-manager-packageel
-;; However you will not have the global bindings enabled until you require helm with either require or use-package.
+;; not have the global bindings enabled until you require helm with either require or use-package.
 
 ;; (require 'helm)
-;; (require 'helm-config)
 
 ;; https://github.com/emacs-helm/helm/wiki#preconfigured-helm-commands
 (global-set-key (kbd "s-h") 'helm-command-prefix)
@@ -356,11 +362,11 @@
 
 ;; https://github.com/bbatsov/helm-projectile#usage
 
-;; capable of opening multiple files by marking
-;; can fire many actions
+;; * capable of opening multiple files by marking
+;; * can fire many actions
 ;;
 ;; replace the normal Projectile commands:
-
+;;
 ;; (setq helm-projectile-fuzzy-match nil)
 (require 'helm-projectile)
 (helm-projectile-on)
@@ -418,7 +424,7 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; misc
 
-(electric-pair-mode)
+;; (electric-pair-mode)
 ;; (global-display-line-numbers-mode)
 ;; >----------------------------------------------------------------------------------------------------
 
@@ -429,6 +435,7 @@
 
 ;; https://github.com/dandavison/magit-delta
 
+;; performance issue
 ;; https://github.com/dandavison/magit-delta/issues/9
 ;; (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
 ;; >----------------------------------------------------------------------------------------------------
