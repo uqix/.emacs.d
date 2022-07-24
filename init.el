@@ -295,6 +295,7 @@
 ;; (require 'helm)
 ;; (require 'helm-config)
 
+;; https://github.com/emacs-helm/helm/wiki#preconfigured-helm-commands
 (global-unset-key (kbd "C-x c"))
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 
@@ -328,16 +329,23 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; projectile
 
-;; http://projectile.readthedocs.io/en/latest/usage/
+;; https://docs.projectile.mx/projectile/usage.html#basic-usage
 
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(projectile-mode 1)
+;; https://docs.projectile.mx/projectile/installation.html#installation-via-package-el
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(projectile-mode +1)
+;; >----------------------------------------------------------------------------------------------------
 
-;; http://tuhdo.github.io/helm-projectile.html
 
+
+;; <----------------------------------------------------------------------------------------------------
+;; helm-projectile
+
+;; https://github.com/bbatsov/helm-projectile#usage
+
+;; (setq helm-projectile-fuzzy-match nil)
 ;; (require 'helm-projectile)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
+;; (helm-projectile-on)
 ;; >----------------------------------------------------------------------------------------------------
 
 
