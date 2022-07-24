@@ -116,6 +116,7 @@
 ;; global keys
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html
+;;
 ;; help-map is the global keymap for the C-h prefix key.
 ;; mode-specific-map is the global keymap for the prefix key C-c.
 ;; ctl-x-map is the global keymap used for the C-x prefix key.
@@ -147,11 +148,12 @@
 ;; helm
 
 ;; https://github.com/emacs-helm/helm/wiki#if-installed-from-emacs-package-manager-packageel
+;;
 ;; not have the global bindings enabled until you require helm with either require or use-package.
-
 (require 'helm)
 
 ;; https://github.com/emacs-helm/helm/wiki#general-helm-commands
+;;
 ;; <tab> or C-i lists available actions
 ;; C-j or C-z invokes the persistent action
 
@@ -166,13 +168,12 @@
 (global-set-key (kbd "s-z") 'helm-M-x)
 ;;
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(helm-mode 1)
 
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key [f8] 'helm-occur)
 ;; (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
-
-(helm-mode 1)
 ;; >----------------------------------------------------------------------------------------------------
 
 
