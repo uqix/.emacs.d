@@ -29,8 +29,17 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; company
 
-;; fail fast before unset keys when refresh install emacs
-(global-company-mode)
+;; https://github.com/company-mode/company-mode
+
+;; http://company-mode.github.io/
+;;
+;; * Use M-n and M-p to select
+;; * <return> to complete
+;; * <tab> to complete the common part
+;; * Search through the completions with C-s, C-r and C-o
+;; * Press M-(digit) to quickly complete with one of the first 10 candidates
+
+(add-hook 'after-init-hook 'global-company-mode)
 ;; >----------------------------------------------------------------------------------------------------
 
 
