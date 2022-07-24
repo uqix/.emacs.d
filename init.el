@@ -236,15 +236,9 @@
 ;; https://emacs-lsp.github.io/lsp-java/#quick-start
 ;;
 (use-package yasnippet :config (yas-global-mode))
-(use-package lsp-mode
-  ;; :hook ((lsp-mode . lsp-enable-which-key-integration))
-
-  ;; or no imports
-  ;; :config (setq lsp-completion-enable-additional-text-edit nil)
-  )
+(use-package lsp-mode)
 (use-package hydra)
 (use-package lsp-ui)
-;; (use-package which-key :config (which-key-mode))
 (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
 (use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
 (use-package dap-java :ensure nil)
@@ -254,8 +248,9 @@
 (require 'lsp-mode)
 
 ;; https://github.com/emacs-lsp/lsp-ui#lsp-ui-peek
-
+;;
 ;; You may remap xref-find-{definitions,references} (bound to M-. M-? by default):
+;;
 ;; (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
 (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
 
