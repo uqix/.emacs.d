@@ -79,7 +79,11 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; flycheck
 
-(global-flycheck-mode)
+;; https://github.com/flycheck/flycheck
+
+;; https://www.flycheck.org/en/latest/user/quickstart.html
+;;
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; https://www.flycheck.org/en/latest/user/error-interaction.html#navigate-errors
 ;; By default Flycheck hooks into Emacs’ standard error navigation:
@@ -220,7 +224,9 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; highlight-parentheses
 
-(global-highlight-parentheses-mode)
+;; https://sr.ht/~tsdh/highlight-parentheses.el/#usage
+;;
+(add-hook 'prog-mode-hook #'highlight-parentheses-mode)
 ;; >----------------------------------------------------------------------------------------------------
 
 
