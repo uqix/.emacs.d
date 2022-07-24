@@ -348,9 +348,14 @@
 
 ;; https://github.com/bbatsov/helm-projectile#usage
 
+;; capable of opening multiple files by marking
+;; can fire many actions
+;;
+;; replace the normal Projectile commands:
+
 ;; (setq helm-projectile-fuzzy-match nil)
-;; (require 'helm-projectile)
-;; (helm-projectile-on)
+(require 'helm-projectile)
+(helm-projectile-on)
 ;; >----------------------------------------------------------------------------------------------------
 
 
