@@ -285,19 +285,26 @@
 
 
 ;; <----------------------------------------------------------------------------------------------------
-;; helm & projectile
+;; helm
 
 ;; http://tuhdo.github.io/helm-intro.html
+
+;; https://github.com/emacs-helm/helm/wiki#if-installed-from-emacs-package-manager-packageel
+;; However you will not have the global bindings enabled until you require helm with either require or use-package.
 
 ;; (require 'helm)
 ;; (require 'helm-config)
 
 (global-unset-key (kbd "C-x c"))
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-set-key (kbd "M-x") 'helm-M-x)
+
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x b") 'helm-mini)
+
+;; https://github.com/emacs-helm/helm/wiki#helm-mode
+(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
 ;; (global-set-key (kbd "C-c h o") 'helm-occur)
 (global-set-key [f8] 'helm-occur)
 
@@ -311,10 +318,15 @@
 
 ;; (require 'helm-ls-git)
 (global-set-key (kbd "C-x C-d") 'helm-browse-project)
+;; >----------------------------------------------------------------------------------------------------
+
+
+
+;; <----------------------------------------------------------------------------------------------------
+;; projectile
 
 ;; http://projectile.readthedocs.io/en/latest/usage/
 
-;; (require 'projectile)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (projectile-mode 1)
 
