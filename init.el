@@ -259,8 +259,8 @@
 (define-key lsp-mode-map (kbd "s-l d") 'lsp-ui-doc-show)
 
 ;; TODO what's this?
-(define-key lsp-signature-mode-map (kbd "M-n") nil)
-(define-key lsp-signature-mode-map (kbd "M-p") nil)
+;; (define-key lsp-signature-mode-map (kbd "M-n") nil)
+;; (define-key lsp-signature-mode-map (kbd "M-p") nil)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -335,12 +335,13 @@
 ;; TODO still needed?
 
 ;; https://stackoverflow.com/a/20788623
-(ignore-errors
-  (require 'ansi-color)
-  (defun my-colorize-compilation-buffer ()
-    (when (eq major-mode 'compilation-mode)
-      (ansi-color-apply-on-region compilation-filter-start (point-max))))
-  (add-hook 'compilation-filter-hook 'my-colorize-compilation-buffer))
+;;
+;; (ignore-errors
+;;   (require 'ansi-color)
+;;   (defun my-colorize-compilation-buffer ()
+;;     (when (eq major-mode 'compilation-mode)
+;;       (ansi-color-apply-on-region compilation-filter-start (point-max))))
+;;   (add-hook 'compilation-filter-hook 'my-colorize-compilation-buffer))
 ;; >----------------------------------------------------------------------------------------------------
 
 
