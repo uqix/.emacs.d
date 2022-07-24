@@ -99,6 +99,12 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; global keys
 
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html
+;; help-map is the global keymap for the C-h prefix key.
+;; mode-specific-map is the global keymap for the prefix key C-c.
+;; ctl-x-map is the global keymap used for the C-x prefix key.
+;; goto-map is the global keymap used for the M-g prefix key.
+
 ;; remap C-x to C-z
 (global-unset-key (kbd "C-x"))
 (global-set-key (kbd "C-z") ctl-x-map)
@@ -420,6 +426,7 @@
 ;; magit-delta
 
 ;; https://github.com/dandavison/magit-delta
+
 ;; https://github.com/dandavison/magit-delta/issues/9
 ;; (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
 ;; >----------------------------------------------------------------------------------------------------
