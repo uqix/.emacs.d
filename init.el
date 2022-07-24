@@ -105,11 +105,10 @@
 ;; ctl-x-map is the global keymap used for the C-x prefix key.
 ;; goto-map is the global keymap used for the M-g prefix key.
 
-;; remap C-x to C-z
-(global-unset-key (kbd "C-x"))
+;; alias C-z=C-x
 (global-set-key (kbd "C-z") ctl-x-map)
 
-(global-unset-key (kbd "C-z C-c"))      ; quit emacs
+(global-unset-key (kbd "C-x C-c"))      ; quit emacs
 
 (global-set-key [f3] 'toggle-truncate-lines)
 (global-set-key [f4] 'kmacro-end-or-call-macro)
@@ -230,8 +229,6 @@
 ;; C-x g	magit-status
 ;; C-x M-g	magit-dispatch
 ;; C-c M-g	magit-file-dispatch
-
-(global-set-key (kbd "C-z g") 'magit-status)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -308,14 +305,14 @@
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-z b") 'helm-mini)
+(global-set-key (kbd "C-x b") 'helm-mini)
 
 ;; https://github.com/emacs-helm/helm/wiki#helm-mode
 ;; remap M-x to s-z
 (global-unset-key (kbd "M-x"))
 (global-set-key (kbd "s-z") 'helm-M-x)
 
-(global-set-key (kbd "C-z C-f") 'helm-find-files)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 ;; (global-set-key (kbd "C-c h o") 'helm-occur)
 (global-set-key [f8] 'helm-occur)
@@ -332,7 +329,7 @@
 (global-set-key [f11] 'helm-do-ag)
 
 ;; (require 'helm-ls-git)
-(global-set-key (kbd "C-z C-d") 'helm-browse-project)
+(global-set-key (kbd "C-x C-d") 'helm-browse-project)
 ;; >----------------------------------------------------------------------------------------------------
 
 
