@@ -309,8 +309,11 @@
 (global-set-key [f8] 'helm-occur)
 
 (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+
+;; https://github.com/emacs-helm/helm/wiki#general-helm-commands
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 (define-key helm-map (kbd "C-z") 'helm-select-action)
+
 ;; (helm-mode 1)
 
 ;; (require 'helm-ag)
