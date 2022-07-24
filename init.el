@@ -301,34 +301,39 @@
 ;; (require 'helm-config)
 
 ;; https://github.com/emacs-helm/helm/wiki#preconfigured-helm-commands
-(global-unset-key (kbd "C-x c"))
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "s-h") 'helm-command-prefix)
 
 ;; https://github.com/emacs-helm/helm/wiki#helm-mode
 ;; alias s-z=M-x
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "s-z") 'helm-M-x)
 
+(global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-
-;; (global-set-key (kbd "C-c h o") 'helm-occur)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key [f8] 'helm-occur)
-
-(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+;; (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
 
 ;; https://github.com/emacs-helm/helm/wiki#general-helm-commands
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-(define-key helm-map (kbd "C-z") 'helm-select-action)
+;; <tab> or C-i lists available actions
+;; C-j or C-z invokes the persistent action
 
 ;; (helm-mode 1)
+;; >----------------------------------------------------------------------------------------------------
 
-;; (require 'helm-ag)
+
+
+;; <----------------------------------------------------------------------------------------------------
+;; helm-ag
+
 (global-set-key [f11] 'helm-do-ag)
+;; >----------------------------------------------------------------------------------------------------
 
-;; (require 'helm-ls-git)
+
+
+;; <----------------------------------------------------------------------------------------------------
+;; helm-ls-git
+
 (global-set-key (kbd "C-x C-d") 'helm-browse-project)
 ;; >----------------------------------------------------------------------------------------------------
 
