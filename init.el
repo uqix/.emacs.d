@@ -30,7 +30,6 @@
 ;; company
 
 ;; fail fast before unset keys when refresh install emacs
-;; (require 'company)
 (global-company-mode)
 ;; >----------------------------------------------------------------------------------------------------
 
@@ -71,7 +70,6 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; flycheck
 
-;; (require 'flycheck)
 (global-flycheck-mode)
 ;; https://www.flycheck.org/en/latest/user/error-interaction.html#navigate-errors
 ;; By default Flycheck hooks into Emacs’ standard error navigation on M-g n (next-error) and M-g p (previous-error).
@@ -119,7 +117,6 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; expand-region
 
-;; (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 ;; >----------------------------------------------------------------------------------------------------
 
@@ -136,7 +133,7 @@
 ;; <<< lsp-java
 
 ;; https://emacs-lsp.github.io/lsp-java/#quick-start
-;; (require 'use-package)
+
 (use-package projectile)
 (use-package flycheck)
 (use-package yasnippet :config (yas-global-mode))
@@ -160,7 +157,6 @@
 ;; >>>
 
 (require 'lsp-mode)
-;; (require 'lsp-ui)
 
 ;; https://github.com/emacs-lsp/lsp-ui#lsp-ui-peek
 
@@ -194,10 +190,8 @@
 
 
 ;; <----------------------------------------------------------------------------------------------------
-;; javascript
+;; js
 
-
-;; (require 'js)
 ;; (add-hook 'js-mode-hook 'lsp)
 ;; (define-key js-mode-map (kbd "M-.") 'lsp-find-definition)
 ;; (define-key js-mode-map (kbd "M-?") 'lsp-find-references)
@@ -208,7 +202,6 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; highlight-parentheses
 
-;; (require 'highlight-parentheses)
 (global-highlight-parentheses-mode)
 ;; >----------------------------------------------------------------------------------------------------
 
@@ -216,8 +209,6 @@
 
 ;; <----------------------------------------------------------------------------------------------------
 ;; symbol-overlay
-
-;; (require 'symbol-overlay)
 
 (global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
 (global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
@@ -229,7 +220,6 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; magit
 
-;; (require 'magit)
 ;; https://magit.vc/manual/magit/Default-Bindings.html
 ;; C-x g	magit-status
 ;; C-x M-g	magit-dispatch
@@ -240,8 +230,6 @@
 
 ;; <----------------------------------------------------------------------------------------------------
 ;; ace-window
-
-;; (require 'ace-window)
 
 (global-set-key [f7] 'ace-window)
 ;; >----------------------------------------------------------------------------------------------------
@@ -265,8 +253,6 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; multiple-cursors
 
-;; (require 'multiple-cursors)
-
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
@@ -278,7 +264,6 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; ztree
 
-;; (require 'ztree)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -286,7 +271,6 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; all-the-icons
 
-;; (require 'all-the-icons)
 ;; M-x all-the-icons-install-fonts
 ;; >----------------------------------------------------------------------------------------------------
 
@@ -295,7 +279,6 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; doom-modeline
 
-;; (require 'doom-modeline)
 (add-hook 'after-init-hook 'doom-modeline-mode)
 ;; >----------------------------------------------------------------------------------------------------
 
@@ -356,8 +339,6 @@
 
 ;; <----------------------------------------------------------------------------------------------------
 ;; markdown-preview-mode
-
-;; (require 'markdown-preview-mode)
 
 (setq markdown-preview-stylesheets
         (list "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.9.0/github-markdown.min.css"
