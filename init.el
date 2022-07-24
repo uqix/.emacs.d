@@ -53,7 +53,7 @@
 
 
 ;; <----------------------------------------------------------------------------------------------------
-;; initial maximized frame
+;; maximize emacs
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 ;; >----------------------------------------------------------------------------------------------------
@@ -101,12 +101,11 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; global keys
 
-(global-unset-key (kbd "s-h"))
-(global-unset-key (kbd "M-x"))
-(global-unset-key (kbd "C-x"))
-(global-set-key (kbd "C-z") ctl-x-map)
-(global-unset-key (kbd "C-z C-c"))
-(global-unset-key (kbd "C-z C-z"))
+(global-unset-key (kbd "s-h"))          ; hide emacs
+(global-unset-key (kbd "s-z"))          ; undo
+(global-unset-key (kbd "C-x C-c"))      ; quit emacs
+(global-unset-key (kbd "C-z"))          ; minimize emacs
+;; (global-unset-key (kbd "C-x C-z"))      ; minimize emacs
 
 (global-set-key [f3] 'toggle-truncate-lines)
 (global-set-key [f4] 'kmacro-end-or-call-macro)
@@ -231,7 +230,10 @@
 ;; magit
 
 ;; (require 'magit)
-(global-set-key (kbd "C-z g") 'magit-status)
+;; https://magit.vc/manual/magit/Default-Bindings.html
+;; C-x g	magit-status
+;; C-x M-g	magit-dispatch
+;; C-c M-g	magit-file-dispatch
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -309,10 +311,10 @@
 
 (global-unset-key (kbd "C-x c"))
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-set-key (kbd "s-z") 'helm-M-x)
+(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-z b") 'helm-mini)
-(global-set-key (kbd "C-z C-f") 'helm-find-files)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 ;; (global-set-key (kbd "C-c h o") 'helm-occur)
 (global-set-key [f8] 'helm-occur)
 
@@ -325,7 +327,7 @@
 (global-set-key [f11] 'helm-do-ag)
 
 ;; (require 'helm-ls-git)
-(global-set-key (kbd "C-z C-d") 'helm-browse-project)
+(global-set-key (kbd "C-x C-d") 'helm-browse-project)
 
 ;; http://projectile.readthedocs.io/en/latest/usage/
 
