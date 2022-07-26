@@ -38,7 +38,7 @@
  '(nxml-child-indent 4)
  '(package-archive-priorities '(("melpa" . 1)))
  '(package-selected-packages
-   '(magit-delta solidity-mode highlight-indentation dockerfile-mode markdown-mode lsp-mode highlight-parentheses markdown-preview-mode helm-lsp which-key use-package yaml-mode json-mode dap-mode lsp-java lsp-ui company-lsp hydra helm-projectile projectile helm-ls-git helm-ag helm doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay flycheck company expand-region))
+   '(magit-delta solidity-mode highlight-indentation dockerfile-mode markdown-mode lsp-mode highlight-parentheses markdown-preview-mode helm-lsp which-key use-package yaml-mode json-mode dap-mode lsp-java lsp-ui company-lsp hydra helm-projectile projectile helm-ag helm doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay flycheck company expand-region))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
  '(tool-bar-mode nil)
