@@ -168,6 +168,8 @@
 (global-set-key (kbd "s-z") 'helm-M-x)
 ;;
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x f") 'helm-find-files) ; was set-fill-column
+;;
 (helm-mode 1)
 
 (global-set-key (kbd "C-x b") 'helm-mini)
