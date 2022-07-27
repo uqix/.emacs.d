@@ -183,7 +183,12 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; helm-ag
 
-(global-set-key [f11] 'helm-do-ag)
+;; (global-set-key [f11] 'helm-do-ag)
+;; >----------------------------------------------------------------------------------------------------
+;; <----------------------------------------------------------------------------------------------------
+;; helm-rg
+
+;; TODO
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -198,6 +203,8 @@
 (require 'projectile)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (projectile-mode +1)
+
+(global-set-key [f11] 'helm-projectile-rg)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -251,7 +258,7 @@
 
 (define-key lsp-mode-map (kbd "s-l d") 'lsp-ui-peek-find-implementation)
 (define-key lsp-mode-map (kbd "s-l u") 'lsp-java-open-super-implementation)
-(define-key lsp-mode-map (kbd "s-l d") 'lsp-ui-doc-show)
+(define-key lsp-mode-map (kbd "s-l h") 'lsp-ui-doc-show)
 
 ;; TODO what's this?
 ;; (define-key lsp-signature-mode-map (kbd "M-n") nil)
