@@ -12,6 +12,7 @@
  '(datetime-timezone 'Etc/GMT+8)
  '(dired-listing-switches "-alh")
  '(flycheck-disabled-checkers '(json-python-json))
+ '(helm-ag-insert-at-point 'symbol)
  '(helm-display-function 'helm-display-buffer-in-own-frame)
  '(imenu-max-item-length nil)
  '(indent-tabs-mode nil)
