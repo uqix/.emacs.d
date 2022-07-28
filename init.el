@@ -264,14 +264,13 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; java-mode
 
-;; https://stackoverflow.com/a/6952408
-(defun my-indent-setup ()
-  (c-set-offset 'arglist-intro '+))
-(add-hook 'java-mode-hook 'my-indent-setup)
-
-;; https://www.emacswiki.org/emacs/java-mode-indent-annotations.el
-(require 'java-mode-indent-annotations)
-(add-hook 'java-mode-hook 'java-mode-indent-annotations-setup)
+;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Customizing-C-and-C_002b_002b-indentation.html
+;;
+(defun my-java-mode-hook ()
+  (c-set-offset 'arglist-intro '++)
+  (c-set-offset 'block-close '-)
+  (c-set-offset 'statement-block-intro '0))
+(add-hook 'java-mode-hook 'my-java-mode-hook)
 ;; >----------------------------------------------------------------------------------------------------
 
 
