@@ -244,10 +244,6 @@
 (define-key lsp-mode-map (kbd "s-l d") 'lsp-ui-peek-find-implementation)
 (define-key lsp-mode-map (kbd "s-l u") 'lsp-java-open-super-implementation)
 (define-key lsp-mode-map (kbd "s-l h") 'lsp-ui-doc-show)
-
-;; TODO what's this?
-;; (define-key lsp-signature-mode-map (kbd "M-n") nil)
-;; (define-key lsp-signature-mode-map (kbd "M-p") nil)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -373,6 +369,8 @@
 ;; markdown-mode
 
 (add-hook 'markdown-mode-hook 'flyspell-mode)
+
+;; prefer symbol-overlay
 (define-key markdown-mode-map (kbd "M-n") nil)
 (define-key markdown-mode-map (kbd "M-p") nil)
 ;; >----------------------------------------------------------------------------------------------------
