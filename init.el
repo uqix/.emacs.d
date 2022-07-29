@@ -166,7 +166,7 @@
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key [f8] 'helm-occur)
-;; (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+(global-set-key (kbd "s-h m") 'helm-all-mark-rings) ; was helm-man-woman
 (global-set-key (kbd "s-h s") nil)      ; was helm-surfraw
 (global-set-key (kbd "s-h s g") 'helm-google-suggest)
 ;; >----------------------------------------------------------------------------------------------------
