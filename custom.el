@@ -14,6 +14,7 @@
  '(flycheck-disabled-checkers '(json-python-json))
  '(helm-ag-insert-at-point 'symbol)
  '(helm-display-function 'helm-display-buffer-in-own-frame)
+ '(helm-use-undecorated-frame-option nil)
  '(imenu-max-item-length nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
