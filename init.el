@@ -315,23 +315,6 @@
 
 
 ;; <----------------------------------------------------------------------------------------------------
-;; compilation-mode
-
-;; TODO still needed?
-
-;; https://stackoverflow.com/a/20788623
-;;
-;; (ignore-errors
-;;   (require 'ansi-color)
-;;   (defun my-colorize-compilation-buffer ()
-;;     (when (eq major-mode 'compilation-mode)
-;;       (ansi-color-apply-on-region compilation-filter-start (point-max))))
-;;   (add-hook 'compilation-filter-hook 'my-colorize-compilation-buffer))
-;; >----------------------------------------------------------------------------------------------------
-
-
-
-;; <----------------------------------------------------------------------------------------------------
 ;; multiple-cursors
 
 (global-set-key [f6] 'mc/edit-lines)
