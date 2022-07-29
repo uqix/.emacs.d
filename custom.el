@@ -54,4 +54,5 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :extend nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Monaco"))))
  '(line-number ((t (:inherit (shadow default) :background "ivory" :foreground "gray92"))))
- '(markdown-inline-code-face ((t (:inherit (markdown-code-face font-lock-constant-face) :background "#F5F8FA" :foreground "#657786")))))
+ '(markdown-inline-code-face ((t (:inherit (markdown-code-face font-lock-constant-face) :background "#F5F8FA" :foreground "#657786"))))
+ '(markdown-link-face ((t nil))))
