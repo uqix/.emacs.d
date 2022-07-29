@@ -370,15 +370,3 @@
 ;; (global-display-line-numbers-mode)
 (global-set-key (kbd "C-z u") 'browse-url) ; was undo
 ;; >----------------------------------------------------------------------------------------------------
-
-
-
-;; <----------------------------------------------------------------------------------------------------
-;; magit-delta
-
-;; https://github.com/dandavison/magit-delta
-
-;; performance issue
-;; https://github.com/dandavison/magit-delta/issues/9
-;; (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
-;; >----------------------------------------------------------------------------------------------------
