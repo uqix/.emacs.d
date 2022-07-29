@@ -385,6 +385,7 @@
 
 (electric-pair-mode)
 ;; (global-display-line-numbers-mode)
+(global-set-key (kbd "C-z u") 'browse-url) ; was undo
 ;; >----------------------------------------------------------------------------------------------------
 
 
