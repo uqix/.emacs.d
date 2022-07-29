@@ -168,6 +168,7 @@
 (global-set-key [f8] 'helm-occur)
 ;; (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
 (global-set-key (kbd "s-h s") nil)      ; was helm-surfraw
+(global-set-key (kbd "s-h s g") 'helm-google-suggest)
 ;; >----------------------------------------------------------------------------------------------------
 
 
