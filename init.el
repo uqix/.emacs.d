@@ -77,9 +77,6 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; https://www.flycheck.org/en/latest/user/error-interaction.html#navigate-errors
-;; By default Flycheck hooks into Emacs’ standard error navigation:
-;; M-g n (next-error)
-;; M-g p (previous-error)
 
 (global-set-key [f1] 'flycheck-list-errors)
 ;; >----------------------------------------------------------------------------------------------------
