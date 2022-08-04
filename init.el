@@ -88,6 +88,7 @@
 
 (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
 (add-hook 'yaml-mode-hook 'flyspell-mode)
+(add-hook 'yaml-mode-hook 'display-line-numbers-mode)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -369,6 +370,5 @@
 ;; misc
 
 (electric-pair-mode)
-;; (global-display-line-numbers-mode)
 (global-set-key (kbd "C-z u") 'browse-url) ; was undo
 ;; >----------------------------------------------------------------------------------------------------
