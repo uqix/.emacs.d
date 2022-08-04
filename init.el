@@ -289,6 +289,9 @@
 
 (global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
 (global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
+(global-set-key (kbd "C-c o n") 'symbol-overlay-switch-forward)
+(global-set-key (kbd "C-c o p") 'symbol-overlay-switch-backward)
+(global-set-key (kbd "C-c o r") 'symbol-overlay-remove-all)
 (global-set-key [f2] 'symbol-overlay-put)
 ;; >----------------------------------------------------------------------------------------------------
 
