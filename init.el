@@ -257,9 +257,7 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Customizing-C-and-C_002b_002b-indentation.html
 ;;
 (defun my-java-mode-hook ()
-  (c-set-offset 'arglist-intro '++)
-  (c-set-offset 'block-close '-)
-  (c-set-offset 'statement-block-intro '0))
+  (c-set-offset 'arglist-intro '++))
 (add-hook 'java-mode-hook 'my-java-mode-hook)
 ;; >----------------------------------------------------------------------------------------------------
 
