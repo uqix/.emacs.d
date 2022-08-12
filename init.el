@@ -174,7 +174,7 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; helm-ag
 
-(global-set-key (kbd "s-h s a") 'helm-do-ag)
+(global-set-key [f11] 'helm-do-ag)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -183,14 +183,14 @@
 ;; projectile
 
 ;; https://docs.projectile.mx/projectile/usage.html#basic-usage
+;;
+;; helm-projectile-ag: s-p s s
 
 ;; https://docs.projectile.mx/projectile/installation.html#installation-via-package-el
 ;;
 (require 'projectile)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (projectile-mode +1)
-
-(global-set-key [f11] 'helm-projectile-ag)
 ;; >----------------------------------------------------------------------------------------------------
 
 
