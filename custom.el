@@ -14,6 +14,7 @@
  '(flycheck-disabled-checkers '(json-python-json))
  '(flycheck-standard-error-navigation nil)
  '(helm-ag-insert-at-point 'symbol)
+ '(helm-buffer-max-length 50)
  '(imenu-max-item-length nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
