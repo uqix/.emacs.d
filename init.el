@@ -247,6 +247,10 @@
 (define-key lsp-mode-map (kbd "s-l h") 'lsp-ui-doc-show) ; help
 (define-key lsp-mode-map (kbd "s-l i") 'lsp-organize-imports) ; import
 (define-key lsp-mode-map (kbd "s-l f") 'lsp-execute-code-action) ; fix
+
+;; prefer symbol-overlay
+(define-key lsp-signature-mode-map (kbd "M-n") nil)
+(define-key lsp-signature-mode-map (kbd "M-p") nil)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -361,6 +365,16 @@
 ;; prefer symbol-overlay
 (define-key markdown-mode-map (kbd "M-n") nil)
 (define-key markdown-mode-map (kbd "M-p") nil)
+;; >----------------------------------------------------------------------------------------------------
+
+
+
+;; <----------------------------------------------------------------------------------------------------
+;; compilation-mode
+
+;; prefer symbol-overlay
+(define-key compilation-mode-map (kbd "M-n") nil)
+(define-key compilation-mode-map (kbd "M-p") nil)
 ;; >----------------------------------------------------------------------------------------------------
 
 
