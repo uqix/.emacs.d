@@ -115,6 +115,7 @@
 (global-set-key (kbd "C-z") ctl-x-map)
 
 (global-unset-key (kbd "C-x C-c"))      ; quit emacs
+(global-unset-key (kbd "C-x C-z"))      ; suspend-frame(minimize)
 
 (global-set-key [f3] 'toggle-truncate-lines)
 (global-set-key [f4] 'kmacro-end-or-call-macro)
