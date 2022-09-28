@@ -166,7 +166,7 @@
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key [f8] 'helm-occur)
 (global-set-key (kbd "s-h m") 'helm-all-mark-rings) ; was helm-man-woman
-(global-set-key (kbd "s-h s") nil)      ; was helm-surfraw
+(global-set-key (kbd "s-h s") nil)                  ; was helm-surfraw
 (global-set-key (kbd "s-h s g") 'helm-google-suggest)
 ;; >----------------------------------------------------------------------------------------------------
 
@@ -243,11 +243,11 @@
 ;; (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
 (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
 
-(define-key lsp-mode-map (kbd "s-l d") 'lsp-ui-peek-find-implementation) ; down
+(define-key lsp-mode-map (kbd "s-l d") 'lsp-ui-peek-find-implementation)    ; down
 (define-key lsp-mode-map (kbd "s-l u") 'lsp-java-open-super-implementation) ; up
-(define-key lsp-mode-map (kbd "s-l h") 'lsp-ui-doc-show) ; help
-(define-key lsp-mode-map (kbd "s-l i") 'lsp-organize-imports) ; import
-(define-key lsp-mode-map (kbd "s-l f") 'lsp-execute-code-action) ; fix
+(define-key lsp-mode-map (kbd "s-l h") 'lsp-ui-doc-show)                    ; help
+(define-key lsp-mode-map (kbd "s-l i") 'lsp-organize-imports)               ; import
+(define-key lsp-mode-map (kbd "s-l f") 'lsp-execute-code-action)            ; fix
 
 ;; prefer symbol-overlay
 (define-key lsp-signature-mode-map (kbd "M-n") nil)
