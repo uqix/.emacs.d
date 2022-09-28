@@ -389,6 +389,19 @@
 
 
 ;; <----------------------------------------------------------------------------------------------------
+;; eshell-mode
+
+(require 'em-hist)
+
+;; prefer symbol-overlay
+(define-key eshell-hist-mode-map (kbd "M-n") nil)
+(define-key eshell-hist-mode-map (kbd "M-p") nil)
+(define-key eshell-hist-mode-map (kbd "C-c C-l") 'helm-eshell-history)
+;; >----------------------------------------------------------------------------------------------------
+
+
+
+;; <----------------------------------------------------------------------------------------------------
 ;; misc
 
 (electric-pair-mode)
