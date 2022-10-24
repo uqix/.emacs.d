@@ -89,6 +89,9 @@
 (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
 (add-hook 'yaml-mode-hook 'flyspell-mode)
 (add-hook 'yaml-mode-hook 'display-line-numbers-mode)
+
+;; https://github.com/zkry/yaml-pro
+(add-hook 'yaml-mode-hook 'yaml-pro-mode)
 ;; >----------------------------------------------------------------------------------------------------
 
 
