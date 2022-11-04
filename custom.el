@@ -11,6 +11,7 @@
  '(dabbrev-case-fold-search nil)
  '(datetime-timezone 'Etc/GMT+8)
  '(dired-listing-switches "-alh")
+ '(ffap-machine-p-known 'reject)
  '(flycheck-disabled-checkers '(json-python-json))
  '(flycheck-standard-error-navigation nil)
  '(helm-ag-insert-at-point 'symbol)
