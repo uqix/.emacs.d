@@ -34,7 +34,7 @@
  '(lsp-ui-sideline-enable nil)
  '(magit-delta-delta-args
    '("--max-line-distance" "0.6" "--true-color" "always" "--color-only" "--minus-style" "syntax \"#ffeeee\"" "--minus-emph-style" "syntax \"#ffcccc\"" "--plus-style" "syntax \"#eeffee\"" "--plus-emph-style" "syntax \"#bbffbb\""))
- '(magit-diff-refine-hunk t)
+ '(magit-diff-refine-hunk 'all)
  '(make-backup-files nil)
  '(markdown-command "multimarkdown")
  '(markdown-fontify-code-block-default-mode 'ignore)
@@ -57,5 +57,9 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :extend nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Monaco"))))
  '(line-number ((t (:inherit (shadow default) :background "ivory" :foreground "gray92"))))
+ '(magit-diff-added ((t (:extend t :foreground "#22aa22"))))
+ '(magit-diff-added-highlight ((t (:extend t :foreground "#22aa22"))))
+ '(magit-diff-removed ((t (:extend t :foreground "#aa2222"))))
+ '(magit-diff-removed-highlight ((t (:extend t :foreground "#aa2222"))))
  '(markdown-inline-code-face ((t (:inherit (markdown-code-face font-lock-constant-face) :background "#F5F8FA" :foreground "#657786"))))
  '(markdown-link-face ((t nil))))
