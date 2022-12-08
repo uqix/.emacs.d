@@ -32,8 +32,6 @@
  '(lsp-ui-doc-max-height 30)
  '(lsp-ui-doc-use-webkit t)
  '(lsp-ui-sideline-enable nil)
- '(magit-delta-delta-args
-   '("--max-line-distance" "0.6" "--true-color" "always" "--color-only" "--minus-style" "syntax \"#ffeeee\"" "--minus-emph-style" "syntax \"#ffcccc\"" "--plus-style" "syntax \"#eeffee\"" "--plus-emph-style" "syntax \"#bbffbb\""))
  '(magit-diff-refine-hunk 'all)
  '(make-backup-files nil)
  '(markdown-command "multimarkdown")
