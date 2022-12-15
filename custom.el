@@ -59,6 +59,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :extend nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Monaco"))))
  '(line-number ((t (:inherit (shadow default) :background "ivory" :foreground "gray92"))))
+ '(lsp-face-highlight-read ((t (:background "#e5e5e5"))))
+ '(lsp-face-highlight-write ((t (:background "#e5e5e5" :weight bold))))
  '(magit-diff-added ((t (:extend t :foreground "#22aa22"))))
  '(magit-diff-added-highlight ((t (:extend t :foreground "#22aa22"))))
  '(magit-diff-removed ((t (:extend t :foreground "#aa2222"))))
