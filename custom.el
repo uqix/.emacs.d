@@ -33,6 +33,7 @@
    '("-XX:+UseParallelGC" "-XX:GCTimeRatio=4" "-XX:AdaptiveSizePolicyWeight=90" "-Dsun.zip.disableMemoryMapping=true" "-Xmx1G" "-Xms100m" "-javaagent:/Users/zjq/opt/lombok.jar"))
  '(lsp-modeline-code-actions-enable nil)
  '(lsp-modeline-diagnostics-enable nil)
+ '(lsp-signature-render-documentation nil)
  '(lsp-ui-doc-enable nil)
  '(lsp-ui-doc-include-signature t)
  '(lsp-ui-doc-max-height 30)
