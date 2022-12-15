@@ -22,6 +22,7 @@
  '(ispell-dictionary "american")
  '(ispell-extra-args '("--camel-case"))
  '(ispell-program-name "aspell")
+ '(lsp-completion-show-detail nil)
  '(lsp-enable-indentation nil)
  '(lsp-enable-on-type-formatting nil)
  '(lsp-file-watch-threshold 100000)
