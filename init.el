@@ -78,7 +78,8 @@
 
 ;; https://www.flycheck.org/en/latest/user/error-interaction.html#navigate-errors
 
-(global-set-key [f1] 'flycheck-list-errors)
+(global-set-key [f1] 'flycheck-next-error)
+(global-set-key [f4] 'flycheck-previous-error)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -121,7 +122,7 @@
 (global-unset-key (kbd "C-x C-z"))      ; suspend-frame(minimize)
 
 (global-set-key [f3] 'toggle-truncate-lines)
-(global-set-key [f4] 'kmacro-end-or-call-macro)
+;; (global-set-key [f4] 'kmacro-end-or-call-macro)
 (global-set-key [f5] 'delete-trailing-whitespace)
 (global-set-key [f9] 'subword-mode)
 (global-set-key [f10] 'replace-string)
