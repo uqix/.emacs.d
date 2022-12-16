@@ -29,8 +29,11 @@
  '(lsp-enable-on-type-formatting nil)
  '(lsp-file-watch-threshold 100000)
  '(lsp-java-completion-filtered-types ["java.awt.*" "com.sun.*" "java.lang.StrictMath"])
+ '(lsp-java-completion-max-results 10)
+ '(lsp-java-format-enabled nil)
+ '(lsp-java-format-on-type-enabled nil)
  '(lsp-java-vmargs
-   '("-XX:+UseParallelGC" "-XX:GCTimeRatio=4" "-XX:AdaptiveSizePolicyWeight=90" "-Dsun.zip.disableMemoryMapping=true" "-Xmx1G" "-Xms100m" "-javaagent:/Users/zjq/opt/lombok.jar"))
+   '("-noverify" "-Xmx2G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication" "-javaagent:/Users/zjq/opt/lombok.jar"))
  '(lsp-modeline-code-actions-enable nil)
  '(lsp-modeline-diagnostics-enable nil)
  '(lsp-signature-render-documentation nil)
