@@ -252,6 +252,7 @@
 (define-key lsp-mode-map (kbd "s-l h") 'lsp-ui-doc-show)                    ; help
 (define-key lsp-mode-map (kbd "s-l i") 'lsp-organize-imports)               ; import
 (define-key lsp-mode-map (kbd "s-l f") 'lsp-execute-code-action)            ; fix
+(define-key lsp-mode-map (kbd "s-l t") 'lsp-jt-lens-mode)                   ; test lens
 
 ;; prefer symbol-overlay
 (define-key lsp-signature-mode-map (kbd "M-n") nil)
