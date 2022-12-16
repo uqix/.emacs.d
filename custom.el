@@ -28,6 +28,7 @@
  '(lsp-enable-indentation nil)
  '(lsp-enable-on-type-formatting nil)
  '(lsp-file-watch-threshold 100000)
+ '(lsp-headerline-breadcrumb-enable nil)
  '(lsp-java-completion-filtered-types ["java.awt.*" "com.sun.*" "java.lang.StrictMath"])
  '(lsp-java-completion-max-results 10)
  '(lsp-java-format-enabled nil)
