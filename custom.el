@@ -68,8 +68,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :extend nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Monaco"))))
- '(flyspell-duplicate ((t (:underline "windowBackgroundColor"))))
- '(flyspell-incorrect ((t (:underline "windowBackgroundColor"))))
+ '(flyspell-duplicate ((t (:underline "#ececec"))))
+ '(flyspell-incorrect ((t (:underline "#ececec"))))
  '(line-number ((t (:inherit (shadow default) :background "ivory" :foreground "gray92"))))
  '(lsp-face-highlight-read ((t (:background "#e5e5e5"))))
  '(lsp-face-highlight-write ((t (:background "#e5e5e5" :weight bold))))
