@@ -37,6 +37,7 @@
  '(lsp-java-format-on-type-enabled nil)
  '(lsp-java-vmargs
    '("-noverify" "-Xmx2G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication" "-javaagent:/Users/zjq/opt/lombok.jar"))
+ '(lsp-lens-enable nil)
  '(lsp-modeline-code-actions-enable nil)
  '(lsp-modeline-diagnostics-enable nil)
  '(lsp-signature-auto-activate nil)
