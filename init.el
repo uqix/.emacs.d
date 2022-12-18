@@ -166,14 +166,13 @@
 (global-set-key (kbd "s-h m") 'helm-all-mark-rings)  ; [m]ark rings; was helm-man-woman
 ;; (global-set-key (kbd "s-h s") nil)                ; was helm-surfraw
 (global-set-key (kbd "s-h g") 'helm-google-suggest)  ; [g]oogle
-;; >----------------------------------------------------------------------------------------------------
 
 
-
-;; <----------------------------------------------------------------------------------------------------
+;; <---
 ;; helm-ag
 
 (global-set-key [f11] 'helm-do-ag)
+;; >---
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -191,13 +190,8 @@
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (projectile-mode +1)
 
-(define-key projectile-mode-map (kbd "s-p s") 'helm-projectile-ag)    ; [s]earch by ag; was prefix
-(define-key projectile-mode-map (kbd "s-p x") 'projectile-run-eshell) ; e[x]ecute eshell; was prefix
-;; >----------------------------------------------------------------------------------------------------
 
-
-
-;; <----------------------------------------------------------------------------------------------------
+;; <---
 ;; helm-projectile
 
 ;; https://github.com/bbatsov/helm-projectile#usage
@@ -210,8 +204,12 @@
 ;; (setq helm-projectile-fuzzy-match nil)
 (require 'helm-projectile)
 (helm-projectile-on)
+;; >---
+
 
 (global-set-key [f2] 'helm-projectile-switch-project)
+(define-key projectile-mode-map (kbd "s-p s") 'helm-projectile-ag)    ; [s]earch by ag; was prefix
+(define-key projectile-mode-map (kbd "s-p x") 'projectile-run-eshell) ; e[x]ecute eshell; was prefix
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -372,8 +370,8 @@
 
 ;; prefer symbol-overlay
 (define-key eshell-hist-mode-map (kbd "M-n") nil)
-(define-key eshell-hist-mode-map (kbd "M-p") nil)
-(define-key eshell-hist-mode-map [up] 'helm-eshell-history)
+(define-key eshell-hist-mode-map (kbd "M-p") nil)           ; was eshell-previous-matching-input-from-input
+(define-key eshell-hist-mode-map [up] 'helm-eshell-history) ; was eshell-previous-matching-input-from-input
 ;; >----------------------------------------------------------------------------------------------------
 
 
