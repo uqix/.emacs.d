@@ -89,7 +89,7 @@
 
 (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
 (add-hook 'yaml-mode-hook 'flyspell-mode)
-(add-hook 'yaml-mode-hook 'display-line-numbers-mode)
+;; (add-hook 'yaml-mode-hook 'display-line-numbers-mode)
 
 ;; https://github.com/zkry/yaml-pro
 (add-hook 'yaml-mode-hook 'yaml-pro-mode)
@@ -303,10 +303,6 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; magit
 
-;; https://magit.vc/manual/magit/Default-Bindings.html
-;; C-x g	magit-status
-;; C-x M-g	magit-dispatch
-;; C-c M-g	magit-file-dispatch
 ;; >----------------------------------------------------------------------------------------------------
 
 
