@@ -380,6 +380,7 @@
 
 (electric-pair-mode)
 
-(global-set-key (kbd "C-x u") 'browse-url)    ; open [u]rl; was undo, prefix C-/
-(global-set-key (kbd "C-x d") 'ediff-buffers) ; e[d]iff; was dired
+(global-set-key (kbd "C-x u") 'browse-url)                      ; open [u]rl; was undo, prefix C-/
+(global-set-key (kbd "C-x d") 'ediff-buffers)                   ; e[d]iff; was dired
+(global-set-key (kbd "C-x w") 'diff-delete-trailing-whitespace) ; [w]hitespace
 ;; >----------------------------------------------------------------------------------------------------
