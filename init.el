@@ -190,6 +190,9 @@
 (require 'projectile)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (projectile-mode +1)
+
+(define-key projectile-mode-map (kbd "s-p s") 'helm-projectile-ag)    ; [s]earch by ag; was prefix
+(define-key projectile-mode-map (kbd "s-p x") 'projectile-run-eshell) ; e[x]ecute eshell; was prefix
 ;; >----------------------------------------------------------------------------------------------------
 
 
