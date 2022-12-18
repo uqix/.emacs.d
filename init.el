@@ -171,6 +171,8 @@
 ;; <---
 ;; helm-ag
 
+;; https://github.com/emacsorphanage/helm-ag#basic-usage
+;;
 (global-set-key [f11] 'helm-do-ag)
 ;; >---
 ;; >----------------------------------------------------------------------------------------------------
@@ -353,8 +355,8 @@
 ;; compilation-mode
 
 ;; prefer symbol-overlay
-(define-key compilation-mode-map (kbd "M-n") nil) ; was compilation-next-error
-(define-key compilation-mode-map (kbd "M-p") nil)
+;; (define-key compilation-mode-map (kbd "M-n") nil) ; was compilation-next-error
+;; (define-key compilation-mode-map (kbd "M-p") nil)
 ;; >----------------------------------------------------------------------------------------------------
 
 
