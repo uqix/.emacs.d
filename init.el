@@ -62,7 +62,7 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; flyspell
 
-(add-hook 'prog-mode-hook 'flyspell-mode)
+(add-hook 'text-mode-hook 'flyspell-mode)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -87,8 +87,9 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; yaml-mode
 
+;; https://github.com/antonj/Highlight-Indentation-for-Emacs
 (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
-(add-hook 'yaml-mode-hook 'flyspell-mode)
+
 ;; (add-hook 'yaml-mode-hook 'display-line-numbers-mode)
 
 ;; https://github.com/zkry/yaml-pro
@@ -344,8 +345,6 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; markdown-mode
 
-(add-hook 'markdown-mode-hook 'flyspell-mode)
-
 ;; prefer symbol-overlay
 (define-key markdown-mode-map (kbd "M-n") nil)
 (define-key markdown-mode-map (kbd "M-p") nil)
@@ -359,14 +358,6 @@
 ;; prefer symbol-overlay
 (define-key compilation-mode-map (kbd "M-n") nil)
 (define-key compilation-mode-map (kbd "M-p") nil)
-;; >----------------------------------------------------------------------------------------------------
-
-
-
-;; <----------------------------------------------------------------------------------------------------
-;; nxml-mode
-
-(add-hook 'nxml-mode-hook 'flyspell-mode)
 ;; >----------------------------------------------------------------------------------------------------
 
 
