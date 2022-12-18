@@ -253,10 +253,6 @@
 (define-key lsp-mode-map (kbd "s-l f") 'lsp-execute-code-action)            ; action to [f]ix
 (define-key lsp-mode-map (kbd "s-l t") 'lsp-jt-lens-mode)                   ; [t]est lens
 (define-key lsp-mode-map (kbd "s-l s") 'lsp-signature-activate)             ; method [s]ignature
-
-;; prefer symbol-overlay
-(define-key lsp-signature-mode-map (kbd "M-n") nil)
-(define-key lsp-signature-mode-map (kbd "M-p") nil)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -347,7 +343,7 @@
 ;; markdown-mode
 
 ;; prefer symbol-overlay
-(define-key markdown-mode-map (kbd "M-n") nil)
+(define-key markdown-mode-map (kbd "M-n") nil) ; was markdown-next-link
 (define-key markdown-mode-map (kbd "M-p") nil)
 ;; >----------------------------------------------------------------------------------------------------
 
@@ -357,7 +353,7 @@
 ;; compilation-mode
 
 ;; prefer symbol-overlay
-(define-key compilation-mode-map (kbd "M-n") nil)
+(define-key compilation-mode-map (kbd "M-n") nil) ; was compilation-next-error
 (define-key compilation-mode-map (kbd "M-p") nil)
 ;; >----------------------------------------------------------------------------------------------------
 
