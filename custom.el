@@ -19,6 +19,7 @@
  '(flyspell-mark-duplications-flag nil)
  '(helm-ag-insert-at-point 'symbol)
  '(helm-buffer-max-length 50)
+ '(helm-occur-auto-update-on-resume 'noask)
  '(helm-split-window-default-side 'other)
  '(imenu-max-item-length nil)
  '(indent-tabs-mode nil)
