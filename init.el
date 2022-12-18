@@ -78,7 +78,7 @@
 
 ;; https://www.flycheck.org/en/latest/user/error-interaction.html#navigate-errors
 
-(global-set-key [f1] 'flycheck-next-error)
+(global-set-key [f3] 'flycheck-next-error)
 (global-set-key [f4] 'flycheck-previous-error)
 ;; >----------------------------------------------------------------------------------------------------
 
@@ -121,11 +121,10 @@
 (global-unset-key (kbd "C-x C-c"))      ; quit emacs
 (global-unset-key (kbd "C-x C-z"))      ; suspend-frame(minimize)
 
-(global-set-key [f3] 'toggle-truncate-lines)
-;; (global-set-key [f4] 'kmacro-end-or-call-macro)
-(global-set-key [f5] 'delete-trailing-whitespace)
+(global-set-key [f5] 'toggle-truncate-lines)
+;; (global-set-key [f5] 'kmacro-end-or-call-macro)
+
 (global-set-key [f9] 'subword-mode)
-(global-set-key [f10] 'replace-string)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -166,7 +165,7 @@
 ;;
 (helm-mode 1)
 
-(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key [f1] 'helm-mini)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key [f8] 'helm-occur)
 (global-set-key (kbd "s-h m") 'helm-all-mark-rings) ; was helm-man-woman
@@ -196,6 +195,8 @@
 (require 'projectile)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (projectile-mode +1)
+
+(global-set-key [f2] 'helm-projectile-switch-project)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -303,10 +304,8 @@
 
 (global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
 (global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
-(global-set-key (kbd "C-c o n") 'symbol-overlay-switch-forward)
-(global-set-key (kbd "C-c o p") 'symbol-overlay-switch-backward)
-(global-set-key (kbd "C-c o r") 'symbol-overlay-remove-all)
-(global-set-key [f2] 'symbol-overlay-put)
+(global-set-key (kbd "C-z o") 'symbol-overlay-remove-all) ; was other-window, prefer f7
+(global-set-key [f10] 'symbol-overlay-put)
 ;; >----------------------------------------------------------------------------------------------------
 
 
