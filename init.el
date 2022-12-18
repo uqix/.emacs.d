@@ -403,5 +403,7 @@
 ;; misc
 
 (electric-pair-mode)
-(global-set-key (kbd "C-z u") 'browse-url) ; was undo
+
+(global-set-key (kbd "C-z u") 'browse-url)    ; was undo
+(global-set-key (kbd "C-z d") 'ediff-buffers) ; was dired
 ;; >----------------------------------------------------------------------------------------------------
