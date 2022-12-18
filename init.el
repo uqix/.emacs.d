@@ -115,15 +115,11 @@
 ;; ctl-x-map is the global keymap used for the C-x prefix key.
 ;; goto-map is the global keymap used for the M-g prefix key.
 
-;; alias C-z=C-x
-(global-set-key (kbd "C-z") ctl-x-map)
-
+(global-set-key (kbd "C-z") ctl-x-map)  ; more handy
 (global-unset-key (kbd "C-x C-c"))      ; quit emacs
-(global-unset-key (kbd "C-x C-z"))      ; suspend-frame(minimize)
-
+(global-unset-key (kbd "C-x C-z"))      ; suspend-frame (minimize)
 (global-set-key [f5] 'toggle-truncate-lines)
 ;; (global-set-key [f5] 'kmacro-end-or-call-macro)
-
 (global-set-key [f9] 'subword-mode)
 ;; >----------------------------------------------------------------------------------------------------
 
@@ -142,35 +138,33 @@
 
 ;; https://github.com/emacs-helm/helm/wiki#if-installed-from-emacs-package-manager-packageel
 ;;
-;; not have the global bindings enabled until you require helm with either require or use-package.
 (require 'helm)
+
+;; https://github.com/emacs-helm/helm/wiki#helm-mode
+;;
+(helm-mode 1)
 
 ;; https://github.com/emacs-helm/helm/wiki#general-helm-commands
 ;;
-;; <tab> or C-i lists available actions
-;; C-j or C-z invokes the persistent action
+;; <tab> lists available actions
+;; C-j invokes the persistent action
 
 ;; https://github.com/emacs-helm/helm/wiki#preconfigured-helm-commands
 ;;
 (global-set-key (kbd "s-h") 'helm-command-prefix)
 
-;; https://github.com/emacs-helm/helm/wiki#helm-mode
-;;
-;; alias s-z=M-x
 (global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "s-z") 'helm-M-x)
-;;
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x f") 'helm-find-files) ; was set-fill-column
-;;
-(helm-mode 1)
+(global-set-key (kbd "s-z") 'helm-M-x)              ; more handy
+
+(global-set-key (kbd "C-x C-f") 'helm-find-files)   ; was find-file
+(global-set-key (kbd "C-x f") 'helm-find-files)     ; was set-fill-column
 
 (global-set-key [f1] 'helm-mini)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key [f8] 'helm-occur)
-(global-set-key (kbd "s-h m") 'helm-all-mark-rings) ; was helm-man-woman
-(global-set-key (kbd "s-h s") nil)                  ; was helm-surfraw
-(global-set-key (kbd "s-h s g") 'helm-google-suggest)
+(global-set-key (kbd "s-h m") 'helm-all-mark-rings)  ; [m]ark rings; was helm-man-woman
+;; (global-set-key (kbd "s-h s") nil)                ; was helm-surfraw
+(global-set-key (kbd "s-h g") 'helm-google-suggest)  ; [g]oogle
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -195,8 +189,6 @@
 (require 'projectile)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (projectile-mode +1)
-
-(global-set-key [f2] 'helm-projectile-switch-project)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -214,6 +206,8 @@
 ;; (setq helm-projectile-fuzzy-match nil)
 (require 'helm-projectile)
 (helm-projectile-on)
+
+(global-set-key [f2] 'helm-projectile-switch-project)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -248,16 +242,15 @@
 ;;
 ;; You may remap xref-find-{definitions,references} (bound to M-. M-? by default):
 ;;
-;; (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
 (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
 
-(define-key lsp-mode-map (kbd "s-l d") 'lsp-ui-peek-find-implementation)    ; down
-(define-key lsp-mode-map (kbd "s-l u") 'lsp-java-open-super-implementation) ; up
-(define-key lsp-mode-map (kbd "s-l h") 'lsp-ui-doc-show)                    ; help
-(define-key lsp-mode-map (kbd "s-l i") 'lsp-organize-imports)               ; import
-(define-key lsp-mode-map (kbd "s-l f") 'lsp-execute-code-action)            ; fix
-(define-key lsp-mode-map (kbd "s-l t") 'lsp-jt-lens-mode)                   ; test lens
-(define-key lsp-mode-map (kbd "s-l s") 'lsp-signature-activate)             ; signature
+(define-key lsp-mode-map (kbd "s-l d") 'lsp-ui-peek-find-implementation)    ; find [d]ownward
+(define-key lsp-mode-map (kbd "s-l u") 'lsp-java-open-super-implementation) ; find [u]pward
+(define-key lsp-mode-map (kbd "s-l h") 'lsp-ui-doc-show)                    ; doc [h]elp
+(define-key lsp-mode-map (kbd "s-l i") 'lsp-organize-imports)               ; [i]mport
+(define-key lsp-mode-map (kbd "s-l f") 'lsp-execute-code-action)            ; action to [f]ix
+(define-key lsp-mode-map (kbd "s-l t") 'lsp-jt-lens-mode)                   ; [t]est lens
+(define-key lsp-mode-map (kbd "s-l s") 'lsp-signature-activate)             ; method [s]ignature
 
 ;; prefer symbol-overlay
 (define-key lsp-signature-mode-map (kbd "M-n") nil)
@@ -292,10 +285,12 @@
 ;; <----------------------------------------------------------------------------------------------------
 ;; symbol-overlay
 
+;; https://github.com/wolray/symbol-overlay/#usage
+;;
+(global-set-key [f10] 'symbol-overlay-put)
 (global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
 (global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
-(global-set-key (kbd "C-z o") 'symbol-overlay-remove-all) ; was other-window, prefer f7
-(global-set-key [f10] 'symbol-overlay-put)
+(global-set-key (kbd "C-x o") 'symbol-overlay-remove-all) ; was other-window, prefer f7
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -319,12 +314,6 @@
 ;; multiple-cursors
 
 (global-set-key [f6] 'mc/edit-lines)
-
-;; add multiple cursors not based on continuous lines, but based on keywords in the buffer, use:
-;;
-;; (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-;; (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-;; (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -400,6 +389,6 @@
 
 (electric-pair-mode)
 
-(global-set-key (kbd "C-z u") 'browse-url)    ; was undo
-(global-set-key (kbd "C-z d") 'ediff-buffers) ; was dired
+(global-set-key (kbd "C-x u") 'browse-url)    ; open [u]rl; was undo, prefix C-/
+(global-set-key (kbd "C-x d") 'ediff-buffers) ; e[d]iff; was dired
 ;; >----------------------------------------------------------------------------------------------------
