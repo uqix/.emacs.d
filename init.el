@@ -123,9 +123,12 @@
 ;; (global-set-key [f5] 'kmacro-end-or-call-macro)
 (global-set-key [f9] 'subword-mode)
 
-(global-set-key (kbd "C-x u") 'browse-url)                      ; open [u]rl; was undo, prefix C-/
+(global-set-key (kbd "C-x u") 'browse-url)                      ; open [u]rl; was undo, prefer C-/
 (global-set-key (kbd "C-x d") 'ediff-buffers)                   ; e[d]iff; was dired
 (global-set-key (kbd "C-x w") 'diff-delete-trailing-whitespace) ; [w]hitespace
+
+;; prefix C-x j for low frequency
+(global-set-key (kbd "C-x j r") 'replace-string) ; [r]eplace
 ;; >----------------------------------------------------------------------------------------------------
 
 
