@@ -75,6 +75,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :extend nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Monaco"))))
  '(aw-leading-char-face ((t (:foreground "blue" :weight bold :height 2.0))))
+ '(company-tooltip-quick-access ((t (:foreground "gray92"))))
+ '(company-tooltip-quick-access-selection ((t (:foreground "gray70"))))
  '(flyspell-duplicate ((t (:underline "gray85"))))
  '(flyspell-incorrect ((t (:underline "gray85"))))
  '(line-number ((t (:inherit (shadow default) :background "ivory" :foreground "gray92"))))
