@@ -80,6 +80,7 @@
  '(flyspell-duplicate ((t (:underline "gray85"))))
  '(flyspell-incorrect ((t (:underline "gray85"))))
  '(line-number ((t (:inherit (shadow default) :background "ivory" :foreground "gray92"))))
+ '(line-number-current-line ((t (:inherit line-number :foreground "gray80"))))
  '(lsp-face-highlight-read ((t (:background "#e5e5e5"))))
  '(lsp-face-highlight-write ((t (:background "#e5e5e5" :weight bold))))
  '(lsp-ui-peek-filename ((t (:foreground "blue"))))
