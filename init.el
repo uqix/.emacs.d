@@ -185,6 +185,9 @@
 ;;
 (global-set-key [f11] 'helm-do-ag)
 ;; >---
+
+;; https://github.com/emacs-helm/helm/blob/941da0db9ef54d5e895c53d9265f2dd4a6c93db2/helm-core.el#L1715
+(add-hook 'helm-after-initialize-hook 'helm-init-relative-display-line-numbers)
 ;; >----------------------------------------------------------------------------------------------------
 
 
