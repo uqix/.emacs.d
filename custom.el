@@ -60,7 +60,7 @@
  '(nxml-child-indent 4)
  '(package-archive-priorities '(("melpa" . 1)))
  '(package-selected-packages
-   '(yaml-pro highlight-indentation dockerfile-mode markdown-mode lsp-mode yaml-mode json-mode dap-mode lsp-java lsp-ui hydra projectile doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay flycheck company expand-region))
+   '(vertico orderless embark-consult embark marginalia consult yaml-pro highlight-indentation dockerfile-mode markdown-mode lsp-mode yaml-mode json-mode dap-mode lsp-java lsp-ui hydra projectile doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay flycheck company expand-region))
  '(projectile-project-root-files
    '("build.sbt" "build.gradle" "pom.xml" "requirements.txt" "package.json" "Makefile" "Chart.yaml"))
  '(scroll-bar-mode nil)

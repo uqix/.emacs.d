@@ -119,16 +119,23 @@
 ;; ctl-x-map is the global keymap used for the C-x prefix key.
 ;; goto-map is the global keymap used for the M-g prefix key.
 
+(global-set-key (kbd "s-z") 'execute-extended-command)              ; more handy
+
 (global-set-key (kbd "C-z") ctl-x-map)  ; more handy
-(global-unset-key (kbd "C-x C-c"))      ; quit emacs
-(global-unset-key (kbd "C-x C-z"))      ; suspend-frame (minimize)
-(global-set-key [f5] 'toggle-truncate-lines)
+
+(global-unset-key (kbd "C-x C-c")) ; quit emacs
+(global-unset-key (kbd "C-x C-z")) ; suspend-frame (minimize)
+(global-unset-key (kbd "s-h"))     ; ns-do-hide-emacs
+
 ;; (global-set-key [f5] 'kmacro-end-or-call-macro)
 (global-set-key [f9] 'subword-mode)
 
-(global-set-key (kbd "C-x u") 'browse-url)                      ; open [u]rl; was undo, prefer C-/
+;; prefer embark-act
+;; (global-set-key (kbd "C-x u") 'browse-url)                      ; open [u]rl; was undo, prefer C-/
+
 (global-set-key (kbd "C-x d") 'ediff-buffers)                   ; e[d]iff; was dired
 (global-set-key (kbd "C-x w") 'diff-delete-trailing-whitespace) ; [w]hitespace
+(global-set-key (kbd "C-x f") 'find-file)     ; was set-fill-column
 
 ;; (global-set-key (kbd "C-x r") 'replace-string) ; [r]eplace; was registers/bookmarks prefix, prefer helm-all-mark-rings
 ;; C-x r o -> open-rectangle
@@ -137,7 +144,7 @@
 (global-set-key (kbd "C-x q") 'replace-string) ; was kbd-macro-query
 
 ;; prefix C-x j for low frequency
-;; (global-set-key (kbd "C-x j r") 'replace-string) ; [r]eplace
+(global-set-key (kbd "C-x j t") 'toggle-truncate-lines)
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -198,12 +205,71 @@
 
 
 
+;; <---------
+;; consult
+
+;; https://github.com/minad/consult#use-package-example
+
+;; <---
+;; recentf
+
+;; https://www.emacswiki.org/emacs/RecentFiles
+;; 
+(recentf-mode 1)
+;; >---
+
+;; <---
+;; vertico
+
+;; https://github.com/minad/vertico#configuration
+;; 
+(vertico-mode)
+;; >---
+
+;; <---
+;; marginalia
+
+;; https://github.com/minad/marginalia#configuration
+;; 
+(marginalia-mode)
+;; >---
+
+;; <---
+;; embark
+
+;; https://github.com/oantolin/embark#quick-start
+;; 
+(global-set-key [f5] 'embark-act)
+;; >---
+
+;; <---
+;; embark-consult
+
+;; https://github.com/oantolin/embark#consult
+;; >---
+
+;; <---
+;; orderless
+
+;; https://github.com/oantolin/orderless
+
+;; https://github.com/minad/vertico#configuration
+(setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion))))
+;; >---
+
+(global-set-key [f1] 'consult-buffer)
+(global-set-key [f8] 'consult-line)
+(global-set-key [f11] 'consult-ripgrep)
+;; >---------
+
+
+
 ;; <----------------------------------------------------------------------------------------------------
 ;; projectile
 
 ;; https://docs.projectile.mx/projectile/usage.html#basic-usage
-;;
-;; helm-projectile-ag: s-p s s
 
 ;; https://docs.projectile.mx/projectile/installation.html#installation-via-package-el
 ;;
@@ -228,8 +294,12 @@
 ;; >---
 
 
-(global-set-key [f2] 'helm-projectile-switch-project)
-(define-key projectile-mode-map (kbd "s-p s") 'helm-projectile-ag)    ; [s]earch by ag; was prefix
+(global-set-key [f2] 'projectile-switch-project)
+
+;; prefer consult-ripgrep
+;; requires https://github.com/Wilfred/ag.el
+;; (define-key projectile-mode-map (kbd "s-p s") 'projectile-ag)         ; [s]earch by ag; was prefix
+
 (define-key projectile-mode-map (kbd "s-p x") 'projectile-run-eshell) ; e[x]ecute eshell; was prefix
 ;; >----------------------------------------------------------------------------------------------------
 
