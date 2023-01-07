@@ -137,7 +137,6 @@
 (global-set-key (kbd "C-x w") 'diff-delete-trailing-whitespace) ; [w]hitespace
 (global-set-key (kbd "C-x f") 'find-file)     ; was set-fill-column
 
-;; (global-set-key (kbd "C-x r") 'replace-string) ; [r]eplace; was registers/bookmarks prefix, prefer helm-all-mark-rings
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
 
@@ -221,12 +220,18 @@
 ;; <---
 ;; vertico
 
+;; replace helm, use s-h key prefix out of habit
+
 ;; https://github.com/minad/vertico#configuration
 ;; 
 (vertico-mode)
 
 ;; https://www.emacswiki.org/emacs/SaveHist
 (savehist-mode 1)
+
+;; https://github.com/minad/vertico/blob/main/extensions/vertico-repeat.el
+(global-set-key (kbd "s-h b") #'vertico-repeat)
+(add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
 ;; >---
 
 ;; <---
@@ -260,6 +265,7 @@
 (setq completion-styles '(orderless basic)
       completion-category-defaults nil
       completion-category-overrides '((file (styles partial-completion))))
+;; https://github.com/minad/vertico#tramp-hostname-completion
 
 ;; https://github.com/oantolin/orderless#component-matching-styles
 ;; orderless-matching-styles
