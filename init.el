@@ -95,6 +95,8 @@
 
 ;; https://github.com/zkry/yaml-pro
 (add-hook 'yaml-mode-hook 'yaml-pro-mode)
+;;
+;; https://github.com/zkry/yaml-pro#usage-1
 ;; >----------------------------------------------------------------------------------------------------
 
 
@@ -128,7 +130,11 @@
 (global-set-key (kbd "C-x d") 'ediff-buffers)                   ; e[d]iff; was dired
 (global-set-key (kbd "C-x w") 'diff-delete-trailing-whitespace) ; [w]hitespace
 
-(global-set-key (kbd "C-x r") 'replace-string) ; [r]eplace; was registers/bookmarks prefix, prefer helm-all-mark-rings
+;; (global-set-key (kbd "C-x r") 'replace-string) ; [r]eplace; was registers/bookmarks prefix, prefer helm-all-mark-rings
+;; C-x r o -> open-rectangle
+;; C-x r k -> kill-rectangle
+
+(global-set-key (kbd "C-x q") 'replace-string) ; was kbd-macro-query
 
 ;; prefix C-x j for low frequency
 ;; (global-set-key (kbd "C-x j r") 'replace-string) ; [r]eplace
