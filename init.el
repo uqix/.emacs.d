@@ -224,6 +224,9 @@
 ;; https://github.com/minad/vertico#configuration
 ;; 
 (vertico-mode)
+
+;; https://www.emacswiki.org/emacs/SaveHist
+(savehist-mode 1)
 ;; >---
 
 ;; <---
