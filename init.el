@@ -1,23 +1,23 @@
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; package
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; custom-file
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; company
 
 ;; https://github.com/company-mode/company-mode
@@ -31,44 +31,44 @@
 ;; * Press M-(digit) to quickly complete with one of the first 10 candidates
 
 (add-hook 'after-init-hook 'global-company-mode)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; exec-path
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; theme
 
 (load-theme 'dichromacy)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; maximize emacs
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; flyspell
 
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-mode)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; flycheck
 
 ;; https://github.com/flycheck/flycheck
@@ -78,38 +78,40 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; https://www.flycheck.org/en/latest/user/error-interaction.html#navigate-errors
-
+;;
 (global-set-key [f3] 'flycheck-next-error)
 (global-set-key [f4] 'flycheck-previous-error)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; yaml-mode
 
 ;; https://github.com/antonj/Highlight-Indentation-for-Emacs
+;;
 (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
 
 ;; (add-hook 'yaml-mode-hook 'display-line-numbers-mode)
 
 ;; https://github.com/zkry/yaml-pro
+;;
 (add-hook 'yaml-mode-hook 'yaml-pro-mode)
 ;;
 ;; https://github.com/zkry/yaml-pro#usage-1
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; minibuffer
 
 (add-hook 'minibuffer-setup-hook 'subword-mode)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; global keys
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html
@@ -119,40 +121,34 @@
 ;; ctl-x-map is the global keymap used for the C-x prefix key.
 ;; goto-map is the global keymap used for the M-g prefix key.
 
-(global-set-key (kbd "s-z") 'execute-extended-command)              ; more handy
+(global-unset-key (kbd "C-x C-c"))                              ; quit emacs
+(global-unset-key (kbd "C-x C-z"))                              ; suspend-frame (minimize)
+(global-unset-key (kbd "s-h"))                                  ; ns-do-hide-emacs
 
-(global-set-key (kbd "C-z") ctl-x-map)  ; more handy
-
-(global-unset-key (kbd "C-x C-c")) ; quit emacs
-(global-unset-key (kbd "C-x C-z")) ; suspend-frame (minimize)
-(global-unset-key (kbd "s-h"))     ; ns-do-hide-emacs
-
-;; (global-set-key [f5] 'kmacro-end-or-call-macro)
+(global-set-key (kbd "s-z") 'execute-extended-command)          ; more handy
+(global-set-key (kbd "C-z") ctl-x-map)                          ; more handy
 (global-set-key [f9] 'subword-mode)
-
-;; prefer embark-act
-;; (global-set-key (kbd "C-x u") 'browse-url)                      ; open [u]rl; was undo, prefer C-/
-
 (global-set-key (kbd "C-x d") 'ediff-buffers)                   ; e[d]iff; was dired
 (global-set-key (kbd "C-x w") 'diff-delete-trailing-whitespace) ; [w]hitespace
-(global-set-key (kbd "C-x f") 'find-file)     ; was set-fill-column
+(global-set-key (kbd "C-x f") 'find-file)                       ; was set-fill-column
+(global-set-key (kbd "C-x q") 'replace-string)                  ; was kbd-macro-query
+
+;; (global-set-key [f5] 'kmacro-end-or-call-macro)
 
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
 
-(global-set-key (kbd "C-x q") 'replace-string) ; was kbd-macro-query
-
 ;; prefix C-x j for low frequency
 (global-set-key (kbd "C-x j t") 'toggle-truncate-lines)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; expand-region
 
 (global-set-key (kbd "C-=") 'er/expand-region)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
@@ -179,9 +175,11 @@
 (vertico-mode)
 
 ;; https://www.emacswiki.org/emacs/SaveHist
+;;
 (savehist-mode 1)
 
 ;; https://github.com/minad/vertico/blob/main/extensions/vertico-repeat.el
+;;
 (global-set-key (kbd "s-h b") #'vertico-repeat)
 (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
 ;; >-------------------------
@@ -214,9 +212,11 @@
 ;; https://github.com/oantolin/orderless
 
 ;; https://github.com/minad/vertico#configuration
+;;
 (setq completion-styles '(orderless basic)
       completion-category-defaults nil
       completion-category-overrides '((file (styles partial-completion))))
+;;
 ;; https://github.com/minad/vertico#tramp-hostname-completion
 
 ;; https://github.com/oantolin/orderless#component-matching-styles
@@ -231,7 +231,7 @@
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; projectile
 
 ;; https://docs.projectile.mx/projectile/usage.html#basic-usage
@@ -242,20 +242,14 @@
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (projectile-mode +1)
 
-
-
 (global-set-key [f2] 'projectile-switch-project)
 
-;; prefer consult-ripgrep
-;; requires https://github.com/Wilfred/ag.el
-;; (define-key projectile-mode-map (kbd "s-p s") 'projectile-ag)         ; [s]earch by ag; was prefix
-
 (define-key projectile-mode-map (kbd "s-p x") 'projectile-run-eshell) ; e[x]ecute eshell; was prefix
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; LSP
 
 ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
@@ -265,6 +259,7 @@
 ;; (setq lsp-idle-delay 0.500)
 
 ;; https://emacs-lsp.github.io/lsp-java/#quick-start
+;;
 (require 'yasnippet)
 (yas-global-mode 1)
 
@@ -273,12 +268,16 @@
 (require 'lsp-ui)
 
 ;; https://emacs-lsp.github.io/dap-mode/page/configuration/#dap-mode-configuration
+;;
 (dap-auto-configure-mode)
 
 ;; https://emacs-lsp.github.io/lsp-java/#install-via-melpa
+;;
 (require 'lsp-java)
 (add-hook 'java-mode-hook #'lsp)
+;;
 ;; https://emacs-lsp.github.io/dap-mode/page/configuration/#java
+;;
 (require 'dap-java)
 
 ;; https://github.com/emacs-lsp/lsp-ui#lsp-ui-peek
@@ -294,11 +293,11 @@
 (define-key lsp-mode-map (kbd "s-l f") 'lsp-execute-code-action)            ; action to [f]ix
 (define-key lsp-mode-map (kbd "s-l t") 'lsp-jt-lens-mode)                   ; [t]est lens
 (define-key lsp-mode-map (kbd "s-l s") 'lsp-signature-activate)             ; method [s]ignature
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; java-mode
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Customizing-C-and-C_002b_002b-indentation.html
@@ -307,11 +306,11 @@
   (c-set-offset 'arglist-cont-nonempty '++)
   (c-set-offset 'arglist-intro '++))
 (add-hook 'java-mode-hook 'my/java-mode-hook)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; symbol-overlay
 
 ;; https://github.com/wolray/symbol-overlay/#usage
@@ -320,77 +319,77 @@
 (global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
 (global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
 (global-set-key (kbd "C-x o") 'symbol-overlay-remove-all) ; was other-window, prefer f7
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; magit
 
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; ace-window
 
 (global-set-key [f7] 'ace-window)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; multiple-cursors
 
 (global-set-key [f6] 'mc/edit-lines)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; ztree
 
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; all-the-icons
 
 ;; M-x all-the-icons-install-fonts
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; doom-modeline
 
 (add-hook 'after-init-hook 'doom-modeline-mode)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; markdown-mode
 
 ;; prefer symbol-overlay
 (define-key markdown-mode-map (kbd "M-n") nil) ; was markdown-next-link
 (define-key markdown-mode-map (kbd "M-p") nil)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; compilation-mode
 
 ;; prefer symbol-overlay
 ;; (define-key compilation-mode-map (kbd "M-n") nil) ; was compilation-next-error
 ;; (define-key compilation-mode-map (kbd "M-p") nil)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; eshell-mode
 
 (require 'em-hist)
@@ -400,12 +399,12 @@
 (define-key eshell-hist-mode-map (kbd "M-p") nil)       ; was eshell-previous-matching-input-from-input
 
 (define-key eshell-hist-mode-map [up] 'consult-history) ; was eshell-previous-matching-input-from-input
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
 
 
 
-;; <----------------------------------------------------------------------------------------------------
+;; <--------------------------------------------------
 ;; misc
 
 (electric-pair-mode)
-;; >----------------------------------------------------------------------------------------------------
+;; >--------------------------------------------------
