@@ -156,54 +156,6 @@
 
 
 
-;; ;; <----------------------------------------------------------------------------------------------------
-;; ;; helm
-
-;; ;; https://github.com/emacs-helm/helm/wiki#if-installed-from-emacs-package-manager-packageel
-;; ;;
-;; (require 'helm)
-
-;; ;; https://github.com/emacs-helm/helm/wiki#helm-mode
-;; ;;
-;; (helm-mode 1)
-
-;; ;; https://github.com/emacs-helm/helm/wiki#general-helm-commands
-;; ;;
-;; ;; <tab> lists available actions
-;; ;; C-j invokes the persistent action
-
-;; ;; https://github.com/emacs-helm/helm/wiki#preconfigured-helm-commands
-;; ;;
-;; (global-set-key (kbd "s-h") 'helm-command-prefix)
-
-;; (global-set-key (kbd "M-x") 'helm-M-x)
-;; (global-set-key (kbd "s-z") 'helm-M-x)              ; more handy
-
-;; (global-set-key (kbd "C-x C-f") 'helm-find-files)   ; was find-file
-;; (global-set-key (kbd "C-x f") 'helm-find-files)     ; was set-fill-column
-
-;; (global-set-key [f1] 'helm-mini)
-;; (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-;; (global-set-key [f8] 'helm-occur)
-;; (global-set-key (kbd "s-h m") 'helm-all-mark-rings)  ; [m]ark rings; was helm-man-woman
-;; ;; (global-set-key (kbd "s-h s") nil)                ; was helm-surfraw
-;; (global-set-key (kbd "s-h g") 'helm-google-suggest)  ; [g]oogle
-
-
-;; ;; <---
-;; ;; helm-ag
-
-;; ;; https://github.com/emacsorphanage/helm-ag#basic-usage
-;; ;;
-;; (global-set-key [f11] 'helm-do-ag)
-;; ;; >---
-
-;; ;; https://github.com/emacs-helm/helm/blob/941da0db9ef54d5e895c53d9265f2dd4a6c93db2/helm-core.el#L1715
-;; (add-hook 'helm-after-initialize-hook 'helm-init-relative-display-line-numbers)
-;; ;; >----------------------------------------------------------------------------------------------------
-
-
-
 ;; <---------
 ;; consult
 
