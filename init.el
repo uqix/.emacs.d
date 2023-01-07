@@ -255,8 +255,11 @@
 
 ;; https://github.com/minad/vertico#configuration
 (setq completion-styles '(orderless basic)
-        completion-category-defaults nil
-        completion-category-overrides '((file (styles partial-completion))))
+      completion-category-defaults nil
+      completion-category-overrides '((file (styles partial-completion))))
+
+;; https://github.com/oantolin/orderless#component-matching-styles
+;; orderless-matching-styles
 ;; >---
 
 (global-set-key [f1] 'consult-buffer)

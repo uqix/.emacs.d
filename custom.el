@@ -58,6 +58,7 @@
  '(markdown-fontify-code-block-default-mode 'ignore)
  '(markdown-fontify-code-blocks-natively t)
  '(nxml-child-indent 4)
+ '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-initialism))
  '(package-archive-priorities '(("melpa" . 1)))
  '(package-selected-packages
    '(vertico orderless embark-consult embark marginalia consult yaml-pro highlight-indentation dockerfile-mode markdown-mode lsp-mode yaml-mode json-mode dap-mode lsp-java lsp-ui hydra projectile doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay flycheck company expand-region))
