@@ -156,20 +156,20 @@
 
 
 
-;; <---------
+;; <--------------------------------------------------
 ;; consult
 
 ;; https://github.com/minad/consult#use-package-example
 
-;; <---
+;; <-------------------------
 ;; recentf
 
 ;; https://www.emacswiki.org/emacs/RecentFiles
 ;; 
 (recentf-mode 1)
-;; >---
+;; >-------------------------
 
-;; <---
+;; <-------------------------
 ;; vertico
 
 ;; replace helm, use s-h key prefix out of habit
@@ -184,31 +184,31 @@
 ;; https://github.com/minad/vertico/blob/main/extensions/vertico-repeat.el
 (global-set-key (kbd "s-h b") #'vertico-repeat)
 (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
-;; >---
+;; >-------------------------
 
-;; <---
+;; <-------------------------
 ;; marginalia
 
 ;; https://github.com/minad/marginalia#configuration
 ;; 
 (marginalia-mode)
-;; >---
+;; >-------------------------
 
-;; <---
+;; <-------------------------
 ;; embark
 
 ;; https://github.com/oantolin/embark#quick-start
 ;; 
 (global-set-key [f5] 'embark-act)
-;; >---
+;; >-------------------------
 
-;; <---
+;; <-------------------------
 ;; embark-consult
 
 ;; https://github.com/oantolin/embark#consult
-;; >---
+;; >-------------------------
 
-;; <---
+;; <-------------------------
 ;; orderless
 
 ;; https://github.com/oantolin/orderless
@@ -221,12 +221,13 @@
 
 ;; https://github.com/oantolin/orderless#component-matching-styles
 ;; orderless-matching-styles
-;; >---
+;; >-------------------------
 
 (global-set-key [f1] 'consult-buffer)
 (global-set-key [f8] 'consult-line)
 (global-set-key [f11] 'consult-ripgrep)
-;; >---------
+(global-set-key (kbd "M-y") 'consult-yank-pop)
+;; >--------------------------------------------------
 
 
 
