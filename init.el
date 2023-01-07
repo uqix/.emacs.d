@@ -453,8 +453,9 @@
 
 ;; prefer symbol-overlay
 (define-key eshell-hist-mode-map (kbd "M-n") nil)
-(define-key eshell-hist-mode-map (kbd "M-p") nil)           ; was eshell-previous-matching-input-from-input
-(define-key eshell-hist-mode-map [up] 'helm-eshell-history) ; was eshell-previous-matching-input-from-input
+(define-key eshell-hist-mode-map (kbd "M-p") nil)       ; was eshell-previous-matching-input-from-input
+
+(define-key eshell-hist-mode-map [up] 'consult-history) ; was eshell-previous-matching-input-from-input
 ;; >----------------------------------------------------------------------------------------------------
 
 
