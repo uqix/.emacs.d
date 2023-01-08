@@ -269,19 +269,14 @@
 
 
 ;; <--------------------------------------------------
-;; projectile
+;; project
 
-;; https://docs.projectile.mx/projectile/usage.html#basic-usage
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Projects.html
 
-;; https://docs.projectile.mx/projectile/installation.html#installation-via-package-el
-;;
-(require 'projectile)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(projectile-mode +1)
+(require 'project)
 
-(global-set-key [f2] 'projectile-switch-project)
-
-(define-key projectile-mode-map (kbd "s-p x") 'projectile-run-eshell) ; e[x]ecute eshell; was prefix
+(global-set-key (kbd "s-p") project-prefix-map)
+(global-set-key [f2] 'project-switch-project)
 ;; >--------------------------------------------------
 
 

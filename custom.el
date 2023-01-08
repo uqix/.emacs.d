@@ -30,7 +30,7 @@
  '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-initialism))
  '(package-archive-priorities '(("melpa" . 1)))
  '(package-selected-packages
-   '(eglot corfu wgrep vertico orderless embark-consult embark marginalia consult yaml-pro highlight-indentation dockerfile-mode markdown-mode yaml-mode json-mode projectile doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
+   '(eglot corfu wgrep vertico orderless embark-consult embark marginalia consult yaml-pro highlight-indentation dockerfile-mode markdown-mode yaml-mode json-mode doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
  '(projectile-project-root-files
    '("build.sbt" "build.gradle" "pom.xml" "requirements.txt" "package.json" "Makefile" "Chart.yaml"))
  '(scroll-bar-mode nil)
