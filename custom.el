@@ -13,8 +13,6 @@
  '(datetime-timezone 'Etc/GMT+8)
  '(dired-listing-switches "-alh")
  '(ffap-machine-p-known 'reject)
- '(flycheck-disabled-checkers '(json-python-json))
- '(flycheck-standard-error-navigation nil)
  '(flyspell-duplicate-distance 0)
  '(flyspell-mark-duplications-flag nil)
  '(imenu-max-item-length nil)
