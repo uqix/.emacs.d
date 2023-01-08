@@ -278,51 +278,51 @@
 
 
 
-;; <--------------------------------------------------
-;; LSP
+;; ;; <--------------------------------------------------
+;; ;; LSP
 
-;; https://emacs-lsp.github.io/lsp-mode/page/performance/
-;;
-(setq gc-cons-threshold 100000000)
-(setq read-process-output-max (* 1024 1024)) ;; 1mb
-;; (setq lsp-idle-delay 0.500)
+;; ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
+;; ;;
+;; (setq gc-cons-threshold 100000000)
+;; (setq read-process-output-max (* 1024 1024)) ;; 1mb
+;; ;; (setq lsp-idle-delay 0.500)
 
-;; https://emacs-lsp.github.io/lsp-java/#quick-start
-;;
-(require 'yasnippet)
-(yas-global-mode 1)
+;; ;; https://emacs-lsp.github.io/lsp-java/#quick-start
+;; ;;
+;; (require 'yasnippet)
+;; (yas-global-mode 1)
 
-(require 'lsp-mode)
+;; (require 'lsp-mode)
 
-(require 'lsp-ui)
+;; (require 'lsp-ui)
 
-;; https://emacs-lsp.github.io/dap-mode/page/configuration/#dap-mode-configuration
-;;
-(dap-auto-configure-mode)
+;; ;; https://emacs-lsp.github.io/dap-mode/page/configuration/#dap-mode-configuration
+;; ;;
+;; (dap-auto-configure-mode)
 
-;; https://emacs-lsp.github.io/lsp-java/#install-via-melpa
-;;
-(require 'lsp-java)
-(add-hook 'java-mode-hook #'lsp)
-;;
-;; https://emacs-lsp.github.io/dap-mode/page/configuration/#java
-;;
-(require 'dap-java)
+;; ;; https://emacs-lsp.github.io/lsp-java/#install-via-melpa
+;; ;;
+;; (require 'lsp-java)
+;; (add-hook 'java-mode-hook #'lsp)
+;; ;;
+;; ;; https://emacs-lsp.github.io/dap-mode/page/configuration/#java
+;; ;;
+;; (require 'dap-java)
 
-;; https://github.com/emacs-lsp/lsp-ui#lsp-ui-peek
-;;
-;; You may remap xref-find-{definitions,references} (bound to M-. M-? by default):
-;;
-(define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+;; ;; https://github.com/emacs-lsp/lsp-ui#lsp-ui-peek
+;; ;;
+;; ;; You may remap xref-find-{definitions,references} (bound to M-. M-? by default):
+;; ;;
+;; (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
 
-(define-key lsp-mode-map (kbd "s-l d") 'lsp-ui-peek-find-implementation)    ; find [d]ownward
-(define-key lsp-mode-map (kbd "s-l u") 'lsp-java-open-super-implementation) ; find [u]pward
-(define-key lsp-mode-map (kbd "s-l h") 'lsp-ui-doc-show)                    ; doc [h]elp
-(define-key lsp-mode-map (kbd "s-l i") 'lsp-organize-imports)               ; [i]mport
-(define-key lsp-mode-map (kbd "s-l f") 'lsp-execute-code-action)            ; action to [f]ix
-(define-key lsp-mode-map (kbd "s-l t") 'lsp-jt-lens-mode)                   ; [t]est lens
-(define-key lsp-mode-map (kbd "s-l s") 'lsp-signature-activate)             ; method [s]ignature
-;; >--------------------------------------------------
+;; (define-key lsp-mode-map (kbd "s-l d") 'lsp-ui-peek-find-implementation)    ; find [d]ownward
+;; (define-key lsp-mode-map (kbd "s-l u") 'lsp-java-open-super-implementation) ; find [u]pward
+;; (define-key lsp-mode-map (kbd "s-l h") 'lsp-ui-doc-show)                    ; doc [h]elp
+;; (define-key lsp-mode-map (kbd "s-l i") 'lsp-organize-imports)               ; [i]mport
+;; (define-key lsp-mode-map (kbd "s-l f") 'lsp-execute-code-action)            ; action to [f]ix
+;; (define-key lsp-mode-map (kbd "s-l t") 'lsp-jt-lens-mode)                   ; [t]est lens
+;; (define-key lsp-mode-map (kbd "s-l s") 'lsp-signature-activate)             ; method [s]ignature
+;; ;; >--------------------------------------------------
 
 
 
