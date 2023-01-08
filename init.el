@@ -25,6 +25,17 @@
 ;; swap
 (global-set-key (kbd "M-/") 'dabbrev-completion)
 (global-set-key (kbd "C-M-/") 'dabbrev-expand)
+
+;; dabbrev-completion
+
+;; With a prefix argument ARG, it searches all buffers accepted by the
+;; function pointed out by ‘dabbrev-friend-buffer-function’ to find the
+;; completions.
+;;
+;; Its value is ‘dabbrev--same-major-mode-p’
+
+;; If the prefix argument is 16 (which comes from C-u C-u),
+;; then it searches *all* buffers.
 ;; >--------------------------------------------------
 
 
