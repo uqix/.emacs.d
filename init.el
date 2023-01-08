@@ -20,10 +20,32 @@
 ;; <--------------------------------------------------
 ;; dabbrev
 
-;; Use Dabbrev with Corfu!
+;; * Use Dabbrev with Corfu!
+
 ;; swap
 (global-set-key (kbd "M-/") 'dabbrev-completion)
 (global-set-key (kbd "C-M-/") 'dabbrev-expand)
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; orderless
+
+;; https://github.com/oantolin/orderless
+
+;; * required by vertico and corfu
+
+;; https://github.com/minad/vertico#configuration
+;;
+(setq completion-styles '(orderless basic)
+      completion-category-defaults nil
+      completion-category-overrides '((file (styles partial-completion))))
+;;
+;; https://github.com/minad/vertico#tramp-hostname-completion
+
+;; https://github.com/oantolin/orderless#component-matching-styles
+;; orderless-matching-styles
 ;; >--------------------------------------------------
 
 
@@ -207,23 +229,6 @@
 ;; embark-consult
 
 ;; https://github.com/oantolin/embark#consult
-;; >-------------------------
-
-;; <-------------------------
-;; orderless
-
-;; https://github.com/oantolin/orderless
-
-;; https://github.com/minad/vertico#configuration
-;;
-(setq completion-styles '(orderless basic)
-      completion-category-defaults nil
-      completion-category-overrides '((file (styles partial-completion))))
-;;
-;; https://github.com/minad/vertico#tramp-hostname-completion
-
-;; https://github.com/oantolin/orderless#component-matching-styles
-;; orderless-matching-styles
 ;; >-------------------------
 
 (global-set-key [f1] 'consult-buffer)
