@@ -98,9 +98,11 @@
 
 
 ;; <--------------------------------------------------
-;; theme
+;; doom-themes
 
-(load-theme 'dichromacy)
+;; https://github.com/doomemacs/themes#manually--use-package
+;;
+(load-theme 'doom-one-light t)
 ;; >--------------------------------------------------
 
 
