@@ -101,20 +101,20 @@
 
 
 
-;; <--------------------------------------------------
-;; flycheck
+;; ;; <--------------------------------------------------
+;; ;; flycheck
 
-;; https://github.com/flycheck/flycheck
+;; ;; https://github.com/flycheck/flycheck
 
-;; https://www.flycheck.org/en/latest/user/quickstart.html
-;;
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;; ;; https://www.flycheck.org/en/latest/user/quickstart.html
+;; ;;
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;; https://www.flycheck.org/en/latest/user/error-interaction.html#navigate-errors
-;;
-(global-set-key [f3] 'flycheck-next-error)
-(global-set-key [f4] 'flycheck-previous-error)
-;; >--------------------------------------------------
+;; ;; https://www.flycheck.org/en/latest/user/error-interaction.html#navigate-errors
+;; ;;
+;; (global-set-key [f3] 'flycheck-next-error)
+;; (global-set-key [f4] 'flycheck-previous-error)
+;; ;; >--------------------------------------------------
 
 
 
@@ -400,6 +400,8 @@
 
 ;; <--------------------------------------------------
 ;; markdown-mode
+
+(require 'markdown-mode)
 
 ;; prefer symbol-overlay
 (define-key markdown-mode-map (kbd "M-n") nil) ; was markdown-next-link
