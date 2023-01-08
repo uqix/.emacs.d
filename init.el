@@ -58,6 +58,12 @@
 ;; https://github.com/minad/corfu#installation-and-configuration
 ;;
 (global-corfu-mode)
+
+;; https://github.com/minad/corfu#key-bindings
+;;
+;; M-g -> corfu-info-location
+;; M-h -> corfu-info-documentation
+;; M-SPC -> corfu-insert-separator
 ;; >--------------------------------------------------
 
 
