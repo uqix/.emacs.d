@@ -194,8 +194,9 @@
 ;; <--------------------------------------------------
 ;; eshell-mode
 
-;; (require 'em-hist)
-;; eshell-hist-mode-map
+(require 'em-hist)
+
+(define-key eshell-hist-mode-map [up] 'consult-history) ; was eshell-previous-matching-input-from-input
 ;; >--------------------------------------------------
 
 
@@ -259,8 +260,6 @@
 (global-set-key [f11] 'consult-ripgrep)
 (global-set-key (kbd "M-y") 'consult-yank-from-kill-ring)
 (global-set-key (kbd "s-h i") 'consult-imenu)
-
-(define-key eshell-hist-mode-map [up] 'consult-history) ; was eshell-previous-matching-input-from-input
 ;; >--------------------------------------------------
 
 
@@ -300,7 +299,7 @@
 (global-set-key [f10] 'symbol-overlay-put)
 (global-set-key (kbd "s-o n") 'symbol-overlay-switch-forward)
 (global-set-key (kbd "s-o p") 'symbol-overlay-switch-backward)
-(global-set-key (kbd "C-o r") 'symbol-overlay-remove-all)
+(global-set-key (kbd "s-o r") 'symbol-overlay-remove-all)
 ;; >--------------------------------------------------
 
 
