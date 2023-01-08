@@ -432,6 +432,10 @@
 
 ;; https://github.com/joaotavora/eglot
 
+;; replace lsp-mode, use s-l key prefix out of habit
+
+(require 'eglot)
+
 ;; https://github.com/joaotavora/eglot/pull/937
 ;; https://github.com/joaotavora/eglot/pull/937/files
 ;;
@@ -446,7 +450,8 @@
 ;;
  (add-hook 'java-mode-hook 'eglot-ensure)
 
-(global-set-key [f3] 'eglot-code-actions)
+(define-key eglot-mode-map (kbd "s-l a") 'eglot-code-actions)
+(define-key eglot-mode-map (kbd "s-l r") 'eglot-rename)
 ;; >--------------------------------------------------
 
 
