@@ -184,6 +184,18 @@
 
 
 ;; <--------------------------------------------------
+;; eshell-mode
+
+(require 'em-hist)
+
+;; prefer symbol-overlay
+(define-key eshell-hist-mode-map (kbd "M-n") nil)
+(define-key eshell-hist-mode-map (kbd "M-p") nil)       ; was eshell-previous-matching-input-from-input
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; consult
 
 ;; https://github.com/minad/consult#use-package-example
@@ -242,6 +254,8 @@
 (global-set-key [f11] 'consult-ripgrep)
 (global-set-key (kbd "M-y") 'consult-yank-pop)
 (global-set-key (kbd "s-h i") 'consult-imenu)
+
+(define-key eshell-hist-mode-map [up] 'consult-history) ; was eshell-previous-matching-input-from-input
 ;; >--------------------------------------------------
 
 
@@ -400,20 +414,6 @@
 ;; prefer symbol-overlay
 ;; (define-key compilation-mode-map (kbd "M-n") nil) ; was compilation-next-error
 ;; (define-key compilation-mode-map (kbd "M-p") nil)
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
-;; eshell-mode
-
-(require 'em-hist)
-
-;; prefer symbol-overlay
-(define-key eshell-hist-mode-map (kbd "M-n") nil)
-(define-key eshell-hist-mode-map (kbd "M-p") nil)       ; was eshell-previous-matching-input-from-input
-
-(define-key eshell-hist-mode-map [up] 'consult-history) ; was eshell-previous-matching-input-from-input
 ;; >--------------------------------------------------
 
 
