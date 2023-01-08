@@ -456,6 +456,27 @@
 
 
 ;; <--------------------------------------------------
+;; xref
+
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Xref.html
+
+;; * required by eglot
+
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Looking-Up-Identifiers.html
+;;
+;; M-. -> Find definitions of an identifier (xref-find-definitions).
+;; M-, -> Go back to where you previously invoked M-. and friends (xref-pop-marker-stack).
+
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Xref-Commands.html
+
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Identifier-Search.html
+;;
+;; M-? -> Find all the references for the identifier at point.
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; eglot
 
 ;; https://github.com/joaotavora/eglot
