@@ -436,6 +436,12 @@
 
 (define-key eglot-mode-map (kbd "s-l a") 'eglot-code-actions)
 (define-key eglot-mode-map (kbd "s-l r") 'eglot-rename)
+
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(java-mode . ("jdtls"
+                              ;; "-noverify" "-Xmx2G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"
+                              "--jvm-arg=-javaagent:/Users/zjq/opt/lombok.jar"))))
 ;; >--------------------------------------------------
 
 
