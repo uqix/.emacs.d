@@ -100,6 +100,10 @@
 ;; <--------------------------------------------------
 ;; doom-themes
 
+;; https://www.emacswiki.org/emacs/SetFonts#h5o-16
+;;
+;; (set-face-attribute 'default nil :height 125)
+
 ;; https://github.com/doomemacs/themes#manually--use-package
 ;;
 (load-theme 'doom-one-light t)
