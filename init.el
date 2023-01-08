@@ -75,6 +75,16 @@
 ;; M-g -> corfu-info-location
 ;; M-h -> corfu-info-documentation
 ;; M-SPC -> corfu-insert-separator
+
+;; <-------------------------
+;; cape
+
+;; https://github.com/minad/cape#configuration
+;;
+(add-to-list 'completion-at-point-functions #'cape-dabbrev)
+(add-to-list 'completion-at-point-functions #'cape-file)
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
