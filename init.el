@@ -454,6 +454,7 @@
 ;;
  (add-hook 'java-mode-hook 'eglot-ensure)
 
+(global-set-key (kbd "C-x g") 'eglot)
 (define-key eglot-mode-map (kbd "s-l a") 'eglot-code-actions)
 (define-key eglot-mode-map (kbd "s-l r") 'eglot-rename)
 
