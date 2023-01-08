@@ -423,6 +423,18 @@
 
 
 ;; <--------------------------------------------------
+;; eldoc
+
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Lisp-Doc.html
+
+;; * required by eglot
+
+;; C-h . -> eldoc-doc-buffer
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; eglot
 
 ;; https://github.com/joaotavora/eglot
