@@ -445,6 +445,8 @@
 ;; https://joaotavora.github.io/eglot/#index-starting-Eglot
 ;;
  (add-hook 'java-mode-hook 'eglot-ensure)
+
+(global-set-key [f3] 'eglot-code-actions)
 ;; >--------------------------------------------------
 
 
