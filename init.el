@@ -194,11 +194,8 @@
 ;; <--------------------------------------------------
 ;; eshell-mode
 
-(require 'em-hist)
-
-;; prefer symbol-overlay
-(define-key eshell-hist-mode-map (kbd "M-n") nil)
-(define-key eshell-hist-mode-map (kbd "M-p") nil)       ; was eshell-previous-matching-input-from-input
+;; (require 'em-hist)
+;; eshell-hist-mode-map
 ;; >--------------------------------------------------
 
 
@@ -298,11 +295,12 @@
 ;; symbol-overlay
 
 ;; https://github.com/wolray/symbol-overlay/#usage
-;;
+;; 
+(global-unset-key (kbd "s-o"))
 (global-set-key [f10] 'symbol-overlay-put)
-(global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
-(global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
-(global-set-key (kbd "C-x o") 'symbol-overlay-remove-all) ; was other-window, prefer f7
+(global-set-key (kbd "s-o n") 'symbol-overlay-switch-forward)
+(global-set-key (kbd "s-o p") 'symbol-overlay-switch-backward)
+(global-set-key (kbd "C-o r") 'symbol-overlay-remove-all)
 ;; >--------------------------------------------------
 
 
@@ -357,11 +355,8 @@
 ;; <--------------------------------------------------
 ;; markdown-mode
 
-(require 'markdown-mode)
-
-;; prefer symbol-overlay
-(define-key markdown-mode-map (kbd "M-n") nil) ; was markdown-next-link
-(define-key markdown-mode-map (kbd "M-p") nil)
+;; (require 'markdown-mode)
+;; markdown-mode-map
 ;; >--------------------------------------------------
 
 
@@ -369,9 +364,7 @@
 ;; <--------------------------------------------------
 ;; compilation-mode
 
-;; prefer symbol-overlay
-;; (define-key compilation-mode-map (kbd "M-n") nil) ; was compilation-next-error
-;; (define-key compilation-mode-map (kbd "M-p") nil)
+;; compilation-mode-map
 ;; >--------------------------------------------------
 
 
