@@ -18,7 +18,24 @@
 
 
 ;; <--------------------------------------------------
+;; dabbrev
 
+;; Use Dabbrev with Corfu!
+;; swap
+(global-set-key (kbd "M-/") 'dabbrev-completion)
+(global-set-key (kbd "C-M-/") 'dabbrev-expand)
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; corfu
+
+;; https://github.com/minad/corfu
+
+;; https://github.com/minad/corfu#installation-and-configuration
+;;
+(global-corfu-mode)
 ;; >--------------------------------------------------
 
 

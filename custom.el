@@ -5,6 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(aw-background nil)
  '(column-number-mode t)
+ '(corfu-auto t)
  '(create-lockfiles nil)
  '(custom-safe-themes
    '("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default))
@@ -55,7 +56,7 @@
  '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-initialism))
  '(package-archive-priorities '(("melpa" . 1)))
  '(package-selected-packages
-   '(wgrep vertico orderless embark-consult embark marginalia consult yaml-pro highlight-indentation dockerfile-mode markdown-mode lsp-mode yaml-mode json-mode dap-mode lsp-java lsp-ui hydra projectile doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay flycheck expand-region))
+   '(corfu wgrep vertico orderless embark-consult embark marginalia consult yaml-pro highlight-indentation dockerfile-mode markdown-mode lsp-mode yaml-mode json-mode dap-mode lsp-java lsp-ui hydra projectile doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay flycheck expand-region))
  '(projectile-project-root-files
    '("build.sbt" "build.gradle" "pom.xml" "requirements.txt" "package.json" "Makefile" "Chart.yaml"))
  '(scroll-bar-mode nil)
