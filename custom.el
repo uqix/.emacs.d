@@ -23,7 +23,6 @@
  '(ispell-dictionary "american")
  '(ispell-extra-args '("--camel-case"))
  '(ispell-program-name "aspell")
-   '("-noverify" "-Xmx2G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication" "-javaagent:/Users/zjq/opt/lombok.jar"))
  '(magit-diff-refine-hunk 'all)
  '(make-backup-files nil)
  '(markdown-command "multimarkdown")
