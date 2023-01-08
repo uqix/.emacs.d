@@ -101,6 +101,21 @@
 
 
 
+;; <--------------------------------------------------
+;; flymake
+
+;; https://www.gnu.org/software/emacs/manual/html_node/flymake/index.html
+
+(require 'flymake)
+
+;; https://www.gnu.org/software/emacs/manual/html_node/flymake/Finding-diagnostics.html
+;;
+(define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
+(define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)
+;; >--------------------------------------------------
+
+
+
 ;; ;; <--------------------------------------------------
 ;; ;; flycheck
 
@@ -252,7 +267,7 @@
 (global-set-key [f1] 'consult-buffer)
 (global-set-key [f8] 'consult-line)
 (global-set-key [f11] 'consult-ripgrep)
-(global-set-key (kbd "M-y") 'consult-yank-pop)
+(global-set-key (kbd "M-y") 'consult-yank-from-kill-ring)
 (global-set-key (kbd "s-h i") 'consult-imenu)
 
 (define-key eshell-hist-mode-map [up] 'consult-history) ; was eshell-previous-matching-input-from-input
@@ -426,6 +441,38 @@
 ;; https://github.com/mhayashi1120/Emacs-wgrep
 
 ;; https://github.com/mhayashi1120/Emacs-wgrep#usage
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; yasnippet
+
+;; * required by eglot
+
+(yas-global-mode 1)
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; eglot
+
+;; https://github.com/joaotavora/eglot
+
+;; https://github.com/joaotavora/eglot/pull/937
+;; https://github.com/joaotavora/eglot/pull/937/files
+;;
+;;; eclipse-jdt breaks the spec which in turn breaks code actions
+;;; This behaviour can't be disabled and needs to be worked around
+(cl-defmethod eglot-execute-command
+  (_server (_cmd (eql java.apply.workspaceEdit)) arguments)
+  "Eclipse JDT breaks spec and replies with edits as arguments."
+  (mapc #'eglot--apply-workspace-edit arguments))
+
+;; https://joaotavora.github.io/eglot/#index-starting-Eglot
+;;
+ (add-hook 'java-mode-hook 'eglot-ensure)
 ;; >--------------------------------------------------
 
 
