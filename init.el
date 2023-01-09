@@ -102,7 +102,7 @@
 
 ;; https://www.emacswiki.org/emacs/SetFonts#h5o-16
 ;;
-;; (set-face-attribute 'default nil :height 125)
+(set-face-attribute 'default nil :family "JetBrains Mono" )
 
 ;; https://github.com/doomemacs/themes#manually--use-package
 ;;
