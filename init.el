@@ -222,11 +222,11 @@
 
 
 ;; <--------------------------------------------------
-;; eshell-mode
+;; shell-mode
 
-(require 'em-hist)
+(require 'shell)
 
-(define-key eshell-hist-mode-map [up] 'consult-history) ; was eshell-previous-matching-input-from-input
+(define-key shell-mode-map [up] 'consult-history) ; was previous-line
 ;; >--------------------------------------------------
 
 
