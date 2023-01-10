@@ -288,6 +288,7 @@
 (global-set-key [f1] 'consult-buffer)
 (global-set-key [f8] 'consult-line)
 (define-key isearch-mode-map [f8] 'consult-line)
+(global-set-key (kbd "C-x i") 'consult-isearch-history) ; was insert-file
 (global-set-key [f11] 'consult-ripgrep)
 (global-set-key (kbd "M-y") 'consult-yank-from-kill-ring)
 (global-set-key (kbd "s-h i") 'consult-imenu)
