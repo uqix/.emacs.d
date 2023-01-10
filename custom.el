@@ -13,6 +13,7 @@
  '(ffap-machine-p-known 'reject)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(initial-major-mode 'text-mode)
  '(ispell-dictionary "american")
  '(ispell-extra-args '("--camel-case"))
  '(ispell-program-name "aspell")
