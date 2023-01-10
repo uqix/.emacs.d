@@ -9,6 +9,7 @@
  '(dabbrev-case-fold-search nil)
  '(datetime-timezone 'Etc/GMT+8)
  '(dired-listing-switches "-alh")
+ '(enable-recursive-minibuffers t)
  '(ffap-machine-p-known 'reject)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -25,3 +26,9 @@
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
  '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

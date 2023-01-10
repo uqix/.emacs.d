@@ -165,6 +165,10 @@
 ;; minibuffer
 
 (add-hook 'minibuffer-setup-hook 'subword-mode)
+
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Recursive-Mini.html
+;;
+;; enable-recursive-minibuffers
 ;; >--------------------------------------------------
 
 
