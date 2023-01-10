@@ -146,17 +146,18 @@
 ;; <--------------------------------------------------
 ;; yaml-mode
 
-;; https://github.com/antonj/Highlight-Indentation-for-Emacs
-;;
-(add-hook 'yaml-mode-hook 'highlight-indentation-mode)
+;; https://github.com/yoshiki/yaml-mode
 
-;; (add-hook 'yaml-mode-hook 'display-line-numbers-mode)
+;; <-------------------------
+;; yaml-pro
 
 ;; https://github.com/zkry/yaml-pro
-;;
+
 (add-hook 'yaml-mode-hook 'yaml-pro-mode)
-;;
+
 ;; https://github.com/zkry/yaml-pro#usage-1
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
