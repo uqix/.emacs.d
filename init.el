@@ -295,11 +295,13 @@
 (global-set-key [f1] 'consult-buffer)
 (global-set-key [f8] 'consult-line)
 (define-key isearch-mode-map [f8] 'consult-line)
-(global-set-key (kbd "C-x i") 'consult-isearch-history) ; was insert-file
+(global-set-key (kbd "C-x i") 'consult-isearch-history)  ; was insert-file
 (global-set-key [f11] 'consult-ripgrep)
 (global-set-key (kbd "M-y") 'consult-yank-replace)
 (global-set-key (kbd "s-h i") 'consult-imenu)
-(global-set-key (kbd "C-x m") 'consult-flymake)         ; was compose-mail
+(global-set-key (kbd "C-x m") 'consult-flymake)          ; was compose-mail
+(global-set-key (kbd "C-x r s") 'consult-register-store) ; was copy-to-register
+(global-set-key (kbd "C-x r l") 'consult-register)       ; was bookmark-bmenu-list
 
 ;; Use Consult to select xref locations with preview
 (setq xref-show-xrefs-function #'consult-xref
