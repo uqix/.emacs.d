@@ -153,9 +153,15 @@
 
 ;; https://github.com/zkry/yaml-pro
 
+(require 'yaml-pro)
+
 (add-hook 'yaml-mode-hook 'yaml-pro-mode)
 
 ;; https://github.com/zkry/yaml-pro#usage-1
+
+(define-key yaml-pro-mode-map [left] 'yaml-pro-unindent-subtree) ; was left-char
+(define-key yaml-pro-mode-map [right] 'yaml-pro-indent-subtree)  ; was right-char
+(define-key yaml-pro-mode-map [up] 'yaml-pro-jump)               ; was previous-line
 ;; >-------------------------
 
 ;; >--------------------------------------------------
