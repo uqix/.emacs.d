@@ -293,6 +293,7 @@
 (global-set-key [f11] 'consult-ripgrep)
 (global-set-key (kbd "M-y") 'consult-yank-from-kill-ring)
 (global-set-key (kbd "s-h i") 'consult-imenu)
+(global-set-key (kbd "C-x m") 'consult-flymake)         ; was compose-mail
 
 ;; Use Consult to select xref locations with preview
 (setq xref-show-xrefs-function #'consult-xref
