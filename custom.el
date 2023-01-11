@@ -20,6 +20,7 @@
  '(magit-diff-refine-hunk 'all)
  '(make-backup-files nil)
  '(markdown-command "multimarkdown")
+ '(markdown-fontify-code-blocks-natively t)
  '(nxml-child-indent 4)
  '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-initialism))
  '(package-archive-priorities '(("melpa" . 1)))
