@@ -297,7 +297,7 @@
 (define-key isearch-mode-map [f8] 'consult-line)
 (global-set-key (kbd "C-x i") 'consult-isearch-history) ; was insert-file
 (global-set-key [f11] 'consult-ripgrep)
-(global-set-key (kbd "M-y") 'consult-yank-from-kill-ring)
+(global-set-key (kbd "M-y") 'consult-yank-replace)
 (global-set-key (kbd "s-h i") 'consult-imenu)
 (global-set-key (kbd "C-x m") 'consult-flymake)         ; was compose-mail
 
