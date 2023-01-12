@@ -362,7 +362,12 @@
 ;; <--------------------------------------------------
 ;; ace-window
 
-(global-set-key [f7] 'ace-window)
+;; https://github.com/abo-abo/ace-window
+
+;; https://github.com/abo-abo/ace-window#customization
+;;
+(global-set-key (kbd "s-n") 'ace-window) ; was make-frame
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 ;; >--------------------------------------------------
 
 
