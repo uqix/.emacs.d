@@ -294,11 +294,11 @@
 ;; https://github.com/oantolin/embark#consult
 ;; >-------------------------
 
-(global-set-key (kbd "s-j") 'consult-buffer) ; was exchange-point-and-mark, prefer C-x C-x
-(global-set-key (kbd "s-f") 'consult-line)   ; was isearch-forward
+(global-set-key (kbd "s-j") 'consult-buffer)             ; was exchange-point-and-mark, prefer C-x C-x
+(global-set-key (kbd "s-f") 'consult-line)               ; was isearch-forward
 (define-key isearch-mode-map (kbd "s-f") 'consult-line)
 (global-set-key (kbd "C-x i") 'consult-isearch-history)  ; was insert-file
-(global-set-key [f11] 'consult-ripgrep)
+(global-set-key (kbd "s-g") 'consult-ripgrep)            ; was isearch-repeat-forward
 (global-set-key (kbd "M-y") 'consult-yank-replace)
 (global-set-key (kbd "s-h i") 'consult-imenu)
 (global-set-key (kbd "C-x m") 'consult-flymake)          ; was compose-mail
