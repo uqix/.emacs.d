@@ -295,8 +295,8 @@
 ;; >-------------------------
 
 (global-set-key (kbd "s-j") 'consult-buffer) ; was exchange-point-and-mark, prefer C-x C-x
-(global-set-key [f8] 'consult-line)
-(define-key isearch-mode-map [f8] 'consult-line)
+(global-set-key (kbd "s-f") 'consult-line)   ; was isearch-forward
+(define-key isearch-mode-map (kbd "s-f") 'consult-line)
 (global-set-key (kbd "C-x i") 'consult-isearch-history)  ; was insert-file
 (global-set-key [f11] 'consult-ripgrep)
 (global-set-key (kbd "M-y") 'consult-yank-replace)
