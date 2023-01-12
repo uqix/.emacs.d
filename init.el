@@ -204,10 +204,10 @@
 (global-set-key (kbd "C-x f") 'find-file)                       ; was set-fill-column
 (global-set-key (kbd "C-x q") 'replace-string)                  ; was kbd-macro-query
 (global-set-key (kbd "C-x l") 'toggle-truncate-lines)           ; was count-lines-page
-(global-set-key [f4] 'kmacro-end-or-call-macro)
 
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
+;; f4 -> kmacro-end-or-call-macro
 ;; >--------------------------------------------------
 
 
