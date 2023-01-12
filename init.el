@@ -177,7 +177,7 @@
 ;;
 ;; enable-recursive-minibuffers
 
-(define-key minibuffer-mode-map (kbd "C-c h") 'consult-history) ; was vertico-previous
+(define-key minibuffer-mode-map (kbd "C-c h") 'consult-history)
 ;; >--------------------------------------------------
 
 
@@ -235,7 +235,7 @@
 
 (require 'shell)
 
-(define-key shell-mode-map [up] 'consult-history) ; was previous-line
+(define-key shell-mode-map (kbd "C-c h") 'consult-history)
 ;; >--------------------------------------------------
 
 
