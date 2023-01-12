@@ -283,7 +283,7 @@
 
 ;; https://github.com/oantolin/embark#quick-start
 ;; 
-(global-set-key [f5] 'embark-act)
+(global-set-key (kbd "M-i") 'embark-act) ; was tab-to-tab-stop
 ;; >-------------------------
 
 ;; <-------------------------
