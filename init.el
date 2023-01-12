@@ -375,7 +375,9 @@
 ;; <--------------------------------------------------
 ;; multiple-cursors
 
-(global-set-key [f6] 'mc/edit-lines)
+;; https://github.com/magnars/multiple-cursors.el
+
+(global-set-key (kbd "s-i i") 'mc/edit-lines)
 ;; >--------------------------------------------------
 
 
