@@ -343,7 +343,7 @@
 ;; https://github.com/wolray/symbol-overlay/#usage
 ;; 
 (global-unset-key (kbd "s-o"))
-(global-set-key [f10] 'symbol-overlay-put)
+(global-set-key (kbd "s-o o") 'symbol-overlay-put)
 (global-set-key (kbd "s-o n") 'symbol-overlay-switch-forward)
 (global-set-key (kbd "s-o p") 'symbol-overlay-switch-backward)
 (global-set-key (kbd "s-o r") 'symbol-overlay-remove-all)
