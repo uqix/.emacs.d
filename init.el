@@ -353,7 +353,7 @@
 ;; <--------------------------------------------------
 ;; magit
 
-(global-set-key [f3] 'magit-status)
+(global-set-key (kbd "s-m") 'magit-status)     ; was iconify-frame
 ;; >--------------------------------------------------
 
 
