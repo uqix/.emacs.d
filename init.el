@@ -198,7 +198,7 @@
 
 (global-set-key (kbd "s-z") 'execute-extended-command)          ; more handy
 (global-set-key (kbd "C-z") ctl-x-map)                          ; more handy
-(global-set-key [f9] 'subword-mode)
+(global-set-key (kbd "M-'") 'subword-mode)                      ; was abbrev-prefix-mark
 (global-set-key (kbd "C-x d") 'ediff-buffers)                   ; e[d]iff; was dired
 (global-set-key (kbd "C-x w") 'diff-delete-trailing-whitespace) ; [w]hitespace
 (global-set-key (kbd "C-x f") 'find-file)                       ; was set-fill-column
