@@ -318,7 +318,6 @@
 (require 'project)
 
 (global-set-key (kbd "s-p") project-prefix-map)
-(global-set-key [f2] 'project-switch-project)
 ;; >--------------------------------------------------
 
 
