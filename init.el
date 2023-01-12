@@ -177,7 +177,7 @@
 ;;
 ;; enable-recursive-minibuffers
 
-(define-key minibuffer-mode-map [up] 'consult-history) ; was vertico-previous
+(define-key minibuffer-mode-map (kbd "C-c h") 'consult-history) ; was vertico-previous
 ;; >--------------------------------------------------
 
 
