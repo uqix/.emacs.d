@@ -292,7 +292,7 @@
 ;; https://github.com/oantolin/embark#consult
 ;; >-------------------------
 
-(global-set-key [f1] 'consult-buffer)
+(global-set-key (kbd "s-j") 'consult-buffer) ; was exchange-point-and-mark, prefer C-x C-x
 (global-set-key [f8] 'consult-line)
 (define-key isearch-mode-map [f8] 'consult-line)
 (global-set-key (kbd "C-x i") 'consult-isearch-history)  ; was insert-file
