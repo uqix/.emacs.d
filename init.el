@@ -297,13 +297,13 @@
 (global-set-key (kbd "s-j") 'consult-buffer)             ; was exchange-point-and-mark, prefer C-x C-x
 (global-set-key (kbd "s-f") 'consult-line)               ; was isearch-forward
 (define-key isearch-mode-map (kbd "s-f") 'consult-line)
-(global-set-key (kbd "C-x i") 'consult-isearch-history)  ; was insert-file
+(global-set-key (kbd "s-h s") 'consult-isearch-history)
 (global-set-key (kbd "s-g") 'consult-ripgrep)            ; was isearch-repeat-forward
 (global-set-key (kbd "M-y") 'consult-yank-replace)
 (global-set-key (kbd "s-h i") 'consult-imenu)
-(global-set-key (kbd "C-x m") 'consult-flymake)          ; was compose-mail
-(global-set-key (kbd "C-x r s") 'consult-register-store) ; was copy-to-register
-(global-set-key (kbd "C-x r l") 'consult-register)       ; was bookmark-bmenu-list
+(global-set-key (kbd "s-h e") 'consult-flymake)
+(global-set-key (kbd "s-h r") 'consult-register-store)
+(global-set-key (kbd "s-h t") 'consult-register)
 
 ;; Use Consult to select xref locations with preview
 (setq xref-show-xrefs-function #'consult-xref
