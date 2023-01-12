@@ -498,7 +498,8 @@
 ;;
  (add-hook 'java-mode-hook 'eglot-ensure)
 
-(global-set-key (kbd "C-x e") 'eglot)   ; was kmacro-end-and-call-macro
+(global-unset-key (kbd "s-l"))          ; was goto-line
+(global-set-key (kbd "s-l e") 'eglot)
 (define-key eglot-mode-map (kbd "s-l a") 'eglot-code-actions)
 (define-key eglot-mode-map (kbd "s-l r") 'eglot-rename)
 
