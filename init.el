@@ -176,6 +176,8 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Recursive-Mini.html
 ;;
 ;; enable-recursive-minibuffers
+
+(define-key minibuffer-mode-map [up] 'consult-history) ; was vertico-previous
 ;; >--------------------------------------------------
 
 
