@@ -124,6 +124,10 @@
 
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-mode)
+
+;; C-, -> flyspell-goto-next-error
+;; C-. -> flyspell-auto-correct-word
+;; C-; -> flyspell-auto-correct-previous-word
 ;; >--------------------------------------------------
 
 
