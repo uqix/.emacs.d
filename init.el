@@ -364,6 +364,21 @@
 
 
 ;; <--------------------------------------------------
+;; avy
+
+;; https://github.com/abo-abo/avy
+
+;; https://github.com/abo-abo/avy#bindings
+;;
+(avy-setup-default)
+
+(global-set-key (kbd "C-'") 'avy-goto-char-timer)
+(global-set-key (kbd "M-g g") 'avy-goto-line) ; was goto-line
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; ace-window
 
 ;; https://github.com/abo-abo/ace-window
