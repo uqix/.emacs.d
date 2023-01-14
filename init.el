@@ -546,7 +546,7 @@
 
 ;; ref rng-nxml-mode-init
 (defun my/nxml-mode-hook ()
-  (remove-hook 'completion-at-point-functions #'rng-completion-at-point t))
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
 (add-hook 'nxml-mode-hook 'my/nxml-mode-hook)
 ;; >--------------------------------------------------
 
