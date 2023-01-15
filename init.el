@@ -308,16 +308,23 @@
 ;; https://github.com/oantolin/embark#consult
 ;; >-------------------------
 
-(global-set-key (kbd "s-j") 'consult-buffer)             ; was exchange-point-and-mark, prefer C-x C-x
-(global-set-key (kbd "s-f") 'consult-line)               ; was isearch-forward
-(define-key isearch-mode-map (kbd "s-f") 'consult-line)
-(define-key isearch-mode-map (kbd "C-c h") 'consult-isearch-history)
-(global-set-key (kbd "s-g") 'consult-ripgrep)            ; was isearch-repeat-forward
-(global-set-key (kbd "M-y") 'consult-yank-replace)
-(global-set-key (kbd "s-h i") 'consult-imenu)
-(global-set-key (kbd "s-h e") 'consult-flymake)
-(global-set-key (kbd "s-h r") 'consult-register-store)
-(global-set-key (kbd "s-h t") 'consult-register)
+(global-set-key (kbd "s-j") 'consult-buffer)                         ; [j]ump; was exchange-point-and-mark, prefer C-x C-x
+(global-set-key (kbd "s-f") 'consult-line)                           ; [f]ind; was isearch-forward
+(define-key isearch-mode-map (kbd "s-f") 'consult-line)              ; [f]ind
+(define-key isearch-mode-map (kbd "C-c h") 'consult-isearch-history) ; [h]istory
+(global-set-key (kbd "s-g") 'consult-ripgrep)                        ; [g]rep; was isearch-repeat-forward
+(global-set-key (kbd "M-y") 'consult-yank-replace)                   ; [y]ank
+(global-set-key (kbd "s-h i") 'consult-imenu)                        ; [i]menu
+(global-set-key (kbd "s-h I") 'consult-imenu-multi)                  ; [I]menu
+(global-set-key (kbd "s-h e") 'consult-flymake)                      ; [e]rrors
+(global-set-key (kbd "s-h r") 'consult-register-store)               ; [r]egister
+(global-set-key (kbd "s-h t") 'consult-register)                     ; [t] next to [r]
+(global-set-key (kbd "s-h f") 'consult-line-multi)                   ; [f]ind
+(global-set-key (kbd "s-h k") 'consult-keep-lines)                   ; [k]eep
+(global-set-key (kbd "s-h h") 'consult-focus-lines)                  ; [h]ide
+(global-set-key (kbd "s-h m") 'consult-mark)                         ; [m]ark
+(global-set-key (kbd "s-h M") 'consult-global-mark)                  ; [M]ark
+(global-set-key (kbd "s-h o") 'consult-outline)                      ; [o]utline
 
 ;; Use Consult to select xref locations with preview
 (setq xref-show-xrefs-function #'consult-xref
