@@ -140,6 +140,7 @@
 ;; C-. -> flyspell-auto-correct-word
 ;; C-; -> flyspell-auto-correct-previous-word
 
+(define-key flyspell-mode-map (kbd "C-,") nil)
 (define-key flyspell-mode-map (kbd "C-.") nil)
 ;; >--------------------------------------------------
 
