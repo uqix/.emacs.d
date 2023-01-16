@@ -254,6 +254,8 @@
 ;; <--------------------------------------------------
 ;; diff-mode
 
+(require 'diff-mode)
+
 (define-key diff-mode-shared-map (kbd "t") 'diff-delete-trailing-whitespace) ; [t]rim
 ;; >--------------------------------------------------
 
