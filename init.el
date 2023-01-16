@@ -131,12 +131,16 @@
 ;; <--------------------------------------------------
 ;; flyspell
 
+(require 'flyspell)
+
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-mode)
 
 ;; C-, -> flyspell-goto-next-error
 ;; C-. -> flyspell-auto-correct-word
 ;; C-; -> flyspell-auto-correct-previous-word
+
+(define-key flyspell-mode-map (kbd "C-.") nil)
 ;; >--------------------------------------------------
 
 
@@ -215,6 +219,7 @@
 (global-set-key (kbd "C-x f") 'find-file)              ; was set-fill-column
 (global-set-key (kbd "C-,") 'replace-string)           ; was flyspell-goto-next-error
 (global-set-key (kbd "C-\\") 'toggle-truncate-lines)   ; was toggle-input-method
+(global-set-key (kbd "C-.") 'pop-to-mark-command)      ; was flyspell-auto-correct-word
 
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
@@ -235,7 +240,7 @@
 ;; C-; -> flyspell-auto-correct-previous-word
 ;; C-' -> nil, external binding: macOS Keyboard Shortcuts - Input Sources - Select the previous input source
 ;; C-, -> t
-;; C-. -> flyspell-auto-correct-word
+;; C-. -> t
 ;; C-/ -> undo
 ;; >--------------------------------------------------
 
