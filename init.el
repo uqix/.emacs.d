@@ -387,11 +387,11 @@
 
 ;; https://github.com/abo-abo/avy#bindings
 ;;
-(avy-setup-default)
-;; C-' in isearch-mode-map -> avy-isearch
+;; (avy-setup-default)
+(define-key isearch-mode-map (kbd "M-j") 'avy-isearch) ; [j]ump
 
-(global-set-key (kbd "C-'") 'avy-goto-char-timer)
-(global-set-key (kbd "M-g g") 'avy-goto-line) ; was goto-line
+(global-set-key (kbd "M-j") 'avy-goto-char-timer)      ; was default-indent-new-line
+(global-set-key (kbd "M-g g") 'avy-goto-line)          ; was goto-line
 
 ;; ? -> actions
 ;; https://karthinks.com/software/avy-can-do-anything/#avy-actions
