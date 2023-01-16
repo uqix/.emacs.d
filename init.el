@@ -208,14 +208,13 @@
 (global-unset-key (kbd "C-x C-z"))                              ; suspend-frame (minimize)
 (global-unset-key (kbd "s-h"))                                  ; ns-do-hide-emacs
 
-(global-set-key (kbd "s-z") 'execute-extended-command)          ; more handy
-(global-set-key (kbd "C-z") ctl-x-map)                          ; more handy
-(global-set-key (kbd "M-'") 'subword-mode)                      ; was abbrev-prefix-mark
-(global-set-key (kbd "C-x d") 'ediff-buffers)                   ; e[d]iff; was dired
-(global-set-key (kbd "C-x w") 'diff-delete-trailing-whitespace) ; [w]hitespace
-(global-set-key (kbd "C-x f") 'find-file)                       ; was set-fill-column
-(global-set-key (kbd "C-,") 'replace-string)                    ; was flyspell-goto-next-error
-(global-set-key (kbd "C-\\") 'toggle-truncate-lines)            ; was toggle-input-method
+(global-set-key (kbd "s-z") 'execute-extended-command) ; more handy
+(global-set-key (kbd "C-z") ctl-x-map)                 ; more handy
+(global-set-key (kbd "M-'") 'subword-mode)             ; was abbrev-prefix-mark
+(global-set-key (kbd "C-x d") 'ediff-buffers)          ; e[d]iff; was dired
+(global-set-key (kbd "C-x f") 'find-file)              ; was set-fill-column
+(global-set-key (kbd "C-,") 'replace-string)           ; was flyspell-goto-next-error
+(global-set-key (kbd "C-\\") 'toggle-truncate-lines)   ; was toggle-input-method
 
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
@@ -248,6 +247,14 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/File-Name-Completion.html#index-completion_002dignored_002dextensions
 ;;
 (add-to-list 'completion-ignored-extensions ".DS_Store")
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; diff-mode
+
+(define-key diff-mode-shared-map (kbd "t") 'diff-delete-trailing-whitespace) ; [t]rim
 ;; >--------------------------------------------------
 
 
