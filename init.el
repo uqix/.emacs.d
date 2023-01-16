@@ -215,7 +215,7 @@
 (global-set-key (kbd "C-x w") 'diff-delete-trailing-whitespace) ; [w]hitespace
 (global-set-key (kbd "C-x f") 'find-file)                       ; was set-fill-column
 (global-set-key (kbd "C-,") 'replace-string)                    ; was flyspell-goto-next-error
-(global-set-key (kbd "C-x l") 'toggle-truncate-lines)           ; was count-lines-page
+(global-set-key (kbd "C-\\") 'toggle-truncate-lines)            ; was toggle-input-method
 
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
@@ -232,7 +232,7 @@
 
 ;; C-[ -> ESC-
 ;; C-] -> abort-recursive-edit
-;; C-\ -> toggle-input-method
+;; C-\ -> t
 ;; C-; -> flyspell-auto-correct-previous-word
 ;; C-' -> nil, external binding: macOS Keyboard Shortcuts - Input Sources - Select the previous input source
 ;; C-, -> t
