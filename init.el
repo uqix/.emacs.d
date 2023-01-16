@@ -214,7 +214,7 @@
 (global-set-key (kbd "C-x d") 'ediff-buffers)                   ; e[d]iff; was dired
 (global-set-key (kbd "C-x w") 'diff-delete-trailing-whitespace) ; [w]hitespace
 (global-set-key (kbd "C-x f") 'find-file)                       ; was set-fill-column
-(global-set-key (kbd "C-x q") 'replace-string)                  ; was kbd-macro-query
+(global-set-key (kbd "C-,") 'replace-string)                    ; was flyspell-goto-next-error
 (global-set-key (kbd "C-x l") 'toggle-truncate-lines)           ; was count-lines-page
 
 ;; C-x r o -> open-rectangle
@@ -235,7 +235,7 @@
 ;; C-\ -> toggle-input-method
 ;; C-; -> flyspell-auto-correct-previous-word
 ;; C-' -> nil
-;; C-, -> flyspell-goto-next-error
+;; C-, -> t
 ;; C-. -> flyspell-auto-correct-word
 ;; C-/ -> undo
 ;; >--------------------------------------------------
