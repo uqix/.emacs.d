@@ -220,6 +220,24 @@
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
 ;; f4 -> kmacro-end-or-call-macro
+
+;; M-[ -> t
+;; M-] -> nil
+;; M-\ -> delete-horizontal-space
+;; M-; -> comment-dwim
+;; M-' -> t
+;; M-, -> xref-pop-marker-stack
+;; M-. -> xref-find-definitions
+;; M-/ -> dabbrev-completion
+
+;; C-[ -> ESC-
+;; C-] -> abort-recursive-edit
+;; C-\ -> toggle-input-method
+;; C-; -> flyspell-auto-correct-previous-word
+;; C-' -> nil
+;; C-, -> flyspell-goto-next-error
+;; C-. -> flyspell-auto-correct-word
+;; C-/ -> undo
 ;; >--------------------------------------------------
 
 
