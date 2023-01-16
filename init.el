@@ -234,7 +234,7 @@
 ;; C-] -> abort-recursive-edit
 ;; C-\ -> toggle-input-method
 ;; C-; -> flyspell-auto-correct-previous-word
-;; C-' -> nil
+;; C-' -> nil, external binding: macOS Keyboard Shortcuts - Input Sources - Select the previous input source
 ;; C-, -> t
 ;; C-. -> flyspell-auto-correct-word
 ;; C-/ -> undo
