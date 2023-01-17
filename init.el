@@ -315,7 +315,7 @@
 
 ;; https://github.com/minad/vertico/blob/main/extensions/vertico-repeat.el
 ;;
-(global-set-key (kbd "s-h b") #'vertico-repeat)
+(global-set-key (kbd "s-h b") #'vertico-repeat) ; [b]ack to last interaction
 (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
 ;; >-------------------------
 
@@ -408,7 +408,7 @@
 ;; <--------------------------------------------------
 ;; magit
 
-(global-set-key (kbd "s-m") 'magit-status)     ; was iconify-frame
+(global-set-key (kbd "s-m") 'magit-status)     ; [m]agit; was iconify-frame
 ;; >--------------------------------------------------
 
 
@@ -439,7 +439,7 @@
 
 ;; https://github.com/abo-abo/ace-window#customization
 ;;
-(global-set-key (kbd "s-n") 'ace-window) ; was make-frame
+(global-set-key (kbd "s-n") 'ace-window) ; [n]ext window; was make-frame
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 ;; >--------------------------------------------------
 
@@ -571,10 +571,10 @@
 ;;
  (add-hook 'java-mode-hook 'eglot-ensure)
 
-(global-unset-key (kbd "s-l"))          ; was goto-line
-(global-set-key (kbd "s-l e") 'eglot)
-(define-key eglot-mode-map (kbd "s-l a") 'eglot-code-actions)
-(define-key eglot-mode-map (kbd "s-l r") 'eglot-rename)
+(global-unset-key (kbd "s-l"))                                ; was goto-line
+(global-set-key (kbd "s-l e") 'eglot)                         ; [e]glot
+(define-key eglot-mode-map (kbd "s-l a") 'eglot-code-actions) ; [a]ctions
+(define-key eglot-mode-map (kbd "s-l r") 'eglot-rename)       ; [r]ename
 
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
