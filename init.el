@@ -179,6 +179,9 @@
 
 (define-key yaml-pro-mode-map [left] 'yaml-pro-unindent-subtree) ; was left-char
 (define-key yaml-pro-mode-map [right] 'yaml-pro-indent-subtree)  ; was right-char
+(define-key yaml-pro-mode-map (kbd "C-c c") 'yaml-pro-fold-at-point)   ; [c]ollapse
+(define-key yaml-pro-mode-map (kbd "C-c e") 'yaml-pro-unfold-at-point) ; [e]xpand
+(define-key yaml-pro-mode-map (kbd "C-c k") 'yaml-pro-kill-subtree)    ; [k]ill
 ;; >-------------------------
 
 ;; >--------------------------------------------------
