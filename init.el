@@ -177,11 +177,17 @@
 
 ;; https://github.com/zkry/yaml-pro#usage-1
 
-(define-key yaml-pro-mode-map [left] 'yaml-pro-unindent-subtree) ; was left-char
-(define-key yaml-pro-mode-map [right] 'yaml-pro-indent-subtree)  ; was right-char
-(define-key yaml-pro-mode-map (kbd "C-c c") 'yaml-pro-fold-at-point)   ; [c]ollapse
-(define-key yaml-pro-mode-map (kbd "C-c e") 'yaml-pro-unfold-at-point) ; [e]xpand
-(define-key yaml-pro-mode-map (kbd "C-c k") 'yaml-pro-kill-subtree)    ; [k]ill
+(define-key yaml-pro-mode-map (kbd "C-c l") 'yaml-pro-unindent-subtree)  ; [l]eft move
+(define-key yaml-pro-mode-map (kbd "C-c r") 'yaml-pro-indent-subtree)    ; [r]ight move
+(define-key yaml-pro-mode-map (kbd "C-c u") 'yaml-pro-move-subtree-up)   ; [u]p move
+(define-key yaml-pro-mode-map (kbd "C-c d") 'yaml-pro-move-subtree-down) ; [d]own move
+(define-key yaml-pro-mode-map (kbd "C-c c") 'yaml-pro-fold-at-point)     ; [c]ollapse
+(define-key yaml-pro-mode-map (kbd "C-c e") 'yaml-pro-unfold-at-point)   ; [e]xpand
+(define-key yaml-pro-mode-map (kbd "C-c k") 'yaml-pro-kill-subtree)      ; [k]ill
+(define-key yaml-pro-mode-map (kbd "C-M-n") 'yaml-pro-next-subtree)      ; [n]ext sibling; was forward-list
+(define-key yaml-pro-mode-map (kbd "C-M-p") 'yaml-pro-prev-subtree)      ; [p]revious sibling; was backward-list
+(define-key yaml-pro-mode-map (kbd "C-M-u") 'yaml-pro-up-level)          ; [u]p level; was backward-up-list
+
 ;; >-------------------------
 
 ;; >--------------------------------------------------
