@@ -514,6 +514,10 @@
 ;; https://github.com/mhayashi1120/Emacs-wgrep
 
 ;; https://github.com/mhayashi1120/Emacs-wgrep#usage
+;;
+;; C-c C-p -> edit
+;; C-c C-c -> commit
+;; C-c C-k -> abort
 ;; >--------------------------------------------------
 
 
