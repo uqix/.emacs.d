@@ -230,6 +230,8 @@
 (global-set-key (kbd "C-,") 'replace-string)           ; was flyspell-goto-next-error
 (global-set-key (kbd "C-\\") 'toggle-truncate-lines)   ; was toggle-input-method
 (global-set-key (kbd "C-.") 'pop-to-mark-command)      ; was flyspell-auto-correct-word
+(global-set-key (kbd "C-[") 'previous-error)           ; was ESC-
+(global-set-key (kbd "C-]") 'next-error)               ; was abort-recursive-edit
 
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
@@ -244,8 +246,8 @@
 ;; M-. -> xref-find-definitions
 ;; M-/ -> dabbrev-completion
 
-;; C-[ -> ESC-
-;; C-] -> abort-recursive-edit
+;; C-[ -> t
+;; C-] -> t
 ;; C-\ -> t
 ;; C-; -> flyspell-auto-correct-previous-word
 ;; C-' -> nil, external binding: macOS Keyboard Shortcuts - Input Sources - Select the previous input source
