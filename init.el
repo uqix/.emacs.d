@@ -496,10 +496,13 @@
 
 (require 'markdown-mode)
 
-(define-key markdown-mode-map (kbd "C-c b") 'markdown-insert-gfm-code-block) ; code [b]lock
-(define-key markdown-mode-map (kbd "C-c q") 'markdown-insert-blockquote)     ; [q]uote
-(define-key markdown-mode-map (kbd "C-c e") 'markdown-insert-bold)           ; [e]mphasize
-(define-key markdown-mode-map (kbd "C-c l") 'markdown-insert-link)           ; [l]ink
+(define-key markdown-mode-map (kbd "C-c b") 'markdown-insert-gfm-code-block)       ; code [b]lock
+(define-key markdown-mode-map (kbd "C-c q") 'markdown-insert-blockquote)           ; [q]uote
+(define-key markdown-mode-map (kbd "C-c e") 'markdown-insert-bold)                 ; [e]mphasize
+(define-key markdown-mode-map (kbd "C-c l") 'markdown-insert-link)                 ; [l]ink
+(define-key markdown-mode-map (kbd "C-M-n") 'markdown-outline-next-same-level)     ; [n]ext sibling; was forward-list
+(define-key markdown-mode-map (kbd "C-M-p") 'markdown-outline-previous-same-level) ; [p]revious sibling; was backward-list
+(define-key markdown-mode-map (kbd "C-M-u") 'markdown-up-heading)                  ; [u]p level; was backward-up-list
 ;; >--------------------------------------------------
 
 
