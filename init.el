@@ -218,6 +218,8 @@
 ;; ctl-x-map is the global keymap used for the C-x prefix key.
 ;; goto-map is the global keymap used for the M-g prefix key.
 
+;; s-i -> misc prefix key
+
 (global-unset-key (kbd "C-x C-c"))                              ; quit emacs
 (global-unset-key (kbd "C-x C-z"))                              ; suspend-frame (minimize)
 (global-unset-key (kbd "s-h"))                                  ; ns-do-hide-emacs
@@ -230,6 +232,8 @@
 (global-set-key (kbd "C-,") 'replace-string)           ; was flyspell-goto-next-error
 (global-set-key (kbd "C-\\") 'toggle-truncate-lines)   ; was toggle-input-method
 (global-set-key (kbd "C-.") 'pop-to-mark-command)      ; was flyspell-auto-correct-word
+(global-set-key (kbd "s-i p") 'previous-error)
+(global-set-key (kbd "s-i n") 'next-error)
 
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
