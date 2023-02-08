@@ -252,10 +252,14 @@
 ;; C-] -> abort-recursive-edit
 ;; C-\ -> t
 ;; C-; -> flyspell-auto-correct-previous-word
-;; C-' -> nil, external binding: macOS Keyboard Shortcuts - Input Sources - Select the previous input source
+;; C-' -> nil; external binding: macOS Keyboard Shortcuts - Input Sources - Select the previous input source
 ;; C-, -> t
 ;; C-. -> t
 ;; C-/ -> undo
+
+;; s-2 nil; external binding: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 2 (emacs)
+;; s-3 nil; external binding: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 3 (chrome)
+
 ;; >--------------------------------------------------
 
 
