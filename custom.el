@@ -19,6 +19,7 @@
  '(ispell-program-name "aspell")
  '(magit-diff-refine-hunk 'all)
  '(make-backup-files nil)
+ '(markdown-asymmetric-header t)
  '(markdown-command "multimarkdown")
  '(markdown-fontify-code-blocks-natively t)
  '(nxml-child-indent 4)
