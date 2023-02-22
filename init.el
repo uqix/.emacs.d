@@ -591,16 +591,6 @@
 
 (require 'eglot)
 
-;; https://github.com/joaotavora/eglot/pull/937
-;; https://github.com/joaotavora/eglot/pull/937/files
-;;
-;;; eclipse-jdt breaks the spec which in turn breaks code actions
-;;; This behaviour can't be disabled and needs to be worked around
-(cl-defmethod eglot-execute-command
-  (_server (_cmd (eql java.apply.workspaceEdit)) arguments)
-  "Eclipse JDT breaks spec and replies with edits as arguments."
-  (mapc #'eglot--apply-workspace-edit arguments))
-
 ;; https://joaotavora.github.io/eglot/#index-starting-Eglot
 ;;
 ;; (add-hook 'java-mode-hook 'eglot-ensure)
@@ -616,6 +606,16 @@
 ;; https://github.com/yveszoundi/eglot-java
 
 (define-key java-mode-map (kbd "s-l e") 'eglot-java-mode)
+
+;; ;; https://github.com/joaotavora/eglot/pull/937
+;; ;; https://github.com/joaotavora/eglot/pull/937/files
+;; ;;
+;; ;;; eclipse-jdt breaks the spec which in turn breaks code actions
+;; ;;; This behaviour can't be disabled and needs to be worked around
+;; (cl-defmethod eglot-execute-command
+;;   (_server (_cmd (eql java.apply.workspaceEdit)) arguments)
+;;   "Eclipse JDT breaks spec and replies with edits as arguments."
+;;   (mapc #'eglot--apply-workspace-edit arguments))
 
 ;; You can specify JVM arguments for the LSP server (eglot-java-eclipse-jdt-args variable)
 ;; 
