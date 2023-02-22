@@ -9,6 +9,7 @@
  '(dabbrev-case-fold-search nil)
  '(datetime-timezone 'Etc/GMT+8)
  '(dired-listing-switches "-alh")
+ '(eglot-java-eclipse-jdt-args '("-javaagent:/Users/zjq/opt/lombok.jar"))
  '(enable-recursive-minibuffers t)
  '(ffap-machine-p-known 'reject)
  '(indent-tabs-mode nil)
@@ -26,7 +27,7 @@
  '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-initialism))
  '(package-archive-priorities '(("melpa" . 1)))
  '(package-selected-packages
-   '(vundo doom-themes cape eglot corfu wgrep vertico orderless embark-consult embark marginalia consult yaml-pro dockerfile-mode markdown-mode yaml-mode json-mode doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
+   '(eglot-java vundo doom-themes cape eglot corfu wgrep vertico orderless embark-consult embark marginalia consult yaml-pro dockerfile-mode markdown-mode yaml-mode json-mode doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
  '(tool-bar-mode nil))

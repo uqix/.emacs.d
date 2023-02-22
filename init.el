@@ -398,6 +398,8 @@
 ;; <--------------------------------------------------
 ;; java-mode
 
+(require 'cc-mode)
+
 ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Customizing-C-and-C_002b_002b-indentation.html
 ;;
 (defun my/java-mode-hook ()
@@ -601,18 +603,30 @@
 
 ;; https://joaotavora.github.io/eglot/#index-starting-Eglot
 ;;
- (add-hook 'java-mode-hook 'eglot-ensure)
+;; (add-hook 'java-mode-hook 'eglot-ensure)
 
 (global-unset-key (kbd "s-l"))                                ; was goto-line
 (global-set-key (kbd "s-l e") 'eglot)                         ; [e]glot
 (define-key eglot-mode-map (kbd "s-l a") 'eglot-code-actions) ; [a]ctions
 (define-key eglot-mode-map (kbd "s-l r") 'eglot-rename)       ; [r]ename
 
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '(java-mode . ("jdtls"
-                              ;; "-noverify" "-Xmx2G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"
-                              "--jvm-arg=-javaagent:/Users/zjq/opt/lombok.jar"))))
+;; <-------------------------
+;; eglot-java
+
+;; https://github.com/yveszoundi/eglot-java
+
+(define-key java-mode-map (kbd "s-l e") 'eglot-java-mode)
+
+;; You can specify JVM arguments for the LSP server (eglot-java-eclipse-jdt-args variable)
+;; 
+;; (with-eval-after-load 'eglot
+;;   (add-to-list 'eglot-server-programs
+;;                '(java-mode . ("jdtls"
+;;                               ;; "-noverify" "-Xmx2G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"
+;;                               "--jvm-arg=-javaagent:/Users/zjq/opt/lombok.jar"))))
+
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
