@@ -162,18 +162,16 @@
 
 
 ;; <--------------------------------------------------
-;; yaml-mode
-
-;; https://github.com/yoshiki/yaml-mode
-
-;; <-------------------------
 ;; yaml-pro
 
 ;; https://github.com/zkry/yaml-pro
 
 (require 'yaml-pro)
 
-(add-hook 'yaml-mode-hook 'yaml-pro-mode)
+(use-package yaml-ts-mode
+  :mode "\\.yaml\\'")
+
+(add-hook 'yaml-ts-mode-hook 'yaml-pro-mode)
 
 ;; https://github.com/zkry/yaml-pro#usage-1
 
@@ -187,8 +185,6 @@
 (define-key yaml-pro-mode-map (kbd "C-M-n") 'yaml-pro-next-subtree)      ; [n]ext sibling; was forward-list
 (define-key yaml-pro-mode-map (kbd "C-M-p") 'yaml-pro-prev-subtree)      ; [p]revious sibling; was backward-list
 (define-key yaml-pro-mode-map (kbd "C-M-u") 'yaml-pro-up-level)          ; [u]p level; was backward-up-list
-
-;; >-------------------------
 
 ;; >--------------------------------------------------
 
