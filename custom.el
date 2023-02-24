@@ -28,7 +28,7 @@
  '(package-archive-priorities '(("melpa" . 1)))
  '(package-native-compile t)
  '(package-selected-packages
-   '(yaml-pro eglot-java vundo doom-themes cape corfu wgrep vertico orderless embark-consult embark marginalia consult markdown-mode doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
+   '(docker yaml-pro eglot-java vundo doom-themes cape corfu wgrep vertico orderless embark-consult embark marginalia consult markdown-mode doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
  '(tool-bar-mode nil))
