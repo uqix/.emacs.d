@@ -20,7 +20,7 @@
 ;; <--------------------------------------------------
 ;; builtin ts modes
 
-(use-package yaml-ts-mode :mode "\\.yaml\\'")
+(use-package yaml-ts-mode :mode "\\.ya?ml\\'")
 (use-package dockerfile-ts-mode :mode "Dockerfile\\'")
 ;; >--------------------------------------------------
 
