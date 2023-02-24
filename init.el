@@ -171,20 +171,22 @@
 (use-package yaml-ts-mode
   :mode "\\.yaml\\'")
 
-(add-hook 'yaml-ts-mode-hook 'yaml-pro-mode)
+(add-hook 'yaml-ts-mode-hook 'yaml-pro-ts-mode)
 
 ;; https://github.com/zkry/yaml-pro#usage-1
 
-(define-key yaml-pro-mode-map (kbd "C-c l") 'yaml-pro-unindent-subtree)  ; [l]eft move
-(define-key yaml-pro-mode-map (kbd "C-c r") 'yaml-pro-indent-subtree)    ; [r]ight move
-(define-key yaml-pro-mode-map (kbd "C-c u") 'yaml-pro-move-subtree-up)   ; [u]p move
-(define-key yaml-pro-mode-map (kbd "C-c d") 'yaml-pro-move-subtree-down) ; [d]own move
-(define-key yaml-pro-mode-map (kbd "C-c c") 'yaml-pro-fold-at-point)     ; [c]ollapse
-(define-key yaml-pro-mode-map (kbd "C-c e") 'yaml-pro-unfold-at-point)   ; [e]xpand
-(define-key yaml-pro-mode-map (kbd "C-c k") 'yaml-pro-kill-subtree)      ; [k]ill
-(define-key yaml-pro-mode-map (kbd "C-M-n") 'yaml-pro-next-subtree)      ; [n]ext sibling; was forward-list
-(define-key yaml-pro-mode-map (kbd "C-M-p") 'yaml-pro-prev-subtree)      ; [p]revious sibling; was backward-list
-(define-key yaml-pro-mode-map (kbd "C-M-u") 'yaml-pro-up-level)          ; [u]p level; was backward-up-list
+(define-key yaml-pro-ts-mode-map (kbd "C-c l") 'yaml-pro-ts-unindent-subtree)  ; [l]eft move
+(define-key yaml-pro-ts-mode-map (kbd "C-c r") 'yaml-pro-ts-indent-subtree)    ; [r]ight move
+(define-key yaml-pro-ts-mode-map (kbd "C-c u") 'yaml-pro-ts-move-subtree-up)   ; [u]p move
+(define-key yaml-pro-ts-mode-map (kbd "C-c d") 'yaml-pro-ts-move-subtree-down) ; [d]own move
+(define-key yaml-pro-ts-mode-map (kbd "C-c k") 'yaml-pro-ts-kill-subtree)      ; [k]ill
+(define-key yaml-pro-ts-mode-map (kbd "C-M-n") 'yaml-pro-ts-next-subtree)      ; [n]ext sibling; was forward-list
+(define-key yaml-pro-ts-mode-map (kbd "C-M-p") 'yaml-pro-ts-prev-subtree)      ; [p]revious sibling; was backward-list
+(define-key yaml-pro-ts-mode-map (kbd "C-M-u") 'yaml-pro-ts-up-level)          ; [u]p level; was backward-up-list
+
+;; This is not available for tree-sitter variant. Presumably some tree-sitter folding package will exist in the future.
+;; (define-key yaml-pro-ts-mode-map (kbd "C-c c") 'yaml-pro-ts-fold-at-point)     ; [c]ollapse
+;; (define-key yaml-pro-ts-mode-map (kbd "C-c e") 'yaml-pro-ts-unfold-at-point)   ; [e]xpand
 
 ;; >--------------------------------------------------
 
