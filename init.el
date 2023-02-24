@@ -18,6 +18,15 @@
 
 
 ;; <--------------------------------------------------
+;; builtin ts modes
+
+(use-package yaml-ts-mode :mode "\\.yaml\\'")
+(use-package dockerfile-ts-mode :mode "Dockerfile\\'")
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; dabbrev
 
 ;; * Use Dabbrev with Corfu!
@@ -167,9 +176,6 @@
 ;; https://github.com/zkry/yaml-pro
 
 (require 'yaml-pro)
-
-(use-package yaml-ts-mode
-  :mode "\\.yaml\\'")
 
 (add-hook 'yaml-ts-mode-hook 'yaml-pro-ts-mode)
 
