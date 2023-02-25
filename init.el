@@ -231,13 +231,14 @@
 (global-set-key (kbd "s-z") 'execute-extended-command) ; more handy
 (global-set-key (kbd "C-z") ctl-x-map)                 ; more handy
 (global-set-key (kbd "M-'") 'subword-mode)             ; was abbrev-prefix-mark
-(global-set-key (kbd "C-x d") 'ediff-buffers)          ; e[d]iff; was dired
-(global-set-key (kbd "C-x f") 'find-file)              ; was set-fill-column
+(global-set-key (kbd "C-x d") 'duplicate-dwim)         ; [d]uplicate; was dired
+(global-set-key (kbd "C-x e") 'ediff-buffers)          ; [e]diff; was kmacro-end-and-call-macro
+(global-set-key (kbd "C-x f") 'find-file)              ; find [f]ile; was set-fill-column
 (global-set-key (kbd "C-,") 'replace-string)           ; was flyspell-goto-next-error
 (global-set-key (kbd "C-\\") 'toggle-truncate-lines)   ; was toggle-input-method
 (global-set-key (kbd "C-.") 'pop-to-mark-command)      ; was flyspell-auto-correct-word
-(global-set-key (kbd "s-i p") 'previous-error)
-(global-set-key (kbd "s-i n") 'next-error)
+(global-set-key (kbd "s-i p") 'previous-error)         ; [p]revious error
+(global-set-key (kbd "s-i n") 'next-error)             ; [n]ext error
 
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
@@ -462,7 +463,7 @@
 
 ;; https://github.com/abo-abo/ace-window#customization
 ;;
-(global-set-key (kbd "s-n") 'ace-window) ; [n]ext window; was make-frame
+(global-set-key (kbd "s-n") 'ace-window) ; [n]umber windows; was make-frame
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 ;; >--------------------------------------------------
 
