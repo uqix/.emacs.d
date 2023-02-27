@@ -22,6 +22,8 @@
 
 (use-package yaml-ts-mode :mode "\\.ya?ml\\'")
 (use-package dockerfile-ts-mode :mode "Dockerfile\\'")
+
+;; (add-to-list 'major-mode-remap-alist '(ruby-mode . ruby-ts-mode))
 ;; >--------------------------------------------------
 
 
