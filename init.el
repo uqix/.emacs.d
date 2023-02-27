@@ -264,6 +264,7 @@
 ;; C-. -> t
 ;; C-/ -> undo
 
+;; s-1 nil; external binding: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 1
 ;; s-2 nil; external binding: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 2 (emacs)
 ;; s-3 nil; external binding: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 3 (chrome)
 
