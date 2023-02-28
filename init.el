@@ -512,6 +512,7 @@
 
 (require 'markdown-mode)
 
+(define-key markdown-mode-map (kbd "C-c c") 'markdown-insert-code)                 ; inline [c]ode
 (define-key markdown-mode-map (kbd "C-c b") 'markdown-insert-gfm-code-block)       ; code [b]lock
 (define-key markdown-mode-map (kbd "C-c q") 'markdown-insert-blockquote)           ; [q]uote
 (define-key markdown-mode-map (kbd "C-c e") 'markdown-insert-bold)                 ; [e]mphasize
