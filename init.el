@@ -168,7 +168,7 @@
 (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)
 
 (use-package flymake
-  :hook (json-ts-mode))
+  :hook (json-ts-mode yaml-ts-mode))
 
 ;; <-------------------------
 ;; flymake-collection
@@ -178,6 +178,10 @@
 (use-package json-ts-mode
   :flymake-hook
   (json-ts-mode flymake-collection-jq))
+
+(use-package yaml-ts-mode
+  :flymake-hook
+  (yaml-ts-mode flymake-collection-yamllint))
 
 (use-package flymake-collection
   :hook (after-init . flymake-collection-hook-setup))
