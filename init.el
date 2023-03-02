@@ -23,7 +23,7 @@
 (use-package yaml-ts-mode :mode "\\.ya?ml\\'")
 (use-package dockerfile-ts-mode :mode "Dockerfile\\'")
 
-;; (add-to-list 'major-mode-remap-alist '(ruby-mode . ruby-ts-mode))
+(add-to-list 'major-mode-remap-alist '(js-json-mode . json-ts-mode))
 ;; >--------------------------------------------------
 
 
@@ -166,6 +166,23 @@
 ;;
 (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
 (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)
+
+(use-package flymake
+  :hook (json-ts-mode))
+
+;; <-------------------------
+;; flymake-collection
+
+;; https://github.com/mohkale/flymake-collection
+
+(use-package json-ts-mode
+  :flymake-hook
+  (json-ts-mode flymake-collection-jq))
+
+(use-package flymake-collection
+  :hook (after-init . flymake-collection-hook-setup))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
