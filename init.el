@@ -531,6 +531,7 @@
 ;; https://github.com/jrblevin/markdown-mode/issues/578#issuecomment-1126380098
 ;; 
 (setq native-comp-jit-compilation-deny-list '("markdown-mode\\.el$"))
+(setq native-comp-deferred-compilation-deny-list '("markdown-mode\\.el$"))
 
 (require 'markdown-mode)
 
