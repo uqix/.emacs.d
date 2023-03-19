@@ -681,6 +681,16 @@
 
 
 ;; <--------------------------------------------------
+;; jinja2-mode
+
+;; https://github.com/paradoxxxzero/jinja2-mode
+
+(define-key jinja2-mode-map (kbd "M-o") nil) ; facemenu-set-
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; misc
 
 (electric-pair-mode)
