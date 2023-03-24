@@ -543,6 +543,8 @@
 (define-key markdown-mode-map (kbd "C-c n") 'markdown-next-visible-heading)        ; [n]ext heading
 (define-key markdown-mode-map (kbd "C-c p") 'markdown-previous-visible-heading)    ; [p]revious heading
 (define-key markdown-mode-map (kbd "C-c h") 'markdown-insert-header-dwim)          ; insert [h]eader
+(define-key markdown-mode-map (kbd "C-c i") 'markdown-insert-image)                ; insert [i]mage
+(define-key markdown-mode-map (kbd "C-c I") 'markdown-toggle-inline-images)        ; show [I]mages
 (define-key markdown-mode-map (kbd "C-M-n") 'markdown-outline-next-same-level)     ; [n]ext sibling; was forward-list
 (define-key markdown-mode-map (kbd "C-M-p") 'markdown-outline-previous-same-level) ; [p]revious sibling; was backward-list
 (define-key markdown-mode-map (kbd "C-M-u") 'markdown-up-heading)                  ; [u]p level; was backward-up-list
