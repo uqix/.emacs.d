@@ -9,7 +9,6 @@
  '(dabbrev-case-fold-search nil)
  '(datetime-timezone 'Etc/GMT+8)
  '(dired-listing-switches "-alh")
- '(eglot-java-eclipse-jdt-args '("-javaagent:/Users/zjq/opt/lombok.jar"))
  '(enable-recursive-minibuffers t)
  '(ffap-machine-p-known 'reject)
  '(indent-tabs-mode nil)
@@ -30,7 +29,7 @@
  '(package-archive-priorities '(("melpa" . 1)))
  '(package-native-compile t)
  '(package-selected-packages
-   '(jinja2-mode flymake-collection docker yaml-pro eglot-java vundo doom-themes cape corfu wgrep vertico orderless embark-consult marginalia markdown-mode doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
+   '(jinja2-mode flymake-collection docker yaml-pro vundo doom-themes cape corfu wgrep vertico orderless embark-consult marginalia markdown-mode doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
  '(tool-bar-mode nil))
