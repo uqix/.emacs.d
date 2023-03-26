@@ -110,7 +110,8 @@
 (add-hook 'minibuffer-setup-hook #'my/corfu-minibuffer-setup-hook 1)
 
 ;; https://github.com/minad/corfu#extensions
-;; TODO
+;; 
+(corfu-popupinfo-mode)
 ;; >--------------------------------------------------
 
 
