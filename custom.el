@@ -11,6 +11,7 @@
  '(dired-listing-switches "-alh")
  '(enable-recursive-minibuffers t)
  '(ffap-machine-p-known 'reject)
+ '(fill-column 100)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-major-mode 'text-mode)
