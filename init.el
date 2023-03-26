@@ -656,7 +656,49 @@
   (add-to-list 'eglot-server-programs
                '(java-mode . ("jdtls"
                               ;; "-noverify" "-Xmx2G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"
-                              "--jvm-arg=-javaagent:/Users/zjq/opt/lombok.jar"))))
+                              "--jvm-arg=-javaagent:/Users/zjq/opt/lombok.jar"
+                              :initializationOptions (:extendedClientCapabilities (:classFileContentsSupport t))))))
+
+;; <-------------------------
+;; java jdtls, handle uri jdt://
+
+;; https://github.com/yveszoundi/eglot-java/blob/ff0f9515d78f94b8dfe158bf9a2c4f52216504c0/eglot-java.el#L770
+;;
+(defun eglot-java--jdt-uri-handler (operation &rest args)
+  "Support Eclipse jdtls `jdt://' uri scheme."
+  (let* ((uri (car args))
+         (cache-dir (expand-file-name ".eglot-java" (temporary-file-directory)))
+         (source-file
+          (expand-file-name
+           (eglot-java--make-path
+            cache-dir
+            (save-match-data
+              (when (string-match "jdt://contents/\\(.*?\\)/\\(.*\\)\.class\\?" uri)
+                (format "%s.java" (replace-regexp-in-string "/" "." (match-string 2 uri) t t))))))))
+    (unless (file-readable-p source-file)
+      (let ((content (jsonrpc-request (eglot-current-server) :java/classFileContents (list :uri uri)))
+            (metadata-file (format "%s.%s.metadata"
+                                   (file-name-directory source-file)
+                                   (file-name-base source-file))))
+        (unless (file-directory-p cache-dir) (make-directory cache-dir t))
+        (with-temp-file source-file (insert content))
+        (with-temp-file metadata-file (insert uri))))
+    source-file))
+
+(defun eglot-java--make-path (root-dir &rest path-elements)
+  (let ((new-path          (expand-file-name (if (listp root-dir)
+                                                 (car root-dir)
+                                               root-dir)))
+        (new-path-elements (if (listp root-dir)
+                               (rest root-dir)
+                             path-elements)))
+    (dolist (p new-path-elements)
+      (setq new-path (concat (file-name-as-directory new-path) p)))
+    new-path))
+
+(add-to-list 'file-name-handler-alist '("\\`jdt://" . eglot-java--jdt-uri-handler))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
