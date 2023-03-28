@@ -12,6 +12,7 @@
  '(enable-recursive-minibuffers t)
  '(ffap-machine-p-known 'reject)
  '(fill-column 100)
+ '(imenu-max-item-length 100)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-major-mode 'text-mode)
