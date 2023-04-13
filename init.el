@@ -403,7 +403,7 @@
 (global-set-key (kbd "s-h I") 'consult-imenu-multi)                  ; [I]menu
 (global-set-key (kbd "s-h e") 'consult-flymake)                      ; [e]rrors
 (global-set-key (kbd "s-h r") 'consult-register-store)               ; [r]egister
-(global-set-key (kbd "s-h t") 'consult-register)                     ; [t] next to [r]
+(global-set-key (kbd "s-h R") 'consult-register)                     ; [R]egister
 (global-set-key (kbd "s-h f") 'consult-line-multi)                   ; [f]ind
 (global-set-key (kbd "s-h k") 'consult-keep-lines)                   ; [k]eep
 (global-set-key (kbd "s-h h") 'consult-focus-lines)                  ; [h]ide
