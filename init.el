@@ -535,10 +535,6 @@
 ;; <--------------------------------------------------
 ;; markdown-mode
 
-;; https://github.com/jrblevin/markdown-mode/issues/578#issuecomment-1126380098
-;; 
-(setq native-comp-jit-compilation-deny-list '("markdown-mode\\.el$"))
-
 (require 'markdown-mode)
 
 (define-key markdown-mode-map (kbd "C-c c") 'markdown-insert-code)                 ; inline [c]ode
