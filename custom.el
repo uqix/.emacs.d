@@ -32,6 +32,7 @@
  '(package-native-compile t)
  '(package-selected-packages
    '(jinja2-mode flymake-collection docker yaml-pro vundo doom-themes cape corfu wgrep vertico orderless embark-consult marginalia markdown-mode doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
+ '(project-vc-extra-root-markers '("Chart.yaml"))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
  '(tool-bar-mode nil)
