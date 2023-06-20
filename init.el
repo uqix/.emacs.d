@@ -517,17 +517,12 @@
 
 
 ;; <--------------------------------------------------
-;; all-the-icons
-
-;; M-x all-the-icons-install-fonts
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
 ;; doom-modeline
 
-(add-hook 'after-init-hook 'doom-modeline-mode)
+;; https://github.com/seagle0128/doom-modeline#install
+;;
+;; M-x nerd-icons-install-fonts
+(add-hook 'after-init-hook #'doom-modeline-mode)
 ;; >--------------------------------------------------
 
 

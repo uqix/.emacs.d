@@ -31,7 +31,7 @@
  '(package-archive-priorities '(("melpa" . 1)))
  '(package-native-compile t)
  '(package-selected-packages
-   '(jinja2-mode flymake-collection docker yaml-pro vundo doom-themes cape corfu wgrep vertico orderless embark-consult marginalia markdown-mode doom-modeline all-the-icons ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
+   '(jinja2-mode flymake-collection docker yaml-pro vundo doom-themes cape corfu wgrep vertico orderless embark-consult marginalia markdown-mode doom-modeline ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
  '(tool-bar-mode nil)
