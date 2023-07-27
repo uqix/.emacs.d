@@ -643,6 +643,7 @@
 (define-key eglot-mode-map (kbd "s-l a") 'eglot-code-actions)        ; [a]ctions
 (define-key eglot-mode-map (kbd "s-l r") 'eglot-rename)              ; [r]ename
 (define-key eglot-mode-map (kbd "s-l i") 'eglot-find-implementation) ; [i]mplementation
+(define-key eglot-mode-map (kbd "s-l t") 'eglot-find-typeDefinition) ; [t]ype
 
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
