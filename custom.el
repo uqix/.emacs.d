@@ -9,6 +9,7 @@
  '(dabbrev-case-fold-search nil)
  '(datetime-timezone 'Etc/GMT+8)
  '(dired-listing-switches "-alh")
+ '(eglot-events-buffer-size 0)
  '(enable-recursive-minibuffers t)
  '(ffap-machine-p-known 'reject)
  '(fill-column 100)
