@@ -272,6 +272,8 @@
 (global-set-key (kbd "s-i m j") 'java-mode)            ; [j]ava-[m]ode
 (global-set-key (kbd "s-i m y") 'yaml-ts-mode)         ; [y]aml-ts-[m]ode
 (global-set-key (kbd "s-i e") 'hs-toggle-hiding)       ; [e]xpand/collapse code block
+(global-set-key (kbd "M-L") 'downcase-region)          ; [L]owercase region
+(global-set-key (kbd "M-U") 'upcase-region)            ; [U]ppercase region
 
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
