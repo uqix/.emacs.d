@@ -271,6 +271,7 @@
 (global-set-key (kbd "s-i m t") 'text-mode)            ; [t]ext-[m]ode
 (global-set-key (kbd "s-i m j") 'java-mode)            ; [j]ava-[m]ode
 (global-set-key (kbd "s-i m y") 'yaml-ts-mode)         ; [y]aml-ts-[m]ode
+(global-set-key (kbd "s-i e") 'hs-toggle-hiding)       ; [e]xpand/collapse code block
 
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
@@ -758,5 +759,7 @@
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+(add-hook 'prog-mode-hook 'hs-minor-mode)
 
 ;; >--------------------------------------------------
