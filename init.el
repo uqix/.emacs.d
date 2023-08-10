@@ -268,6 +268,9 @@
 (global-set-key (kbd "C-.") 'pop-to-mark-command)      ; was flyspell-auto-correct-word
 (global-set-key (kbd "s-i p") 'previous-error)         ; [p]revious error
 (global-set-key (kbd "s-i n") 'next-error)             ; [n]ext error
+(global-set-key (kbd "s-i m t") 'text-mode)            ; [t]ext-[m]ode
+(global-set-key (kbd "s-i m j") 'java-mode)            ; [j]ava-[m]ode
+(global-set-key (kbd "s-i m y") 'yaml-ts-mode)         ; [y]aml-ts-[m]ode
 
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
