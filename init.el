@@ -22,6 +22,7 @@
 
 (use-package yaml-ts-mode :mode "\\.ya?ml\\'")
 (use-package dockerfile-ts-mode :mode "Dockerfile\\'")
+(use-package go-ts-mode :mode "\\.go\\'")
 
 (add-to-list 'major-mode-remap-alist '(js-json-mode . json-ts-mode))
 ;; >--------------------------------------------------
