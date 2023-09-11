@@ -755,6 +755,27 @@
 
 
 ;; <--------------------------------------------------
+;; s
+
+;; https://github.com/magnars/s.el
+
+;; https://stackoverflow.com/a/61745441/9154901
+;;
+(defun my/to-snake-case (start end)
+  "Change selected text to snake case format"
+  (interactive "r")
+  (if (use-region-p)
+      (let ((camel-case-str (buffer-substring start end)))
+        (delete-region start end)
+        (insert (s-snake-case camel-case-str)))
+    (message "No region selected")))
+
+(global-set-key (kbd "s-i c s") 'my/to-snake-case) ; [c]ase: to [s]nake
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; misc
 
 (electric-pair-mode)
