@@ -762,15 +762,25 @@
 ;; https://stackoverflow.com/a/61745441/9154901
 ;;
 (defun my/to-snake-case (start end)
-  "Change selected text to snake case format"
+  "Change selected text to snake case"
   (interactive "r")
   (if (use-region-p)
-      (let ((camel-case-str (buffer-substring start end)))
+      (let ((region-str (buffer-substring start end)))
         (delete-region start end)
-        (insert (s-snake-case camel-case-str)))
+        (insert (s-snake-case region-str)))
+    (message "No region selected")))
+
+(defun my/to-camel-case (start end)
+  "Change selected text to camel case"
+  (interactive "r")
+  (if (use-region-p)
+      (let ((region-str (buffer-substring start end)))
+        (delete-region start end)
+        (insert (s-lower-camel-case region-str)))
     (message "No region selected")))
 
 (global-set-key (kbd "s-i c s") 'my/to-snake-case) ; [c]ase: to [s]nake
+(global-set-key (kbd "s-i c c") 'my/to-camel-case) ; [c]ase: to [c]amel
 ;; >--------------------------------------------------
 
 
