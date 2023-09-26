@@ -23,6 +23,7 @@
 (use-package yaml-ts-mode :mode "\\.ya?ml\\'")
 (use-package dockerfile-ts-mode :mode "Dockerfile\\'")
 (use-package go-ts-mode :mode "\\.go\\'")
+(use-package typescript-ts-mode :mode "\\.ts\\'")
 
 (add-to-list 'major-mode-remap-alist '(js-json-mode . json-ts-mode))
 ;; >--------------------------------------------------
