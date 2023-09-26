@@ -37,6 +37,7 @@
  '(project-vc-extra-root-markers '("Chart.yaml"))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
+ '(symbol-overlay-priority 100)
  '(tool-bar-mode nil)
  '(xref-history-storage 'xref-window-local-history))
 (custom-set-faces
