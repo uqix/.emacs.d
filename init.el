@@ -781,7 +781,7 @@
         (insert (s-lower-camel-case region-str)))
     (message "No region selected")))
 
-(defun my/to-dash-case (start end)
+(defun my/to-kebab-case (start end)
   "Change selected text to dash case"
   (interactive "r")
   (if (use-region-p)
@@ -792,7 +792,7 @@
 
 (global-set-key (kbd "s-i c s") 'my/to-snake-case) ; [c]ase: to [s]nake
 (global-set-key (kbd "s-i c c") 'my/to-camel-case) ; [c]ase: to [c]amel
-(global-set-key (kbd "s-i c d") 'my/to-dash-case)  ; [c]ase: to [d]ash
+(global-set-key (kbd "s-i c k") 'my/to-kebab-case) ; [c]ase: to [k]ebab
 
 ;; >--------------------------------------------------
 
