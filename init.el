@@ -809,6 +809,36 @@
 
 
 ;; <--------------------------------------------------
+;; polymode
+
+;; https://github.com/polymode/polymode
+
+(setq polymode-prefix-key (kbd "s-,"))
+
+;; poly-markdown
+
+;; poly-yaml
+;; 
+;; https://polymode.github.io/defining-polymodes/
+;; 
+(define-hostmode poly-yaml-ts-hostmode
+  :mode 'yaml-ts-mode)
+(define-innermode poly-yaml-ts-bash-innermode
+  :mode 'bash-ts-mode
+  :head-matcher "^ +#!/usr/bin/env \\(sh\\|bash\\)\n"
+  :tail-matcher "^ +# <end>$"
+  :head-mode 'body
+  :tail-mode 'body)
+(define-polymode poly-yaml-ts-mode
+  :hostmode 'poly-yaml-ts-hostmode
+  :innermodes '(poly-yaml-ts-bash-innermode))
+
+(add-hook 'yaml-ts-mode-hook 'poly-yaml-ts-mode)
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; misc
 
 (electric-pair-mode)
