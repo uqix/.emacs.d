@@ -815,8 +815,6 @@
 
 (setq polymode-prefix-key (kbd "s-,"))
 
-;; poly-markdown
-
 ;; poly-yaml
 ;; 
 ;; https://polymode.github.io/defining-polymodes/
