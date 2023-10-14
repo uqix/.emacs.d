@@ -20,11 +20,11 @@
 ;; <--------------------------------------------------
 ;; builtin ts modes
 
-(use-package yaml-ts-mode :mode "\\.ya?ml\\'")
-(use-package dockerfile-ts-mode :mode "Dockerfile\\'")
-(use-package go-ts-mode :mode "\\.go\\'")
-(use-package typescript-ts-mode :mode "\\.ts\\'")
-(use-package bash-ts-mode :mode "\\.sh\\'")
+(use-package yaml-ts-mode :mode "\\.ya?ml$")
+(use-package dockerfile-ts-mode :mode "Dockerfile$")
+(use-package go-ts-mode :mode "\\.go$")
+(use-package typescript-ts-mode :mode "\\.ts$")
+(use-package bash-ts-mode :mode "\\.sh$")
 
 (add-to-list 'major-mode-remap-alist '(js-json-mode . json-ts-mode))
 ;; >--------------------------------------------------
