@@ -174,6 +174,7 @@
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/flymake/Finding-diagnostics.html
 ;;
+(define-key flymake-mode-map (kbd "M-N") 'flymake-show-buffer-diagnostics)
 (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
 (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)
 
