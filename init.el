@@ -20,13 +20,10 @@
 ;; <--------------------------------------------------
 ;; builtin ts modes
 
-(use-package yaml-ts-mode :mode "\\.ya?ml$")
-(use-package dockerfile-ts-mode :mode "Dockerfile$")
-(use-package go-ts-mode :mode "\\.go$")
-(use-package typescript-ts-mode :mode "\\.ts$")
-(use-package bash-ts-mode :mode "\\.sh$")
-
-(add-to-list 'major-mode-remap-alist '(js-json-mode . json-ts-mode))
+(use-package dockerfile-ts-mode)
+(use-package go-ts-mode)
+(use-package typescript-ts-mode)
+(add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
 ;; >--------------------------------------------------
 
 
@@ -273,9 +270,7 @@
 (global-set-key (kbd "s-i p") 'previous-error)         ; [p]revious error
 (global-set-key (kbd "s-i n") 'next-error)             ; [n]ext error
 (global-set-key (kbd "s-i m t") 'text-mode)            ; [t]ext-[m]ode
-(global-set-key (kbd "s-i m j") 'java-mode)            ; [j]ava-[m]ode
 (global-set-key (kbd "s-i m y") 'yaml-ts-mode)         ; [y]aml-ts-[m]ode
-(global-set-key (kbd "s-i m b") 'bash-ts-mode)         ; [b]ash-ts-mode
 (global-set-key (kbd "s-i e") 'hs-toggle-hiding)       ; [e]xpand/collapse code block
 (global-set-key (kbd "M-L") 'downcase-region)          ; [L]owercase region
 (global-set-key (kbd "M-U") 'upcase-region)            ; [U]ppercase region
