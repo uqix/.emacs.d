@@ -20,7 +20,7 @@
 ;; <--------------------------------------------------
 ;; builtin ts modes
 
-(use-package dockerfile-ts-mode)
+(require 'dockerfile-ts-mode)
 (use-package go-ts-mode)
 (use-package typescript-ts-mode)
 (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
@@ -842,5 +842,12 @@
 (put 'downcase-region 'disabled nil)
 
 (add-hook 'prog-mode-hook 'hs-minor-mode)
+
+;; Fix generate-dockerfile.sh|docker-dockerfile.md opened in this mode
+(delete '("\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'"
+          . dockerfile-ts-mode)
+        auto-mode-alist)
+(add-to-list 'auto-mode-alist
+             '("Dockerfile$" . dockerfile-ts-mode))
 
 ;; >--------------------------------------------------
