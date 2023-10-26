@@ -219,6 +219,7 @@
 (define-key yaml-pro-ts-mode-map (kbd "C-M-p") 'yaml-pro-ts-prev-subtree)      ; [p]revious sibling; was backward-list
 (define-key yaml-pro-ts-mode-map (kbd "C-M-u") 'yaml-pro-ts-up-level)          ; [u]p level; was backward-up-list
 (define-key yaml-pro-ts-mode-map (kbd "C-c m") 'yaml-pro-ts-mark-subtree)      ; [m]ark
+(define-key yaml-pro-ts-mode-map (kbd "C-c y") 'yaml-pro-ts-paste-subtree)     ; [m]ark
 
 ;; This is not available for tree-sitter variant. Presumably some tree-sitter folding package will exist in the future.
 ;; (define-key yaml-pro-ts-mode-map (kbd "C-c c") 'yaml-pro-ts-fold-at-point)     ; [c]ollapse
