@@ -446,7 +446,8 @@
 ;;
 (defun my/java-mode-hook ()
   (c-set-offset 'arglist-cont-nonempty '++)
-  (c-set-offset 'arglist-intro '++))
+  (c-set-offset 'arglist-intro '++)
+  (c-set-offset 'case-label '+))
 (add-hook 'java-mode-hook 'my/java-mode-hook)
 ;; >--------------------------------------------------
 
