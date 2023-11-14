@@ -445,8 +445,8 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Customizing-C-and-C_002b_002b-indentation.html
 ;;
 (defun my/java-mode-hook ()
-  (c-set-offset 'arglist-cont-nonempty '++)
-  (c-set-offset 'arglist-intro '++)
+  (c-set-offset 'arglist-intro '+)
+  (c-set-offset 'arglist-close '0)
   (c-set-offset 'case-label '+))
 (add-hook 'java-mode-hook 'my/java-mode-hook)
 ;; >--------------------------------------------------
