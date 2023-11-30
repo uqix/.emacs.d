@@ -51,4 +51,4 @@
  '(flyspell-duplicate ((t (:underline "gray85"))))
  '(flyspell-incorrect ((t (:underline "gray85"))))
  '(markdown-code-face ((t (:extend t :background "gray97"))))
- '(markdown-header-face ((t (:inherit bold :background "khaki1" :foreground "#e45649")))))
+ '(markdown-header-face ((t (:inherit bold :background "light yellow" :foreground "#e45649")))))
