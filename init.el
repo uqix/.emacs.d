@@ -377,9 +377,13 @@
 ;; <-------------------------
 ;; embark
 
+(require 'embark)
+
 ;; https://github.com/oantolin/embark#quick-start
 ;; 
 (global-set-key (kbd "M-i") 'embark-act) ; was tab-to-tab-stop
+
+(define-key embark-file-map (kbd "$") 'shell)
 ;; >-------------------------
 
 ;; <-------------------------
