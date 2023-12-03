@@ -22,6 +22,7 @@
  '(ispell-dictionary "american")
  '(ispell-extra-args '("--camel-case"))
  '(ispell-program-name "aspell")
+ '(js-jsx-syntax t)
  '(magit-diff-refine-hunk 'all)
  '(make-backup-files nil)
  '(markdown-asymmetric-header t)
