@@ -782,9 +782,19 @@
         (insert (s-dashed-words region-str)))
     (message "No region selected")))
 
-(global-set-key (kbd "s-i c s") 'my/to-snake-case) ; [c]ase: to [s]nake
-(global-set-key (kbd "s-i c c") 'my/to-camel-case) ; [c]ase: to [c]amel
-(global-set-key (kbd "s-i c k") 'my/to-kebab-case) ; [c]ase: to [k]ebab
+(defun my/to-capitalized-case (start end)
+  "Change selected text to capitalized case"
+  (interactive "r")
+  (if (use-region-p)
+      (let ((region-str (buffer-substring start end)))
+        (delete-region start end)
+        (insert (s-capitalized-words region-str)))
+    (message "No region selected")))
+
+(global-set-key (kbd "s-i c s") 'my/to-snake-case)       ; [c]ase: to [s]nake
+(global-set-key (kbd "s-i c c") 'my/to-camel-case)       ; [c]ase: to [c]amel
+(global-set-key (kbd "s-i c k") 'my/to-kebab-case)       ; [c]ase: to [k]ebab
+(global-set-key (kbd "s-i c a") 'my/to-capitalized-case) ; [c]ase: to c[a]pitalized
 
 ;; >--------------------------------------------------
 
