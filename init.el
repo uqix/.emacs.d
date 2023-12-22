@@ -121,7 +121,8 @@
 
 ;; https://github.com/doomemacs/themes#manually--use-package
 ;;
-(load-theme 'doom-one-light t)
+;; (load-theme 'doom-one-light t)
+(load-theme 'doom-one t)
 ;; >--------------------------------------------------
 
 
