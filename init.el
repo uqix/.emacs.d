@@ -23,6 +23,7 @@
 (require 'dockerfile-ts-mode)
 (use-package go-ts-mode)
 (use-package typescript-ts-mode)
+(use-package java-ts-mode)
 (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
 ;; >--------------------------------------------------
 
