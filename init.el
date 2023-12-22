@@ -814,8 +814,8 @@
   :mode 'yaml-ts-mode)
 (define-innermode poly-yaml-ts-bash-innermode
   :mode 'bash-ts-mode
-  :head-matcher "^ +#!/usr/bin/env \\(sh\\|bash\\)\n"
-  :tail-matcher "^ +# <end>$"
+  :head-matcher "^ +# <bash>\n"
+  :tail-matcher "^ +# </bash>$"
   :head-mode 'body
   :tail-mode 'body)
 (define-polymode poly-yaml-ts-mode
