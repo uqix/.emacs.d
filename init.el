@@ -811,19 +811,28 @@
 ;; 
 ;; https://polymode.github.io/defining-polymodes/
 ;; 
-(define-hostmode poly-yaml-ts-hostmode
-  :mode 'yaml-ts-mode)
-(define-innermode poly-yaml-ts-bash-innermode
+
+(define-innermode poly-bash-innermode
   :mode 'bash-ts-mode
   :head-matcher "^ +# <bash>\n"
   :tail-matcher "^ +# </bash>$"
   :head-mode 'body
   :tail-mode 'body)
+
+(define-hostmode poly-yaml-ts-hostmode
+  :mode 'yaml-ts-mode)
 (define-polymode poly-yaml-ts-mode
   :hostmode 'poly-yaml-ts-hostmode
-  :innermodes '(poly-yaml-ts-bash-innermode))
-
+  :innermodes '(poly-bash-innermode))
 (add-hook 'yaml-ts-mode-hook 'poly-yaml-ts-mode)
+
+(define-hostmode poly-groovy-hostmode
+  :mode 'groovy-mode)
+(define-polymode poly-groovy-mode
+  :hostmode 'poly-groovy-hostmode
+  :innermodes '(poly-bash-innermode))
+(add-hook 'groovy-mode-hook 'poly-groovy-mode)
+
 ;; >--------------------------------------------------
 
 
