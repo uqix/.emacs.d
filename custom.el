@@ -49,5 +49,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(eglot-highlight-symbol-face ((t (:foreground "red" :weight bold))))
+ '(font-lock-comment-face ((t (:foreground "dark cyan"))))
  '(font-lock-function-call-face ((t (:foreground "#bbc2cf"))))
- '(font-lock-variable-name-face ((t (:foreground "#bbc2cf")))))
+ '(font-lock-type-face ((t (:foreground "#5B6268"))))
+ '(font-lock-variable-name-face ((t (:foreground "#bbc2cf"))))
+ '(sh-quoted-exec ((t (:foreground "#5B6268")))))
