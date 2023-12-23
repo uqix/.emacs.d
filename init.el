@@ -807,6 +807,14 @@
 
 (setq polymode-prefix-key (kbd "s-,"))
 
+(require 'polymode)
+
+(define-key polymode-mode-map (kbd "s-, n") 'polymode-next-chunk)             ; [n]ext
+(define-key polymode-mode-map (kbd "s-, p") 'polymode-previous-chunk)         ; [p]revious
+(define-key polymode-mode-map (kbd "s-, w") 'polymode-toggle-chunk-narrowing) ; narrow or [w]iden
+(define-key polymode-mode-map (kbd "s-, k") 'polymode-kill-chunk)             ; [k]ill
+(define-key polymode-mode-map (kbd "s-, m") 'polymode-mark-or-extend-chunk)   ; [m]ark
+
 ;; https://polymode.github.io/defining-polymodes/
 
 (define-innermode poly-bash-innermode
