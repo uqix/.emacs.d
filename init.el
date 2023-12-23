@@ -24,7 +24,6 @@
 (use-package go-ts-mode)
 (use-package typescript-ts-mode)
 (use-package java-ts-mode)
-(add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
 ;; >--------------------------------------------------
 
 
@@ -856,4 +855,15 @@
 (add-to-list 'auto-mode-alist
              '("Dockerfile$" . dockerfile-ts-mode))
 
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; bash-ts-mode
+
+(require 'sh-script)
+(advice-remove 'bash-ts-mode #'sh--redirect-bash-ts-mode)
+
+(add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
 ;; >--------------------------------------------------
