@@ -51,6 +51,7 @@
  '(eglot-highlight-symbol-face ((t (:foreground "red" :weight bold))))
  '(font-lock-comment-face ((t (:foreground "dark cyan"))))
  '(font-lock-function-call-face ((t (:foreground "#bbc2cf"))))
+ '(font-lock-string-face ((t (:foreground "#5B6268"))))
  '(font-lock-type-face ((t (:foreground "#5B6268"))))
  '(font-lock-variable-name-face ((t (:foreground "#bbc2cf"))))
  '(sh-quoted-exec ((t (:foreground "#5B6268")))))
