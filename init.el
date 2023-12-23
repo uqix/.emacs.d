@@ -648,7 +648,7 @@
 
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-               '(java-mode . ("jdtls"
+               '(java-ts-mode . ("jdtls"
                               ;; "-noverify" "-Xmx2G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"
                               "--jvm-arg=-javaagent:/Users/zjq/opt/lombok.jar"
                               :initializationOptions (:extendedClientCapabilities (:classFileContentsSupport t))))))
