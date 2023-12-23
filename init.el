@@ -807,15 +807,12 @@
 
 (setq polymode-prefix-key (kbd "s-,"))
 
-;; poly-yaml
-;; 
 ;; https://polymode.github.io/defining-polymodes/
-;; 
 
 (define-innermode poly-bash-innermode
   :mode 'bash-ts-mode
-  :head-matcher "^ +# <bash>\n"
-  :tail-matcher "^ +# </bash>$"
+  :head-matcher "^ *#!/usr/bin/env \\(sh\\|bash\\)\n"
+  :tail-matcher "^ *# </bash>$"
   :head-mode 'body
   :tail-mode 'body)
 
