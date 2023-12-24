@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; <--------------------------------------------------
 ;; package
 
@@ -809,11 +811,17 @@
 
 (require 'polymode)
 
+(defun my/polymode/edit-chunk ()
+  (interactive)
+  (call-interactively 'polymode-mark-or-extend-chunk)
+  (call-interactively 'edit-indirect-region))
+
 (define-key polymode-mode-map (kbd "s-, n") 'polymode-next-chunk)             ; [n]ext
 (define-key polymode-mode-map (kbd "s-, p") 'polymode-previous-chunk)         ; [p]revious
 (define-key polymode-mode-map (kbd "s-, w") 'polymode-toggle-chunk-narrowing) ; narrow or [w]iden
 (define-key polymode-mode-map (kbd "s-, k") 'polymode-kill-chunk)             ; [k]ill
 (define-key polymode-mode-map (kbd "s-, m") 'polymode-mark-or-extend-chunk)   ; [m]ark
+(define-key polymode-mode-map (kbd "s-, e") 'my/polymode/edit-chunk)          ; [e]dit by edit-indirect
 
 ;; https://polymode.github.io/defining-polymodes/
 
@@ -871,4 +879,15 @@
 (advice-remove 'bash-ts-mode #'sh--redirect-bash-ts-mode)
 
 (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; edit-indirect
+
+(defun edit-indirect-guess-mode (_parent-buffer _beg _end)
+  (setq-local buffer-file-name (format "%s.-ei-" (buffer-file-name _parent-buffer)))
+  (funcall (buffer-local-value 'major-mode _parent-buffer)))
+(setq edit-indirect-guess-mode-function #'edit-indirect-guess-mode)
 ;; >--------------------------------------------------
