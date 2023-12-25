@@ -49,6 +49,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(eglot-highlight-symbol-face ((t (:foreground "red" :weight bold))))
+ '(flyspell-duplicate ((t (:underline nil))))
  '(font-lock-comment-face ((t (:foreground "dark cyan"))))
  '(font-lock-function-call-face ((t (:foreground "#bbc2cf"))))
  '(font-lock-string-face ((t (:foreground "#5B6268"))))
