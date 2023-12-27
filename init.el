@@ -891,3 +891,21 @@
   (funcall (buffer-local-value 'major-mode _parent-buffer)))
 (setq edit-indirect-guess-mode-function #'edit-indirect-guess-mode)
 ;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; Select text
+
+(defun my/select-text/between-spaces ()
+  (interactive)
+  (re-search-backward "[ ]\\|^")
+  (when (= (char-after) 32)
+    (forward-char))
+  (set-mark (point))
+  (re-search-forward "[ ]\\|$")
+  (when (= (char-before) 32)
+    (backward-char)))
+
+(global-set-key (kbd "s-i s s") 'my/select-text/between-spaces) ; [s]elect text in [s]paces
+;; >--------------------------------------------------
