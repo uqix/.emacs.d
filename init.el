@@ -809,6 +809,7 @@
 (define-key polymode-mode-map (kbd "s-, k") 'polymode-kill-chunk)             ; [k]ill
 (define-key polymode-mode-map (kbd "s-, m") 'polymode-mark-or-extend-chunk)   ; [m]ark
 (define-key polymode-mode-map (kbd "s-, e") 'my/polymode/edit-chunk)          ; [e]dit by edit-indirect
+(define-key polymode-mode-map (kbd "C-c '") 'my/polymode/edit-chunk)          ; [e]dit by edit-indirect
 
 ;; https://polymode.github.io/defining-polymodes/
 
