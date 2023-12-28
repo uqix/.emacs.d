@@ -757,46 +757,33 @@
 
 ;; https://stackoverflow.com/a/61745441/9154901
 ;;
-(defun my/to-snake-case (start end)
-  "Change selected text to snake case"
-  (interactive "r")
+(defun my/region/convert (start end convert)
   (if (use-region-p)
       (let ((region-str (buffer-substring start end)))
         (delete-region start end)
-        (insert (s-snake-case region-str)))
+        (insert (funcall convert region-str)))
     (message "No region selected")))
 
-(defun my/to-camel-case (start end)
-  "Change selected text to camel case"
+(defun my/region/convert/snake-case (start end)
   (interactive "r")
-  (if (use-region-p)
-      (let ((region-str (buffer-substring start end)))
-        (delete-region start end)
-        (insert (s-lower-camel-case region-str)))
-    (message "No region selected")))
+  (my/region/convert start end 's-snake-case))
 
-(defun my/to-kebab-case (start end)
-  "Change selected text to dash case"
+(defun my/region/convert/camel-case (start end)
   (interactive "r")
-  (if (use-region-p)
-      (let ((region-str (buffer-substring start end)))
-        (delete-region start end)
-        (insert (s-dashed-words region-str)))
-    (message "No region selected")))
+  (my/region/convert start end 's-lower-camel-case))
 
-(defun my/to-capitalized-case (start end)
-  "Change selected text to capitalized case"
+(defun my/region/convert/kebab-case (start end)
   (interactive "r")
-  (if (use-region-p)
-      (let ((region-str (buffer-substring start end)))
-        (delete-region start end)
-        (insert (s-capitalized-words region-str)))
-    (message "No region selected")))
+  (my/region/convert start end 's-dashed-words))
 
-(global-set-key (kbd "s-i c s") 'my/to-snake-case)       ; [c]ase: to [s]nake
-(global-set-key (kbd "s-i c c") 'my/to-camel-case)       ; [c]ase: to [c]amel
-(global-set-key (kbd "s-i c k") 'my/to-kebab-case)       ; [c]ase: to [k]ebab
-(global-set-key (kbd "s-i c a") 'my/to-capitalized-case) ; [c]ase: to c[a]pitalized
+(defun my/region/convert/capitalize (start end)
+  (interactive "r")
+  (my/region/convert start end 's-capitalized-words))
+
+(global-set-key (kbd "s-i c s") 'my/region/convert/snake-case) ; [c]ase: to [s]nake
+(global-set-key (kbd "s-i c c") 'my/region/convert/camel-case) ; [c]ase: to [c]amel
+(global-set-key (kbd "s-i c k") 'my/region/convert/kebab-case) ; [c]ase: to [k]ebab
+(global-set-key (kbd "s-i c a") 'my/region/convert/capitalize) ; [c]ase: to c[a]pitalized
 
 ;; >--------------------------------------------------
 
@@ -899,11 +886,11 @@
 
 (defun my/select-text/between-spaces ()
   (interactive)
-  (re-search-backward "[ ]\\|^")
+  (re-search-backward " \\|^")
   (when (= (char-after) 32)
     (forward-char))
   (set-mark (point))
-  (re-search-forward "[ ]\\|$")
+  (re-search-forward " \\|$")
   (when (= (char-before) 32)
     (backward-char)))
 
