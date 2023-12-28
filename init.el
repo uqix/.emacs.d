@@ -873,13 +873,16 @@
 ;; <--------------------------------------------------
 ;; edit-indirect
 
+(global-set-key (kbd "C-c '") 'edit-indirect-region)
+
 (defun edit-indirect-guess-mode (_parent-buffer _beg _end)
   (setq-local buffer-file-name (format "%s.-ei-" (buffer-file-name _parent-buffer)))
   (funcall (buffer-local-value 'major-mode _parent-buffer)))
 (setq edit-indirect-guess-mode-function #'edit-indirect-guess-mode)
 
+;; <-------------------------
 ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-387945773
-;;
+
 (require 's)
 (require 'dash)
 
@@ -891,7 +894,7 @@
    (-map #'(lambda (line) (length (car (s-match "^\\s-*" line))))
          (-remove 's-blank? (s-lines code)))))
 
-(defun vbe:after-indirect-edit-remove-left-margin ()
+(defun vbe:edit-indirect-remove-left-margin ()
   "Remove left-margin and save it into a local variable."
   (let ((lm (vbe:compute-left-margin (buffer-substring (point-min) (point-max)))))
     (indent-rigidly (point-min) (point-max) (* -1 lm))
@@ -900,12 +903,14 @@
     ;; buffer-local variable whose value should not be reset when changing major modes
     (put 'edit-indirect--left-margin 'permanent-local t)))
 
-(defun vbe:after-indirect-edit-restore-left-margin ()
+(defun vbe:edit-indirect-restore-left-margin ()
   "Restore left-margin before commiting."
   (indent-rigidly (point-min) (point-max) edit-indirect--left-margin))
 
-(add-hook 'edit-indirect-after-creation-hook #'vbe:after-indirect-edit-remove-left-margin)
-(add-hook 'edit-indirect-before-commit-hook #'vbe:after-indirect-edit-restore-left-margin)
+(add-hook 'edit-indirect-after-creation-hook #'vbe:edit-indirect-remove-left-margin)
+(add-hook 'edit-indirect-before-commit-hook #'vbe:edit-indirect-restore-left-margin)
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
