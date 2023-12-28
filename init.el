@@ -832,19 +832,11 @@
   :head-mode 'body
   :tail-mode 'body)
 
-(define-innermode poly-markdown-innermode
-  :mode 'markdown-mode
-  :head-matcher "^ *\\[//]: # ({)\n"
-  :tail-matcher "^ *\\[//]: # (})$"
-  :head-mode 'body
-  :tail-mode 'body)
-
 (define-hostmode poly-yaml-ts-hostmode
   :mode 'yaml-ts-mode)
 (define-polymode poly-yaml-ts-mode
   :hostmode 'poly-yaml-ts-hostmode
-  :innermodes '(poly-bash-innermode
-                poly-markdown-innermode))
+  :innermodes '(poly-bash-innermode))
 (add-hook 'yaml-ts-mode-hook 'poly-yaml-ts-mode)
 
 (define-hostmode poly-groovy-hostmode
@@ -907,11 +899,11 @@
 
 (defun my/select-text/between-spaces ()
   (interactive)
-  (re-search-backward " \\|^")
+  (re-search-backward "[ ]\\|^")
   (when (= (char-after) 32)
     (forward-char))
   (set-mark (point))
-  (re-search-forward " \\|$")
+  (re-search-forward "[ ]\\|$")
   (when (= (char-before) 32)
     (backward-char)))
 
