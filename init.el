@@ -774,28 +774,28 @@
 
 ;; https://stackoverflow.com/a/61745441/9154901
 ;;
-(defun my/region/convert (start end convert)
+(defun my/region/convert (begin end convert)
   (if (use-region-p)
-      (let ((region-str (buffer-substring start end)))
-        (delete-region start end)
+      (let ((region-str (buffer-substring begin end)))
+        (delete-region begin end)
         (insert (funcall convert region-str)))
     (message "No region selected")))
 
-(defun my/region/convert/snake-case (start end)
+(defun my/region/convert/snake-case (begin end)
   (interactive "r")
-  (my/region/convert start end 's-snake-case))
+  (my/region/convert begin end 's-snake-case))
 
-(defun my/region/convert/camel-case (start end)
+(defun my/region/convert/camel-case (begin end)
   (interactive "r")
-  (my/region/convert start end 's-lower-camel-case))
+  (my/region/convert begin end 's-lower-camel-case))
 
-(defun my/region/convert/kebab-case (start end)
+(defun my/region/convert/kebab-case (begin end)
   (interactive "r")
-  (my/region/convert start end 's-dashed-words))
+  (my/region/convert begin end 's-dashed-words))
 
-(defun my/region/convert/capitalize (start end)
+(defun my/region/convert/capitalize (begin end)
   (interactive "r")
-  (my/region/convert start end 's-capitalized-words))
+  (my/region/convert begin end 's-capitalized-words))
 
 (global-set-key (kbd "s-i c s") 'my/region/convert/snake-case) ; [c]ase: to [s]nake
 (global-set-key (kbd "s-i c c") 'my/region/convert/camel-case) ; [c]ase: to [c]amel
