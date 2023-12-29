@@ -398,6 +398,7 @@
 (defun my/region/with-str (begin end op)
   (if begin
       (let ((region-str (buffer-substring begin end)))
+        (deactivate-mark)
         (funcall op region-str))
     (funcall op)))
 
