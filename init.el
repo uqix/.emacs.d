@@ -948,5 +948,10 @@
   (when (= (char-before) 32)
     (backward-char)))
 
-(global-set-key (kbd "s-i s s") 'my/select-text/between-spaces) ; [s]elect text in [s]paces
+(defalias 'my/select-text/java-text-block
+  (kmacro "M-[ C-n C-a C-x C-x C-p C-e"))
+
+(global-set-key (kbd "s-i s s") 'my/select-text/between-spaces)  ; [s]elect text in [s]paces
+(global-set-key (kbd "s-i s j") 'my/select-text/java-text-block) ; [s]elect text in [j]ava text block
 ;; >--------------------------------------------------
+
