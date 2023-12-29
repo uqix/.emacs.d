@@ -395,11 +395,28 @@
 ;; https://github.com/oantolin/embark#consult
 ;; >-------------------------
 
+(defun my/region/with-str (begin end op)
+  (if begin
+      (let ((region-str (buffer-substring begin end)))
+        (funcall op region-str))
+    (funcall op)))
+
+(defun my/consult-line (&optional begin end)
+  (interactive (if (use-region-p) (list (region-beginning) (region-end))))
+  (my/region/with-str begin end 'consult-line))
+
+(defun my/consult-ripgrep-without-dir (&optional initial)
+  (consult-ripgrep nil initial))
+
+(defun my/consult-ripgrep (&optional begin end)
+  (interactive (if (use-region-p) (list (region-beginning) (region-end))))
+  (my/region/with-str begin end 'my/consult-ripgrep-without-dir))
+
 (global-set-key (kbd "s-j") 'consult-buffer)                         ; [j]ump; was exchange-point-and-mark, prefer C-x C-x
-(global-set-key (kbd "s-f") 'consult-line)                           ; [f]ind; was isearch-forward
+(global-set-key (kbd "s-f") 'my/consult-line)                        ; [f]ind; was isearch-forward
 (define-key isearch-mode-map (kbd "s-f") 'consult-line)              ; [f]ind
 (define-key isearch-mode-map (kbd "C-c h") 'consult-isearch-history) ; [h]istory
-(global-set-key (kbd "s-g") 'consult-ripgrep)                        ; [g]rep; was isearch-repeat-forward
+(global-set-key (kbd "s-g") 'my/consult-ripgrep)                     ; [g]rep; was isearch-repeat-forward
 (global-set-key (kbd "M-y") 'consult-yank-replace)                   ; [y]ank
 (global-set-key (kbd "s-h i") 'consult-imenu)                        ; [i]menu
 (global-set-key (kbd "s-h I") 'consult-imenu-multi)                  ; [I]menu
