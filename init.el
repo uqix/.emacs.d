@@ -927,6 +927,10 @@
 
 (add-hook 'edit-indirect-after-creation-hook #'vbe:edit-indirect-remove-left-margin)
 (add-hook 'edit-indirect-before-commit-hook #'vbe:edit-indirect-restore-left-margin)
+
+(require 'edit-indirect)
+;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-1284144173
+(define-key edit-indirect-mode-map [remap save-buffer] #'edit-indirect-commit)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
