@@ -776,11 +776,9 @@
 ;; https://stackoverflow.com/a/61745441/9154901
 ;;
 (defun my/region/convert (begin end convert)
-  (if (use-region-p)
-      (let ((region-str (buffer-substring begin end)))
-        (delete-region begin end)
-        (insert (funcall convert region-str)))
-    (message "No region selected")))
+  (let ((region-str (buffer-substring begin end)))
+    (delete-region begin end)
+    (insert (funcall convert region-str))))
 
 (defun my/region/convert/snake-case (begin end)
   (interactive "r")
