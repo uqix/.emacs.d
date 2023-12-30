@@ -839,19 +839,36 @@
   :head-mode 'body
   :tail-mode 'body)
 
+;; <-------------------------
+;; yaml
+
 (define-hostmode poly-yaml-ts-hostmode
   :mode 'yaml-ts-mode)
 (define-polymode poly-yaml-ts-mode
   :hostmode 'poly-yaml-ts-hostmode
   :innermodes '(poly-bash-innermode))
-(add-hook 'yaml-ts-mode-hook 'poly-yaml-ts-mode)
+
+;; https://github.com/polymode/polymode/issues/324#issuecomment-1872441449
+;; (add-hook 'yaml-ts-mode-hook 'poly-yaml-ts-mode)
+
+(define-key yaml-ts-mode-map (kbd "C-c p") 'poly-yaml-ts-mode)
+;; >-------------------------
+
+;; <-------------------------
+;; groovy
 
 (define-hostmode poly-groovy-hostmode
   :mode 'groovy-mode)
 (define-polymode poly-groovy-mode
   :hostmode 'poly-groovy-hostmode
   :innermodes '(poly-bash-innermode))
-(add-hook 'groovy-mode-hook 'poly-groovy-mode)
+
+;; https://github.com/polymode/polymode/issues/324#issuecomment-1872441449
+;; (add-hook 'groovy-mode-hook 'poly-groovy-mode)
+
+(require 'groovy-mode)
+(define-key groovy-mode-map (kbd "C-c p") 'poly-groovy-mode)
+;; >-------------------------
 
 ;; >--------------------------------------------------
 
