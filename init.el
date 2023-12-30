@@ -434,7 +434,7 @@
 (global-set-key (kbd "s-h R") 'consult-register)                     ; [R]egister
 (global-set-key (kbd "s-h f") 'consult-line-multi)                   ; [f]ind
 (global-set-key (kbd "s-h k") 'consult-keep-lines)                   ; [k]eep
-(global-set-key (kbd "s-h h") 'consult-focus-lines)                  ; [h]ide
+(global-set-key (kbd "s-h F") 'consult-focus-lines)                  ; [F]ocus
 (global-set-key (kbd "s-h m") 'consult-mark)                         ; [m]ark
 (global-set-key (kbd "s-h M") 'consult-global-mark)                  ; [M]ark
 (global-set-key (kbd "s-h o") 'consult-outline)                      ; [o]utline
