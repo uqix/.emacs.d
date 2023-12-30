@@ -804,10 +804,12 @@
   (interactive)
   (my/region/convert 's-capitalized-words))
 
-(global-set-key (kbd "s-i c s") 'my/region/convert/snake-case) ; [c]ase: to [s]nake
-(global-set-key (kbd "s-i c c") 'my/region/convert/camel-case) ; [c]ase: to [c]amel
-(global-set-key (kbd "s-i c k") 'my/region/convert/kebab-case) ; [c]ase: to [k]ebab
-(global-set-key (kbd "s-i c a") 'my/region/convert/capitalize) ; [c]ase: to c[a]pitalized
+(define-key embark-region-map (kbd "c") nil)
+
+(define-key embark-region-map (kbd "c s") #'my/region/convert/snake-case) ; [c]ase: to [s]nake
+(define-key embark-region-map (kbd "c c") #'my/region/convert/camel-case) ; [c]ase: to [c]amel
+(define-key embark-region-map (kbd "c k") #'my/region/convert/kebab-case) ; [c]ase: to [k]ebab
+(define-key embark-region-map (kbd "c a") #'my/region/convert/capitalize) ; [c]ase: to c[a]pitalized
 
 ;; >--------------------------------------------------
 
