@@ -23,9 +23,9 @@
 ;; builtin ts modes
 
 (require 'dockerfile-ts-mode)
-(use-package go-ts-mode)
-(use-package typescript-ts-mode)
-(use-package java-ts-mode)
+(require 'go-ts-mode)
+(require 'typescript-ts-mode)
+(require 'java-ts-mode)
 ;; >--------------------------------------------------
 
 
@@ -166,8 +166,8 @@
 (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
 (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)
 
-(use-package flymake
-  :hook (json-ts-mode yaml-ts-mode))
+(add-hook 'json-ts-mode-hook 'flymake-mode)
+(add-hook 'yaml-ts-mode-hook 'flymake-mode)
 
 ;; <-------------------------
 ;; flymake-collection
