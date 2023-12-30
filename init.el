@@ -395,23 +395,27 @@
 ;; https://github.com/oantolin/embark#consult
 ;; >-------------------------
 
-(defun my/region/with-str (begin end op)
-  (if begin
-      (let ((region-str (buffer-substring begin end)))
-        (deactivate-mark)
-        (funcall op region-str))
-    (funcall op)))
+(defun my/region/with-str (op &optional op-without-str)
+  (let ((call-op
+         (lambda (&optional begin end)
+           (interactive (if (use-region-p) (list (region-beginning) (region-end))))
+           (if begin
+               (let ((region-str (buffer-substring begin end)))
+                 (deactivate-mark)
+                 (funcall op region-str))
+             (call-interactively (or op-without-str op))))))
+    (call-interactively call-op)))
 
-(defun my/consult-line (&optional begin end)
-  (interactive (if (use-region-p) (list (region-beginning) (region-end))))
-  (my/region/with-str begin end 'consult-line))
+(defun my/consult-line ()
+  (interactive)
+  (my/region/with-str 'consult-line))
 
-(defun my/consult-ripgrep-without-dir (&optional initial)
+(defun my/consult-ripgrep/without-dir (initial)
   (consult-ripgrep nil initial))
 
-(defun my/consult-ripgrep (&optional begin end)
-  (interactive (if (use-region-p) (list (region-beginning) (region-end))))
-  (my/region/with-str begin end 'my/consult-ripgrep-without-dir))
+(defun my/consult-ripgrep ()
+  (interactive)
+  (my/region/with-str 'my/consult-ripgrep/without-dir 'consult-ripgrep))
 
 (global-set-key (kbd "s-j") 'consult-buffer)                         ; [j]ump; was exchange-point-and-mark, prefer C-x C-x
 (global-set-key (kbd "s-f") 'my/consult-line)                        ; [f]ind; was isearch-forward
