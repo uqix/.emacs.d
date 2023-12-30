@@ -898,6 +898,7 @@
 (add-to-list 'auto-mode-alist
              '("Dockerfile$" . dockerfile-ts-mode))
 
+(define-key isearch-mode-map (kbd "C-,") #'isearch-query-replace)
 ;; >--------------------------------------------------
 
 
