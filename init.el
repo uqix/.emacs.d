@@ -395,16 +395,16 @@
 ;; https://github.com/oantolin/embark#consult
 ;; >-------------------------
 
-(defun my/region/with-str (op &optional op-without-str)
-  (let ((call-op
+(defun my/region/with-str (fn &optional fn-without-str)
+  (let ((command
          (lambda (&optional begin end)
            (interactive (if (use-region-p) (list (region-beginning) (region-end))))
            (if begin
                (let ((region-str (buffer-substring begin end)))
                  (deactivate-mark)
-                 (funcall op region-str))
-             (call-interactively (or op-without-str op))))))
-    (call-interactively call-op)))
+                 (funcall fn region-str))
+             (call-interactively (or fn-without-str fn))))))
+    (call-interactively command)))
 
 (defun my/consult-line ()
   (interactive)
@@ -779,26 +779,30 @@
 
 ;; https://stackoverflow.com/a/61745441/9154901
 ;;
-(defun my/region/convert (begin end convert)
-  (let ((region-str (buffer-substring begin end)))
-    (delete-region begin end)
-    (insert (funcall convert region-str))))
+(defun my/region/convert (fn)
+  (let ((command
+         (lambda (begin end)
+           (interactive "r")
+           (let ((region-str (buffer-substring begin end)))
+             (delete-region begin end)
+             (insert (funcall fn region-str))))))
+    (call-interactively command)))
 
-(defun my/region/convert/snake-case (begin end)
-  (interactive "r")
-  (my/region/convert begin end 's-snake-case))
+(defun my/region/convert/snake-case ()
+  (interactive)
+  (my/region/convert 's-snake-case))
 
-(defun my/region/convert/camel-case (begin end)
-  (interactive "r")
-  (my/region/convert begin end 's-lower-camel-case))
+(defun my/region/convert/camel-case ()
+  (interactive)
+  (my/region/convert 's-lower-camel-case))
 
-(defun my/region/convert/kebab-case (begin end)
-  (interactive "r")
-  (my/region/convert begin end 's-dashed-words))
+(defun my/region/convert/kebab-case ()
+  (interactive)
+  (my/region/convert 's-dashed-words))
 
-(defun my/region/convert/capitalize (begin end)
-  (interactive "r")
-  (my/region/convert begin end 's-capitalized-words))
+(defun my/region/convert/capitalize ()
+  (interactive)
+  (my/region/convert 's-capitalized-words))
 
 (global-set-key (kbd "s-i c s") 'my/region/convert/snake-case) ; [c]ase: to [s]nake
 (global-set-key (kbd "s-i c c") 'my/region/convert/camel-case) ; [c]ase: to [c]amel
