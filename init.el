@@ -387,6 +387,10 @@
 (global-set-key (kbd "M-i") 'embark-act) ; was tab-to-tab-stop
 
 (define-key embark-file-map (kbd "$") 'shell)
+
+(define-key embark-region-map (kbd "e") nil)             ; was eval-region
+(define-key embark-region-map (kbd "e e") #'eval-region) ; [e]val elisp
+
 ;; >-------------------------
 
 ;; <-------------------------
@@ -917,7 +921,7 @@
 ;; <--------------------------------------------------
 ;; edit-indirect
 
-(global-set-key (kbd "C-c '") 'edit-indirect-region)
+(define-key embark-region-map (kbd "e i") #'edit-indirect-region) ; [e]dit-[i]ndirect
 
 (defun my/edit-indirect/guess-mode (_parent-buffer _beg _end)
   (setq-local buffer-file-name (format "%s.-ei-" (buffer-file-name _parent-buffer)))
