@@ -903,6 +903,10 @@
              '("Dockerfile$" . dockerfile-ts-mode))
 
 (define-key isearch-mode-map (kbd "C-,") #'isearch-query-replace)
+
+(require 'whitespace)
+(setq whitespace-style (delete 'lines whitespace-style))
+
 ;; >--------------------------------------------------
 
 
