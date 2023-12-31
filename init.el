@@ -970,20 +970,44 @@
 ;; <--------------------------------------------------
 ;; Select text
 
-(defun my/select-text/between-spaces ()
-  (interactive)
-  (re-search-backward " \\|^")
-  (when (= (char-after) 32)
+(defun my/select-text/between (separator-char)
+  (re-search-backward (format "%c\\|^" separator-char))
+  (when (= (char-after) separator-char)
     (forward-char))
   (set-mark (point))
-  (re-search-forward " \\|$")
-  (when (= (char-before) 32)
+  (re-search-forward (format "%c\\|$" separator-char))
+  (when (= (char-before) separator-char)
     (backward-char)))
+
+(defun my/select-text/between-spaces ()
+  (interactive)
+  (my/select-text/between ?\s))
+
+(defun my/select-text/between-slashes ()
+  (interactive)
+  (my/select-text/between ?/))
+
+(defun my/select-text/between-commas ()
+  (interactive)
+  (my/select-text/between ?,))
+
+(defun my/select-text/between-single-quotes ()
+  (interactive)
+  (my/select-text/between ?'))
+
+(defun my/select-text/between-double-quotes ()
+  (interactive)
+  (my/select-text/between 34)) ; ?" is mis-parsed as string begin by elisp-mode
 
 (defalias 'my/select-text/java-text-block
   (kmacro "M-[ C-n C-a C-x C-x C-p C-e"))
 
-(global-set-key (kbd "s-i s s") 'my/select-text/between-spaces)  ; [s]elect text in [s]paces
-(global-set-key (kbd "s-i s j") 'my/select-text/java-text-block) ; [s]elect text in [j]ava text block
+(global-set-key (kbd "s-i s s") 'my/select-text/between-spaces)         ; [s]elect text between [s]paces
+(global-set-key (kbd "s-i s /") 'my/select-text/between-slashes)        ; [s]elect text between /
+(global-set-key (kbd "s-i s ,") 'my/select-text/between-commas)         ; [s]elect text between ,
+(global-set-key (kbd "s-i s '") 'my/select-text/between-single-quotes)  ; [s]elect text between '
+(global-set-key (kbd "s-i s \"") 'my/select-text/between-double-quotes) ; [s]elect text between "
+(global-set-key (kbd "s-i s j") 'my/select-text/java-text-block)        ; [s]elect text in [j]ava text block
+
 ;; >--------------------------------------------------
 
