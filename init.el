@@ -264,6 +264,7 @@
 (global-set-key (kbd "s-i m t") 'text-mode)            ; [t]ext-[m]ode
 (global-set-key (kbd "s-i m y") 'yaml-ts-mode)         ; [y]aml-ts-[m]ode
 (global-set-key (kbd "s-i e") 'hs-toggle-hiding)       ; [e]xpand/collapse code block
+(global-set-key (kbd "s-i w") 'whitespace-mode)        ; [w]hitespace-mode
 (global-set-key (kbd "M-L") 'downcase-region)          ; [L]owercase region
 (global-set-key (kbd "M-U") 'upcase-region)            ; [U]ppercase region
 
