@@ -12,6 +12,7 @@
  '(dired-listing-switches "-alh")
  '(eglot-events-buffer-size 0)
  '(eglot-report-progress nil)
+ '(embark-mixed-indicator-delay 1.5)
  '(enable-recursive-minibuffers t)
  '(ffap-machine-p-known 'reject)
  '(fill-column 100)
