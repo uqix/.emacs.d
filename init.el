@@ -701,36 +701,6 @@
 
 
 ;; <--------------------------------------------------
-;; docker
-
-;; https://github.com/Silex/docker.el
-
-(global-set-key (kbd "s-i d") 'docker)
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
-;; jinja2-mode
-
-;; https://github.com/paradoxxxzero/jinja2-mode
-
-(require 'jinja2-mode)
-
-(define-key jinja2-mode-map (kbd "M-o") nil) ; facemenu-set-
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
-;; git-timemachine
-
-;; https://codeberg.org/pidu/git-timemachine
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
 ;; s
 
 ;; https://github.com/magnars/s.el
@@ -1020,4 +990,34 @@
 (define-key markdown-mode-map (kbd "C-M-p") #'markdown-outline-previous-same-level) ; [p]revious sibling; was backward-list
 (define-key markdown-mode-map (kbd "C-M-u") #'markdown-up-heading)                  ; [u]p level; was backward-up-list
 
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; docker
+
+;; https://github.com/Silex/docker.el
+
+(global-set-key (kbd "s-i d") #'docker)
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; jinja2-mode
+
+;; https://github.com/paradoxxxzero/jinja2-mode
+
+(require 'jinja2-mode)
+
+(define-key jinja2-mode-map (kbd "M-o") nil) ; facemenu-set-
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; git-timemachine
+
+;; https://codeberg.org/pidu/git-timemachine
 ;; >--------------------------------------------------
