@@ -130,9 +130,13 @@
 
 
 ;; <--------------------------------------------------
-;; maximize emacs
+;; Frame
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
+;; https://www.emacswiki.org/emacs/FrameTitle#h5o-6
+(setq frame-title-format "%b <%f>")
+
 ;; >--------------------------------------------------
 
 
