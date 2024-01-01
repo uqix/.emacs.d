@@ -967,7 +967,9 @@
 (define-key yaml-pro-ts-mode-map (kbd "C-c m") #'yaml-pro-ts-mark-subtree)      ; [m]ark
 (define-key yaml-pro-ts-mode-map (kbd "C-c y") #'yaml-pro-ts-paste-subtree)     ; [y]ank
 
-;; This is not available for tree-sitter variant. Presumably some tree-sitter folding package will exist in the future.
+;; This is not available for tree-sitter variant.
+;; Presumably some tree-sitter folding package will exist in the future.
+;; 
 ;; (define-key yaml-pro-ts-mode-map (kbd "C-c c") 'yaml-pro-ts-fold-at-point)     ; [c]ollapse
 ;; (define-key yaml-pro-ts-mode-map (kbd "C-c e") 'yaml-pro-ts-unfold-at-point)   ; [e]xpand
 
