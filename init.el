@@ -534,29 +534,6 @@
 
 
 ;; <--------------------------------------------------
-;; markdown-mode
-
-(require 'markdown-mode)
-
-(define-key markdown-mode-map (kbd "C-c c") 'markdown-insert-code)                 ; inline [c]ode
-(define-key markdown-mode-map (kbd "C-c b") 'markdown-insert-gfm-code-block)       ; code [b]lock
-(define-key markdown-mode-map (kbd "C-c q") 'markdown-insert-blockquote)           ; [q]uote
-(define-key markdown-mode-map (kbd "C-c e") 'markdown-insert-bold)                 ; [e]mphasize
-(define-key markdown-mode-map (kbd "C-c l") 'markdown-insert-link)                 ; [l]ink
-(define-key markdown-mode-map (kbd "C-c n") 'markdown-next-visible-heading)        ; [n]ext heading
-(define-key markdown-mode-map (kbd "C-c p") 'markdown-previous-visible-heading)    ; [p]revious heading
-(define-key markdown-mode-map (kbd "C-c h") 'markdown-insert-header-dwim)          ; insert [h]eader
-(define-key markdown-mode-map (kbd "C-c i") 'markdown-insert-image)                ; insert [i]mage
-(define-key markdown-mode-map (kbd "C-c I") 'markdown-toggle-inline-images)        ; show [I]mages
-(define-key markdown-mode-map (kbd "C-M-n") 'markdown-outline-next-same-level)     ; [n]ext sibling; was forward-list
-(define-key markdown-mode-map (kbd "C-M-p") 'markdown-outline-previous-same-level) ; [p]revious sibling; was backward-list
-(define-key markdown-mode-map (kbd "C-M-u") 'markdown-up-heading)                  ; [u]p level; was backward-up-list
-
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
 ;; compilation-mode
 
 ;; compilation-mode-map
@@ -1019,5 +996,28 @@
 ;; This is not available for tree-sitter variant. Presumably some tree-sitter folding package will exist in the future.
 ;; (define-key yaml-pro-ts-mode-map (kbd "C-c c") 'yaml-pro-ts-fold-at-point)     ; [c]ollapse
 ;; (define-key yaml-pro-ts-mode-map (kbd "C-c e") 'yaml-pro-ts-unfold-at-point)   ; [e]xpand
+
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; markdown-mode
+
+(require 'markdown-mode)
+
+(define-key markdown-mode-map (kbd "C-c c") #'markdown-insert-code)                 ; inline [c]ode
+(define-key markdown-mode-map (kbd "C-c b") #'markdown-insert-gfm-code-block)       ; code [b]lock
+(define-key markdown-mode-map (kbd "C-c q") #'markdown-insert-blockquote)           ; [q]uote
+(define-key markdown-mode-map (kbd "C-c e") #'markdown-insert-bold)                 ; [e]mphasize
+(define-key markdown-mode-map (kbd "C-c l") #'markdown-insert-link)                 ; [l]ink
+(define-key markdown-mode-map (kbd "C-c n") #'markdown-next-visible-heading)        ; [n]ext heading
+(define-key markdown-mode-map (kbd "C-c p") #'markdown-previous-visible-heading)    ; [p]revious heading
+(define-key markdown-mode-map (kbd "C-c h") #'markdown-insert-header-dwim)          ; insert [h]eader
+(define-key markdown-mode-map (kbd "C-c i") #'markdown-insert-image)                ; insert [i]mage
+(define-key markdown-mode-map (kbd "C-c I") #'markdown-toggle-inline-images)        ; show [I]mages
+(define-key markdown-mode-map (kbd "C-M-n") #'markdown-outline-next-same-level)     ; [n]ext sibling; was forward-list
+(define-key markdown-mode-map (kbd "C-M-p") #'markdown-outline-previous-same-level) ; [p]revious sibling; was backward-list
+(define-key markdown-mode-map (kbd "C-M-u") #'markdown-up-heading)                  ; [u]p level; was backward-up-list
 
 ;; >--------------------------------------------------
