@@ -191,36 +191,6 @@
 
 
 ;; <--------------------------------------------------
-;; yaml-pro
-
-;; https://github.com/zkry/yaml-pro
-
-(require 'yaml-pro)
-
-(add-hook 'yaml-ts-mode-hook 'yaml-pro-ts-mode)
-
-;; https://github.com/zkry/yaml-pro#usage-1
-
-(define-key yaml-pro-ts-mode-map (kbd "C-c l") 'yaml-pro-ts-unindent-subtree)  ; [l]eft move
-(define-key yaml-pro-ts-mode-map (kbd "C-c r") 'yaml-pro-ts-indent-subtree)    ; [r]ight move
-(define-key yaml-pro-ts-mode-map (kbd "C-c u") 'yaml-pro-ts-move-subtree-up)   ; [u]p move
-(define-key yaml-pro-ts-mode-map (kbd "C-c d") 'yaml-pro-ts-move-subtree-down) ; [d]own move
-(define-key yaml-pro-ts-mode-map (kbd "C-c k") 'yaml-pro-ts-kill-subtree)      ; [k]ill
-(define-key yaml-pro-ts-mode-map (kbd "C-M-n") 'yaml-pro-ts-next-subtree)      ; [n]ext sibling; was forward-list
-(define-key yaml-pro-ts-mode-map (kbd "C-M-p") 'yaml-pro-ts-prev-subtree)      ; [p]revious sibling; was backward-list
-(define-key yaml-pro-ts-mode-map (kbd "C-M-u") 'yaml-pro-ts-up-level)          ; [u]p level; was backward-up-list
-(define-key yaml-pro-ts-mode-map (kbd "C-c m") 'yaml-pro-ts-mark-subtree)      ; [m]ark
-(define-key yaml-pro-ts-mode-map (kbd "C-c y") 'yaml-pro-ts-paste-subtree)     ; [y]ank
-
-;; This is not available for tree-sitter variant. Presumably some tree-sitter folding package will exist in the future.
-;; (define-key yaml-pro-ts-mode-map (kbd "C-c c") 'yaml-pro-ts-fold-at-point)     ; [c]ollapse
-;; (define-key yaml-pro-ts-mode-map (kbd "C-c e") 'yaml-pro-ts-unfold-at-point)   ; [e]xpand
-
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
 ;; minibuffer
 
 (add-hook 'minibuffer-setup-hook 'subword-mode)
@@ -1022,3 +992,32 @@
 
 ;; >--------------------------------------------------
 
+
+
+;; <--------------------------------------------------
+;; yaml-pro
+
+;; https://github.com/zkry/yaml-pro
+
+(require 'yaml-pro)
+
+(add-hook 'yaml-ts-mode-hook #'yaml-pro-ts-mode)
+
+;; https://github.com/zkry/yaml-pro#usage-1
+
+(define-key yaml-pro-ts-mode-map (kbd "C-c l") #'yaml-pro-ts-unindent-subtree)  ; [l]eft move
+(define-key yaml-pro-ts-mode-map (kbd "C-c r") #'yaml-pro-ts-indent-subtree)    ; [r]ight move
+(define-key yaml-pro-ts-mode-map (kbd "C-c u") #'yaml-pro-ts-move-subtree-up)   ; [u]p move
+(define-key yaml-pro-ts-mode-map (kbd "C-c d") #'yaml-pro-ts-move-subtree-down) ; [d]own move
+(define-key yaml-pro-ts-mode-map (kbd "C-c k") #'yaml-pro-ts-kill-subtree)      ; [k]ill
+(define-key yaml-pro-ts-mode-map (kbd "C-M-n") #'yaml-pro-ts-next-subtree)      ; [n]ext sibling; was forward-list
+(define-key yaml-pro-ts-mode-map (kbd "C-M-p") #'yaml-pro-ts-prev-subtree)      ; [p]revious sibling; was backward-list
+(define-key yaml-pro-ts-mode-map (kbd "C-M-u") #'yaml-pro-ts-up-level)          ; [u]p level; was backward-up-list
+(define-key yaml-pro-ts-mode-map (kbd "C-c m") #'yaml-pro-ts-mark-subtree)      ; [m]ark
+(define-key yaml-pro-ts-mode-map (kbd "C-c y") #'yaml-pro-ts-paste-subtree)     ; [y]ank
+
+;; This is not available for tree-sitter variant. Presumably some tree-sitter folding package will exist in the future.
+;; (define-key yaml-pro-ts-mode-map (kbd "C-c c") 'yaml-pro-ts-fold-at-point)     ; [c]ollapse
+;; (define-key yaml-pro-ts-mode-map (kbd "C-c e") 'yaml-pro-ts-unfold-at-point)   ; [e]xpand
+
+;; >--------------------------------------------------
