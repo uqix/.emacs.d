@@ -392,7 +392,7 @@
 (define-key embark-region-map (kbd "e") nil)              ; was eval-region
 (define-key embark-region-map (kbd "e e") #'eval-region)  ; [e]val elisp
 (define-key embark-region-map (kbd "a") nil)              ; was align
-(define-key embark-region-map (kbd "a a") #'align-regexp) ; [a]lign
+(define-key embark-region-map (kbd "a a") #'align)        ; [a]lign
 (define-key embark-region-map (kbd "a r") #'align-regexp) ; [a]lign-[r]egexp
 
 ;; >-------------------------
