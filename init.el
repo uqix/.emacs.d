@@ -482,12 +482,15 @@
 ;; symbol-overlay
 
 ;; https://github.com/wolray/symbol-overlay/#usage
-;; 
+
 (global-unset-key (kbd "s-o"))
+
 (global-set-key (kbd "M-o") 'symbol-overlay-put)               ; [o]verlay
 (global-set-key (kbd "s-o n") 'symbol-overlay-switch-forward)  ; [n]ext
 (global-set-key (kbd "s-o p") 'symbol-overlay-switch-backward) ; [p]revious
 (global-set-key (kbd "s-o r") 'symbol-overlay-remove-all)      ; [r]emove
+(global-set-key (kbd "s-o m") 'symbol-overlay-mode)            ; [m]ode
+
 ;; >--------------------------------------------------
 
 
