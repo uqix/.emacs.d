@@ -389,8 +389,11 @@
 
 (define-key embark-file-map (kbd "$") 'shell)
 
-(define-key embark-region-map (kbd "e") nil)             ; was eval-region
-(define-key embark-region-map (kbd "e e") #'eval-region) ; [e]val elisp
+(define-key embark-region-map (kbd "e") nil)              ; was eval-region
+(define-key embark-region-map (kbd "e e") #'eval-region)  ; [e]val elisp
+(define-key embark-region-map (kbd "a") nil)              ; was align
+(define-key embark-region-map (kbd "a a") #'align-regexp) ; [a]lign
+(define-key embark-region-map (kbd "a r") #'align-regexp) ; [a]lign-[r]egexp
 
 ;; >-------------------------
 
@@ -668,7 +671,7 @@
 ;;
 ;; (add-hook 'java-mode-hook 'eglot-ensure)
 
-(global-unset-key (kbd "s-l"))                                       ; was goto-line
+(global-unset-key (kbd "s-l"))                                       ; [l]sp; was goto-line
 (global-set-key (kbd "s-l e") 'eglot)                                ; [e]glot
 (define-key eglot-mode-map (kbd "s-l a") 'eglot-code-actions)        ; [a]ctions
 (define-key eglot-mode-map (kbd "s-l r") 'eglot-rename)              ; [r]ename
