@@ -343,6 +343,11 @@
 ;;
 (global-set-key (kbd "s-h b") #'vertico-repeat) ; [b]ack to last interaction
 (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
+
+;; https://github.com/minad/vertico/blob/main/extensions/vertico-quick.el
+;;
+(keymap-set vertico-map "M-g" #'vertico-quick-insert)
+
 ;; >-------------------------
 
 ;; <-------------------------
