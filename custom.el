@@ -25,6 +25,7 @@
  '(ispell-program-name "aspell")
  '(js-jsx-syntax t)
  '(magit-diff-refine-hunk 'all)
+ '(magit-save-repository-buffers 'dontask)
  '(make-backup-files nil)
  '(markdown-asymmetric-header t)
  '(markdown-command "multimarkdown")
