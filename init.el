@@ -77,6 +77,10 @@
 ;; M-h -> corfu-info-documentation
 ;; M-SPC -> corfu-insert-separator
 
+;; https://github.com/minad/corfu/blob/main/extensions/corfu-quick.el
+;;
+(keymap-set corfu-map "M-g" #'corfu-quick-complete)
+
 ;; <-------------------------
 ;; cape
 
