@@ -264,6 +264,8 @@
 (global-set-key (kbd "s-i h u") 'unhighlight-regexp)         ; [h]ighlight: [u]nhighlight-regexp
 (global-set-key (kbd "s-i h U") #'my/unhighlight-regexp/all) ; [h]ighlight: [U]nhighlight all
 
+(global-set-key (kbd "s-i r r") #'query-replace-regexp) ; [r]eplace: regexp
+
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
 ;; f4 -> kmacro-end-or-call-macro
