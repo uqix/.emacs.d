@@ -224,29 +224,37 @@
 
 ;; s-i -> misc prefix key
 
-(global-unset-key (kbd "C-x C-c"))                              ; quit emacs
-(global-unset-key (kbd "C-x C-z"))                              ; suspend-frame (minimize)
-(global-unset-key (kbd "s-h"))                                  ; ns-do-hide-emacs
+(global-unset-key (kbd "C-x C-c")) ; quit emacs
+(global-unset-key (kbd "C-x C-z")) ; suspend-frame (minimize)
+(global-unset-key (kbd "s-h"))     ; ns-do-hide-emacs
 
-(global-set-key (kbd "s-z") 'execute-extended-command)    ; more handy
-(global-set-key (kbd "C-z") ctl-x-map)                    ; more handy
-(global-set-key (kbd "M-'") 'subword-mode)                ; was abbrev-prefix-mark
-(global-set-key (kbd "C-x d") 'duplicate-dwim)            ; [d]uplicate; was dired
-(global-set-key (kbd "C-x e") 'ediff-buffers)             ; [e]diff; was kmacro-end-and-call-macro
-(global-set-key (kbd "C-x f") 'find-file)                 ; find [f]ile; was set-fill-column
-(global-set-key (kbd "C-,") 'replace-string)              ; was flyspell-goto-next-error
-(global-set-key (kbd "C-\\") 'toggle-truncate-lines)      ; was toggle-input-method
-(global-set-key (kbd "C-.") 'pop-to-mark-command)         ; was flyspell-auto-correct-word
-(global-set-key (kbd "s-i p") 'previous-error)            ; [p]revious error
-(global-set-key (kbd "s-i n") 'next-error)                ; [n]ext error
-(global-set-key (kbd "s-i m t") 'text-mode)               ; [t]ext-[m]ode
-(global-set-key (kbd "s-i m y") 'yaml-ts-mode)            ; [m]ode: [y]aml
-(global-set-key (kbd "s-i m j") 'json-ts-mode)            ; [m]ode: [j]son
-(global-set-key (kbd "s-i e") 'hs-toggle-hiding)          ; [e]xpand/collapse code block
-(global-set-key (kbd "s-i w") 'whitespace-mode)           ; [w]hitespace-mode
-(global-set-key (kbd "M-L") 'downcase-region)             ; [L]owercase region
-(global-set-key (kbd "M-U") 'upcase-region)               ; [U]ppercase region
-(global-set-key (kbd "M-\\") 'delete-trailing-whitespace) ; was delete-horizontal-space, prefer M-SPC
+(global-set-key (kbd "s-z") #'execute-extended-command) ; more handy
+(global-set-key (kbd "C-z") ctl-x-map)                  ; more handy
+
+(global-set-key (kbd "M-'") #'subword-mode) ; was abbrev-prefix-mark
+
+(global-set-key (kbd "C-x d") #'duplicate-dwim) ; [d]uplicate; was dired
+(global-set-key (kbd "C-x e") #'ediff-buffers)  ; [e]diff; was kmacro-end-and-call-macro
+(global-set-key (kbd "C-x f") #'find-file)      ; find [f]ile; was set-fill-column
+
+(global-set-key (kbd "C-,") #'replace-string)              ; was flyspell-goto-next-error
+(global-set-key (kbd "C-\\") #'toggle-truncate-lines)      ; was toggle-input-method
+(global-set-key (kbd "C-.") #'pop-to-mark-command)         ; was flyspell-auto-correct-word
+
+(global-set-key (kbd "s-i p") #'previous-error) ; [p]revious error
+(global-set-key (kbd "s-i n") #'next-error)     ; [n]ext error
+
+(global-set-key (kbd "s-i m t") #'text-mode)    ; [m]ode: [t]ext
+(global-set-key (kbd "s-i m y") #'yaml-ts-mode) ; [m]ode: [y]aml
+(global-set-key (kbd "s-i m j") #'json-ts-mode) ; [m]ode: [j]son
+
+(global-set-key (kbd "s-i e") #'hs-toggle-hiding) ; [e]xpand/collapse code block
+(global-set-key (kbd "s-i w") #'whitespace-mode)  ; [w]hitespace-mode
+
+(global-set-key (kbd "M-L") #'downcase-region) ; [L]owercase region
+(global-set-key (kbd "M-U") #'upcase-region)   ; [U]ppercase region
+
+(global-set-key (kbd "M-\\") #'delete-trailing-whitespace) ; was delete-horizontal-space, prefer M-SPC
 
 (defun my/unhighlight-regexp/all ()
   (interactive)
