@@ -643,11 +643,15 @@
 (define-key eglot-mode-map (kbd "s-l t") 'eglot-find-typeDefinition) ; [t]ype
 
 (with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '(java-ts-mode . ("jdtls"
-                              ;; "-noverify" "-Xmx2G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"
-                              "--jvm-arg=-javaagent:/Users/zjq/opt/lombok.jar"
-                              :initializationOptions (:extendedClientCapabilities (:classFileContentsSupport t))))))
+  (add-to-list
+   'eglot-server-programs
+   '(java-ts-mode
+     .
+     ("jdtls"
+      "--jvm-arg=-javaagent:/Users/zjq/opt/lombok.jar"
+      "--jvm-arg=-Xmx4G"
+      "--jvm-arg=-XX:+UseStringDeduplication"
+      :initializationOptions (:extendedClientCapabilities (:classFileContentsSupport t))))))
 
 ;; <-------------------------
 ;; java jdtls, handle uri jdt://
