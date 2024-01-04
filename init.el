@@ -240,7 +240,8 @@
 (global-set-key (kbd "s-i p") 'previous-error)            ; [p]revious error
 (global-set-key (kbd "s-i n") 'next-error)                ; [n]ext error
 (global-set-key (kbd "s-i m t") 'text-mode)               ; [t]ext-[m]ode
-(global-set-key (kbd "s-i m y") 'yaml-ts-mode)            ; [y]aml-ts-[m]ode
+(global-set-key (kbd "s-i m y") 'yaml-ts-mode)            ; [m]ode: [y]aml
+(global-set-key (kbd "s-i m j") 'json-ts-mode)            ; [m]ode: [j]son
 (global-set-key (kbd "s-i e") 'hs-toggle-hiding)          ; [e]xpand/collapse code block
 (global-set-key (kbd "s-i w") 'whitespace-mode)           ; [w]hitespace-mode
 (global-set-key (kbd "M-L") 'downcase-region)             ; [L]owercase region
