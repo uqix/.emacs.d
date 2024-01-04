@@ -248,6 +248,14 @@
 (global-set-key (kbd "M-U") 'upcase-region)               ; [U]ppercase region
 (global-set-key (kbd "M-\\") 'delete-trailing-whitespace) ; was delete-horizontal-space, prefer M-SPC
 
+(defun my/unhighlight-regexp/all ()
+  (interactive)
+  (unhighlight-regexp t))
+
+(global-set-key (kbd "s-i h r") 'highlight-regexp)           ; [h]ighlight: [r]egexp
+(global-set-key (kbd "s-i h u") 'unhighlight-regexp)         ; [h]ighlight: [u]nhighlight-regexp
+(global-set-key (kbd "s-i h U") #'my/unhighlight-regexp/all) ; [h]ighlight: [U]nhighlight all
+
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
 ;; f4 -> kmacro-end-or-call-macro
