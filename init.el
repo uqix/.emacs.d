@@ -104,7 +104,7 @@
 (add-hook 'minibuffer-setup-hook #'my/corfu-minibuffer-setup-hook 1)
 
 ;; https://github.com/minad/corfu#extensions
-;; 
+;;
 (corfu-popupinfo-mode)
 ;; >--------------------------------------------------
 
@@ -208,6 +208,31 @@
 ;; enable-recursive-minibuffers
 
 (define-key minibuffer-mode-map (kbd "C-c h") 'consult-history)
+
+;; <-------------------------
+;; ## vertico
+
+(global-unset-key (kbd "s-h")) ; was ns-do-hide-emacs
+
+;; https://github.com/minad/vertico#configuration
+;;
+(vertico-mode)
+
+;; https://www.emacswiki.org/emacs/SaveHist
+;;
+(savehist-mode 1)
+
+;; https://github.com/minad/vertico/blob/main/extensions/vertico-repeat.el
+;;
+(global-set-key (kbd "s-h b") #'vertico-repeat) ; [b]ack to last interaction
+(add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
+
+;; https://github.com/minad/vertico/blob/main/extensions/vertico-quick.el
+;;
+(keymap-set vertico-map "M-g" #'vertico-quick-insert)
+
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
@@ -239,7 +264,6 @@
 
 (global-unset-key (kbd "C-x C-c")) ; quit emacs
 (global-unset-key (kbd "C-x C-z")) ; suspend-frame (minimize)
-(global-unset-key (kbd "s-h"))     ; was ns-do-hide-emacs
 
 (global-set-key (kbd "s-z") #'execute-extended-command) ; more handy
 (global-set-key (kbd "C-z") ctl-x-map)                  ; more handy
@@ -364,39 +388,15 @@
 ;; # recentf
 
 ;; https://www.emacswiki.org/emacs/RecentFiles
-;; 
+;;
 (recentf-mode 1)
-;; >-------------------------
-
-;; <-------------------------
-;; # vertico
-
-;; replace helm, use s-h key prefix out of habit
-
-;; https://github.com/minad/vertico#configuration
-;; 
-(vertico-mode)
-
-;; https://www.emacswiki.org/emacs/SaveHist
-;;
-(savehist-mode 1)
-
-;; https://github.com/minad/vertico/blob/main/extensions/vertico-repeat.el
-;;
-(global-set-key (kbd "s-h b") #'vertico-repeat) ; [b]ack to last interaction
-(add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
-
-;; https://github.com/minad/vertico/blob/main/extensions/vertico-quick.el
-;;
-(keymap-set vertico-map "M-g" #'vertico-quick-insert)
-
 ;; >-------------------------
 
 ;; <-------------------------
 ;; # marginalia
 
 ;; https://github.com/minad/marginalia#configuration
-;; 
+;;
 (marginalia-mode)
 ;; >-------------------------
 
@@ -406,7 +406,7 @@
 (require 'embark)
 
 ;; https://github.com/oantolin/embark#quick-start
-;; 
+;;
 (global-set-key (kbd "M-i") 'embark-act) ; was tab-to-tab-stop
 
 (define-key embark-file-map (kbd "$") 'shell)
@@ -1041,7 +1041,7 @@
 
 ;; This is not available for tree-sitter variant.
 ;; Presumably some tree-sitter folding package will exist in the future.
-;; 
+;;
 ;; (define-key yaml-pro-ts-mode-map (kbd "C-c c") 'yaml-pro-ts-fold-at-point)     ; [c]ollapse
 ;; (define-key yaml-pro-ts-mode-map (kbd "C-c e") 'yaml-pro-ts-unfold-at-point)   ; [e]xpand
 
