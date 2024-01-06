@@ -427,12 +427,12 @@
   (interactive)
   (my/region/with-str 'consult-line))
 
-(defun my/consult-ripgrep/without-dir (initial)
+(defun my/consult-ripgrep/in-project (initial)
   (consult-ripgrep nil initial))
 
 (defun my/consult-ripgrep ()
   (interactive)
-  (my/region/with-str 'my/consult-ripgrep/without-dir 'consult-ripgrep))
+  (my/region/with-str 'my/consult-ripgrep/in-project 'consult-ripgrep))
 
 (global-set-key (kbd "s-j") 'consult-buffer)                         ; [j]ump; was exchange-point-and-mark, prefer C-x C-x
 (global-set-key (kbd "s-f") 'my/consult-line)                        ; [f]ind; was isearch-forward
