@@ -249,7 +249,8 @@
 (global-set-key (kbd "s-i m j") #'json-ts-mode) ; [m]ode: [j]son
 
 (global-set-key (kbd "s-i e") #'hs-toggle-hiding) ; [e]xpand/collapse code block
-(global-set-key (kbd "s-i w") #'whitespace-mode)  ; [w]hitespace-mode
+(global-set-key (kbd "s-i w") #'widen)            ; [w]iden
+(global-set-key (kbd "s-i W") #'whitespace-mode)  ; [W]hitespace-mode
 
 (global-set-key (kbd "M-L") #'downcase-region) ; [L]owercase region
 (global-set-key (kbd "M-U") #'upcase-region)   ; [U]ppercase region
