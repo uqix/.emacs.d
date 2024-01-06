@@ -446,12 +446,22 @@
 (global-set-key (kbd "s-h e") 'consult-flymake)        ; [e]rrors
 (global-set-key (kbd "s-h r") 'consult-register-store) ; [r]egister: add
 (global-set-key (kbd "s-h R") 'consult-register)       ; [R]egister: list
-(global-set-key (kbd "s-h f") 'consult-line-multi)     ; [f]ind
-(global-set-key (kbd "s-h F") 'consult-focus-lines)    ; [F]ocus
+(global-set-key (kbd "s-h f") 'consult-focus-lines)    ; [f]ocus
 (global-set-key (kbd "s-h k") 'consult-keep-lines)     ; [k]eep
 (global-set-key (kbd "s-h m") 'consult-mark)           ; [m]ark
 (global-set-key (kbd "s-h M") 'consult-global-mark)    ; [M]ark
 (global-set-key (kbd "s-h o") 'consult-outline)        ; [o]utline
+
+;; <-------------------------
+(defun my/consult-line-multi/in-project (initial)
+  (consult-line-multi nil initial))
+
+(defun my/consult-line-multi ()
+  (interactive)
+  (my/region/with-str 'my/consult-line-multi/in-project 'consult-line-multi))
+
+(global-set-key (kbd "s-F") 'my/consult-line-multi)
+;; >-------------------------
 
 ;; Use Consult to select xref locations with preview
 (setq xref-show-xrefs-function #'consult-xref
