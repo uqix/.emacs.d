@@ -213,6 +213,19 @@
 
 
 ;; <--------------------------------------------------
+;; # hs-minor-mode
+
+(add-hook 'prog-mode-hook 'hs-minor-mode)
+
+(global-set-key (kbd "s-i b t") #'hs-toggle-hiding) ; [b]lock: [t]oggle
+(global-set-key (kbd "s-i b H") #'hs-hide-all)      ; [b]lock: [h]ide all
+(global-set-key (kbd "s-i b S") #'hs-show-all)      ; [b]lock: [s]how all
+
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # global keys
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html
@@ -248,7 +261,6 @@
 (global-set-key (kbd "s-i m y") #'yaml-ts-mode) ; [m]ode: [y]aml
 (global-set-key (kbd "s-i m j") #'json-ts-mode) ; [m]ode: [j]son
 
-(global-set-key (kbd "s-i e") #'hs-toggle-hiding) ; [e]xpand/collapse code block
 (global-set-key (kbd "s-i w") #'widen)            ; [w]iden
 (global-set-key (kbd "s-i W") #'whitespace-mode)  ; [W]hitespace-mode
 
@@ -870,8 +882,6 @@
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
-
-(add-hook 'prog-mode-hook 'hs-minor-mode)
 
 ;; Fix generate-dockerfile.sh|docker-dockerfile.md opened in this mode
 (delete '("\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'"
