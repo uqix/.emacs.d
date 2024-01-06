@@ -64,7 +64,7 @@
  '(sh-quoted-exec ((t (:foreground "#5B6268"))))
  '(symbol-overlay-default-face ((t (:background "khaki3" :foreground "#282c34"))))
  '(symbol-overlay-face-1 ((t (:background "dark sea green" :foreground "#282c34"))))
- '(symbol-overlay-face-2 ((t (:background "tan1" :foreground "#282c34"))))
+ '(symbol-overlay-face-2 ((t (:background "tan2" :foreground "#282c34"))))
  '(symbol-overlay-face-3 ((t (:background "LightSkyBlue3" :foreground "#282c34"))))
  '(symbol-overlay-face-4 ((t (:background "DarkSlateGray3" :foreground "#282c34"))))
  '(symbol-overlay-face-5 ((t (:background "DarkOliveGreen3" :foreground "#282c34"))))
