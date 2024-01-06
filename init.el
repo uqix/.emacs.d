@@ -440,17 +440,18 @@
 (define-key isearch-mode-map (kbd "C-c h") 'consult-isearch-history) ; [h]istory
 (global-set-key (kbd "s-g") 'my/consult-ripgrep)                     ; [g]rep; was isearch-repeat-forward
 (global-set-key (kbd "M-y") 'consult-yank-replace)                   ; [y]ank
-(global-set-key (kbd "s-h i") 'consult-imenu)                        ; [i]menu
-(global-set-key (kbd "s-h I") 'consult-imenu-multi)                  ; [I]menu
-(global-set-key (kbd "s-h e") 'consult-flymake)                      ; [e]rrors
-(global-set-key (kbd "s-h r") 'consult-register-store)               ; [r]egister
-(global-set-key (kbd "s-h R") 'consult-register)                     ; [R]egister
-(global-set-key (kbd "s-h f") 'consult-line-multi)                   ; [f]ind
-(global-set-key (kbd "s-h k") 'consult-keep-lines)                   ; [k]eep
-(global-set-key (kbd "s-h F") 'consult-focus-lines)                  ; [F]ocus
-(global-set-key (kbd "s-h m") 'consult-mark)                         ; [m]ark
-(global-set-key (kbd "s-h M") 'consult-global-mark)                  ; [M]ark
-(global-set-key (kbd "s-h o") 'consult-outline)                      ; [o]utline
+
+(global-set-key (kbd "s-h i") 'consult-imenu)          ; [i]menu
+(global-set-key (kbd "s-h I") 'consult-imenu-multi)    ; [I]menu
+(global-set-key (kbd "s-h e") 'consult-flymake)        ; [e]rrors
+(global-set-key (kbd "s-h r") 'consult-register-store) ; [r]egister: add
+(global-set-key (kbd "s-h R") 'consult-register)       ; [R]egister: list
+(global-set-key (kbd "s-h f") 'consult-line-multi)     ; [f]ind
+(global-set-key (kbd "s-h F") 'consult-focus-lines)    ; [F]ocus
+(global-set-key (kbd "s-h k") 'consult-keep-lines)     ; [k]eep
+(global-set-key (kbd "s-h m") 'consult-mark)           ; [m]ark
+(global-set-key (kbd "s-h M") 'consult-global-mark)    ; [M]ark
+(global-set-key (kbd "s-h o") 'consult-outline)        ; [o]utline
 
 ;; Use Consult to select xref locations with preview
 (setq xref-show-xrefs-function #'consult-xref
