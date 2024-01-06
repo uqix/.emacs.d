@@ -16,6 +16,7 @@
  '(enable-recursive-minibuffers t)
  '(ffap-machine-p-known 'reject)
  '(fill-column 100)
+ '(flyspell-mark-duplications-flag nil)
  '(imenu-max-item-length 100)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
