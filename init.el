@@ -282,7 +282,8 @@
 (global-set-key (kbd "s-i v t") #'git-timemachine) ; [v]c: git-[t]imemachine
 (global-set-key (kbd "s-i v d") #'vc-diff)         ; [v]c: [d]iff
 
-(global-set-key (kbd "C-h F") #'describe-face) ; [h]elp: [F]ace
+(global-set-key (kbd "C-h F") #'describe-face)   ; [h]elp: [F]ace
+(global-set-key (kbd "C-h K") #'describe-keymap) ; [h]elp: [K]eymap
 
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
