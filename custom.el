@@ -37,9 +37,10 @@
  '(nxml-child-indent 4)
  '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-initialism))
  '(package-archive-priorities '(("melpa" . 1)))
+ '(package-install-upgrade-built-in t)
  '(package-native-compile t)
  '(package-selected-packages
-   '(edit-indirect nginx-mode polymode groovy-mode git-timemachine jinja2-mode flymake-collection docker yaml-pro vundo doom-themes cape corfu wgrep vertico orderless embark-consult marginalia markdown-mode doom-modeline ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
+   '(transient edit-indirect nginx-mode polymode groovy-mode git-timemachine jinja2-mode flymake-collection docker yaml-pro vundo doom-themes cape corfu wgrep vertico orderless embark-consult marginalia markdown-mode doom-modeline ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
  '(project-vc-extra-root-markers '("Chart.yaml"))
  '(scroll-bar-mode nil)
  '(scroll-error-top-bottom t)
