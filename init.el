@@ -218,8 +218,8 @@
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
 (global-set-key (kbd "s-i b t") #'hs-toggle-hiding) ; [b]lock: [t]oggle
-(global-set-key (kbd "s-i b H") #'hs-hide-all)      ; [b]lock: [h]ide all
-(global-set-key (kbd "s-i b S") #'hs-show-all)      ; [b]lock: [s]how all
+(global-set-key (kbd "s-i b H") #'hs-hide-all)      ; [b]lock: [H]ide all
+(global-set-key (kbd "s-i b S") #'hs-show-all)      ; [b]lock: [S]how all
 
 ;; >--------------------------------------------------
 
