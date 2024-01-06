@@ -121,14 +121,24 @@
 ;; <--------------------------------------------------
 ;; # doom-themes
 
-;; https://www.emacswiki.org/emacs/SetFonts#h5o-16
-;;
-(set-face-attribute 'default nil :family "JetBrains Mono" )
-
 ;; https://github.com/doomemacs/themes#manually--use-package
 ;;
-;; (load-theme 'doom-one-light t)
 (load-theme 'doom-one t)
+
+(let ((default-fg
+       ;; https://github.com/ianyepan/jetbrains-darcula-emacs-theme/blob/master/jetbrains-darcula-theme.el
+       "#a9b7c6"))
+  ;; https://www.emacswiki.org/emacs/SetFonts - Emacs for Mac OS X
+  (set-face-attribute
+   'default nil
+   :family "JetBrains Mono"
+   :foreground default-fg)
+
+  (custom-set-faces
+   `(corfu-current ((t (:background "#42444a" :foreground ,default-fg))))
+   `(font-lock-function-call-face ((t (:foreground ,default-fg))))
+   `(font-lock-variable-name-face ((t (:foreground ,default-fg))))))
+
 ;; >--------------------------------------------------
 
 
