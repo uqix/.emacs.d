@@ -266,6 +266,8 @@
 
 (global-set-key (kbd "s-i r r") #'query-replace-regexp) ; [r]eplace: regexp
 
+(global-set-key (kbd "s-i v t") #'git-timemachine) ; [v]c: git-[t]imemachine
+
 (global-set-key (kbd "C-h F") #'describe-face) ; [h]elp: [F]ace
 
 ;; C-x r o -> open-rectangle
