@@ -24,6 +24,7 @@
  '(ispell-extra-args '("--camel-case"))
  '(ispell-program-name "aspell")
  '(js-jsx-syntax t)
+ '(magit-diff-highlight-hunk-body nil)
  '(magit-diff-refine-hunk 'all)
  '(magit-save-repository-buffers 'dontask)
  '(make-backup-files nil)
