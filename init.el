@@ -1,7 +1,7 @@
-;;; -*- lexical-binding: t -*-
+;;; -*- lexical-binding: t; outline-regexp: ";; #+ "; -*-
 
 ;; <--------------------------------------------------
-;; package
+;; # package
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
@@ -11,7 +11,7 @@
 
 
 ;; <--------------------------------------------------
-;; custom-file
+;; # custom-file
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
@@ -20,7 +20,7 @@
 
 
 ;; <--------------------------------------------------
-;; builtin ts modes
+;; # builtin ts modes
 
 (require 'dockerfile-ts-mode)
 (require 'go-ts-mode)
@@ -31,7 +31,7 @@
 
 
 ;; <--------------------------------------------------
-;; dabbrev
+;; # dabbrev
 
 ;; * Use Dabbrev with Corfu!
 
@@ -42,7 +42,7 @@
 
 
 ;; <--------------------------------------------------
-;; orderless
+;; # orderless
 
 ;; https://github.com/oantolin/orderless
 
@@ -63,7 +63,7 @@
 
 
 ;; <--------------------------------------------------
-;; corfu
+;; # corfu
 
 ;; https://github.com/minad/corfu
 
@@ -82,7 +82,7 @@
 (keymap-set corfu-map "M-g" #'corfu-quick-complete)
 
 ;; <-------------------------
-;; cape
+;; # cape
 
 ;; https://github.com/minad/cape#configuration
 ;;
@@ -111,7 +111,7 @@
 
 
 ;; <--------------------------------------------------
-;; exec-path
+;; # exec-path
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
 ;; >--------------------------------------------------
@@ -119,7 +119,7 @@
 
 
 ;; <--------------------------------------------------
-;; doom-themes
+;; # doom-themes
 
 ;; https://www.emacswiki.org/emacs/SetFonts#h5o-16
 ;;
@@ -134,7 +134,7 @@
 
 
 ;; <--------------------------------------------------
-;; Frame
+;; # Frame
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
@@ -146,7 +146,7 @@
 
 
 ;; <--------------------------------------------------
-;; flyspell
+;; # flyspell
 
 (require 'flyspell)
 
@@ -162,7 +162,7 @@
 
 
 ;; <--------------------------------------------------
-;; flymake
+;; # flymake
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/flymake/index.html
 
@@ -178,7 +178,7 @@
 (add-hook 'yaml-ts-mode-hook 'flymake-mode)
 
 ;; <-------------------------
-;; flymake-collection
+;; # flymake-collection
 
 ;; https://github.com/mohkale/flymake-collection
 
@@ -199,7 +199,7 @@
 
 
 ;; <--------------------------------------------------
-;; minibuffer
+;; # minibuffer
 
 (add-hook 'minibuffer-setup-hook 'subword-mode)
 
@@ -213,7 +213,7 @@
 
 
 ;; <--------------------------------------------------
-;; global keys
+;; # global keys
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html
 ;;
@@ -226,7 +226,7 @@
 
 (global-unset-key (kbd "C-x C-c")) ; quit emacs
 (global-unset-key (kbd "C-x C-z")) ; suspend-frame (minimize)
-(global-unset-key (kbd "s-h"))     ; ns-do-hide-emacs
+(global-unset-key (kbd "s-h"))     ; was ns-do-hide-emacs
 
 (global-set-key (kbd "s-z") #'execute-extended-command) ; more handy
 (global-set-key (kbd "C-z") ctl-x-map)                  ; more handy
@@ -303,7 +303,7 @@
 
 
 ;; <--------------------------------------------------
-;; global vars
+;; # global vars
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/File-Name-Completion.html#index-completion_002dignored_002dextensions
 ;;
@@ -313,7 +313,7 @@
 
 
 ;; <--------------------------------------------------
-;; diff-mode
+;; # diff-mode
 
 (require 'diff-mode)
 
@@ -323,7 +323,7 @@
 
 
 ;; <--------------------------------------------------
-;; expand-region
+;; # expand-region
 
 ;; https://github.com/magnars/expand-region.el
 
@@ -333,7 +333,7 @@
 
 
 ;; <--------------------------------------------------
-;; shell-mode
+;; # shell-mode
 
 (require 'shell)
 
@@ -343,12 +343,12 @@
 
 
 ;; <--------------------------------------------------
-;; consult
+;; # consult
 
 ;; https://github.com/minad/consult#use-package-example
 
 ;; <-------------------------
-;; recentf
+;; # recentf
 
 ;; https://www.emacswiki.org/emacs/RecentFiles
 ;; 
@@ -356,7 +356,7 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; vertico
+;; # vertico
 
 ;; replace helm, use s-h key prefix out of habit
 
@@ -380,7 +380,7 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; marginalia
+;; # marginalia
 
 ;; https://github.com/minad/marginalia#configuration
 ;; 
@@ -388,7 +388,7 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; embark
+;; # embark
 
 (require 'embark)
 
@@ -407,7 +407,7 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; embark-consult
+;; # embark-consult
 
 ;; https://github.com/oantolin/embark#consult
 ;; >-------------------------
@@ -471,7 +471,7 @@
 
 
 ;; <--------------------------------------------------
-;; project
+;; # project
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Projects.html
 
@@ -483,7 +483,7 @@
 
 
 ;; <--------------------------------------------------
-;; java-mode
+;; # java-mode
 
 (require 'cc-mode)
 
@@ -499,7 +499,7 @@
 
 
 ;; <--------------------------------------------------
-;; symbol-overlay
+;; # symbol-overlay
 
 ;; https://github.com/wolray/symbol-overlay/#usage
 
@@ -516,7 +516,7 @@
 
 
 ;; <--------------------------------------------------
-;; magit
+;; # magit
 
 (global-set-key (kbd "s-m") 'magit-status)     ; [m]agit; was iconify-frame
 ;; >--------------------------------------------------
@@ -524,7 +524,7 @@
 
 
 ;; <--------------------------------------------------
-;; avy
+;; # avy
 
 ;; https://github.com/abo-abo/avy
 
@@ -543,7 +543,7 @@
 
 
 ;; <--------------------------------------------------
-;; ace-window
+;; # ace-window
 
 ;; https://github.com/abo-abo/ace-window
 
@@ -556,7 +556,7 @@
 
 
 ;; <--------------------------------------------------
-;; multiple-cursors
+;; # multiple-cursors
 
 ;; https://github.com/magnars/multiple-cursors.el
 
@@ -566,14 +566,14 @@
 
 
 ;; <--------------------------------------------------
-;; ztree
+;; # ztree
 
 ;; >--------------------------------------------------
 
 
 
 ;; <--------------------------------------------------
-;; doom-modeline
+;; # doom-modeline
 
 ;; https://github.com/seagle0128/doom-modeline#install
 ;;
@@ -584,7 +584,7 @@
 
 
 ;; <--------------------------------------------------
-;; compilation-mode
+;; # compilation-mode
 
 ;; compilation-mode-map
 ;; >--------------------------------------------------
@@ -592,7 +592,7 @@
 
 
 ;; <--------------------------------------------------
-;; wgrep
+;; # wgrep
 
 ;; https://github.com/mhayashi1120/Emacs-wgrep
 
@@ -606,7 +606,7 @@
 
 
 ;; <--------------------------------------------------
-;; yasnippet
+;; # yasnippet
 
 ;; * required by eglot
 
@@ -616,7 +616,7 @@
 
 
 ;; <--------------------------------------------------
-;; xref
+;; # xref
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Xref.html
 
@@ -637,7 +637,7 @@
 
 
 ;; <--------------------------------------------------
-;; eldoc
+;; # eldoc
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Lisp-Doc.html
 
@@ -649,7 +649,7 @@
 
 
 ;; <--------------------------------------------------
-;; eglot
+;; # eglot
 
 ;; https://github.com/joaotavora/eglot
 
@@ -690,7 +690,7 @@
       :initializationOptions (:extendedClientCapabilities (:classFileContentsSupport t))))))
 
 ;; <-------------------------
-;; java jdtls, handle uri jdt://
+;; # java jdtls, handle uri jdt://
 
 ;; https://github.com/yveszoundi/eglot-java/blob/ff0f9515d78f94b8dfe158bf9a2c4f52216504c0/eglot-java.el#L770
 ;;
@@ -734,7 +734,7 @@
 
 
 ;; <--------------------------------------------------
-;; nxml-mode
+;; # nxml-mode
 
 ;; ref rng-nxml-mode-init
 (defun my/nxml-mode-hook ()
@@ -745,7 +745,7 @@
 
 
 ;; <--------------------------------------------------
-;; vundo
+;; # vundo
 
 ;; https://github.com/casouri/vundo
 
@@ -755,7 +755,7 @@
 
 
 ;; <--------------------------------------------------
-;; s
+;; # s
 
 ;; https://github.com/magnars/s.el
 
@@ -798,7 +798,7 @@
 
 
 ;; <--------------------------------------------------
-;; polymode
+;; # polymode
 
 ;; https://github.com/polymode/polymode
 
@@ -828,7 +828,7 @@
   :tail-mode 'body)
 
 ;; <-------------------------
-;; yaml
+;; # yaml
 
 (define-hostmode poly-yaml-ts-hostmode
   :mode 'yaml-ts-mode)
@@ -843,7 +843,7 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; groovy
+;; # groovy
 
 (define-hostmode poly-groovy-hostmode
   :mode 'groovy-mode)
@@ -863,7 +863,7 @@
 
 
 ;; <--------------------------------------------------
-;; misc
+;; # misc
 
 (electric-pair-mode)
 
@@ -890,7 +890,7 @@
 
 
 ;; <--------------------------------------------------
-;; bash-ts-mode
+;; # bash-ts-mode
 
 (require 'sh-script)
 (advice-remove 'bash-ts-mode #'sh--redirect-bash-ts-mode)
@@ -901,7 +901,7 @@
 
 
 ;; <--------------------------------------------------
-;; edit-indirect
+;; # edit-indirect
 
 (require 'edit-indirect)
 
@@ -961,7 +961,7 @@
 
 
 ;; <--------------------------------------------------
-;; Select text
+;; # Select text
 
 (defun my/select-text/between (separator-char)
   (re-search-backward (format "%c\\|^" separator-char))
@@ -1007,7 +1007,7 @@
 
 
 ;; <--------------------------------------------------
-;; yaml-pro
+;; # yaml-pro
 
 ;; https://github.com/zkry/yaml-pro
 
@@ -1039,7 +1039,7 @@
 
 
 ;; <--------------------------------------------------
-;; markdown-mode
+;; # markdown-mode
 
 (require 'markdown-mode)
 
@@ -1062,7 +1062,7 @@
 
 
 ;; <--------------------------------------------------
-;; docker
+;; # docker
 
 ;; https://github.com/Silex/docker.el
 
@@ -1072,7 +1072,7 @@
 
 
 ;; <--------------------------------------------------
-;; jinja2-mode
+;; # jinja2-mode
 
 ;; https://github.com/paradoxxxzero/jinja2-mode
 
@@ -1084,7 +1084,7 @@
 
 
 ;; <--------------------------------------------------
-;; git-timemachine
+;; # git-timemachine
 
 ;; https://codeberg.org/pidu/git-timemachine
 ;; >--------------------------------------------------
