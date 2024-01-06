@@ -501,6 +501,28 @@
 (require 'project)
 
 (global-set-key (kbd "s-p") project-prefix-map)
+
+;; <-------------------------
+(defun my/project/test-file ()
+  (interactive)
+  (let* ((file (buffer-file-name))
+         (is-main-file (string-match "^\\(.+/src/main/java/.+/.+\\).java$" file))
+         (is-test-file (and (not is-main-file) (string-match "^\\(.+/src/test/java/.+/.+\\)Test.java$" file))))
+    (if is-main-file
+        (let* ((test-file (match-string 1 file))
+               (test-file (string-replace "/src/main/java/" "/src/test/java/" test-file))
+               (test-file (format "%sTest.java" test-file)))
+          (find-file test-file))
+      (if is-test-file
+          (let* ((main-file (match-string 1 file))
+                 (main-file (string-replace "/src/test/java/" "/src/main/java/" main-file))
+                 (main-file (format "%s.java" main-file)))
+            (find-file main-file))
+        (message "No match")))))
+
+(keymap-set project-prefix-map "t" #'my/project/test-file)
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
