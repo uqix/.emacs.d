@@ -501,6 +501,10 @@
 ;; <-------------------------
 ;; ## dirvish
 
+;; https://github.com/alexluigit/dirvish?tab=readme-ov-file#macos
+;;
+;; $ brew install coreutils fd poppler ffmpegthumbnailer mediainfo imagemagick
+
 ;; https://github.com/alexluigit/dirvish/blob/main/docs/CUSTOMIZING.org#dirvish
 
 (dirvish-override-dired-mode)
