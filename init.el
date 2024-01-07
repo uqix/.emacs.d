@@ -1190,3 +1190,16 @@
 
 (global-set-key (kbd "s-i v t") #'git-timemachine) ; [v]c: git-[t]imemachine
 ;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; # pdf-tools
+
+;; https://github.com/vedang/pdf-tools#view-and-navigate-pdfs
+
+(require 'pdf-tools)
+
+(pdf-loader-install)
+(add-hook 'pdf-view-mode-hook #'pdf-view-midnight-minor-mode)
+;; >--------------------------------------------------
