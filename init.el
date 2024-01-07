@@ -523,7 +523,7 @@
 ;; >-------------------------
 
 ;; <-------------------------
-(defun my/project/test/class ()
+(defun my/project/test/class (&optional method)
   (interactive)
   (or
    (when-let* ((file (buffer-file-name))
@@ -534,11 +534,22 @@
            (compilation-buffer-name-function
             (or project-compilation-buffer-name-function
                 compilation-buffer-name-function))
-           (command (format "mvn test -Dtest=%s" class)))
+           (command (format "mvn test -Dtest=%s%s"
+                            class
+                            (if method (format "#%s" method) ""))))
        (compile command)))
    (message "No match")))
 
 (keymap-set project-prefix-map "t c" #'my/project/test/class) ; [t]est: [c]lass
+;; >-------------------------
+
+;; <-------------------------
+(defun my/project/test/method ()
+  (interactive)
+  (my/project/test/class (read-from-minibuffer "Method: ")))
+
+(keymap-set project-prefix-map "t m" #'my/project/test/method) ; [t]est: [m]ethod
+(keymap-set embark-identifier-map "t" #'my/project/test/method)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
