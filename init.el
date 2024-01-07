@@ -494,6 +494,27 @@
 
 
 ;; <--------------------------------------------------
+;; # dired
+
+;; <-------------------------
+;; ## dirvish
+
+;; https://github.com/alexluigit/dirvish/blob/main/docs/CUSTOMIZING.org#dirvish
+
+(dirvish-override-dired-mode)
+
+(setq dirvish-attributes
+      '(all-the-icons file-time file-size collapse subtree-state vc-state git-msg))
+
+(keymap-set dirvish-mode-map "TAB" #'dirvish-subtree-toggle)
+
+;; >-------------------------
+
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # project
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Projects.html
