@@ -1206,4 +1206,5 @@
 
 (pdf-loader-install)
 (add-hook 'pdf-view-mode-hook #'pdf-view-midnight-minor-mode)
+(keymap-set pdf-view-mode-map  "M-g" #'pdf-view-goto-page)
 ;; >--------------------------------------------------
