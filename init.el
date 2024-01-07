@@ -509,9 +509,10 @@
       '(all-the-icons file-time file-size subtree-state))
 
 (keymap-set dirvish-mode-map "TAB" #'dirvish-subtree-toggle)
-(keymap-set dirvish-mode-map "s" #'dirvish-quicksort)        ; [s]ort; was dired-sort-toggle-or-edit
-(keymap-set dirvish-mode-map "C-c m" #'dirvish-mark-menu)    ; [m]ark menu
-(keymap-set dirvish-mode-map "C-c h" #'dirvish-history-jump) ; [h]istory
+(keymap-set dirvish-mode-map "s" #'dirvish-quicksort)         ; [s]ort; was dired-sort-toggle-or-edit
+(keymap-set dirvish-mode-map "C-c m" #'dirvish-mark-menu)     ; [m]ark menu
+(keymap-set dirvish-mode-map "C-c h" #'dirvish-history-jump)  ; [h]istory
+(keymap-set dirvish-mode-map "C-c l" #'dirvish-layout-toggle) ; [l]ayout
 
 ;; >-------------------------
 
