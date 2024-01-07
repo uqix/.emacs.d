@@ -502,7 +502,7 @@
 (global-set-key (kbd "s-p") project-prefix-map)
 
 ;; <-------------------------
-(defun my/project/test-file ()
+(defun my/project/test/file ()
   (interactive)
   (let* ((file (buffer-file-name))
          (is-main-file (string-match "^\\(.+/src/main/java/.+/.+\\).java$" file))
@@ -519,7 +519,26 @@
             (find-file main-file))
         (message "No match")))))
 
-(keymap-set project-prefix-map "t" #'my/project/test-file)
+(keymap-set project-prefix-map "t f" #'my/project/test/file) ; [t]est: jump between main and test [f]iles
+;; >-------------------------
+
+;; <-------------------------
+(defun my/project/test/class ()
+  (interactive)
+  (or
+   (when-let* ((file (buffer-file-name))
+               (is-test-file (string-match "^.+/src/test/java/\\(.+Test\\).java$" file))
+               (class (match-string 1 file))
+               (class (string-replace "/" "." class)))
+     (let ((default-directory (project-root (project-current t)))
+           (compilation-buffer-name-function
+            (or project-compilation-buffer-name-function
+                compilation-buffer-name-function))
+           (command (format "mvn test -Dtest=%s" class)))
+       (compile command)))
+   (message "No match")))
+
+(keymap-set project-prefix-map "t c" #'my/project/test/class) ; [t]est: [c]lass
 ;; >-------------------------
 
 ;; >--------------------------------------------------
