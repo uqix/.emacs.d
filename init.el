@@ -211,7 +211,8 @@
 ;; <--------------------------------------------------
 ;; # minibuffer
 
-(add-hook 'minibuffer-setup-hook 'subword-mode)
+(add-hook 'minibuffer-setup-hook #'subword-mode)
+(add-hook 'minibuffer-setup-hook #'flyspell-mode)
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Recursive-Mini.html
 ;;
