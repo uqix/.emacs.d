@@ -314,8 +314,6 @@
 
 (global-set-key (kbd "s-i r r") #'query-replace-regexp) ; [r]eplace: regexp
 
-(global-set-key (kbd "s-i v d") #'vc-diff)         ; [v]c: [d]iff
-
 (global-set-key (kbd "C-h F") #'describe-face)   ; [h]elp: [F]ace
 (global-set-key (kbd "C-h K") #'describe-keymap) ; [h]elp: [K]eymap
 
@@ -622,9 +620,21 @@
 
 
 ;; <--------------------------------------------------
-;; # magit
+;; # vc
+
+;; <-------------------------
+;; ## magit
 
 (global-set-key (kbd "s-m") 'magit-status)     ; [m]agit; was iconify-frame
+
+(global-set-key (kbd "s-i v d") #'magit-diff-buffer-file) ; [v]c: [d]iff
+(global-set-key (kbd "s-i v l") #'magit-log-buffer-file)  ; [v]c: [l]og
+(global-set-key (kbd "s-i v m") #'magit-submodule)        ; [v]c: sub[m]odule
+
+(keymap-set magit-revision-mode-map "o" #'magit-diff-visit-worktree-file-other-window) ; [o]pen; was magit-submodule
+
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
