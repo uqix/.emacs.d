@@ -165,8 +165,8 @@
 
 ;; C-; -> flyspell-auto-correct-previous-word
 
-(define-key flyspell-mode-map (kbd "C-,") nil) ; flyspell-goto-next-error
-(define-key flyspell-mode-map (kbd "C-.") nil) ; flyspell-auto-correct-word
+(keymap-set flyspell-mode-map "C-," nil) ; flyspell-goto-next-error
+(keymap-set flyspell-mode-map "C-." nil) ; flyspell-auto-correct-word
 ;; >--------------------------------------------------
 
 
@@ -180,9 +180,9 @@
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/flymake/Finding-diagnostics.html
 ;;
-(define-key flymake-mode-map (kbd "M-N") 'flymake-show-buffer-diagnostics)
-(define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
-(define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)
+(keymap-set flymake-mode-map "M-N" 'flymake-show-buffer-diagnostics)
+(keymap-set flymake-mode-map "M-n" 'flymake-goto-next-error)
+(keymap-set flymake-mode-map "M-p" 'flymake-goto-prev-error)
 
 (add-hook 'json-ts-mode-hook 'flymake-mode)
 (add-hook 'yaml-ts-mode-hook 'flymake-mode)
@@ -218,7 +218,7 @@
 ;;
 ;; enable-recursive-minibuffers
 
-(define-key minibuffer-mode-map (kbd "C-c h") 'consult-history)
+(keymap-set minibuffer-mode-map "C-c h" 'consult-history)
 
 ;; <-------------------------
 ;; ## vertico
@@ -362,7 +362,7 @@
 
 (require 'diff-mode)
 
-(define-key diff-mode-shared-map (kbd "t") 'diff-delete-trailing-whitespace) ; [t]rim
+(keymap-set diff-mode-shared-map "t" 'diff-delete-trailing-whitespace) ; [t]rim
 ;; >--------------------------------------------------
 
 
@@ -382,7 +382,7 @@
 
 (require 'shell)
 
-(define-key shell-mode-map (kbd "C-c h") 'consult-history)
+(keymap-set shell-mode-map "C-c h" 'consult-history)
 ;; >--------------------------------------------------
 
 
@@ -417,13 +417,13 @@
 ;;
 (keymap-global-set "M-i" 'embark-act) ; was tab-to-tab-stop
 
-(define-key embark-file-map (kbd "$") 'shell)
+(keymap-set embark-file-map "$" 'shell)
 
-(define-key embark-region-map (kbd "e") nil)              ; was eval-region
-(define-key embark-region-map (kbd "e e") #'eval-region)  ; [e]val elisp
-(define-key embark-region-map (kbd "a") nil)              ; was align
-(define-key embark-region-map (kbd "a a") #'align)        ; [a]lign
-(define-key embark-region-map (kbd "a r") #'align-regexp) ; [a]lign-[r]egexp
+(keymap-set embark-region-map "e" nil)              ; was eval-region
+(keymap-set embark-region-map "e e" #'eval-region)  ; [e]val elisp
+(keymap-set embark-region-map "a" nil)              ; was align
+(keymap-set embark-region-map "a a" #'align)        ; [a]lign
+(keymap-set embark-region-map "a r" #'align-regexp) ; [a]lign-[r]egexp
 
 ;; >-------------------------
 
@@ -457,8 +457,8 @@
 
 (keymap-global-set "s-j" 'consult-buffer)                         ; [j]ump; was exchange-point-and-mark, prefer C-x C-x
 (keymap-global-set "s-f" 'my/consult-line)                        ; [f]ind; was isearch-forward
-(define-key isearch-mode-map (kbd "s-f") 'consult-line)              ; [f]ind
-(define-key isearch-mode-map (kbd "C-c h") 'consult-isearch-history) ; [h]istory
+(keymap-set isearch-mode-map "s-f" 'consult-line)              ; [f]ind
+(keymap-set isearch-mode-map "C-c h" 'consult-isearch-history) ; [h]istory
 (keymap-global-set "s-g" 'my/consult-ripgrep)                     ; [g]rep; was isearch-repeat-forward
 (keymap-global-set "M-y" 'consult-yank-replace)                   ; [y]ank
 
@@ -649,7 +649,7 @@
 ;; https://github.com/abo-abo/avy#bindings
 ;;
 ;; (avy-setup-default)
-(define-key isearch-mode-map (kbd "M-j") 'avy-isearch) ; [j]ump
+(keymap-set isearch-mode-map "M-j" 'avy-isearch) ; [j]ump
 
 (keymap-global-set "M-j" 'avy-goto-char-timer)      ; was default-indent-new-line
 (keymap-global-set "M-g" 'avy-goto-line)            ; was goto-line
@@ -791,10 +791,10 @@
 
 (global-unset-key (kbd "s-l"))                                       ; [l]sp; was goto-line
 (keymap-global-set "s-l e" 'eglot)                                ; [e]glot
-(define-key eglot-mode-map (kbd "s-l a") 'eglot-code-actions)        ; [a]ctions
-(define-key eglot-mode-map (kbd "s-l r") 'eglot-rename)              ; [r]ename
-(define-key eglot-mode-map (kbd "s-l i") 'eglot-find-implementation) ; [i]mplementation
-(define-key eglot-mode-map (kbd "s-l t") 'eglot-find-typeDefinition) ; [t]ype
+(keymap-set eglot-mode-map "s-l a" 'eglot-code-actions)        ; [a]ctions
+(keymap-set eglot-mode-map "s-l r" 'eglot-rename)              ; [r]ename
+(keymap-set eglot-mode-map "s-l i" 'eglot-find-implementation) ; [i]mplementation
+(keymap-set eglot-mode-map "s-l t" 'eglot-find-typeDefinition) ; [t]ype
 
 (with-eval-after-load 'eglot
   (add-to-list
@@ -904,12 +904,12 @@
   (interactive)
   (my/region/convert 's-capitalized-words))
 
-(define-key embark-region-map (kbd "c") nil)
+(keymap-set embark-region-map "c" nil)
 
-(define-key embark-region-map (kbd "c s") #'my/region/convert/snake-case) ; [c]ase: to [s]nake
-(define-key embark-region-map (kbd "c c") #'my/region/convert/camel-case) ; [c]ase: to [c]amel
-(define-key embark-region-map (kbd "c k") #'my/region/convert/kebab-case) ; [c]ase: to [k]ebab
-(define-key embark-region-map (kbd "c a") #'my/region/convert/capitalize) ; [c]ase: to c[a]pitalized
+(keymap-set embark-region-map "c s" #'my/region/convert/snake-case) ; [c]ase: to [s]nake
+(keymap-set embark-region-map "c c" #'my/region/convert/camel-case) ; [c]ase: to [c]amel
+(keymap-set embark-region-map "c k" #'my/region/convert/kebab-case) ; [c]ase: to [k]ebab
+(keymap-set embark-region-map "c a" #'my/region/convert/capitalize) ; [c]ase: to c[a]pitalized
 
 ;; >--------------------------------------------------
 
@@ -929,12 +929,12 @@
   (call-interactively 'polymode-mark-or-extend-chunk)
   (call-interactively 'edit-indirect-region))
 
-(define-key polymode-mode-map (kbd "s-, n") 'polymode-next-chunk)             ; [n]ext
-(define-key polymode-mode-map (kbd "s-, p") 'polymode-previous-chunk)         ; [p]revious
-(define-key polymode-mode-map (kbd "s-, w") 'polymode-toggle-chunk-narrowing) ; narrow or [w]iden
-(define-key polymode-mode-map (kbd "s-, k") 'polymode-kill-chunk)             ; [k]ill
-(define-key polymode-mode-map (kbd "s-, m") 'polymode-mark-or-extend-chunk)   ; [m]ark
-(define-key polymode-mode-map (kbd "s-, e") 'my/polymode/edit-chunk)          ; [e]dit by edit-indirect
+(keymap-set polymode-mode-map "s-, n" 'polymode-next-chunk)             ; [n]ext
+(keymap-set polymode-mode-map "s-, p" 'polymode-previous-chunk)         ; [p]revious
+(keymap-set polymode-mode-map "s-, w" 'polymode-toggle-chunk-narrowing) ; narrow or [w]iden
+(keymap-set polymode-mode-map "s-, k" 'polymode-kill-chunk)             ; [k]ill
+(keymap-set polymode-mode-map "s-, m" 'polymode-mark-or-extend-chunk)   ; [m]ark
+(keymap-set polymode-mode-map "s-, e" 'my/polymode/edit-chunk)          ; [e]dit by edit-indirect
 
 ;; https://polymode.github.io/defining-polymodes/
 
@@ -957,7 +957,7 @@
 ;; https://github.com/polymode/polymode/issues/324#issuecomment-1872441449
 ;; (add-hook 'yaml-ts-mode-hook 'poly-yaml-ts-mode)
 
-(define-key yaml-ts-mode-map (kbd "C-c p") 'poly-yaml-ts-mode)
+(keymap-set yaml-ts-mode-map "C-c p" 'poly-yaml-ts-mode)
 ;; >-------------------------
 
 ;; <-------------------------
@@ -973,7 +973,7 @@
 ;; (add-hook 'groovy-mode-hook 'poly-groovy-mode)
 
 (require 'groovy-mode)
-(define-key groovy-mode-map (kbd "C-c p") 'poly-groovy-mode)
+(keymap-set groovy-mode-map "C-c p" 'poly-groovy-mode)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -996,7 +996,7 @@
 (add-to-list 'auto-mode-alist
              '("Dockerfile$" . dockerfile-ts-mode))
 
-(define-key isearch-mode-map (kbd "C-,") #'isearch-query-replace)
+(keymap-set isearch-mode-map "C-," #'isearch-query-replace)
 
 (require 'whitespace)
 (setq whitespace-style (delete 'lines whitespace-style))
@@ -1021,7 +1021,7 @@
 
 (require 'edit-indirect)
 
-(define-key embark-region-map (kbd "e i") #'edit-indirect-region) ; [e]dit-[i]ndirect
+(keymap-set embark-region-map "e i" #'edit-indirect-region) ; [e]dit-[i]ndirect
 
 (defun my/edit-indirect/guess-mode (_parent-buffer _beg _end)
   (setq-local buffer-file-name (format "%s.-ei-" (buffer-file-name _parent-buffer)))
@@ -1069,7 +1069,7 @@
 (add-hook 'edit-indirect-before-commit-hook #'vbe/edit-indirect/restore-left-margin)
 
 ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-1284144173
-(define-key edit-indirect-mode-map [remap save-buffer] #'edit-indirect-commit)
+(keymap-set edit-indirect-mode-map "<remap> <save-buffer>" #'edit-indirect-commit)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -1133,22 +1133,22 @@
 
 ;; https://github.com/zkry/yaml-pro#usage-1
 
-(define-key yaml-pro-ts-mode-map (kbd "C-c l") #'yaml-pro-ts-unindent-subtree)  ; [l]eft move
-(define-key yaml-pro-ts-mode-map (kbd "C-c r") #'yaml-pro-ts-indent-subtree)    ; [r]ight move
-(define-key yaml-pro-ts-mode-map (kbd "C-c u") #'yaml-pro-ts-move-subtree-up)   ; [u]p move
-(define-key yaml-pro-ts-mode-map (kbd "C-c d") #'yaml-pro-ts-move-subtree-down) ; [d]own move
-(define-key yaml-pro-ts-mode-map (kbd "C-c k") #'yaml-pro-ts-kill-subtree)      ; [k]ill
-(define-key yaml-pro-ts-mode-map (kbd "C-M-n") #'yaml-pro-ts-next-subtree)      ; [n]ext sibling; was forward-list
-(define-key yaml-pro-ts-mode-map (kbd "C-M-p") #'yaml-pro-ts-prev-subtree)      ; [p]revious sibling; was backward-list
-(define-key yaml-pro-ts-mode-map (kbd "C-M-u") #'yaml-pro-ts-up-level)          ; [u]p level; was backward-up-list
-(define-key yaml-pro-ts-mode-map (kbd "C-c m") #'yaml-pro-ts-mark-subtree)      ; [m]ark
-(define-key yaml-pro-ts-mode-map (kbd "C-c y") #'yaml-pro-ts-paste-subtree)     ; [y]ank
+(keymap-set yaml-pro-ts-mode-map "C-c l" #'yaml-pro-ts-unindent-subtree)  ; [l]eft move
+(keymap-set yaml-pro-ts-mode-map "C-c r" #'yaml-pro-ts-indent-subtree)    ; [r]ight move
+(keymap-set yaml-pro-ts-mode-map "C-c u" #'yaml-pro-ts-move-subtree-up)   ; [u]p move
+(keymap-set yaml-pro-ts-mode-map "C-c d" #'yaml-pro-ts-move-subtree-down) ; [d]own move
+(keymap-set yaml-pro-ts-mode-map "C-c k" #'yaml-pro-ts-kill-subtree)      ; [k]ill
+(keymap-set yaml-pro-ts-mode-map "C-M-n" #'yaml-pro-ts-next-subtree)      ; [n]ext sibling; was forward-list
+(keymap-set yaml-pro-ts-mode-map "C-M-p" #'yaml-pro-ts-prev-subtree)      ; [p]revious sibling; was backward-list
+(keymap-set yaml-pro-ts-mode-map "C-M-u" #'yaml-pro-ts-up-level)          ; [u]p level; was backward-up-list
+(keymap-set yaml-pro-ts-mode-map "C-c m" #'yaml-pro-ts-mark-subtree)      ; [m]ark
+(keymap-set yaml-pro-ts-mode-map "C-c y" #'yaml-pro-ts-paste-subtree)     ; [y]ank
 
 ;; This is not available for tree-sitter variant.
 ;; Presumably some tree-sitter folding package will exist in the future.
 ;;
-;; (define-key yaml-pro-ts-mode-map (kbd "C-c c") 'yaml-pro-ts-fold-at-point)     ; [c]ollapse
-;; (define-key yaml-pro-ts-mode-map (kbd "C-c e") 'yaml-pro-ts-unfold-at-point)   ; [e]xpand
+;; (keymap-set yaml-pro-ts-mode-map "C-c c" 'yaml-pro-ts-fold-at-point)     ; [c]ollapse
+;; (keymap-set yaml-pro-ts-mode-map "C-c e" 'yaml-pro-ts-unfold-at-point)   ; [e]xpand
 
 ;; >--------------------------------------------------
 
@@ -1159,19 +1159,19 @@
 
 (require 'markdown-mode)
 
-(define-key markdown-mode-map (kbd "C-c c") #'markdown-insert-code)                 ; inline [c]ode
-(define-key markdown-mode-map (kbd "C-c b") #'markdown-insert-gfm-code-block)       ; code [b]lock
-(define-key markdown-mode-map (kbd "C-c q") #'markdown-insert-blockquote)           ; [q]uote
-(define-key markdown-mode-map (kbd "C-c e") #'markdown-insert-bold)                 ; [e]mphasize
-(define-key markdown-mode-map (kbd "C-c l") #'markdown-insert-link)                 ; [l]ink
-(define-key markdown-mode-map (kbd "C-c n") #'markdown-next-visible-heading)        ; [n]ext heading
-(define-key markdown-mode-map (kbd "C-c p") #'markdown-previous-visible-heading)    ; [p]revious heading
-(define-key markdown-mode-map (kbd "C-c h") #'markdown-insert-header-dwim)          ; insert [h]eader
-(define-key markdown-mode-map (kbd "C-c i") #'markdown-insert-image)                ; insert [i]mage
-(define-key markdown-mode-map (kbd "C-c I") #'markdown-toggle-inline-images)        ; show [I]mages
-(define-key markdown-mode-map (kbd "C-M-n") #'markdown-outline-next-same-level)     ; [n]ext sibling; was forward-list
-(define-key markdown-mode-map (kbd "C-M-p") #'markdown-outline-previous-same-level) ; [p]revious sibling; was backward-list
-(define-key markdown-mode-map (kbd "C-M-u") #'markdown-up-heading)                  ; [u]p level; was backward-up-list
+(keymap-set markdown-mode-map "C-c c" #'markdown-insert-code)                 ; inline [c]ode
+(keymap-set markdown-mode-map "C-c b" #'markdown-insert-gfm-code-block)       ; code [b]lock
+(keymap-set markdown-mode-map "C-c q" #'markdown-insert-blockquote)           ; [q]uote
+(keymap-set markdown-mode-map "C-c e" #'markdown-insert-bold)                 ; [e]mphasize
+(keymap-set markdown-mode-map "C-c l" #'markdown-insert-link)                 ; [l]ink
+(keymap-set markdown-mode-map "C-c n" #'markdown-next-visible-heading)        ; [n]ext heading
+(keymap-set markdown-mode-map "C-c p" #'markdown-previous-visible-heading)    ; [p]revious heading
+(keymap-set markdown-mode-map "C-c h" #'markdown-insert-header-dwim)          ; insert [h]eader
+(keymap-set markdown-mode-map "C-c i" #'markdown-insert-image)                ; insert [i]mage
+(keymap-set markdown-mode-map "C-c I" #'markdown-toggle-inline-images)        ; show [I]mages
+(keymap-set markdown-mode-map "C-M-n" #'markdown-outline-next-same-level)     ; [n]ext sibling; was forward-list
+(keymap-set markdown-mode-map "C-M-p" #'markdown-outline-previous-same-level) ; [p]revious sibling; was backward-list
+(keymap-set markdown-mode-map "C-M-u" #'markdown-up-heading)                  ; [u]p level; was backward-up-list
 
 ;; >--------------------------------------------------
 
@@ -1194,7 +1194,7 @@
 
 (require 'jinja2-mode)
 
-(define-key jinja2-mode-map (kbd "M-o") nil) ; facemenu-set-
+(keymap-set jinja2-mode-map "M-o" nil) ; facemenu-set-
 ;; >--------------------------------------------------
 
 
