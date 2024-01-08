@@ -235,7 +235,7 @@
 
 ;; https://github.com/minad/vertico/blob/main/extensions/vertico-repeat.el
 ;;
-(global-set-key (kbd "s-h b") #'vertico-repeat) ; [b]ack to last interaction
+(keymap-global-set "s-h b" #'vertico-repeat) ; [b]ack to last interaction
 (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
 
 ;; https://github.com/minad/vertico/blob/main/extensions/vertico-quick.el
@@ -253,9 +253,9 @@
 
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
-(global-set-key (kbd "s-i b t") #'hs-toggle-hiding) ; [b]lock: [t]oggle
-(global-set-key (kbd "s-i b H") #'hs-hide-all)      ; [b]lock: [H]ide all
-(global-set-key (kbd "s-i b S") #'hs-show-all)      ; [b]lock: [S]how all
+(keymap-global-set "s-i b t" #'hs-toggle-hiding) ; [b]lock: [t]oggle
+(keymap-global-set "s-i b H" #'hs-hide-all)      ; [b]lock: [H]ide all
+(keymap-global-set "s-i b S" #'hs-show-all)      ; [b]lock: [S]how all
 
 ;; >--------------------------------------------------
 
@@ -276,46 +276,46 @@
 (global-unset-key (kbd "C-x C-c")) ; quit emacs
 (global-unset-key (kbd "C-x C-z")) ; suspend-frame (minimize)
 
-(global-set-key (kbd "s-z") #'execute-extended-command) ; more handy
-(global-set-key (kbd "C-z") ctl-x-map)                  ; more handy
+(keymap-global-set "s-z" #'execute-extended-command) ; more handy
+(keymap-global-set "C-z" ctl-x-map)                  ; more handy
 
-(global-set-key (kbd "M-'") #'subword-mode) ; was abbrev-prefix-mark
+(keymap-global-set "M-'" #'subword-mode) ; was abbrev-prefix-mark
 
-(global-set-key (kbd "C-x d") #'duplicate-dwim) ; [d]uplicate; was dired
-(global-set-key (kbd "C-x e") #'ediff-buffers)  ; [e]diff; was kmacro-end-and-call-macro
-(global-set-key (kbd "C-x f") #'find-file)      ; find [f]ile; was set-fill-column
+(keymap-global-set "C-x d" #'duplicate-dwim) ; [d]uplicate; was dired
+(keymap-global-set "C-x e" #'ediff-buffers)  ; [e]diff; was kmacro-end-and-call-macro
+(keymap-global-set "C-x f" #'find-file)      ; find [f]ile; was set-fill-column
 
-(global-set-key (kbd "C-,") #'replace-string)              ; was flyspell-goto-next-error
-(global-set-key (kbd "C-\\") #'toggle-truncate-lines)      ; was toggle-input-method
-(global-set-key (kbd "C-.") #'pop-to-mark-command)         ; was flyspell-auto-correct-word
+(keymap-global-set "C-," #'replace-string)              ; was flyspell-goto-next-error
+(keymap-global-set "C-\\" #'toggle-truncate-lines)      ; was toggle-input-method
+(keymap-global-set "C-." #'pop-to-mark-command)         ; was flyspell-auto-correct-word
 
-(global-set-key (kbd "s-i p") #'previous-error) ; [p]revious error
-(global-set-key (kbd "s-i n") #'next-error)     ; [n]ext error
+(keymap-global-set "s-i p" #'previous-error) ; [p]revious error
+(keymap-global-set "s-i n" #'next-error)     ; [n]ext error
 
-(global-set-key (kbd "s-i m t") #'text-mode)    ; [m]ode: [t]ext
-(global-set-key (kbd "s-i m y") #'yaml-ts-mode) ; [m]ode: [y]aml
-(global-set-key (kbd "s-i m j") #'json-ts-mode) ; [m]ode: [j]son
+(keymap-global-set "s-i m t" #'text-mode)    ; [m]ode: [t]ext
+(keymap-global-set "s-i m y" #'yaml-ts-mode) ; [m]ode: [y]aml
+(keymap-global-set "s-i m j" #'json-ts-mode) ; [m]ode: [j]son
 
-(global-set-key (kbd "s-i w") #'widen)            ; [w]iden
-(global-set-key (kbd "s-i W") #'whitespace-mode)  ; [W]hitespace-mode
+(keymap-global-set "s-i w" #'widen)            ; [w]iden
+(keymap-global-set "s-i W" #'whitespace-mode)  ; [W]hitespace-mode
 
-(global-set-key (kbd "M-L") #'downcase-region) ; [L]owercase region
-(global-set-key (kbd "M-U") #'upcase-region)   ; [U]ppercase region
+(keymap-global-set "M-L" #'downcase-region) ; [L]owercase region
+(keymap-global-set "M-U" #'upcase-region)   ; [U]ppercase region
 
-(global-set-key (kbd "M-\\") #'delete-trailing-whitespace) ; was delete-horizontal-space, prefer M-SPC
+(keymap-global-set "M-\\" #'delete-trailing-whitespace) ; was delete-horizontal-space, prefer M-SPC
 
 (defun my/unhighlight-regexp/all ()
   (interactive)
   (unhighlight-regexp t))
 
-(global-set-key (kbd "s-i h r") 'highlight-regexp)           ; [h]ighlight: [r]egexp
-(global-set-key (kbd "s-i h u") 'unhighlight-regexp)         ; [h]ighlight: [u]nhighlight-regexp
-(global-set-key (kbd "s-i h U") #'my/unhighlight-regexp/all) ; [h]ighlight: [U]nhighlight all
+(keymap-global-set "s-i h r" 'highlight-regexp)           ; [h]ighlight: [r]egexp
+(keymap-global-set "s-i h u" 'unhighlight-regexp)         ; [h]ighlight: [u]nhighlight-regexp
+(keymap-global-set "s-i h U" #'my/unhighlight-regexp/all) ; [h]ighlight: [U]nhighlight all
 
-(global-set-key (kbd "s-i r r") #'query-replace-regexp) ; [r]eplace: regexp
+(keymap-global-set "s-i r r" #'query-replace-regexp) ; [r]eplace: regexp
 
-(global-set-key (kbd "C-h F") #'describe-face)   ; [h]elp: [F]ace
-(global-set-key (kbd "C-h K") #'describe-keymap) ; [h]elp: [K]eymap
+(keymap-global-set "C-h F" #'describe-face)   ; [h]elp: [F]ace
+(keymap-global-set "C-h K" #'describe-keymap) ; [h]elp: [K]eymap
 
 ;; C-x r o -> open-rectangle
 ;; C-x r k -> kill-rectangle
@@ -372,7 +372,7 @@
 
 ;; https://github.com/magnars/expand-region.el
 
-(global-set-key (kbd "M-[") 'er/expand-region)
+(keymap-global-set "M-[" 'er/expand-region)
 ;; >--------------------------------------------------
 
 
@@ -415,7 +415,7 @@
 
 ;; https://github.com/oantolin/embark#quick-start
 ;;
-(global-set-key (kbd "M-i") 'embark-act) ; was tab-to-tab-stop
+(keymap-global-set "M-i" 'embark-act) ; was tab-to-tab-stop
 
 (define-key embark-file-map (kbd "$") 'shell)
 
@@ -455,23 +455,23 @@
   (interactive)
   (my/region/with-str 'my/consult-ripgrep/in-project 'consult-ripgrep))
 
-(global-set-key (kbd "s-j") 'consult-buffer)                         ; [j]ump; was exchange-point-and-mark, prefer C-x C-x
-(global-set-key (kbd "s-f") 'my/consult-line)                        ; [f]ind; was isearch-forward
+(keymap-global-set "s-j" 'consult-buffer)                         ; [j]ump; was exchange-point-and-mark, prefer C-x C-x
+(keymap-global-set "s-f" 'my/consult-line)                        ; [f]ind; was isearch-forward
 (define-key isearch-mode-map (kbd "s-f") 'consult-line)              ; [f]ind
 (define-key isearch-mode-map (kbd "C-c h") 'consult-isearch-history) ; [h]istory
-(global-set-key (kbd "s-g") 'my/consult-ripgrep)                     ; [g]rep; was isearch-repeat-forward
-(global-set-key (kbd "M-y") 'consult-yank-replace)                   ; [y]ank
+(keymap-global-set "s-g" 'my/consult-ripgrep)                     ; [g]rep; was isearch-repeat-forward
+(keymap-global-set "M-y" 'consult-yank-replace)                   ; [y]ank
 
-(global-set-key (kbd "s-h i") 'consult-imenu)          ; [i]menu
-(global-set-key (kbd "s-h I") 'consult-imenu-multi)    ; [I]menu
-(global-set-key (kbd "s-h e") 'consult-flymake)        ; [e]rrors
-(global-set-key (kbd "s-h r") 'consult-register-store) ; [r]egister: add
-(global-set-key (kbd "s-h R") 'consult-register)       ; [R]egister: list
-(global-set-key (kbd "s-h f") 'consult-focus-lines)    ; [f]ocus
-(global-set-key (kbd "s-h k") 'consult-keep-lines)     ; [k]eep
-(global-set-key (kbd "s-h m") 'consult-mark)           ; [m]ark
-(global-set-key (kbd "s-h M") 'consult-global-mark)    ; [M]ark
-(global-set-key (kbd "s-h o") 'consult-outline)        ; [o]utline
+(keymap-global-set "s-h i" 'consult-imenu)          ; [i]menu
+(keymap-global-set "s-h I" 'consult-imenu-multi)    ; [I]menu
+(keymap-global-set "s-h e" 'consult-flymake)        ; [e]rrors
+(keymap-global-set "s-h r" 'consult-register-store) ; [r]egister: add
+(keymap-global-set "s-h R" 'consult-register)       ; [R]egister: list
+(keymap-global-set "s-h f" 'consult-focus-lines)    ; [f]ocus
+(keymap-global-set "s-h k" 'consult-keep-lines)     ; [k]eep
+(keymap-global-set "s-h m" 'consult-mark)           ; [m]ark
+(keymap-global-set "s-h M" 'consult-global-mark)    ; [M]ark
+(keymap-global-set "s-h o" 'consult-outline)        ; [o]utline
 
 ;; <-------------------------
 (defun my/consult-line-multi/in-project (initial)
@@ -481,7 +481,7 @@
   (interactive)
   (my/region/with-str 'my/consult-line-multi/in-project 'consult-line-multi))
 
-(global-set-key (kbd "s-F") 'my/consult-line-multi)
+(keymap-global-set "s-F" 'my/consult-line-multi)
 ;; >-------------------------
 
 ;; Use Consult to select xref locations with preview
@@ -529,7 +529,7 @@
 
 (require 'project)
 
-(global-set-key (kbd "s-p") project-prefix-map)
+(keymap-global-set "s-p" project-prefix-map)
 
 ;; <-------------------------
 (defun my/project/test/file ()
@@ -609,11 +609,11 @@
 
 (global-unset-key (kbd "s-o"))
 
-(global-set-key (kbd "M-o") 'symbol-overlay-put)               ; [o]verlay
-(global-set-key (kbd "s-o n") 'symbol-overlay-switch-forward)  ; [n]ext
-(global-set-key (kbd "s-o p") 'symbol-overlay-switch-backward) ; [p]revious
-(global-set-key (kbd "s-o r") 'symbol-overlay-remove-all)      ; [r]emove
-(global-set-key (kbd "s-o m") 'symbol-overlay-mode)            ; [m]ode
+(keymap-global-set "M-o" 'symbol-overlay-put)               ; [o]verlay
+(keymap-global-set "s-o n" 'symbol-overlay-switch-forward)  ; [n]ext
+(keymap-global-set "s-o p" 'symbol-overlay-switch-backward) ; [p]revious
+(keymap-global-set "s-o r" 'symbol-overlay-remove-all)      ; [r]emove
+(keymap-global-set "s-o m" 'symbol-overlay-mode)            ; [m]ode
 
 ;; >--------------------------------------------------
 
@@ -625,11 +625,13 @@
 ;; <-------------------------
 ;; ## magit
 
-(global-set-key (kbd "s-m") 'magit-status)     ; [m]agit; was iconify-frame
+(require 'magit)
 
-(global-set-key (kbd "s-i v d") #'magit-diff-buffer-file) ; [v]c: [d]iff
-(global-set-key (kbd "s-i v l") #'magit-log-buffer-file)  ; [v]c: [l]og
-(global-set-key (kbd "s-i v m") #'magit-submodule)        ; [v]c: sub[m]odule
+(keymap-global-set "s-m" 'magit-status)     ; [m]agit; was iconify-frame
+
+(keymap-global-set "s-i v d" #'magit-diff-buffer-file) ; [v]c: [d]iff
+(keymap-global-set "s-i v l" #'magit-log-buffer-file)  ; [v]c: [l]og
+(keymap-global-set "s-i v m" #'magit-submodule)        ; [v]c: sub[m]odule
 
 (keymap-set magit-revision-mode-map "o" #'magit-diff-visit-worktree-file-other-window) ; [o]pen; was magit-submodule
 
@@ -649,8 +651,8 @@
 ;; (avy-setup-default)
 (define-key isearch-mode-map (kbd "M-j") 'avy-isearch) ; [j]ump
 
-(global-set-key (kbd "M-j") 'avy-goto-char-timer)      ; was default-indent-new-line
-(global-set-key (kbd "M-g") 'avy-goto-line)            ; was goto-line
+(keymap-global-set "M-j" 'avy-goto-char-timer)      ; was default-indent-new-line
+(keymap-global-set "M-g" 'avy-goto-line)            ; was goto-line
 
 ;; ? -> actions
 ;; https://karthinks.com/software/avy-can-do-anything/#avy-actions
@@ -665,7 +667,7 @@
 
 ;; https://github.com/abo-abo/ace-window#customization
 ;;
-(global-set-key (kbd "s-n") 'ace-window) ; [n]umber windows; was make-frame
+(keymap-global-set "s-n" 'ace-window) ; [n]umber windows; was make-frame
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 ;; >--------------------------------------------------
 
@@ -676,7 +678,7 @@
 
 ;; https://github.com/magnars/multiple-cursors.el
 
-(global-set-key (kbd "s-i i") 'mc/edit-lines)
+(keymap-global-set "s-i i" 'mc/edit-lines)
 ;; >--------------------------------------------------
 
 
@@ -788,7 +790,7 @@
 ;; (add-hook 'java-mode-hook 'eglot-ensure)
 
 (global-unset-key (kbd "s-l"))                                       ; [l]sp; was goto-line
-(global-set-key (kbd "s-l e") 'eglot)                                ; [e]glot
+(keymap-global-set "s-l e" 'eglot)                                ; [e]glot
 (define-key eglot-mode-map (kbd "s-l a") 'eglot-code-actions)        ; [a]ctions
 (define-key eglot-mode-map (kbd "s-l r") 'eglot-rename)              ; [r]ename
 (define-key eglot-mode-map (kbd "s-l i") 'eglot-find-implementation) ; [i]mplementation
@@ -865,7 +867,7 @@
 
 ;; https://github.com/casouri/vundo
 
-(global-set-key (kbd "C-x u") 'vundo) ; was undo
+(keymap-global-set "C-x u" 'vundo) ; was undo
 ;; >--------------------------------------------------
 
 
@@ -1109,12 +1111,12 @@
 (defalias 'my/select-text/java-text-block
   (kmacro "M-[ C-n C-a C-x C-x C-p C-e"))
 
-(global-set-key (kbd "s-i s s") 'my/select-text/between-spaces)         ; [s]elect text between [s]paces
-(global-set-key (kbd "s-i s /") 'my/select-text/between-slashes)        ; [s]elect text between /
-(global-set-key (kbd "s-i s ,") 'my/select-text/between-commas)         ; [s]elect text between ,
-(global-set-key (kbd "s-i s '") 'my/select-text/between-single-quotes)  ; [s]elect text between '
-(global-set-key (kbd "s-i s \"") 'my/select-text/between-double-quotes) ; [s]elect text between "
-(global-set-key (kbd "s-i s j") 'my/select-text/java-text-block)        ; [s]elect text in [j]ava text block
+(keymap-global-set "s-i s s" 'my/select-text/between-spaces)         ; [s]elect text between [s]paces
+(keymap-global-set "s-i s /" 'my/select-text/between-slashes)        ; [s]elect text between /
+(keymap-global-set "s-i s ," 'my/select-text/between-commas)         ; [s]elect text between ,
+(keymap-global-set "s-i s '" 'my/select-text/between-single-quotes)  ; [s]elect text between '
+(keymap-global-set "s-i s \"" 'my/select-text/between-double-quotes) ; [s]elect text between "
+(keymap-global-set "s-i s j" 'my/select-text/java-text-block)        ; [s]elect text in [j]ava text block
 
 ;; >--------------------------------------------------
 
@@ -1180,7 +1182,7 @@
 
 ;; https://github.com/Silex/docker.el
 
-(global-set-key (kbd "s-i d") #'docker)
+(keymap-global-set "s-i d" #'docker)
 ;; >--------------------------------------------------
 
 
@@ -1202,7 +1204,7 @@
 
 ;; https://codeberg.org/pidu/git-timemachine
 
-(global-set-key (kbd "s-i v t") #'git-timemachine) ; [v]c: git-[t]imemachine
+(keymap-global-set "s-i v t" #'git-timemachine) ; [v]c: git-[t]imemachine
 ;; >--------------------------------------------------
 
 
