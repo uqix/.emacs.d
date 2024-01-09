@@ -297,7 +297,6 @@
 
 (keymap-global-set "s-i i d" #'duplicate-dwim) ; [i]nsert: [d]uplicate
 
-(keymap-global-set "C-x f" #'find-file)      ; find [f]ile; was set-fill-column
 (keymap-global-set "s-i f" #'find-file)      ; find [f]ile
 
 (keymap-global-set "s-i b r" #'revert-buffer) ; [b]uffer: [r]evert
