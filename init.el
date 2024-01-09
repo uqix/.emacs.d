@@ -262,7 +262,7 @@
 
 
 ;; <--------------------------------------------------
-;; # global keys
+;; # Global keys
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html
 ;;
@@ -288,6 +288,8 @@
 
 (keymap-global-set "C-x f" #'find-file)      ; find [f]ile; was set-fill-column
 (keymap-global-set "s-i f" #'find-file)      ; find [f]ile
+
+(keymap-global-set "s-i b r" #'revert-buffer) ; [b]uffer: [r]evert
 
 (keymap-global-set "C-," #'replace-string)              ; was flyspell-goto-next-error
 (keymap-global-set "C-\\" #'toggle-truncate-lines)      ; was toggle-input-method
