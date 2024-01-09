@@ -262,6 +262,16 @@
 
 
 ;; <--------------------------------------------------
+;; isearch
+
+(keymap-set key-translation-map "s-u" "C-s")
+(keymap-set key-translation-map "s-y" "C-r")
+
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # Global keys
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html
@@ -611,6 +621,8 @@
 ;; <--------------------------------------------------
 ;; # symbol-overlay
 
+(require 'symbol-overlay)
+
 ;; https://github.com/wolray/symbol-overlay/#usage
 
 (global-unset-key (kbd "s-o"))
@@ -620,6 +632,8 @@
 (keymap-global-set "s-o p" 'symbol-overlay-switch-backward) ; [p]revious
 (keymap-global-set "s-o r" 'symbol-overlay-remove-all)      ; [r]emove
 (keymap-global-set "s-o m" 'symbol-overlay-mode)            ; [m]ode
+
+(keymap-set symbol-overlay-map "C-s" #'symbol-overlay-isearch-literally)
 
 ;; >--------------------------------------------------
 
