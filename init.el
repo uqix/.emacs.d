@@ -891,7 +891,7 @@
 
 ;; https://github.com/casouri/vundo
 
-(keymap-global-set "C-x u" 'vundo) ; was undo
+(keymap-global-set "s-i u" 'vundo)
 ;; >--------------------------------------------------
 
 
