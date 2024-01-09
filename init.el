@@ -184,6 +184,8 @@
 (keymap-set flymake-mode-map "M-n" 'flymake-goto-next-error)
 (keymap-set flymake-mode-map "M-p" 'flymake-goto-prev-error)
 
+(keymap-global-set "s-i m f" #'flymake-mode) ; [m]ode: [f]lymake
+
 (add-hook 'json-ts-mode-hook 'flymake-mode)
 (add-hook 'yaml-ts-mode-hook 'flymake-mode)
 
