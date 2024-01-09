@@ -296,7 +296,6 @@
 (keymap-global-set "M-'" #'subword-mode) ; was abbrev-prefix-mark
 
 (keymap-global-set "C-x d" #'duplicate-dwim) ; [d]uplicate; was dired
-(keymap-global-set "C-x e" #'ediff-buffers)  ; [e]diff; was kmacro-end-and-call-macro
 
 (keymap-global-set "C-x f" #'find-file)      ; find [f]ile; was set-fill-column
 (keymap-global-set "s-i f" #'find-file)      ; find [f]ile
@@ -376,11 +375,20 @@
 
 
 ;; <--------------------------------------------------
-;; # diff-mode
+;; # Diff
 
 (require 'diff-mode)
 
 (keymap-set diff-mode-shared-map "t" 'diff-delete-trailing-whitespace) ; [t]rim
+
+(keymap-global-set "s-i d b" #'ediff-buffers) ; [d]iff: [b]uffers
+
+;; <-------------------------
+;; ## ztree
+
+(keymap-global-set "s-i d d" #'ztree-diff) ; [d]iff: [d]irs
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
@@ -702,13 +710,6 @@
 ;; https://github.com/magnars/multiple-cursors.el
 
 (keymap-global-set "s-i i" 'mc/edit-lines)
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
-;; # ztree
-
 ;; >--------------------------------------------------
 
 
@@ -1204,8 +1205,6 @@
 ;; # docker
 
 ;; https://github.com/Silex/docker.el
-
-(keymap-global-set "s-i d" #'docker)
 ;; >--------------------------------------------------
 
 
