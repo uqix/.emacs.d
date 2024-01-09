@@ -283,7 +283,9 @@
 
 (keymap-global-set "C-x d" #'duplicate-dwim) ; [d]uplicate; was dired
 (keymap-global-set "C-x e" #'ediff-buffers)  ; [e]diff; was kmacro-end-and-call-macro
-(keymap-global-set "C-x f" #'find-file)      ; find [f]ile; was set-fill-column
+
+(keymap-global-set "C-x f" #'find-file) ; find [f]ile; was set-fill-column
+(keymap-global-set "s-i f" #'find-file) ; find [f]ile
 
 (keymap-global-set "C-," #'replace-string)              ; was flyspell-goto-next-error
 (keymap-global-set "C-\\" #'toggle-truncate-lines)      ; was toggle-input-method
