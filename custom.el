@@ -57,7 +57,7 @@
  '(avy-lead-face ((t (:background "#282c34" :foreground "green" :weight bold))))
  '(aw-leading-char-face ((t (:foreground "green" :weight bold))))
  '(corfu-current ((t (:background "#42444a" :foreground "#bbc2cf"))))
- '(eglot-highlight-symbol-face ((t (:foreground "red" :weight bold))))
+ '(eglot-highlight-symbol-face ((t (:underline "DarkGoldenrod"))))
  '(flyspell-duplicate ((t (:underline nil))))
  '(font-lock-comment-face ((t (:foreground "dark cyan"))))
  '(font-lock-function-call-face ((t (:foreground "#bbc2cf"))))
