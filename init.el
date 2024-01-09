@@ -295,7 +295,7 @@
 
 (keymap-global-set "M-'" #'subword-mode) ; was abbrev-prefix-mark
 
-(keymap-global-set "C-x d" #'duplicate-dwim) ; [d]uplicate; was dired
+(keymap-global-set "s-i i d" #'duplicate-dwim) ; [i]nsert: [d]uplicate
 
 (keymap-global-set "C-x f" #'find-file)      ; find [f]ile; was set-fill-column
 (keymap-global-set "s-i f" #'find-file)      ; find [f]ile
@@ -709,7 +709,7 @@
 
 ;; https://github.com/magnars/multiple-cursors.el
 
-(keymap-global-set "s-i i" 'mc/edit-lines)
+(keymap-global-set "s-i i m" 'mc/edit-lines) ; [i]nsert: [m]ultiple-cursors
 ;; >--------------------------------------------------
 
 
