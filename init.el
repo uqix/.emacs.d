@@ -638,6 +638,7 @@
 (keymap-global-set "s-i v m" #'magit-submodule)        ; [v]c: sub[m]odule
 
 (keymap-set magit-revision-mode-map "o" #'magit-diff-visit-worktree-file-other-window) ; [o]pen; was magit-submodule
+(keymap-set magit-status-mode-map "o" #'magit-diff-visit-worktree-file-other-window)   ; [o]pen; was magit-submodule
 
 ;; >-------------------------
 
