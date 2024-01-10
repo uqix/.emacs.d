@@ -289,8 +289,8 @@
 
 (keymap-set key-translation-map "s-SPC" "C-g")
 
-(keymap-global-set "s-z" #'execute-extended-command) ; more handy
-(keymap-global-set "C-z" ctl-x-map)                  ; more handy
+(keymap-global-set "s-z" #'execute-extended-command)
+(keymap-global-set "C-z" ctl-x-map)
 
 (keymap-global-set "M-'" #'subword-mode) ; was abbrev-prefix-mark
 
