@@ -25,7 +25,7 @@
 (require 'dockerfile-ts-mode)
 (require 'go-ts-mode)
 (require 'typescript-ts-mode)
-(require 'java-ts-mode)
+
 ;; >--------------------------------------------------
 
 
@@ -187,7 +187,7 @@
 (keymap-global-set "s-i m f" #'flymake-mode) ; [m]ode: [f]lymake
 
 ;; <-------------------------
-;; # flymake-collection
+;; ## flymake-collection
 
 ;; https://github.com/mohkale/flymake-collection
 
@@ -418,7 +418,7 @@
 ;; https://github.com/minad/consult#use-package-example
 
 ;; <-------------------------
-;; # recentf
+;; ## recentf
 
 ;; https://www.emacswiki.org/emacs/RecentFiles
 ;;
@@ -426,7 +426,7 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; # marginalia
+;; ## marginalia
 
 ;; https://github.com/minad/marginalia#configuration
 ;;
@@ -434,7 +434,7 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; # embark
+;; ## embark
 
 (require 'embark)
 
@@ -614,15 +614,15 @@
 ;; <--------------------------------------------------
 ;; # java-mode
 
-(require 'cc-mode)
+;; (require 'cc-mode)
 
-;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Customizing-C-and-C_002b_002b-indentation.html
-;;
-(defun my/java-mode-hook ()
-  (c-set-offset 'arglist-intro '+)
-  (c-set-offset 'arglist-close '0)
-  (c-set-offset 'case-label '+))
-(add-hook 'java-mode-hook 'my/java-mode-hook)
+;; ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Customizing-C-and-C_002b_002b-indentation.html
+;; ;;
+;; (defun my/java-mode-hook ()
+;;   (c-set-offset 'arglist-intro '+)
+;;   (c-set-offset 'arglist-close '0)
+;;   (c-set-offset 'case-label '+))
+;; (add-hook 'java-mode-hook 'my/java-mode-hook)
 ;; >--------------------------------------------------
 
 
@@ -670,7 +670,7 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; # git-timemachine
+;; ## git-timemachine
 
 ;; https://codeberg.org/pidu/git-timemachine
 
@@ -701,7 +701,7 @@
 
 
 ;; <--------------------------------------------------
-;; Window
+;; # Window
 
 (keymap-global-set "s-i w d" #'delete-window)             ; [w]indow: [d]elete
 (keymap-global-set "s-i w D" #'delete-other-windows)      ; [w]indow: [D]elete others
@@ -709,7 +709,7 @@
 (keymap-global-set "s-i w v" #'split-window-vertically)   ; [w]indow: split [v]ertically
 
 ;; <-------------------------
-;; # ace-window
+;; ## ace-window
 
 ;; https://github.com/abo-abo/ace-window
 
@@ -772,12 +772,12 @@
 
 
 ;; <--------------------------------------------------
-;; grep
+;; # grep
 
 (require 'grep)
 
 ;; <-------------------------
-;; # wgrep
+;; ## wgrep
 
 (require 'wgrep)
 
@@ -854,16 +854,26 @@
   "Eclipse JDT breaks spec and replies with edits as arguments."
   (mapc #'eglot--apply-workspace-edit arguments))
 
-;; https://joaotavora.github.io/eglot/#index-starting-Eglot
-;;
-;; (add-hook 'java-mode-hook 'eglot-ensure)
+(global-unset-key (kbd "s-l")) ; was goto-line
 
-(global-unset-key (kbd "s-l"))                                       ; [l]sp; was goto-line
-(keymap-global-set "s-l e" 'eglot)                                ; [e]glot
-(keymap-set eglot-mode-map "s-l a" 'eglot-code-actions)        ; [a]ctions
-(keymap-set eglot-mode-map "s-l r" 'eglot-rename)              ; [r]ename
-(keymap-set eglot-mode-map "s-l i" 'eglot-find-implementation) ; [i]mplementation
-(keymap-set eglot-mode-map "s-l t" 'eglot-find-typeDefinition) ; [t]ype
+(keymap-global-set "s-l e" #'eglot) ; [l]sp: [e]glot
+
+(keymap-set eglot-mode-map "s-l a" #'eglot-code-actions)        ; [l]sp: [a]ctions
+(keymap-set eglot-mode-map "s-l r" #'eglot-rename)              ; [l]sp: [r]ename
+(keymap-set eglot-mode-map "s-l i" #'eglot-find-implementation) ; [l]sp: [i]mplementation
+(keymap-set eglot-mode-map "s-l t" #'eglot-find-typeDefinition) ; [l]sp: [t]ype
+
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; # Java
+
+(require 'java-ts-mode)
+
+;; <-------------------------
+;; ## eglot
 
 (with-eval-after-load 'eglot
   (add-to-list
@@ -876,9 +886,8 @@
       "--jvm-arg=-XX:+UseStringDeduplication"
       :initializationOptions (:extendedClientCapabilities (:classFileContentsSupport t))))))
 
-;; <-------------------------
 ;; # java jdtls, handle uri jdt://
-
+;; 
 ;; https://github.com/yveszoundi/eglot-java/blob/ff0f9515d78f94b8dfe158bf9a2c4f52216504c0/eglot-java.el#L770
 ;;
 (defun eglot-java--jdt-uri-handler (operation &rest args)
