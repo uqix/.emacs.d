@@ -312,8 +312,9 @@
 (keymap-global-set "s-i m y" #'yaml-ts-mode) ; [m]ode: [y]aml
 (keymap-global-set "s-i m j" #'json-ts-mode) ; [m]ode: [j]son
 
-(keymap-global-set "s-i w" #'widen)            ; [w]iden
-(keymap-global-set "s-i W" #'whitespace-mode)  ; [W]hitespace-mode
+(keymap-global-set "s-i W" #'widen) ; [W]iden
+
+(keymap-global-set "s-i m w" #'whitespace-mode) ; [m]ode: [w]hitespace
 
 (keymap-global-set "M-L" #'downcase-region) ; [L]owercase region
 (keymap-global-set "M-U" #'upcase-region)   ; [U]ppercase region
@@ -693,6 +694,14 @@
 
 
 ;; <--------------------------------------------------
+;; Window
+
+(keymap-global-set "s-i w d" #'delete-window)             ; [w]indow: delete
+(keymap-global-set "s-i w D" #'delete-other-windows)      ; [w]indow: [D]elete others
+(keymap-global-set "s-i w h" #'split-window-horizontally) ; [w]indow: split [h]orizontally
+(keymap-global-set "s-i w v" #'split-window-vertically)   ; [w]indow: split [v]ertically
+
+;; <-------------------------
 ;; # ace-window
 
 ;; https://github.com/abo-abo/ace-window
@@ -701,6 +710,8 @@
 ;;
 (keymap-global-set "s-n" 'ace-window) ; [n]umber windows; was make-frame
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
