@@ -413,28 +413,7 @@
 
 
 ;; <--------------------------------------------------
-;; # consult
-
-;; https://github.com/minad/consult#use-package-example
-
-;; <-------------------------
-;; ## recentf
-
-;; https://www.emacswiki.org/emacs/RecentFiles
-;;
-(recentf-mode 1)
-;; >-------------------------
-
-;; <-------------------------
-;; ## marginalia
-
-;; https://github.com/minad/marginalia#configuration
-;;
-(marginalia-mode)
-;; >-------------------------
-
-;; <-------------------------
-;; ## embark
+;; # embark
 
 (require 'embark)
 
@@ -450,6 +429,29 @@
 (keymap-set embark-region-map "a a" #'align)        ; [a]lign
 (keymap-set embark-region-map "a r" #'align-regexp) ; [a]lign-[r]egexp
 
+;; <-------------------------
+;; ## marginalia
+
+;; https://github.com/minad/marginalia#configuration
+;;
+(marginalia-mode)
+;; >-------------------------
+
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; # consult
+
+;; https://github.com/minad/consult#use-package-example
+
+;; <-------------------------
+;; ## recentf
+
+;; https://www.emacswiki.org/emacs/RecentFiles
+;;
+(recentf-mode 1)
 ;; >-------------------------
 
 ;; <-------------------------
