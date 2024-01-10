@@ -288,7 +288,6 @@
 (global-unset-key (kbd "C-x C-z")) ; suspend-frame (minimize)
 
 (keymap-set key-translation-map "s-SPC" "C-g")
-(keymap-set key-translation-map "s-k" "C-c") ; was kill-current-buffer
 
 (keymap-global-set "s-z" #'execute-extended-command) ; more handy
 (keymap-global-set "C-z" ctl-x-map)                  ; more handy
