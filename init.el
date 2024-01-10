@@ -319,14 +319,6 @@
 
 (keymap-global-set "M-\\" #'delete-trailing-whitespace) ; was delete-horizontal-space, prefer M-SPC
 
-(defun my/unhighlight-regexp/all ()
-  (interactive)
-  (unhighlight-regexp t))
-
-(keymap-global-set "s-i h r" 'highlight-regexp)           ; [h]ighlight: [r]egexp
-(keymap-global-set "s-i h u" 'unhighlight-regexp)         ; [h]ighlight: [u]nhighlight-regexp
-(keymap-global-set "s-i h U" #'my/unhighlight-regexp/all) ; [h]ighlight: [U]nhighlight all
-
 (keymap-global-set "s-i r r" #'query-replace-regexp) ; [r]eplace: regexp
 
 (keymap-global-set "C-h F" #'describe-face)   ; [h]elp: [F]ace
@@ -357,6 +349,21 @@
 ;; s-1 nil; external binding: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 1
 ;; s-2 nil; external binding: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 2 (emacs)
 ;; s-3 nil; external binding: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 3 (chrome)
+
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; Highlight
+
+(defun my/unhighlight-regexp/all ()
+  (interactive)
+  (unhighlight-regexp t))
+
+(keymap-global-set "s-i h r" 'highlight-regexp)           ; [h]ighlight: [r]egexp
+(keymap-global-set "s-i h u" 'unhighlight-regexp)         ; [h]ighlight: [u]nhighlight
+(keymap-global-set "s-i h U" #'my/unhighlight-regexp/all) ; [h]ighlight: [U]nhighlight all
 
 ;; >--------------------------------------------------
 
