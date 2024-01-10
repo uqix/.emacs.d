@@ -706,10 +706,15 @@
 ;; <--------------------------------------------------
 ;; # Window
 
-(keymap-global-set "s-i w d" #'delete-window)             ; [w]indow: [d]elete
-(keymap-global-set "s-i w D" #'delete-other-windows)      ; [w]indow: [D]elete others
-(keymap-global-set "s-i w h" #'split-window-horizontally) ; [w]indow: split [h]orizontally
-(keymap-global-set "s-i w v" #'split-window-vertically)   ; [w]indow: split [v]ertically
+(defun my/split-window-sensibly ()
+  (interactive)
+  (setq-local split-height-threshold nil)
+  (or (split-window-sensibly) (split-window-vertically)))
+
+(keymap-global-set "s-t" #'my/split-window-sensibly)
+
+(keymap-global-set "s-w" #'delete-window)
+(keymap-global-set "s-W" #'delete-other-windows)
 
 ;; <-------------------------
 ;; ## ace-window
@@ -890,7 +895,7 @@
       :initializationOptions (:extendedClientCapabilities (:classFileContentsSupport t))))))
 
 ;; # java jdtls, handle uri jdt://
-;; 
+;;
 ;; https://github.com/yveszoundi/eglot-java/blob/ff0f9515d78f94b8dfe158bf9a2c4f52216504c0/eglot-java.el#L770
 ;;
 (defun eglot-java--jdt-uri-handler (operation &rest args)
