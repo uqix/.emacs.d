@@ -294,7 +294,7 @@
 
 (keymap-global-set "M-'" #'subword-mode) ; was abbrev-prefix-mark
 
-(keymap-global-set "s-i i d" #'duplicate-dwim) ; [i]nsert: [d]uplicate
+(keymap-global-set "s-d" #'duplicate-dwim) ; was isearch-repeat-backward
 
 (keymap-global-set "s-i f" #'find-file)      ; find [f]ile
 
