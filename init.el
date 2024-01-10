@@ -657,7 +657,7 @@
 
 
 ;; <--------------------------------------------------
-;; # vc
+;; # VC
 
 ;; <-------------------------
 ;; ## magit
@@ -675,6 +675,14 @@
 
 (require 'with-editor)
 (keymap-set with-editor-mode-map "<remap> <save-buffer>" #'with-editor-finish)
+;; >-------------------------
+
+;; <-------------------------
+;; # git-timemachine
+
+;; https://codeberg.org/pidu/git-timemachine
+
+(keymap-global-set "s-i v t" #'git-timemachine) ; [v]c: git-[t]imemachine
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -1255,16 +1263,6 @@
 (require 'jinja2-mode)
 
 (keymap-set jinja2-mode-map "M-o" nil) ; facemenu-set-
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
-;; # git-timemachine
-
-;; https://codeberg.org/pidu/git-timemachine
-
-(keymap-global-set "s-i v t" #'git-timemachine) ; [v]c: git-[t]imemachine
 ;; >--------------------------------------------------
 
 
