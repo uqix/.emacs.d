@@ -186,17 +186,10 @@
 
 (keymap-global-set "s-i m f" #'flymake-mode) ; [m]ode: [f]lymake
 
-(add-hook 'json-ts-mode-hook 'flymake-mode)
-(add-hook 'yaml-ts-mode-hook 'flymake-mode)
-
 ;; <-------------------------
 ;; # flymake-collection
 
 ;; https://github.com/mohkale/flymake-collection
-
-(use-package json-ts-mode
-  :flymake-hook
-  (json-ts-mode flymake-collection-jq))
 
 (use-package flymake-collection
   :hook (after-init . flymake-collection-hook-setup))
@@ -315,7 +308,6 @@
 
 (keymap-global-set "s-i m t" #'text-mode)    ; [m]ode: [t]ext
 (keymap-global-set "s-i m y" #'yaml-ts-mode) ; [m]ode: [y]aml
-(keymap-global-set "s-i m j" #'json-ts-mode) ; [m]ode: [j]son
 
 (keymap-global-set "s-i n n" #'narrow-to-region) ; [n]arrow: region
 (keymap-global-set "s-i n f" #'narrow-to-defun)  ; [n]arrow: [f]unction
@@ -1167,13 +1159,38 @@
 
 
 ;; <--------------------------------------------------
+;; # JSON
+
+(keymap-global-set "s-i m j" #'json-ts-mode) ; [m]ode: [j]son
+
+;; <-------------------------
+;; ## flymake
+
+(add-hook 'json-ts-mode-hook 'flymake-mode)
+
+(use-package json-ts-mode
+  :flymake-hook
+  (json-ts-mode flymake-collection-jq))
+;; >-------------------------
+
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # YAML
 
 (require 'yaml-ts-mode)
 
+;; <-------------------------
+;; ## flymake
+
+(add-hook 'yaml-ts-mode-hook 'flymake-mode)
+
 (use-package yaml-ts-mode
   :flymake-hook
   (yaml-ts-mode flymake-collection-yamllint))
+;; >-------------------------
 
 ;; <-------------------------
 ;; ## yaml-pro
