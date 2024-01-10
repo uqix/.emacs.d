@@ -413,35 +413,6 @@
 
 
 ;; <--------------------------------------------------
-;; # embark
-
-(require 'embark)
-
-;; https://github.com/oantolin/embark#quick-start
-;;
-(keymap-global-set "M-i" 'embark-act) ; was tab-to-tab-stop
-
-(keymap-set embark-file-map "$" 'shell)
-
-(keymap-set embark-region-map "e" nil)              ; was eval-region
-(keymap-set embark-region-map "e e" #'eval-region)  ; [e]val elisp
-(keymap-set embark-region-map "a" nil)              ; was align
-(keymap-set embark-region-map "a a" #'align)        ; [a]lign
-(keymap-set embark-region-map "a r" #'align-regexp) ; [a]lign-[r]egexp
-
-;; <-------------------------
-;; ## marginalia
-
-;; https://github.com/minad/marginalia#configuration
-;;
-(marginalia-mode)
-;; >-------------------------
-
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
 ;; # consult
 
 ;; https://github.com/minad/consult#use-package-example
@@ -452,12 +423,6 @@
 ;; https://www.emacswiki.org/emacs/RecentFiles
 ;;
 (recentf-mode 1)
-;; >-------------------------
-
-;; <-------------------------
-;; # embark-consult
-
-;; https://github.com/oantolin/embark#consult
 ;; >-------------------------
 
 (defun my/region/with-str (fn &optional fn-without-str)
@@ -514,6 +479,43 @@
 ;; Use Consult to select xref locations with preview
 (setq xref-show-xrefs-function #'consult-xref
       xref-show-definitions-function #'consult-xref)
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; # embark
+
+(require 'embark)
+
+;; https://github.com/oantolin/embark#quick-start
+;;
+(keymap-global-set "M-i" 'embark-act) ; was tab-to-tab-stop
+
+(keymap-set embark-file-map "$" 'shell)
+
+(keymap-set embark-region-map "e" nil)              ; was eval-region
+(keymap-set embark-region-map "e e" #'eval-region)  ; [e]val elisp
+(keymap-set embark-region-map "a" nil)              ; was align
+(keymap-set embark-region-map "a a" #'align)        ; [a]lign
+(keymap-set embark-region-map "a r" #'align-regexp) ; [a]lign-[r]egexp
+
+;; <-------------------------
+;; ## marginalia
+
+;; https://github.com/minad/marginalia#configuration
+;;
+(marginalia-mode)
+;; >-------------------------
+
+;; <-------------------------
+;; # embark-consult
+
+;; https://github.com/oantolin/embark#consult
+;;
+;; Embark will automatically load it after Consult if found.
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
