@@ -198,10 +198,6 @@
   :flymake-hook
   (json-ts-mode flymake-collection-jq))
 
-(use-package yaml-ts-mode
-  :flymake-hook
-  (yaml-ts-mode flymake-collection-yamllint))
-
 (use-package flymake-collection
   :hook (after-init . flymake-collection-hook-setup))
 ;; >-------------------------
@@ -946,7 +942,7 @@
 
 
 ;; <--------------------------------------------------
-;; # s
+;; # Convert text
 
 ;; https://github.com/magnars/s.el
 
@@ -993,8 +989,6 @@
 
 ;; https://github.com/polymode/polymode
 
-(setq polymode-prefix-key (kbd "s-,"))
-
 (require 'polymode)
 
 (defun my/polymode/edit-chunk ()
@@ -1002,12 +996,12 @@
   (call-interactively 'polymode-mark-or-extend-chunk)
   (call-interactively 'edit-indirect-region))
 
-(keymap-set polymode-mode-map "s-, n" 'polymode-next-chunk)             ; [n]ext
-(keymap-set polymode-mode-map "s-, p" 'polymode-previous-chunk)         ; [p]revious
-(keymap-set polymode-mode-map "s-, w" 'polymode-toggle-chunk-narrowing) ; narrow or [w]iden
-(keymap-set polymode-mode-map "s-, k" 'polymode-kill-chunk)             ; [k]ill
-(keymap-set polymode-mode-map "s-, m" 'polymode-mark-or-extend-chunk)   ; [m]ark
-(keymap-set polymode-mode-map "s-, e" 'my/polymode/edit-chunk)          ; [e]dit by edit-indirect
+(keymap-set polymode-mode-map "C-c p n" 'polymode-next-chunk)             ; [n]ext
+(keymap-set polymode-mode-map "C-c p p" 'polymode-previous-chunk)         ; [p]revious
+(keymap-set polymode-mode-map "C-c p t" 'polymode-toggle-chunk-narrowing) ; [t]oggle narrowing
+(keymap-set polymode-mode-map "C-c p k" 'polymode-kill-chunk)             ; [k]ill
+(keymap-set polymode-mode-map "C-c p m" 'polymode-mark-or-extend-chunk)   ; [m]ark
+(keymap-set polymode-mode-map "C-c p e" 'my/polymode/edit-chunk)          ; [e]dit by edit-indirect
 
 ;; https://polymode.github.io/defining-polymodes/
 
@@ -1017,37 +1011,6 @@
   :tail-matcher "^ *# </bash>$"
   :head-mode 'body
   :tail-mode 'body)
-
-;; <-------------------------
-;; # yaml
-
-(define-hostmode poly-yaml-ts-hostmode
-  :mode 'yaml-ts-mode)
-(define-polymode poly-yaml-ts-mode
-  :hostmode 'poly-yaml-ts-hostmode
-  :innermodes '(poly-bash-innermode))
-
-;; https://github.com/polymode/polymode/issues/324#issuecomment-1872441449
-;; (add-hook 'yaml-ts-mode-hook 'poly-yaml-ts-mode)
-
-(keymap-set yaml-ts-mode-map "C-c p" 'poly-yaml-ts-mode)
-;; >-------------------------
-
-;; <-------------------------
-;; # groovy
-
-(define-hostmode poly-groovy-hostmode
-  :mode 'groovy-mode)
-(define-polymode poly-groovy-mode
-  :hostmode 'poly-groovy-hostmode
-  :innermodes '(poly-bash-innermode))
-
-;; https://github.com/polymode/polymode/issues/324#issuecomment-1872441449
-;; (add-hook 'groovy-mode-hook 'poly-groovy-mode)
-
-(require 'groovy-mode)
-(keymap-set groovy-mode-map "C-c p" 'poly-groovy-mode)
-;; >-------------------------
 
 ;; >--------------------------------------------------
 
@@ -1196,7 +1159,16 @@
 
 
 ;; <--------------------------------------------------
-;; # yaml-pro
+;; # YAML
+
+(require 'yaml-ts-mode)
+
+(use-package yaml-ts-mode
+  :flymake-hook
+  (yaml-ts-mode flymake-collection-yamllint))
+
+;; <-------------------------
+;; ## yaml-pro
 
 ;; https://github.com/zkry/yaml-pro
 
@@ -1222,6 +1194,23 @@
 ;;
 ;; (keymap-set yaml-pro-ts-mode-map "C-c c" 'yaml-pro-ts-fold-at-point)     ; [c]ollapse
 ;; (keymap-set yaml-pro-ts-mode-map "C-c e" 'yaml-pro-ts-unfold-at-point)   ; [e]xpand
+;; >-------------------------
+
+;; <-------------------------
+;; ## polymode
+
+(define-hostmode poly-yaml-ts-hostmode
+  :mode 'yaml-ts-mode)
+
+(define-polymode poly-yaml-ts-mode
+  :hostmode 'poly-yaml-ts-hostmode
+  :innermodes '(poly-bash-innermode))
+
+;; https://github.com/polymode/polymode/issues/324#issuecomment-1872441449
+;; (add-hook 'yaml-ts-mode-hook 'poly-yaml-ts-mode)
+
+(keymap-set yaml-ts-mode-map "C-c P" 'poly-yaml-ts-mode)
+;; >-------------------------
 
 ;; >--------------------------------------------------
 
@@ -1290,4 +1279,29 @@
 (pdf-loader-install)
 (add-hook 'pdf-view-mode-hook #'pdf-view-midnight-minor-mode)
 (keymap-set pdf-view-mode-map  "M-g" #'pdf-view-goto-page)
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; # Groovy
+
+(require 'groovy-mode)
+
+;; <-------------------------
+;; ## polymode
+
+(define-hostmode poly-groovy-hostmode
+  :mode 'groovy-mode)
+
+(define-polymode poly-groovy-mode
+  :hostmode 'poly-groovy-hostmode
+  :innermodes '(poly-bash-innermode))
+
+;; https://github.com/polymode/polymode/issues/324#issuecomment-1872441449
+;; (add-hook 'groovy-mode-hook 'poly-groovy-mode)
+
+(keymap-set groovy-mode-map "C-c P" 'poly-groovy-mode)
+;; >-------------------------
+
 ;; >--------------------------------------------------
