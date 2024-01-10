@@ -305,14 +305,16 @@
 (keymap-global-set "C-\\" #'toggle-truncate-lines)      ; was toggle-input-method
 (keymap-global-set "C-." #'pop-to-mark-command)         ; was flyspell-auto-correct-word
 
-(keymap-global-set "s-i p" #'previous-error) ; [p]revious error
-(keymap-global-set "s-i n" #'next-error)     ; [n]ext error
+;; (keymap-global-set "s-i p" #'previous-error) ; [p]revious error
+;; (keymap-global-set "s-i n" #'next-error)     ; [n]ext error
 
 (keymap-global-set "s-i m t" #'text-mode)    ; [m]ode: [t]ext
 (keymap-global-set "s-i m y" #'yaml-ts-mode) ; [m]ode: [y]aml
 (keymap-global-set "s-i m j" #'json-ts-mode) ; [m]ode: [j]son
 
-(keymap-global-set "s-i W" #'widen) ; [W]iden
+(keymap-global-set "s-i n n" #'narrow-to-region) ; [n]arrow: region
+(keymap-global-set "s-i n f" #'narrow-to-defun)  ; [n]arrow: [f]unction
+(keymap-global-set "s-i n w" #'widen)            ; [n]arrow: [w]iden
 
 (keymap-global-set "s-i m w" #'whitespace-mode) ; [m]ode: [w]hitespace
 
@@ -696,7 +698,7 @@
 ;; <--------------------------------------------------
 ;; Window
 
-(keymap-global-set "s-i w d" #'delete-window)             ; [w]indow: delete
+(keymap-global-set "s-i w d" #'delete-window)             ; [w]indow: [d]elete
 (keymap-global-set "s-i w D" #'delete-other-windows)      ; [w]indow: [D]elete others
 (keymap-global-set "s-i w h" #'split-window-horizontally) ; [w]indow: split [h]orizontally
 (keymap-global-set "s-i w v" #'split-window-vertically)   ; [w]indow: split [v]ertically
