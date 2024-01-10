@@ -274,6 +274,16 @@
 
 
 ;; <--------------------------------------------------
+;; Buffer
+
+(keymap-global-set "s-i b r" #'revert-buffer)       ; [b]uffer: [r]evert
+(keymap-global-set "s-i b k" #'kill-current-buffer) ; [b]uffer: [k]ill
+
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # Global keys
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html
@@ -289,6 +299,7 @@
 (global-unset-key (kbd "C-x C-z")) ; suspend-frame (minimize)
 
 (keymap-set key-translation-map "s-SPC" "C-g")
+(keymap-set key-translation-map "s-k" "C-c") ; was kill-current-buffer
 
 (keymap-global-set "s-z" #'execute-extended-command) ; more handy
 (keymap-global-set "C-z" ctl-x-map)                  ; more handy
@@ -298,8 +309,6 @@
 (keymap-global-set "s-i i d" #'duplicate-dwim) ; [i]nsert: [d]uplicate
 
 (keymap-global-set "s-i f" #'find-file)      ; find [f]ile
-
-(keymap-global-set "s-i b r" #'revert-buffer) ; [b]uffer: [r]evert
 
 (keymap-global-set "C-," #'replace-string)              ; was flyspell-goto-next-error
 (keymap-global-set "C-\\" #'toggle-truncate-lines)      ; was toggle-input-method
