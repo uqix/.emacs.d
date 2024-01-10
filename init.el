@@ -776,15 +776,22 @@
 
 
 ;; <--------------------------------------------------
+;; grep
+
+(require 'grep)
+
+;; <-------------------------
 ;; # wgrep
+
+(require 'wgrep)
 
 ;; https://github.com/mhayashi1120/Emacs-wgrep
 
-;; https://github.com/mhayashi1120/Emacs-wgrep#usage
-;;
-;; C-c C-p -> edit
-;; C-c C-c -> commit
-;; C-c C-k -> abort
+(keymap-set grep-mode-map "e" #'wgrep-change-to-wgrep-mode)             ; [e]dit
+(keymap-set wgrep-mode-map "<remap> <save-buffer>" #'wgrep-finish-edit) ; commit
+
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
@@ -1047,7 +1054,7 @@
 
 
 ;; <--------------------------------------------------
-;; # misc
+;; # Misc
 
 (electric-pair-mode)
 
