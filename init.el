@@ -554,10 +554,17 @@
 (keymap-set dirvish-mode-map "C-c h" #'dirvish-history-jump)  ; [h]istory
 (keymap-set dirvish-mode-map "C-c l" #'dirvish-layout-toggle) ; [l]ayout
 
-;; (setq mouse-1-click-follows-link nil)
-(define-key dirvish-mode-map (kbd "<mouse-1>") 'dirvish-subtree-toggle-or-open)
-;; (define-key dirvish-mode-map (kbd "<mouse-2>") 'dired-mouse-find-file-other-window)
-;; (define-key dirvish-mode-map (kbd "<mouse-3>") 'dired-mouse-find-file)
+;; Mouse
+;; https://github.com/alexluigit/dirvish/blob/main/docs/CUSTOMIZING.org#mouse-settings
+
+(defun my/dirvish-setup-hook ()
+  (setq-local mouse-1-click-follows-link nil))
+
+(add-hook 'dirvish-setup-hook #'my/dirvish-setup-hook)
+
+(keymap-set dirvish-mode-map "<mouse-1>" #'dirvish-subtree-toggle-or-open)
+(keymap-set dirvish-mode-map "<mouse-2>" #'dirvish-subtree-toggle-or-open)
+(keymap-set dirvish-mode-map "<mouse-3>" #'dired-mouse-find-file-other-window)
 
 ;; >-------------------------
 

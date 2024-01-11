@@ -11,6 +11,7 @@
  '(datetime-timezone 'Etc/GMT+8)
  '(dired-listing-switches
    "-l --almost-all --human-readable --group-directories-first --no-group")
+ '(dirvish-subtree-file-viewer 'ignore)
  '(eglot-events-buffer-size 0)
  '(eglot-report-progress nil)
  '(embark-mixed-indicator-delay 1.5)
