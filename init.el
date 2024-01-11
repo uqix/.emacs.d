@@ -677,6 +677,7 @@
 
 (keymap-set magit-revision-mode-map "o" #'magit-diff-visit-worktree-file-other-window) ; [o]pen; was magit-submodule
 (keymap-set magit-status-mode-map "o" #'magit-diff-visit-worktree-file-other-window)   ; [o]pen; was magit-submodule
+(keymap-set magit-diff-mode-map "o" #'magit-diff-visit-worktree-file-other-window)     ; [o]pen; was magit-submodule
 
 (require 'with-editor)
 (keymap-set with-editor-mode-map "<remap> <save-buffer>" #'with-editor-finish)
