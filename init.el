@@ -554,6 +554,11 @@
 (keymap-set dirvish-mode-map "C-c h" #'dirvish-history-jump)  ; [h]istory
 (keymap-set dirvish-mode-map "C-c l" #'dirvish-layout-toggle) ; [l]ayout
 
+;; (setq mouse-1-click-follows-link nil)
+(define-key dirvish-mode-map (kbd "<mouse-1>") 'dirvish-subtree-toggle-or-open)
+;; (define-key dirvish-mode-map (kbd "<mouse-2>") 'dired-mouse-find-file-other-window)
+;; (define-key dirvish-mode-map (kbd "<mouse-3>") 'dired-mouse-find-file)
+
 ;; >-------------------------
 
 ;; >--------------------------------------------------
