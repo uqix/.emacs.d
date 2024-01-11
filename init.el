@@ -474,6 +474,8 @@
 (keymap-global-set "s-h o" 'consult-outline)        ; [o]utline
 
 ;; <-------------------------
+;; ## Find multi-buffers
+
 (defun my/consult-line-multi/in-project (initial)
   (consult-line-multi nil initial))
 
@@ -482,6 +484,12 @@
   (my/region/with-str 'my/consult-line-multi/in-project 'consult-line-multi))
 
 (keymap-global-set "s-F" 'my/consult-line-multi)
+;; >-------------------------
+
+;; <-------------------------
+;; ## Grep specific dir
+
+;; TODO
 ;; >-------------------------
 
 ;; Use Consult to select xref locations with preview
