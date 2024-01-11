@@ -717,8 +717,13 @@
 
 (defun my/split-window-sensibly ()
   (interactive)
-  (setq-local split-height-threshold nil)
-  (or (split-window-sensibly) (split-window-vertically)))
+  (or
+   (let ((split-height-threshold nil))
+     (split-window-sensibly))
+   (let ((split-width-threshold nil)
+         (split-height-threshold 30))
+     (split-window-sensibly))
+   (message "Not splittable")))
 
 (keymap-global-set "s-t" #'my/split-window-sensibly)
 
