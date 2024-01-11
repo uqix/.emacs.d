@@ -721,7 +721,7 @@
 (keymap-global-set "s-t" #'my/split-window-sensibly)
 
 (keymap-global-set "s-w" #'delete-window)
-(keymap-global-set "s-W" #'delete-other-windows)
+(keymap-global-set "s-e" #'delete-other-windows) ; was isearch-yank-kill
 
 ;; <-------------------------
 ;; ## ace-window
