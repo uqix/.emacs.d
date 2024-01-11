@@ -165,7 +165,8 @@
 
 ;; C-; -> flyspell-auto-correct-previous-word
 
-(keymap-set flyspell-mode-map "C-," nil) ; flyspell-goto-next-error
+;; TODO
+;; (keymap-set flyspell-mode-map "C-," nil) ; flyspell-goto-next-error
 (keymap-set flyspell-mode-map "C-." nil) ; flyspell-auto-correct-word
 ;; >--------------------------------------------------
 
@@ -298,7 +299,8 @@
 
 (keymap-global-set "s-i f" #'find-file)      ; find [f]ile
 
-(keymap-global-set "C-," #'replace-string)              ; was flyspell-goto-next-error
+(keymap-global-set "s-r" #'replace-string)
+
 (keymap-global-set "C-\\" #'toggle-truncate-lines)      ; was toggle-input-method
 (keymap-global-set "C-." #'pop-to-mark-command)         ; was flyspell-auto-correct-word
 
