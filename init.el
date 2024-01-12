@@ -953,10 +953,10 @@
       "--jvm-arg=-XX:+UseStringDeduplication"
       :initializationOptions (:extendedClientCapabilities (:classFileContentsSupport t))))))
 
-;; # java jdtls, handle uri jdt://
-;;
+;; ### Support jdt://
+
 ;; https://github.com/yveszoundi/eglot-java/blob/ff0f9515d78f94b8dfe158bf9a2c4f52216504c0/eglot-java.el#L770
-;;
+
 (defun eglot-java--jdt-uri-handler (operation &rest args)
   "Support Eclipse jdtls `jdt://' uri scheme."
   (let* ((uri (car args))
