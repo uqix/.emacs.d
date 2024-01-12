@@ -304,8 +304,13 @@
 (keymap-global-set "C-\\" #'toggle-truncate-lines)      ; was toggle-input-method
 (keymap-global-set "C-." #'pop-to-mark-command)         ; was flyspell-auto-correct-word
 
-;; (keymap-global-set "s-i p" #'previous-error) ; [p]revious error
-;; (keymap-global-set "s-i n" #'next-error)     ; [n]ext error
+;; <-------------------------
+;; Next match
+
+(keymap-global-set "s-{" #'next-error-select-buffer)
+(keymap-global-set "s-[" #'previous-error)
+(keymap-global-set "s-]" #'next-error)
+;; >-------------------------
 
 (keymap-global-set "s-i m t" #'text-mode)    ; [m]ode: [t]ext
 (keymap-global-set "s-i m y" #'yaml-ts-mode) ; [m]ode: [y]aml
