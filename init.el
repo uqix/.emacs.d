@@ -463,7 +463,8 @@
   (interactive)
   (my/region/with-str 'my/consult-ripgrep/in-project 'consult-ripgrep))
 
-(keymap-global-set "s-j" 'consult-buffer)                         ; [j]ump; was exchange-point-and-mark, prefer C-x C-x
+(keymap-global-set "s-j" 'consult-buffer) ; [j]ump to buffer; was exchange-point-and-mark
+
 (keymap-global-set "s-f" 'my/consult-line)                        ; [f]ind; was isearch-forward
 (keymap-set isearch-mode-map "s-f" 'consult-line)              ; [f]ind
 (keymap-set isearch-mode-map "C-c h" 'consult-isearch-history) ; [h]istory
@@ -567,8 +568,9 @@
 (keymap-set dirvish-mode-map "s" #'dirvish-quicksort)         ; [s]ort; was dired-sort-toggle-or-edit
 (keymap-set dirvish-mode-map "M" #'dirvish-mark-menu)         ; [m]ark menu; was dired-do-chmod
 (keymap-set dirvish-mode-map "C-c m" #'dired-do-chmod)        ; ch[m]od
-(keymap-set dirvish-mode-map "C-c h" #'dirvish-history-jump)  ; [h]istory
 (keymap-set dirvish-mode-map "C-c l" #'dirvish-layout-toggle) ; [l]ayout
+
+(keymap-global-set "s-J" 'dirvish-history-jump) ; [J]ump to dired
 
 ;; Mouse
 ;; https://github.com/alexluigit/dirvish/blob/main/docs/CUSTOMIZING.org#mouse-settings
