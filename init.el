@@ -601,7 +601,11 @@
 
 (keymap-global-set "s-p" project-prefix-map)
 
+(keymap-set project-prefix-map "b" #'consult-project-buffer)
+
 ;; <-------------------------
+;; ## Test file
+
 (defun my/project/test/file ()
   (interactive)
   (let* ((file (buffer-file-name))
@@ -623,6 +627,8 @@
 ;; >-------------------------
 
 ;; <-------------------------
+;; ## Test class
+
 (defun my/project/test/class (&optional method)
   (interactive)
   (or
@@ -644,6 +650,8 @@
 ;; >-------------------------
 
 ;; <-------------------------
+;; ## Test method
+
 (defun my/project/test/method ()
   (interactive)
   (my/project/test/class (read-from-minibuffer "Method: ")))
