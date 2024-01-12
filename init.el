@@ -755,6 +755,9 @@
 (keymap-global-set "s-i w n" #'shrink-window-horizontally)  ; [w]indow: [n]arrower
 (keymap-global-set "s-i w b" #'balance-windows)             ; [w]indow: [b]alance
 
+;; <-------------------------
+;; ## Split
+
 (defun my/split-window-sensibly ()
   (interactive)
   (or
@@ -766,6 +769,8 @@
    (message "Not splittable")))
 
 (keymap-global-set "s-t" #'my/split-window-sensibly)
+
+;; >-------------------------
 
 (keymap-global-set "s-w" #'delete-window)
 (keymap-global-set "s-e" #'delete-other-windows) ; was isearch-yank-kill
