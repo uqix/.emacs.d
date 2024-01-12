@@ -307,6 +307,8 @@
 ;; <-------------------------
 ;; Next match
 
+;; normally uses the most recently started compilation, grep, or occur buffer
+
 (keymap-global-set "s-{" #'next-error-select-buffer)
 (keymap-global-set "s-[" #'previous-error)
 (keymap-global-set "s-]" #'next-error)
