@@ -305,6 +305,8 @@
 (keymap-global-set "C-\\" #'toggle-truncate-lines)      ; was toggle-input-method
 (keymap-global-set "C-." #'pop-to-mark-command)         ; was flyspell-auto-correct-word
 
+(keymap-global-set "s-i z" #'repeat) ; z z z…
+
 ;; <-------------------------
 ;; Next match
 
@@ -746,6 +748,12 @@
 
 ;; <--------------------------------------------------
 ;; # Window
+
+(keymap-global-set "s-i w t" #'enlarge-window)              ; [w]indow: [t]aller
+(keymap-global-set "s-i w s" #'shrink-window)               ; [w]indow: [s]horter
+(keymap-global-set "s-i w w" #'enlarge-window-horizontally) ; [w]indow: [w]ider
+(keymap-global-set "s-i w n" #'shrink-window-horizontally)  ; [w]indow: [n]arrower
+(keymap-global-set "s-i w b" #'balance-windows)             ; [w]indow: [b]alance
 
 (defun my/split-window-sensibly ()
   (interactive)
