@@ -398,6 +398,19 @@
 
 (keymap-set symbol-overlay-map "C-s" #'symbol-overlay-isearch-literally)
 
+;; ### avy jump
+
+(defun my/symbol-overlay/avy-jump ()
+  (interactive)
+  (avy-with my/symbol-overlay/avy-jump
+    (avy-jump
+     (symbol-overlay-regexp (symbol-overlay-get-symbol))
+     :window-flip nil
+     :beg nil
+     :end nil)))
+
+(keymap-set symbol-overlay-map "j" #'my/symbol-overlay/avy-jump)
+
 ;; ### avy jump among all
 
 (defun my/symbol-overlay/avy-jump/all ()
@@ -850,7 +863,7 @@
 
 
 ;; <--------------------------------------------------
-;; Find
+;; # Find
 
 ;; <-------------------------
 ;; ## In current buffer (region aware)
