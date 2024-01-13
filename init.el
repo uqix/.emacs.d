@@ -431,6 +431,23 @@
 
 
 ;; <--------------------------------------------------
+;; Region
+
+(defun my/region/with-str (fn &optional fn-without-str)
+  (let ((command
+         (lambda (&optional begin end)
+           (interactive (if (use-region-p) (list (region-beginning) (region-end))))
+           (if begin
+               (let ((region-str (buffer-substring begin end)))
+                 (deactivate-mark)
+                 (funcall fn region-str))
+             (call-interactively (or fn-without-str fn))))))
+    (call-interactively command)))
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # consult
 
 ;; https://github.com/minad/consult#use-package-example
@@ -443,24 +460,8 @@
 (recentf-mode 1)
 ;; >-------------------------
 
-(defun my/region/with-str (fn &optional fn-without-str)
-  (let ((command
-         (lambda (&optional begin end)
-           (interactive (if (use-region-p) (list (region-beginning) (region-end))))
-           (if begin
-               (let ((region-str (buffer-substring begin end)))
-                 (deactivate-mark)
-                 (funcall fn region-str))
-             (call-interactively (or fn-without-str fn))))))
-    (call-interactively command)))
-
-(defun my/consult-line ()
-  (interactive)
-  (my/region/with-str 'consult-line))
-
 (keymap-global-set "s-j" 'consult-buffer) ; [j]ump to buffer; was exchange-point-and-mark
 
-(keymap-global-set "s-f" 'my/consult-line)                        ; [f]ind; was isearch-forward
 (keymap-set isearch-mode-map "s-f" 'consult-line)              ; [f]ind
 (keymap-set isearch-mode-map "C-c h" 'consult-isearch-history) ; [h]istory
 
@@ -476,19 +477,6 @@
 (keymap-global-set "s-h m" 'consult-mark)           ; [m]ark
 (keymap-global-set "s-h M" 'consult-global-mark)    ; [M]ark
 (keymap-global-set "s-h o" 'consult-outline)        ; [o]utline
-
-;; <-------------------------
-;; ## Find multi-buffers
-
-(defun my/consult-line-multi/in-project (initial)
-  (consult-line-multi nil initial))
-
-(defun my/consult-line-multi ()
-  (interactive)
-  (my/region/with-str 'my/consult-line-multi/in-project 'consult-line-multi))
-
-(keymap-global-set "s-F" 'my/consult-line-multi)
-;; >-------------------------
 
 ;; Use Consult to select xref locations with preview
 (setq xref-show-xrefs-function #'consult-xref
@@ -834,7 +822,37 @@
 
 
 ;; <--------------------------------------------------
-;; # grep
+;; Find
+
+;; <-------------------------
+;; ## In current buffer (region aware)
+
+(keymap-global-set "s-f" 'my/find) ; [f]ind; was isearch-forward
+
+(defun my/find ()
+  (interactive)
+  (my/region/with-str 'consult-line))
+;; >-------------------------
+
+;; <-------------------------
+;; ## In project buffers (region aware)
+
+(keymap-global-set "s-F" 'my/find/project)
+
+(defun my/find/project ()
+  (interactive)
+  (my/region/with-str 'my/find/project//initial 'consult-line-multi))
+
+(defun my/find/project//initial (initial)
+  (consult-line-multi nil initial))
+;; >-------------------------
+
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; # Grep
 
 (require 'grep)
 
@@ -851,32 +869,32 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; ## Grep project (region aware)
+;; ## In project (region aware)
 
-(keymap-global-set "s-g" 'my/consult-ripgrep/project) ; [g]rep; was isearch-repeat-forward
+(keymap-global-set "s-g" 'my/grep/project) ; [g]rep; was isearch-repeat-forward
 
-(defun my/consult-ripgrep/project ()
+(defun my/grep/project ()
   (interactive)
-  (my/region/with-str 'my/consult-ripgrep/project//initial 'consult-ripgrep))
+  (my/region/with-str 'my/grep/project//initial 'consult-ripgrep))
 
-(defun my/consult-ripgrep/project//initial (initial)
+(defun my/grep/project//initial (initial)
   (consult-ripgrep nil initial))
 
 ;; >-------------------------
 
 ;; <-------------------------
-;; ## Grep dir (region aware)
+;; ## In specific dir (region aware)
 
-(keymap-global-set "s-G" 'my/consult-ripgrep/dir)
+(keymap-global-set "s-G" 'my/grep/dir)
 
-(defun my/consult-ripgrep/dir ()
+(defun my/grep/dir ()
   (interactive)
-  (my/region/with-str 'my/consult-ripgrep/dir//initial 'my/consult-ripgrep/dir//))
+  (my/region/with-str 'my/grep/dir//initial 'my/grep/dir//))
 
-(defun my/consult-ripgrep/dir//initial (initial)
+(defun my/grep/dir//initial (initial)
   (consult-ripgrep '(4) initial))
 
-(defun my/consult-ripgrep/dir// ()
+(defun my/grep/dir// ()
   (interactive)
   (consult-ripgrep '(4) nil))
 
