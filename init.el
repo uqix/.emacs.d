@@ -497,12 +497,6 @@
 (keymap-global-set "s-F" 'my/consult-line-multi)
 ;; >-------------------------
 
-;; <-------------------------
-;; ## Grep specific dir
-
-;; TODO
-;; >-------------------------
-
 ;; Use Consult to select xref locations with preview
 (setq xref-show-xrefs-function #'consult-xref
       xref-show-definitions-function #'consult-xref)
@@ -861,6 +855,23 @@
 (keymap-set grep-mode-map "e" #'wgrep-change-to-wgrep-mode)             ; [e]dit
 (keymap-set wgrep-mode-map "<remap> <save-buffer>" #'wgrep-finish-edit) ; commit
 
+;; >-------------------------
+
+;; <-------------------------
+;; ## Grep dir (region aware)
+
+(defun my/consult-ripgrep/dir ()
+  (interactive)
+  (my/region/with-str 'my/consult-ripgrep/dir//initial 'my/consult-ripgrep/dir//))
+
+(defun my/consult-ripgrep/dir//initial (initial)
+  (consult-ripgrep '(4) initial))
+
+(defun my/consult-ripgrep/dir// ()
+  (interactive)
+  (consult-ripgrep '(4) nil))
+
+(keymap-global-set "s-G" 'my/consult-ripgrep/dir)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
