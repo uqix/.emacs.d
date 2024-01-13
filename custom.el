@@ -18,7 +18,7 @@
  '(embark-mixed-indicator-delay 1.5)
  '(enable-recursive-minibuffers t)
  '(ffap-machine-p-known 'reject)
- '(fill-column 100)
+ '(fill-column 90)
  '(flyspell-mark-duplications-flag nil)
  '(imenu-max-item-length 100)
  '(indent-tabs-mode nil)
