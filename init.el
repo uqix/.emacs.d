@@ -397,6 +397,34 @@
 (keymap-global-set "s-o m" 'symbol-overlay-mode)            ; [m]ode
 
 (keymap-set symbol-overlay-map "C-s" #'symbol-overlay-isearch-literally)
+
+;; ### avy jump among all
+
+(defun my/symbol-overlay/avy-jump/all ()
+  (interactive)
+  (let* ((overlays (symbol-overlay-get-list 0))
+         (symbols (seq-map
+                   (lambda (overlay)
+                     (overlay-get overlay 'symbol))
+                   overlays))
+         (symbols (seq-uniq symbols))
+         (symbols-regex (seq-map
+                         (lambda (symbol)
+                           (symbol-overlay-regexp symbol))
+                         symbols))
+         (symbols-regex (string-join symbols-regex "\\|")))
+    (message (format "regex: %s (%s)" symbols-regex (length symbols-regex)))
+    (if (string-empty-p symbols-regex)
+        (message "No symbol overlay")
+      (avy-with my/symbol-overlay/avy-jump/all
+        (avy-jump
+         symbols-regex
+         :window-flip nil
+         :beg nil
+         :end nil)))))
+
+(keymap-global-set "s-o j" #'my/symbol-overlay/avy-jump/all)
+(keymap-set symbol-overlay-map "J" #'my/symbol-overlay/avy-jump/all)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -709,7 +737,9 @@
 
 
 ;; <--------------------------------------------------
-;; # avy
+;; # avy jump
+
+(require 'avy)
 
 ;; https://github.com/abo-abo/avy
 
