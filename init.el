@@ -717,8 +717,9 @@
 ;;
 ;; (avy-setup-default)
 
-(keymap-global-set "M-j" 'avy-goto-char-timer)      ; was default-indent-new-line
-(keymap-global-set "M-g" 'avy-goto-line)            ; was goto-line
+(keymap-global-set "M-j" 'avy-goto-char-timer) ; was default-indent-new-line
+(keymap-global-set "M-J" 'avy-resume)
+(keymap-global-set "M-g" 'avy-goto-line)       ; was goto-line
 
 ;; ? -> actions
 ;; https://karthinks.com/software/avy-can-do-anything/#avy-actions
