@@ -255,11 +255,15 @@
 
 
 ;; <--------------------------------------------------
-;; isearch
+;; # isearch
 
 (keymap-set key-translation-map "s-u" "C-s")
 (keymap-set key-translation-map "s-y" "C-r")
 
+(keymap-set isearch-mode-map "s-r" #'isearch-query-replace)
+(keymap-set isearch-mode-map "s-f" #'consult-line)
+(keymap-set isearch-mode-map "C-c h" #'consult-isearch-history)
+(keymap-set isearch-mode-map "M-j" 'avy-isearch)
 ;; >--------------------------------------------------
 
 
@@ -461,9 +465,6 @@
 ;; >-------------------------
 
 (keymap-global-set "s-j" 'consult-buffer) ; [j]ump to buffer; was exchange-point-and-mark
-
-(keymap-set isearch-mode-map "s-f" 'consult-line)              ; [f]ind
-(keymap-set isearch-mode-map "C-c h" 'consult-isearch-history) ; [h]istory
 
 (keymap-global-set "M-y" 'consult-yank-replace)                   ; [y]ank
 
@@ -718,7 +719,6 @@
 ;; https://github.com/abo-abo/avy#bindings
 ;;
 ;; (avy-setup-default)
-(keymap-set isearch-mode-map "M-j" 'avy-isearch) ; [j]ump
 
 (keymap-global-set "M-j" 'avy-goto-char-timer)      ; was default-indent-new-line
 (keymap-global-set "M-g" 'avy-goto-line)            ; was goto-line
@@ -1152,8 +1152,6 @@
         auto-mode-alist)
 (add-to-list 'auto-mode-alist
              '("Dockerfile$" . dockerfile-ts-mode))
-
-(keymap-set isearch-mode-map "C-," #'isearch-query-replace)
 
 (require 'whitespace)
 (setq whitespace-style (delete 'lines whitespace-style))
