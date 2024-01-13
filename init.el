@@ -371,7 +371,7 @@
 
 
 ;; <--------------------------------------------------
-;; Highlight
+;; # Highlight
 
 (defun my/unhighlight-regexp/all ()
   (interactive)
@@ -380,6 +380,24 @@
 (keymap-global-set "s-i h r" 'highlight-regexp)           ; [h]ighlight: [r]egexp
 (keymap-global-set "s-i h u" 'unhighlight-regexp)         ; [h]ighlight: [u]nhighlight
 (keymap-global-set "s-i h U" #'my/unhighlight-regexp/all) ; [h]ighlight: [U]nhighlight all
+
+;; <-------------------------
+;; ## symbol-overlay
+
+(require 'symbol-overlay)
+
+;; https://github.com/wolray/symbol-overlay/#usage
+
+(global-unset-key (kbd "s-o"))
+
+(keymap-global-set "M-o" 'symbol-overlay-put)               ; [o]verlay
+(keymap-global-set "s-o n" 'symbol-overlay-switch-forward)  ; [n]ext
+(keymap-global-set "s-o p" 'symbol-overlay-switch-backward) ; [p]revious
+(keymap-global-set "s-o r" 'symbol-overlay-remove-all)      ; [r]emove
+(keymap-global-set "s-o m" 'symbol-overlay-mode)            ; [m]ode
+
+(keymap-set symbol-overlay-map "C-s" #'symbol-overlay-isearch-literally)
+;; >-------------------------
 
 ;; >--------------------------------------------------
 
@@ -652,27 +670,6 @@
 ;;   (c-set-offset 'arglist-close '0)
 ;;   (c-set-offset 'case-label '+))
 ;; (add-hook 'java-mode-hook 'my/java-mode-hook)
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
-;; # symbol-overlay
-
-(require 'symbol-overlay)
-
-;; https://github.com/wolray/symbol-overlay/#usage
-
-(global-unset-key (kbd "s-o"))
-
-(keymap-global-set "M-o" 'symbol-overlay-put)               ; [o]verlay
-(keymap-global-set "s-o n" 'symbol-overlay-switch-forward)  ; [n]ext
-(keymap-global-set "s-o p" 'symbol-overlay-switch-backward) ; [p]revious
-(keymap-global-set "s-o r" 'symbol-overlay-remove-all)      ; [r]emove
-(keymap-global-set "s-o m" 'symbol-overlay-mode)            ; [m]ode
-
-(keymap-set symbol-overlay-map "C-s" #'symbol-overlay-isearch-literally)
-
 ;; >--------------------------------------------------
 
 
