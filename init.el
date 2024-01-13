@@ -458,19 +458,12 @@
   (interactive)
   (my/region/with-str 'consult-line))
 
-(defun my/consult-ripgrep/in-project (initial)
-  (consult-ripgrep nil initial))
-
-(defun my/consult-ripgrep ()
-  (interactive)
-  (my/region/with-str 'my/consult-ripgrep/in-project 'consult-ripgrep))
-
 (keymap-global-set "s-j" 'consult-buffer) ; [j]ump to buffer; was exchange-point-and-mark
 
 (keymap-global-set "s-f" 'my/consult-line)                        ; [f]ind; was isearch-forward
 (keymap-set isearch-mode-map "s-f" 'consult-line)              ; [f]ind
 (keymap-set isearch-mode-map "C-c h" 'consult-isearch-history) ; [h]istory
-(keymap-global-set "s-g" 'my/consult-ripgrep)                     ; [g]rep; was isearch-repeat-forward
+
 (keymap-global-set "M-y" 'consult-yank-replace)                   ; [y]ank
 
 (keymap-global-set "s-h i" 'consult-imenu)          ; [i]menu
@@ -858,7 +851,23 @@
 ;; >-------------------------
 
 ;; <-------------------------
+;; ## Grep project (region aware)
+
+(keymap-global-set "s-g" 'my/consult-ripgrep/project) ; [g]rep; was isearch-repeat-forward
+
+(defun my/consult-ripgrep/project ()
+  (interactive)
+  (my/region/with-str 'my/consult-ripgrep/project//initial 'consult-ripgrep))
+
+(defun my/consult-ripgrep/project//initial (initial)
+  (consult-ripgrep nil initial))
+
+;; >-------------------------
+
+;; <-------------------------
 ;; ## Grep dir (region aware)
+
+(keymap-global-set "s-G" 'my/consult-ripgrep/dir)
 
 (defun my/consult-ripgrep/dir ()
   (interactive)
@@ -871,7 +880,6 @@
   (interactive)
   (consult-ripgrep '(4) nil))
 
-(keymap-global-set "s-G" 'my/consult-ripgrep/dir)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
