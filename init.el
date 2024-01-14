@@ -135,8 +135,7 @@
   (set-face-foreground 'corfu-default fg)
   (set-face-attribute 'corfu-current nil :foreground fg :background "#42444a")
   (set-face-foreground 'font-lock-function-call-face fg)
-  (set-face-foreground 'font-lock-variable-name-face fg)
-  (set-face-foreground 'tooltip fg))
+  (set-face-foreground 'font-lock-variable-name-face fg))
 ;; >--------------------------------------------------
 
 
