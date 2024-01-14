@@ -59,6 +59,8 @@
  '(avy-lead-face ((t (:background "#282c34" :foreground "green" :weight bold))))
  '(aw-leading-char-face ((t (:foreground "green" :weight bold))))
  '(corfu-current ((t (:background "#42444a" :foreground "#bbc2cf"))))
+ '(diff-refine-added ((t (:inherit diff-added :background "unspecified" :inverse-video nil))))
+ '(diff-refine-removed ((t (:inherit diff-removed :inverse-video nil))))
  '(eglot-highlight-symbol-face ((t (:underline "DarkGoldenrod"))))
  '(flyspell-duplicate ((t (:underline nil))))
  '(font-lock-comment-face ((t (:foreground "#b4916d"))))
