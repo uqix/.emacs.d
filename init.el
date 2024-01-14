@@ -119,29 +119,23 @@
 
 
 ;; <--------------------------------------------------
-;; # doom-themes
+;; # Theme
+
+;; ## doom-themes
 
 ;; https://github.com/doomemacs/themes#manually--use-package
 ;;
 (load-theme 'doom-one t)
 
-(let ((fg
-       ;; https://github.com/ianyepan/jetbrains-darcula-emacs-theme/blob/master/jetbrains-darcula-theme.el
-       "#a9b7c6"))
-  ;; https://www.emacswiki.org/emacs/SetFonts - Emacs for Mac OS X
-  (set-face-attribute
-   'default nil
-   :family "JetBrains Mono"
-   :height 130
-   :foreground fg)
+;; Foreground:
+;; https://github.com/ianyepan/jetbrains-darcula-emacs-theme/blob/master/jetbrains-darcula-theme.el
 
+(let ((fg "#a9b7c6"))
+  (set-face-attribute 'default nil :family "JetBrains Mono" :height 130 :foreground fg)
   (set-face-foreground 'corfu-default fg)
   (set-face-attribute 'corfu-current nil :foreground fg :background "#42444a")
-
-  (custom-set-faces
-   `(font-lock-function-call-face ((t (:foreground ,fg))))
-   `(font-lock-variable-name-face ((t (:foreground ,fg))))))
-
+  (set-face-foreground 'font-lock-function-call-face fg)
+  (set-face-foreground 'font-lock-variable-name-face fg))
 ;; >--------------------------------------------------
 
 
