@@ -818,15 +818,15 @@
 ;;
 (keymap-global-set "s-n" 'ace-window) ; [w]indow: [n]umber; was make-frame
 
-(setq aw-keys '(?a ?s ?d ?f ?q ?w ?e ?r))
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 
 (setq aw-dispatch-alist
-  '((?x aw-delete-window "Delete Window")
-    ;; (?m aw-swap-window "Swap Windows")
+  '((?w aw-delete-window "Delete Window")
+    (?x aw-swap-window "Swap Windows")
     ;; (?M aw-move-window "Move Window")
     ;; (?c aw-copy-window "Copy Window")
     ;; (?j aw-switch-buffer-in-window "Select Buffer")
-    ;; (?n aw-flip-window)
+    (?b aw-flip-window)
     ;; (?u aw-switch-buffer-other-window "Switch Buffer Other Window")
     ;; (?e aw-execute-command-other-window "Execute Command Other Window")
     ;; (?F aw-split-window-fair "Split Fair Window")
