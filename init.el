@@ -1487,5 +1487,14 @@
   (set-face-foreground 'font-lock-variable-name-face fg)
 
   (set-face-attribute 'diff-refine-added nil :background "unspecified" :inverse-video nil)
-  (set-face-attribute 'diff-refine-removed nil :inverse-video nil))
+  (set-face-attribute 'diff-refine-removed nil :inverse-video nil)
+
+  (set-face-attribute 'symbol-overlay-face-1 nil :background "unspecified" :underline "DeepSkyBlue1")
+  (set-face-attribute 'symbol-overlay-face-2 nil :background "unspecified" :underline "yellow1")
+  (set-face-attribute 'symbol-overlay-face-3 nil :background "unspecified" :underline "OrangeRed1")
+  (set-face-attribute 'symbol-overlay-face-4 nil :background "unspecified" :underline "green1")
+  (set-face-attribute 'symbol-overlay-face-5 nil :background "unspecified" :underline "MediumPurple1")
+  (set-face-attribute 'symbol-overlay-face-6 nil :background "unspecified" :underline "magenta1")
+  (set-face-attribute 'symbol-overlay-face-7 nil :background "unspecified" :underline "turquoise1")
+  (set-face-attribute 'symbol-overlay-face-8 nil :background "unspecified" :underline "orange1"))
 ;; >--------------------------------------------------
