@@ -571,6 +571,8 @@
 
 (setq insert-directory-program "gls")
 
+(setopt dired-recursive-deletes 'always)
+
 ;; <-------------------------
 ;; ## dirvish
 
