@@ -56,7 +56,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(avy-lead-face ((t (:background "#282c34" :foreground "green" :weight bold))))
  '(aw-leading-char-face ((t (:foreground "green" :weight bold))))
  '(corfu-current ((t (:background "#42444a" :foreground "#bbc2cf"))))
  '(diff-refine-added ((t (:inherit diff-added :background "unspecified" :inverse-video nil))))

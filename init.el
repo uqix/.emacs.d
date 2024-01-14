@@ -571,7 +571,7 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; # embark-consult
+;; ## embark-consult
 
 ;; https://github.com/oantolin/embark#consult
 ;;
