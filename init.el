@@ -584,6 +584,16 @@
 ;; https://github.com/oantolin/embark#consult
 ;;
 ;; Embark will automatically load it after Consult if found.
+
+(keymap-set embark-general-map "s-f" #'consult-line)
+(keymap-set embark-general-map "s-F" #'consult-line-multi)
+(keymap-set embark-general-map "s-g" #'consult-ripgrep)
+(keymap-set embark-general-map "s-G" #'my/grep/dir//read-initial)
+
+(defun my/grep/dir//read-initial ()
+  (interactive)
+  (consult-ripgrep '(4) (read-from-minibuffer "Grep: ")))
+
 ;; >-------------------------
 
 ;; >--------------------------------------------------
