@@ -138,15 +138,7 @@
   (custom-set-faces
    `(corfu-current ((t (:background "#42444a" :foreground ,default-fg))))
    `(font-lock-function-call-face ((t (:foreground ,default-fg))))
-   `(font-lock-variable-name-face ((t (:foreground ,default-fg))))
-   '(symbol-overlay-face-1 ((t (:background "unspecified" :underline "OrangeRed1"))))
-   '(symbol-overlay-face-2 ((t (:background "unspecified" :underline "burlywood1"))))
-   '(symbol-overlay-face-3 ((t (:background "unspecified" :underline "yellow1"))))
-   '(symbol-overlay-face-4 ((t (:background "unspecified" :underline "green1"))))
-   '(symbol-overlay-face-5 ((t (:background "unspecified" :underline "cyan1"))))
-   '(symbol-overlay-face-6 ((t (:background "unspecified" :underline "DeepSkyBlue1"))))
-   '(symbol-overlay-face-7 ((t (:background "unspecified" :underline "SlateBlue1"))))
-   '(symbol-overlay-face-8 ((t (:background "unspecified" :underline "magenta"))))))
+   `(font-lock-variable-name-face ((t (:foreground ,default-fg))))))
 
 ;; >--------------------------------------------------
 
