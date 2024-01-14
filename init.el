@@ -524,8 +524,8 @@
 
 (require 'embark)
 
-;; https://github.com/oantolin/embark#quick-start
-;;
+(setopt embark-confirm-act-all nil)
+
 (keymap-global-set "M-i" 'embark-act) ; was tab-to-tab-stop
 
 (keymap-set embark-file-map "$" 'shell)
