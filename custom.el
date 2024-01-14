@@ -57,7 +57,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(aw-leading-char-face ((t (:foreground "green" :weight bold))))
- '(corfu-current ((t (:background "#42444a" :foreground "#bbc2cf"))))
  '(diff-refine-added ((t (:inherit diff-added :background "unspecified" :inverse-video nil))))
  '(diff-refine-removed ((t (:inherit diff-removed :inverse-video nil))))
  '(eglot-highlight-symbol-face ((t (:underline "DarkGoldenrod"))))

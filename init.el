@@ -125,7 +125,7 @@
 ;;
 (load-theme 'doom-one t)
 
-(let ((default-fg
+(let ((fg
        ;; https://github.com/ianyepan/jetbrains-darcula-emacs-theme/blob/master/jetbrains-darcula-theme.el
        "#a9b7c6"))
   ;; https://www.emacswiki.org/emacs/SetFonts - Emacs for Mac OS X
@@ -133,12 +133,14 @@
    'default nil
    :family "JetBrains Mono"
    :height 130
-   :foreground default-fg)
+   :foreground fg)
+
+  (set-face-foreground 'corfu-default fg)
+  (set-face-attribute 'corfu-current nil :foreground fg :background "#42444a")
 
   (custom-set-faces
-   `(corfu-current ((t (:background "#42444a" :foreground ,default-fg))))
-   `(font-lock-function-call-face ((t (:foreground ,default-fg))))
-   `(font-lock-variable-name-face ((t (:foreground ,default-fg))))))
+   `(font-lock-function-call-face ((t (:foreground ,fg))))
+   `(font-lock-variable-name-face ((t (:foreground ,fg))))))
 
 ;; >--------------------------------------------------
 
