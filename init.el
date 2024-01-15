@@ -1163,6 +1163,9 @@
 ;; <--------------------------------------------------
 ;; # Misc
 
+(setq y-or-n-p-use-read-key t)
+(setopt use-short-answers t)
+
 (electric-pair-mode)
 
 (put 'narrow-to-region 'disabled nil)
