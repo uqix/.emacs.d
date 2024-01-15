@@ -1511,8 +1511,10 @@
   (set-face-attribute 'default nil :family "JetBrains Mono" :height 130 :foreground fg)
   (set-face-foreground 'corfu-default fg)
   (set-face-attribute 'corfu-current nil :foreground fg :background "#42444a")
+
   (set-face-foreground 'font-lock-function-call-face fg)
   (set-face-foreground 'font-lock-variable-name-face fg)
+  (set-face-foreground 'font-lock-type-face "#5B6268")
 
   (set-face-attribute 'diff-refine-added nil :background "unspecified" :inverse-video nil)
   (set-face-attribute 'diff-refine-removed nil :inverse-video nil)

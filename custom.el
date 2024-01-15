@@ -57,5 +57,4 @@
  ;; If there is more than one, they won't work right.
  '(aw-leading-char-face ((t (:foreground "green" :weight bold))))
  '(eglot-highlight-symbol-face ((t (:underline "DarkGoldenrod"))))
- '(flyspell-duplicate ((t (:underline nil))))
- '(font-lock-type-face ((t (:foreground "#5B6268")))))
+ '(flyspell-duplicate ((t (:underline nil)))))
