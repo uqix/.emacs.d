@@ -58,7 +58,4 @@
  '(aw-leading-char-face ((t (:foreground "green" :weight bold))))
  '(eglot-highlight-symbol-face ((t (:underline "DarkGoldenrod"))))
  '(flyspell-duplicate ((t (:underline nil))))
- '(font-lock-comment-face ((t (:foreground "#b4916d"))))
- '(font-lock-string-face ((t (:foreground "dark cyan"))))
- '(font-lock-type-face ((t (:foreground "#5B6268"))))
- '(sh-quoted-exec ((t (:foreground "#5B6268")))))
+ '(font-lock-type-face ((t (:foreground "#5B6268")))))
