@@ -237,7 +237,13 @@
 (keymap-set isearch-mode-map "s-r" #'isearch-query-replace)
 (keymap-set isearch-mode-map "s-f" #'consult-line)
 (keymap-set isearch-mode-map "C-c h" #'consult-isearch-history)
-(keymap-set isearch-mode-map "M-j" 'avy-isearch)
+
+(defun my/avy-isearch ()
+  (interactive)
+  (isearch-done)
+  (avy-isearch))
+
+(keymap-set isearch-mode-map "M-j" 'my/avy-isearch)
 ;; >--------------------------------------------------
 
 
