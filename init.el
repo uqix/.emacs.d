@@ -929,6 +929,17 @@
 
 ;; >-------------------------
 
+;; <-------------------------
+;; ## No .gitignore
+
+(keymap-global-set "s-i g" #'consult-grep)
+(keymap-global-set "s-i G" #'my/consult-grep/dir)
+
+(defun my/consult-grep/dir ()
+  (interactive)
+  (consult-grep '(4) nil))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
