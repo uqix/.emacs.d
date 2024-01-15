@@ -1376,6 +1376,16 @@
 (keymap-set yaml-pro-ts-mode-map "C-c m" #'yaml-pro-ts-mark-subtree)      ; [m]ark
 (keymap-set yaml-pro-ts-mode-map "C-c y" #'yaml-pro-ts-paste-subtree)     ; [y]ank
 
+;; <----------
+;; ### Save path
+
+(keymap-set yaml-pro-ts-mode-map "C-c w" #'my/yaml-pro/save-path)
+
+(defun my/yaml-pro/save-path ()
+  (interactive)
+  (kill-new (yaml-pro-ts-eldoc)))
+;; >----------
+
 ;; This is not available for tree-sitter variant.
 ;; Presumably some tree-sitter folding package will exist in the future.
 ;;
