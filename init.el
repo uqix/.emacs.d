@@ -629,6 +629,7 @@
 (keymap-global-set "s-p" project-prefix-map)
 
 (keymap-set project-prefix-map "b" #'consult-project-buffer)
+;; (keymap-set project-prefix-map "g" #'consult-ripgrep)
 
 ;; <-------------------------
 ;; ## Test file
