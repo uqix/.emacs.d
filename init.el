@@ -378,7 +378,10 @@
 
 (keymap-set symbol-overlay-map "C-s" #'symbol-overlay-isearch-literally)
 
+;; <----------
 ;; ### avy jump
+
+(keymap-set symbol-overlay-map "j" #'my/symbol-overlay/avy-jump)
 
 (defun my/symbol-overlay/avy-jump ()
   (interactive)
@@ -388,10 +391,13 @@
      :window-flip nil
      :beg nil
      :end nil)))
+;; >----------
 
-(keymap-set symbol-overlay-map "j" #'my/symbol-overlay/avy-jump)
-
+;; <----------
 ;; ### avy jump among all
+
+(keymap-global-set "s-o j" #'my/symbol-overlay/avy-jump/all)
+(keymap-set symbol-overlay-map "J" #'my/symbol-overlay/avy-jump/all)
 
 (defun my/symbol-overlay/avy-jump/all ()
   (interactive)
@@ -415,9 +421,14 @@
          :window-flip nil
          :beg nil
          :end nil)))))
+;; >----------
 
-(keymap-global-set "s-o j" #'my/symbol-overlay/avy-jump/all)
-(keymap-set symbol-overlay-map "J" #'my/symbol-overlay/avy-jump/all)
+;; <----------
+;; Find
+
+
+;; >----------
+
 ;; >-------------------------
 
 ;; >--------------------------------------------------
