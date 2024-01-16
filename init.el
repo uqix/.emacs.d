@@ -424,9 +424,43 @@
 ;; >----------
 
 ;; <----------
-;; Find
+;; ### Find in current buffer
 
+(keymap-set symbol-overlay-map "s-f" #'my/symbol-overlay/find)
 
+(defun my/symbol-overlay/find ()
+  (interactive)
+  (consult-line (symbol-overlay-get-symbol)))
+;; >----------
+
+;; <----------
+;; ### Find in project buffers
+
+(keymap-set symbol-overlay-map "s-F" #'my/symbol-overlay/find/project)
+
+(defun my/symbol-overlay/find/project ()
+  (interactive)
+  (consult-line-multi nil (symbol-overlay-get-symbol)))
+;; >----------
+
+;; <----------
+;; ### Grep in project
+
+(keymap-set symbol-overlay-map "s-g" #'my/symbol-overlay/grep/project)
+
+(defun my/symbol-overlay/grep/project ()
+  (interactive)
+  (consult-ripgrep nil (symbol-overlay-get-symbol)))
+;; >----------
+
+;; <----------
+;; ### Grep in specific dir
+
+(keymap-set symbol-overlay-map "s-G" #'my/symbol-overlay/grep/dir)
+
+(defun my/symbol-overlay/grep/dir ()
+  (interactive)
+  (consult-ripgrep '(4) (symbol-overlay-get-symbol)))
 ;; >----------
 
 ;; >-------------------------
