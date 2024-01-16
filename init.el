@@ -353,13 +353,32 @@
 ;; <--------------------------------------------------
 ;; # Highlight
 
+;; <-------------------------
+;; ## Regexp
+
+;; <----------
+;; ### Highlight (region aware)
+(keymap-global-set "s-i h r" 'my/highlight-regexp) ; [h]ighlight: [r]egexp
+
+(defun my/highlight-regexp ()
+  (interactive)
+  (my/region/with-str 'my/highlight-regexp//initial 'highlight-regexp))
+
+(defun my/highlight-regexp//initial (initial)
+  (highlight-regexp (regexp-quote initial) 'diff-error))
+;; >----------
+
+;; <----------
+;; ### Unhighlight
+
+(keymap-global-set "s-i h u" 'unhighlight-regexp) ; [h]ighlight: [u]nhighlight
+
+(keymap-global-set "s-i h U" #'my/unhighlight-regexp/all) ; [h]ighlight: [U]nhighlight all
+
 (defun my/unhighlight-regexp/all ()
   (interactive)
   (unhighlight-regexp t))
-
-(keymap-global-set "s-i h r" 'highlight-regexp)           ; [h]ighlight: [r]egexp
-(keymap-global-set "s-i h u" 'unhighlight-regexp)         ; [h]ighlight: [u]nhighlight
-(keymap-global-set "s-i h U" #'my/unhighlight-regexp/all) ; [h]ighlight: [U]nhighlight all
+;; >----------
 
 ;; <-------------------------
 ;; ## symbol-overlay
