@@ -899,6 +899,8 @@
 ;; <--------------------------------------------------
 ;; # Find
 
+(keymap-set occur-edit-mode-map "<remap> <save-buffer>" #'occur-cease-edit)
+
 ;; <-------------------------
 ;; ## In current buffer (region aware)
 
