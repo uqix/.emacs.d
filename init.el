@@ -1093,16 +1093,15 @@
 ;; <-------------------------
 ;; ## eglot
 
-(with-eval-after-load 'eglot
-  (add-to-list
-   'eglot-server-programs
-   '(java-ts-mode
-     .
-     ("jdtls"
-      "--jvm-arg=-javaagent:/Users/zjq/opt/lombok.jar"
-      "--jvm-arg=-Xmx4G"
-      "--jvm-arg=-XX:+UseStringDeduplication"
-      :initializationOptions (:extendedClientCapabilities (:classFileContentsSupport t))))))
+(add-to-list
+ 'eglot-server-programs
+ '(java-ts-mode
+   .
+   ("jdtls"
+    "--jvm-arg=-javaagent:/Users/zjq/opt/lombok.jar"
+    "--jvm-arg=-Xmx4G"
+    "--jvm-arg=-XX:+UseStringDeduplication"
+    :initializationOptions (:extendedClientCapabilities (:classFileContentsSupport t)))))
 
 ;; ### Support jdt://
 
@@ -1557,6 +1556,15 @@
 (keymap-set groovy-mode-map "C-c P" 'poly-groovy-mode)
 ;; >-------------------------
 
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; eglot-booster
+
+(require 'eglot-booster)
+(eglot-booster-mode)
 ;; >--------------------------------------------------
 
 
