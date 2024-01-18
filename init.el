@@ -1561,10 +1561,10 @@
 
 
 ;; <--------------------------------------------------
-;; eglot-booster
+;; # eglot-booster
 
-(require 'eglot-booster)
-(eglot-booster-mode)
+;; (require 'eglot-booster)
+;; (eglot-booster-mode)
 ;; >--------------------------------------------------
 
 
