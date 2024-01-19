@@ -811,6 +811,8 @@
 (require 'magit)
 
 (setopt magit-save-repository-buffers 'dontask)
+(setopt magit-diff-refine-hunk 'all)
+(setopt magit-diff-highlight-hunk-body nil)
 
 (keymap-global-set "s-m" 'magit-status)     ; [m]agit; was iconify-frame
 
@@ -1651,10 +1653,22 @@
 ;; Foreground:
 ;; https://github.com/ianyepan/jetbrains-darcula-emacs-theme/blob/master/jetbrains-darcula-theme.el
 
+(set-face-attribute 'default nil :family "JetBrains Mono" :height 130)
+(set-face-attribute 'aw-leading-char-face nil :height 1.0 :weight 'bold :foreground "green")
+
+(let ((added (face-attribute 'magit-diff-added :foreground))
+      (removed (face-attribute 'magit-diff-removed :foreground)))
+  (set-face-attribute 'magit-diff-added nil :foreground (doom-darken added 0.3))
+  (set-face-attribute 'magit-diff-removed nil :foreground (doom-darken removed 0.3))
+  (set-face-attribute 'diff-refine-added nil :foreground added)
+  (set-face-attribute 'diff-refine-removed nil :foreground removed))
+
+(set-face-attribute
+ 'magit-diff-hunk-heading-highlight nil :background
+ (doom-darken (face-attribute 'magit-diff-base-highlight :background) 0.3))
+
 (let ((fg "#a9b7c6"))
   ;; (set-face-attribute 'default nil :family "JetBrains Mono" :height 130 :foreground fg)
-  (set-face-attribute 'default nil :family "JetBrains Mono" :height 130)
-  (set-face-attribute 'aw-leading-char-face nil :height 1.0 :weight 'bold :foreground "green")
 
   ;; (custom-set-faces
   ;;  '(eglot-highlight-symbol-face ((t (:underline "DarkGoldenrod"))))
