@@ -4,8 +4,14 @@
 ;; # package
 
 (require 'package)
+
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(setopt package-archive-priorities '(("melpa" . 1)))
+
 (package-initialize)
+
+(setopt package-install-upgrade-built-in t)
+(setopt package-native-compile t)
 
 ;; <-------------------------
 ;; # custom-file
@@ -57,18 +63,13 @@
 
 ;; https://github.com/oantolin/orderless
 
-;; * required by vertico and corfu
+(setopt orderless-matching-styles
+        '(orderless-regexp orderless-literal orderless-initialism))
 
 ;; https://github.com/minad/vertico#configuration
-;;
 (setq completion-styles '(orderless basic)
       completion-category-defaults nil
       completion-category-overrides '((file (styles partial-completion))))
-;;
-;; https://github.com/minad/vertico#tramp-hostname-completion
-
-;; https://github.com/oantolin/orderless#component-matching-styles
-;; orderless-matching-styles
 ;; >--------------------------------------------------
 
 
@@ -78,19 +79,12 @@
 
 ;; https://github.com/minad/corfu
 
-;; https://github.com/minad/corfu#installation-and-configuration
-;;
 (global-corfu-mode)
 
-;; https://github.com/minad/corfu#key-bindings
-;;
-;; M-g -> corfu-info-location
-;; M-h -> corfu-info-documentation
-;; M-SPC -> corfu-insert-separator
-
 ;; https://github.com/minad/corfu/blob/main/extensions/corfu-quick.el
-;;
 (keymap-set corfu-map "M-g" #'corfu-quick-complete)
+
+(setopt corfu-auto t)
 
 ;; <-------------------------
 ;; # cape
@@ -99,6 +93,8 @@
 ;;
 (add-to-list 'completion-at-point-functions #'cape-dabbrev)
 (add-to-list 'completion-at-point-functions #'cape-file)
+
+(setopt cape-dabbrev-min-length 1)
 ;; >-------------------------
 
 ;; https://github.com/minad/corfu#completing-in-the-minibuffer
@@ -142,9 +138,23 @@
 
 
 ;; <--------------------------------------------------
+;; Spellcheck
+
+;; <-------------------------
+;; ispell
+
+(setopt ispell-dictionary "american")
+(setopt ispell-program-name "aspell")
+(setopt ispell-extra-args '("--camel-case"))
+
+;; >-------------------------
+
+;; <-------------------------
 ;; # flyspell
 
 (require 'flyspell)
+
+(setopt flyspell-mark-duplications-flag nil)
 
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-mode)
@@ -154,6 +164,8 @@
 ;; TODO
 ;; (keymap-set flyspell-mode-map "C-," nil) ; flyspell-goto-next-error
 (keymap-set flyspell-mode-map "C-." nil) ; flyspell-auto-correct-word
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
@@ -188,6 +200,8 @@
 
 ;; <--------------------------------------------------
 ;; # minibuffer
+
+(setopt enable-recursive-minibuffers t)
 
 (add-hook 'minibuffer-setup-hook #'subword-mode)
 (add-hook 'minibuffer-setup-hook #'flyspell-mode)
@@ -606,6 +620,7 @@
 (require 'embark)
 
 (setopt embark-confirm-act-all nil)
+(setopt embark-mixed-indicator-delay 1.5)
 
 (keymap-global-set "M-i" 'embark-act) ; was tab-to-tab-stop
 
@@ -651,6 +666,8 @@
 ;; # dired
 
 (setq insert-directory-program "gls")
+(setopt dired-listing-switches
+        "-l --almost-all --human-readable --group-directories-first --no-group")
 
 (setopt dired-recursive-deletes 'always)
 
@@ -700,6 +717,9 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Projects.html
 
 (require 'project)
+
+(setopt project-vc-extra-root-markers
+        '("Chart.yaml"))
 
 (keymap-global-set "s-p" project-prefix-map)
 
@@ -789,6 +809,8 @@
 ;; ## magit
 
 (require 'magit)
+
+(setopt magit-save-repository-buffers 'dontask)
 
 (keymap-global-set "s-m" 'magit-status)     ; [m]agit; was iconify-frame
 
@@ -1052,6 +1074,8 @@
 ;; <--------------------------------------------------
 ;; # xref
 
+(setopt xref-history-storage 'xref-window-local-history)
+
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Xref.html
 
 ;; * required by eglot
@@ -1085,11 +1109,10 @@
 ;; <--------------------------------------------------
 ;; # eglot
 
-;; https://github.com/joaotavora/eglot
-
-;; replace lsp-mode, use s-l key prefix out of habit
-
 (require 'eglot)
+
+(setopt eglot-events-buffer-size 0)
+(setopt eglot-report-progress nil)
 
 ;; https://github.com/joaotavora/eglot/pull/937
 ;; https://github.com/joaotavora/eglot/pull/937/files
@@ -1272,7 +1295,22 @@
 
 
 ;; <--------------------------------------------------
+;; Whitespaces
+
+(setopt indent-tabs-mode nil)
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # Misc
+
+(setopt inhibit-startup-screen t)
+(setopt initial-major-mode 'text-mode)
+(setopt fill-column 90)
+(setopt make-backup-files nil)
+(setopt scroll-bar-mode nil)
+(setopt tool-bar-mode nil)
 
 (setq y-or-n-p-use-read-key t)
 (setopt use-short-answers t)
@@ -1455,6 +1493,8 @@
 
 (require 'yaml-pro)
 
+(setopt yaml-pro-ts-yank-subtrees nil)
+
 (add-hook 'yaml-ts-mode-hook #'yaml-pro-ts-mode)
 
 ;; https://github.com/zkry/yaml-pro#usage-1
@@ -1511,6 +1551,11 @@
 ;; # markdown-mode
 
 (require 'markdown-mode)
+
+(setopt markdown-command "multimarkdown")
+(setopt markdown-display-remote-images t)
+(setopt markdown-fontify-code-blocks-natively t)
+(setopt markdown-max-image-size '(500 . 500))
 
 (keymap-set markdown-mode-map "C-c c" #'markdown-insert-code)                 ; inline [c]ode
 (keymap-set markdown-mode-map "C-c b" #'markdown-insert-gfm-code-block)       ; code [b]lock
