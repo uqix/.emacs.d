@@ -52,11 +52,3 @@
  '(tool-bar-mode nil)
  '(xref-history-storage 'xref-window-local-history)
  '(yaml-pro-ts-yank-subtrees nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(aw-leading-char-face ((t (:foreground "green" :weight bold))))
- '(eglot-highlight-symbol-face ((t (:underline "DarkGoldenrod"))))
- '(flyspell-duplicate ((t (:underline nil)))))

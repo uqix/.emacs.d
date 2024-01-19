@@ -1599,7 +1599,7 @@
 
 
 ;; <--------------------------------------------------
-;; # Theme
+;; # Custom faces
 
 ;; Foreground:
 ;; https://github.com/ianyepan/jetbrains-darcula-emacs-theme/blob/master/jetbrains-darcula-theme.el
@@ -1607,6 +1607,12 @@
 (let ((fg "#a9b7c6"))
   ;; (set-face-attribute 'default nil :family "JetBrains Mono" :height 130 :foreground fg)
   (set-face-attribute 'default nil :family "JetBrains Mono" :height 130)
+
+  ;; (custom-set-faces
+  ;;  '(aw-leading-char-face ((t (:foreground "green" :weight bold))))
+  ;;  '(eglot-highlight-symbol-face ((t (:underline "DarkGoldenrod"))))
+  ;;  '(flyspell-duplicate ((t (:underline nil)))))
+
   ;; (set-face-foreground 'corfu-default fg)
   ;; (set-face-attribute 'corfu-current nil :foreground fg :background "#42444a")
 
