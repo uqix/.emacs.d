@@ -889,8 +889,10 @@
 
 ;; https://github.com/abo-abo/ace-window
 
-;; https://github.com/abo-abo/ace-window#customization
-;;
+(require 'ace-window)
+
+(setopt aw-background nil)
+
 (keymap-global-set "s-n" 'ace-window) ; [w]indow: [n]umber; was make-frame
 
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
@@ -1652,6 +1654,7 @@
 (let ((fg "#a9b7c6"))
   ;; (set-face-attribute 'default nil :family "JetBrains Mono" :height 130 :foreground fg)
   (set-face-attribute 'default nil :family "JetBrains Mono" :height 130)
+  (set-face-attribute 'aw-leading-char-face nil :height 1.0 :weight 'bold :foreground "green")
 
   ;; (custom-set-faces
   ;;  '(aw-leading-char-face ((t (:foreground "green" :weight bold))))
