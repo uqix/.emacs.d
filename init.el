@@ -1669,6 +1669,10 @@
  'magit-diff-hunk-heading-highlight nil :background
  (doom-darken (face-attribute 'magit-diff-base-highlight :background) 0.3))
 
+(set-face-attribute
+ 'highlight nil :background
+ (doom-darken (face-attribute 'highlight :background) 0.5))
+
 (let ((fg "#a9b7c6"))
   ;; (set-face-attribute 'default nil :family "JetBrains Mono" :height 130 :foreground fg)
 
