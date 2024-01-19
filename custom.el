@@ -42,7 +42,7 @@
  '(package-install-upgrade-built-in t)
  '(package-native-compile t)
  '(package-selected-packages
-   '(eglot-booster pdf-tools all-the-icons dirvish eglot transient edit-indirect nginx-mode polymode groovy-mode git-timemachine jinja2-mode flymake-collection docker yaml-pro vundo doom-themes cape corfu wgrep vertico orderless embark-consult marginalia markdown-mode doom-modeline ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
+   '(gruvbox-theme eglot-booster pdf-tools all-the-icons dirvish eglot transient edit-indirect nginx-mode polymode groovy-mode git-timemachine jinja2-mode flymake-collection docker yaml-pro vundo doom-themes cape corfu wgrep vertico orderless embark-consult marginalia markdown-mode doom-modeline ztree multiple-cursors ace-window magit yasnippet symbol-overlay expand-region))
  '(package-vc-selected-packages
    '((eglot-booster :url "https://github.com/jdtsmith/eglot-booster.git" :branch "allow-initialization-options")))
  '(project-vc-extra-root-markers '("Chart.yaml"))
