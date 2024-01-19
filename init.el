@@ -63,6 +63,8 @@
 
 ;; https://github.com/oantolin/orderless
 
+;; TODO learn
+
 (setopt orderless-matching-styles
         '(orderless-regexp orderless-literal orderless-initialism))
 
