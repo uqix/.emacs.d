@@ -896,12 +896,30 @@
 
 
 ;; <--------------------------------------------------
-;; # doom-modeline
+;; # Mode Line
+
+;; <-------------------------
+;;## doom-modeline
 
 ;; https://github.com/seagle0128/doom-modeline#install
 ;;
 ;; M-x nerd-icons-install-fonts
-(add-hook 'after-init-hook #'doom-modeline-mode)
+;; (add-hook 'after-init-hook #'doom-modeline-mode)
+;; >-------------------------
+
+;; <-------------------------
+;; ## telephone-line
+
+(require 'telephone-line)
+
+(setq telephone-line-rhs
+      '((nil telephone-line-flymake-segment telephone-line-misc-info-segment)
+        (accent telephone-line-major-mode-segment)
+        (evil telephone-line-airline-position-segment)))
+
+(telephone-line-mode 1)
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
