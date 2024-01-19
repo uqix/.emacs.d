@@ -6,15 +6,26 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
+
+;; <-------------------------
+;; # custom-file
+
+;; Use it only for package-selected-packages
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
 
 ;; <--------------------------------------------------
-;; # custom-file
+;; # Theme
 
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+;; (load-theme 'doom-one t)
+
+(load-theme 'gruvbox t)
 ;; >--------------------------------------------------
 
 
@@ -1590,18 +1601,12 @@
 ;; <--------------------------------------------------
 ;; # Theme
 
-;; ## doom-themes
-
-;; https://github.com/doomemacs/themes#manually--use-package
-;;
-;; (load-theme 'doom-one t)
-(load-theme 'gruvbox t)
-
 ;; Foreground:
 ;; https://github.com/ianyepan/jetbrains-darcula-emacs-theme/blob/master/jetbrains-darcula-theme.el
 
 (let ((fg "#a9b7c6"))
-  (set-face-attribute 'default nil :family "JetBrains Mono" :height 130 :foreground fg)
+  ;; (set-face-attribute 'default nil :family "JetBrains Mono" :height 130 :foreground fg)
+  (set-face-attribute 'default nil :family "JetBrains Mono" :height 130)
   ;; (set-face-foreground 'corfu-default fg)
   ;; (set-face-attribute 'corfu-current nil :foreground fg :background "#42444a")
 
