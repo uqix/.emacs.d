@@ -1657,7 +1657,6 @@
   (set-face-attribute 'aw-leading-char-face nil :height 1.0 :weight 'bold :foreground "green")
 
   ;; (custom-set-faces
-  ;;  '(aw-leading-char-face ((t (:foreground "green" :weight bold))))
   ;;  '(eglot-highlight-symbol-face ((t (:underline "DarkGoldenrod"))))
   ;;  '(flyspell-duplicate ((t (:underline nil)))))
 
