@@ -583,12 +583,12 @@
   (interactive)
   (my/region/convert 's-capitalized-words))
 
-(keymap-set embark-region-map "c" nil)
-
-(keymap-set embark-region-map "c s" #'my/region/convert/snake-case) ; [c]ase: [s]nake
-(keymap-set embark-region-map "c c" #'my/region/convert/camel-case) ; [c]ase: [c]amel
-(keymap-set embark-region-map "c k" #'my/region/convert/kebab-case) ; [c]ase: [k]ebab
-(keymap-set embark-region-map "c C" #'my/region/convert/capitalize) ; [c]ase: [C]apitalize
+(with-eval-after-load 'embark
+  (keymap-set embark-region-map "c" nil)
+  (keymap-set embark-region-map "c s" #'my/region/convert/snake-case)
+  (keymap-set embark-region-map "c c" #'my/region/convert/camel-case)
+  (keymap-set embark-region-map "c k" #'my/region/convert/kebab-case)
+  (keymap-set embark-region-map "c C" #'my/region/convert/capitalize))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
