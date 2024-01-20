@@ -1113,7 +1113,7 @@
 
 (require 'eglot)
 
-(setopt eglot-events-buffer-size 0)
+(setopt eglot-events-buffer-config '(:size 0 :format full))
 (setopt eglot-report-progress nil)
 
 ;; https://github.com/joaotavora/eglot/pull/937
