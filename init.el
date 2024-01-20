@@ -50,10 +50,7 @@
 ;; <--------------------------------------------------
 ;; # dabbrev
 
-;; * Use Dabbrev with Corfu!
-
 ;; M-/ -> dabbrev-expand
-
 ;; >--------------------------------------------------
 
 
@@ -163,16 +160,12 @@
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-mode)
 
-;; C-; -> flyspell-auto-correct-previous-word
-
-;; TODO
-;; (keymap-set flyspell-mode-map "C-," nil) ; flyspell-goto-next-error
-(keymap-set flyspell-mode-map "C-." nil) ; flyspell-auto-correct-word
+(keymap-set flyspell-mode-map "C-." nil) ; was flyspell-auto-correct-word
 
 ;; <----------
 ;; ### flyspell-correct
 
-(keymap-set flyspell-mode-map "C-;" #'flyspell-correct-wrapper)
+(keymap-set flyspell-mode-map "C-;" #'flyspell-correct-wrapper) ; was flyspell-auto-correct-previous-word
 ;; >----------
 
 ;; >-------------------------
@@ -313,24 +306,25 @@
 
 ;; s-i -> misc prefix key
 
-(global-unset-key (kbd "C-x C-c")) ; quit emacs
-(global-unset-key (kbd "C-x C-z")) ; suspend-frame (minimize)
+(global-unset-key (kbd "C-x C-c")) ; was quit emacs
+(global-unset-key (kbd "C-x C-z")) ; was suspend-frame (minimize)
 
 (keymap-set key-translation-map "s-SPC" "C-g")
 
-(keymap-global-set "s-z" #'execute-extended-command)
 (keymap-global-set "C-z" ctl-x-map)
+(keymap-global-set "s-z" #'execute-extended-command)
 
 (keymap-global-set "M-'" #'subword-mode) ; was abbrev-prefix-mark
 
 (keymap-global-set "s-d" #'duplicate-dwim) ; was isearch-repeat-backward
 
-(keymap-global-set "s-i f" #'find-file)      ; find [f]ile
+(keymap-global-set "s-i f" #'find-file)
 
 (keymap-global-set "s-r" #'replace-string)
 
-(keymap-global-set "C-\\" #'toggle-truncate-lines)      ; was toggle-input-method
-(keymap-global-set "C-." #'pop-to-mark-command)         ; was flyspell-auto-correct-word
+(keymap-global-set "C-\\" #'toggle-truncate-lines) ; was toggle-input-method
+
+(keymap-global-set "C-." #'pop-to-mark-command) ; was flyspell-auto-correct-word
 
 (keymap-global-set "s-i z" #'repeat) ; z z z…
 
@@ -345,48 +339,13 @@
 ;; >-------------------------
 
 (keymap-global-set "s-i m t" #'text-mode)    ; [m]ode: [t]ext
-(keymap-global-set "s-i m y" #'yaml-ts-mode) ; [m]ode: [y]aml
-
-(keymap-global-set "s-i n n" #'narrow-to-region) ; [n]arrow: region
-(keymap-global-set "s-i n f" #'narrow-to-defun)  ; [n]arrow: [f]unction
-(keymap-global-set "s-i n w" #'widen)            ; [n]arrow: [w]iden
-
-(keymap-global-set "s-i m w" #'whitespace-mode) ; [m]ode: [w]hitespace
-
-(keymap-global-set "M-L" #'downcase-region) ; [L]owercase region
-(keymap-global-set "M-U" #'upcase-region)   ; [U]ppercase region
-
-(keymap-global-set "M-\\" #'delete-trailing-whitespace) ; was delete-horizontal-space, prefer M-SPC
-
-(keymap-global-set "s-i r r" #'query-replace-regexp) ; [r]eplace: regexp
 
 (keymap-global-set "C-h F" #'describe-face)   ; [h]elp: [F]ace
 (keymap-global-set "C-h K" #'describe-keymap) ; [h]elp: [K]eymap
 
-;; C-x r o -> open-rectangle
-;; C-x r k -> kill-rectangle
-;; f4 -> kmacro-end-or-call-macro
-
-;; M-[ -> t
-;; M-] -> nil
-;; M-\ -> delete-horizontal-space
-;; M-; -> comment-dwim
-;; M-' -> t
-;; M-/ -> dabbrev-completion
-
-;; C-[ -> ESC-
-;; C-] -> abort-recursive-edit
-;; C-\ -> t
-;; C-; -> flyspell-auto-correct-previous-word
-;; C-' -> nil; external binding: macOS Keyboard Shortcuts - Input Sources - Select the previous input source
-;; C-, -> t
-;; C-. -> t
-;; C-/ -> undo
-
-;; s-1 nil; external binding: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 1
-;; s-2 nil; external binding: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 2 (emacs)
-;; s-3 nil; external binding: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 3 (chrome)
-
+;; s-1: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 1 (Misc)
+;; s-2: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 2 (Emacs)
+;; s-3: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 3 (Chrome)
 ;; >--------------------------------------------------
 
 
@@ -581,6 +540,57 @@
                  (funcall fn region-str))
              (call-interactively (or fn-without-str fn))))))
     (call-interactively command)))
+
+;; <-------------------------
+;; ## Narrowing
+
+(keymap-global-set "s-i n n" #'narrow-to-region) ; [n]arrow: region
+(keymap-global-set "s-i n f" #'narrow-to-defun)  ; [n]arrow: [f]unction
+(keymap-global-set "s-i n w" #'widen)            ; [n]arrow: [w]iden
+;; >-------------------------
+
+;; <-------------------------
+;; ## Case convert
+
+(keymap-global-set "M-L" #'downcase-region) ; [L]owercase region
+(keymap-global-set "M-U" #'upcase-region)   ; [U]ppercase region
+
+;; https://github.com/magnars/s.el
+
+;; https://stackoverflow.com/a/61745441/9154901
+(defun my/region/convert (fn)
+  (let ((command
+         (lambda (begin end)
+           (interactive "r")
+           (let ((region-str (buffer-substring begin end)))
+             (delete-region begin end)
+             (insert (funcall fn region-str))))))
+    (call-interactively command)))
+
+(defun my/region/convert/snake-case ()
+  (interactive)
+  (my/region/convert 's-snake-case))
+
+(defun my/region/convert/camel-case ()
+  (interactive)
+  (my/region/convert 's-lower-camel-case))
+
+(defun my/region/convert/kebab-case ()
+  (interactive)
+  (my/region/convert 's-dashed-words))
+
+(defun my/region/convert/capitalize ()
+  (interactive)
+  (my/region/convert 's-capitalized-words))
+
+(keymap-set embark-region-map "c" nil)
+
+(keymap-set embark-region-map "c s" #'my/region/convert/snake-case) ; [c]ase: [s]nake
+(keymap-set embark-region-map "c c" #'my/region/convert/camel-case) ; [c]ase: [c]amel
+(keymap-set embark-region-map "c k" #'my/region/convert/kebab-case) ; [c]ase: [k]ebab
+(keymap-set embark-region-map "c C" #'my/region/convert/capitalize) ; [c]ase: [C]apitalize
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
@@ -983,6 +993,12 @@
   (consult-line-multi nil initial))
 ;; >-------------------------
 
+;; <-------------------------
+;; Replace
+
+(keymap-global-set "s-i r r" #'query-replace-regexp) ; [r]eplace: regexp
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
@@ -1209,48 +1225,6 @@
 
 
 ;; <--------------------------------------------------
-;; # Convert text
-
-;; https://github.com/magnars/s.el
-
-;; https://stackoverflow.com/a/61745441/9154901
-(defun my/region/convert (fn)
-  (let ((command
-         (lambda (begin end)
-           (interactive "r")
-           (let ((region-str (buffer-substring begin end)))
-             (delete-region begin end)
-             (insert (funcall fn region-str))))))
-    (call-interactively command)))
-
-(defun my/region/convert/snake-case ()
-  (interactive)
-  (my/region/convert 's-snake-case))
-
-(defun my/region/convert/camel-case ()
-  (interactive)
-  (my/region/convert 's-lower-camel-case))
-
-(defun my/region/convert/kebab-case ()
-  (interactive)
-  (my/region/convert 's-dashed-words))
-
-(defun my/region/convert/capitalize ()
-  (interactive)
-  (my/region/convert 's-capitalized-words))
-
-(keymap-set embark-region-map "c" nil)
-
-(keymap-set embark-region-map "c s" #'my/region/convert/snake-case) ; [c]ase: [s]nake
-(keymap-set embark-region-map "c c" #'my/region/convert/camel-case) ; [c]ase: [c]amel
-(keymap-set embark-region-map "c k" #'my/region/convert/kebab-case) ; [c]ase: [k]ebab
-(keymap-set embark-region-map "c C" #'my/region/convert/capitalize) ; [c]ase: [C]apitalize
-
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
 ;; # polymode
 
 ;; https://github.com/polymode/polymode
@@ -1283,9 +1257,12 @@
 
 
 ;; <--------------------------------------------------
-;; Whitespaces
+;; # Whitespaces
 
 (setopt indent-tabs-mode nil)
+
+(keymap-global-set "s-i m w" #'whitespace-mode) ; [m]ode: [w]hitespace
+(keymap-global-set "M-\\" #'delete-trailing-whitespace) ; was delete-horizontal-space
 ;; >--------------------------------------------------
 
 
@@ -1465,6 +1442,8 @@
 ;; # YAML
 
 (require 'yaml-ts-mode)
+
+(keymap-global-set "s-i m y" #'yaml-ts-mode) ; [m]ode: [y]aml
 
 ;; <-------------------------
 ;; ## flymake
