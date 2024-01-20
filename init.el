@@ -14,7 +14,7 @@
 (setopt package-native-compile t)
 
 ;; <-------------------------
-;; # custom-file
+;; ## custom-file
 
 ;; Use it only for package-selected-packages
 
@@ -37,7 +37,9 @@
 
 
 ;; <--------------------------------------------------
-;; # dabbrev
+;; # Dynamic abbrev expansion
+
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Dynamic-Abbrevs.html
 
 ;; M-/ -> dabbrev-expand
 ;; >--------------------------------------------------
@@ -241,7 +243,7 @@
 
 
 ;; <--------------------------------------------------
-;; # hs-minor-mode
+;; # Block collapse/expand
 
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
@@ -497,17 +499,7 @@
 
 
 ;; <--------------------------------------------------
-;; # expand-region
-
-;; https://github.com/magnars/expand-region.el
-
-(keymap-global-set "M-[" 'er/expand-region)
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
-;; # shell-mode
+;; # Shell
 
 (require 'shell)
 
@@ -541,6 +533,57 @@
 ;; >-------------------------
 
 ;; <-------------------------
+;; ## expand-region
+
+;; https://github.com/magnars/expand-region.el
+
+(keymap-global-set "M-[" 'er/expand-region)
+;; >-------------------------
+
+;; <-------------------------
+;; ## Select by separator
+
+(defun my/select-text/between (separator-char)
+  (re-search-backward (format "%c\\|^" separator-char))
+  (when (= (char-after) separator-char)
+    (forward-char))
+  (set-mark (point))
+  (re-search-forward (format "%c\\|$" separator-char))
+  (when (= (char-before) separator-char)
+    (backward-char)))
+
+(defun my/select-text/between-spaces ()
+  (interactive)
+  (my/select-text/between ?\s))
+
+(defun my/select-text/between-slashes ()
+  (interactive)
+  (my/select-text/between ?/))
+
+(defun my/select-text/between-commas ()
+  (interactive)
+  (my/select-text/between ?,))
+
+(defun my/select-text/between-single-quotes ()
+  (interactive)
+  (my/select-text/between ?'))
+
+(defun my/select-text/between-double-quotes ()
+  (interactive)
+  (my/select-text/between 34)) ; ?" is mis-parsed as string begin by elisp-mode
+
+(defalias 'my/select-text/java-text-block
+  (kmacro "M-[ C-n C-a C-x C-x C-p C-e"))
+
+(keymap-global-set "s-i s s" 'my/select-text/between-spaces)         ; [s]elect text between [s]paces
+(keymap-global-set "s-i s /" 'my/select-text/between-slashes)        ; [s]elect text between /
+(keymap-global-set "s-i s ," 'my/select-text/between-commas)         ; [s]elect text between ,
+(keymap-global-set "s-i s '" 'my/select-text/between-single-quotes)  ; [s]elect text between '
+(keymap-global-set "s-i s \"" 'my/select-text/between-double-quotes) ; [s]elect text between "
+(keymap-global-set "s-i s j" 'my/select-text/java-text-block)        ; [s]elect text in [j]ava text block
+;; >-------------------------
+
+;; <-------------------------
 ;; ## Case convert
 
 (put 'upcase-region 'disabled nil)
@@ -548,8 +591,6 @@
 
 (keymap-global-set "M-L" #'downcase-region) ; [L]owercase region
 (keymap-global-set "M-U" #'upcase-region)   ; [U]ppercase region
-
-;; https://github.com/magnars/s.el
 
 ;; https://stackoverflow.com/a/61745441/9154901
 (defun my/region/convert (fn)
@@ -695,7 +736,9 @@
 
 (keymap-global-set "s-J" 'dirvish-history-jump) ; [J]ump to dired
 
-;; Mouse
+;; <----------
+;; ### Mouse
+
 ;; https://github.com/alexluigit/dirvish/blob/main/docs/CUSTOMIZING.org#mouse-settings
 
 (defun my/dirvish-setup-hook ()
@@ -706,6 +749,7 @@
 (keymap-set dirvish-mode-map "<mouse-1>" #'dirvish-subtree-toggle-or-open)
 (keymap-set dirvish-mode-map "<mouse-2>" #'dirvish-subtree-toggle-or-open)
 (keymap-set dirvish-mode-map "<mouse-3>" #'dired-mouse-find-file-other-window)
+;; >----------
 
 ;; >-------------------------
 
@@ -789,21 +833,6 @@
 
 
 ;; <--------------------------------------------------
-;; # java-mode
-
-;; (require 'cc-mode)
-
-;; ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Customizing-C-and-C_002b_002b-indentation.html
-;; (defun my/java-mode-hook ()
-;;   (c-set-offset 'arglist-intro '+)
-;;   (c-set-offset 'arglist-close '0)
-;;   (c-set-offset 'case-label '+))
-;; (add-hook 'java-mode-hook 'my/java-mode-hook)
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
 ;; # VC
 
 ;; <-------------------------
@@ -842,23 +871,6 @@
 
 
 ;; <--------------------------------------------------
-;; # avy jump
-
-(require 'avy)
-
-(setopt avy-timeout-seconds 0.7)
-
-(keymap-global-set "M-j" 'avy-goto-char-timer) ; was default-indent-new-line
-(keymap-global-set "M-J" 'avy-resume)
-(keymap-global-set "M-g" 'avy-goto-line)       ; was goto-line
-
-;; ? -> actions
-;; https://karthinks.com/software/avy-can-do-anything/#avy-actions
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
 ;; # Window
 
 (keymap-global-set "s-i w t" #'enlarge-window)              ; [w]indow: [t]aller
@@ -886,6 +898,21 @@
 
 (keymap-global-set "s-w" #'delete-window)
 (keymap-global-set "s-e" #'delete-other-windows) ; was isearch-yank-kill
+
+;; <-------------------------
+;; ## avy jump
+
+(require 'avy)
+
+(setopt avy-timeout-seconds 0.7)
+
+(keymap-global-set "M-j" 'avy-goto-char-timer) ; was default-indent-new-line
+(keymap-global-set "M-J" 'avy-resume)
+(keymap-global-set "M-g" 'avy-goto-line)       ; was goto-line
+
+;; ? -> actions
+;; https://karthinks.com/software/avy-can-do-anything/#avy-actions
+;; >-------------------------
 
 ;; <-------------------------
 ;; ## ace-window
@@ -937,7 +964,7 @@
 ;; # Mode Line
 
 ;; <-------------------------
-;;## doom-modeline
+;; ## doom-modeline
 
 ;; https://github.com/seagle0128/doom-modeline#install
 
@@ -1384,52 +1411,6 @@
 ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-1284144173
 (keymap-set edit-indirect-mode-map "<remap> <save-buffer>" #'edit-indirect-commit)
 ;; >-------------------------
-
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
-;; # Select text
-
-(defun my/select-text/between (separator-char)
-  (re-search-backward (format "%c\\|^" separator-char))
-  (when (= (char-after) separator-char)
-    (forward-char))
-  (set-mark (point))
-  (re-search-forward (format "%c\\|$" separator-char))
-  (when (= (char-before) separator-char)
-    (backward-char)))
-
-(defun my/select-text/between-spaces ()
-  (interactive)
-  (my/select-text/between ?\s))
-
-(defun my/select-text/between-slashes ()
-  (interactive)
-  (my/select-text/between ?/))
-
-(defun my/select-text/between-commas ()
-  (interactive)
-  (my/select-text/between ?,))
-
-(defun my/select-text/between-single-quotes ()
-  (interactive)
-  (my/select-text/between ?'))
-
-(defun my/select-text/between-double-quotes ()
-  (interactive)
-  (my/select-text/between 34)) ; ?" is mis-parsed as string begin by elisp-mode
-
-(defalias 'my/select-text/java-text-block
-  (kmacro "M-[ C-n C-a C-x C-x C-p C-e"))
-
-(keymap-global-set "s-i s s" 'my/select-text/between-spaces)         ; [s]elect text between [s]paces
-(keymap-global-set "s-i s /" 'my/select-text/between-slashes)        ; [s]elect text between /
-(keymap-global-set "s-i s ," 'my/select-text/between-commas)         ; [s]elect text between ,
-(keymap-global-set "s-i s '" 'my/select-text/between-single-quotes)  ; [s]elect text between '
-(keymap-global-set "s-i s \"" 'my/select-text/between-double-quotes) ; [s]elect text between "
-(keymap-global-set "s-i s j" 'my/select-text/java-text-block)        ; [s]elect text in [j]ava text block
 
 ;; >--------------------------------------------------
 
