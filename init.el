@@ -37,17 +37,6 @@
 
 
 ;; <--------------------------------------------------
-;; # builtin ts modes
-
-(require 'dockerfile-ts-mode)
-(require 'go-ts-mode)
-(require 'typescript-ts-mode)
-
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
 ;; # dabbrev
 
 ;; M-/ -> dabbrev-expand
@@ -544,6 +533,8 @@
 ;; <-------------------------
 ;; ## Narrowing
 
+(put 'narrow-to-region 'disabled nil)
+
 (keymap-global-set "s-i n n" #'narrow-to-region) ; [n]arrow: region
 (keymap-global-set "s-i n f" #'narrow-to-defun)  ; [n]arrow: [f]unction
 (keymap-global-set "s-i n w" #'widen)            ; [n]arrow: [w]iden
@@ -551,6 +542,9 @@
 
 ;; <-------------------------
 ;; ## Case convert
+
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 
 (keymap-global-set "M-L" #'downcase-region) ; [L]owercase region
 (keymap-global-set "M-U" #'upcase-region)   ; [U]ppercase region
@@ -994,7 +988,7 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; Replace
+;; ## Replace
 
 (keymap-global-set "s-i r r" #'query-replace-regexp) ; [r]eplace: regexp
 ;; >-------------------------
@@ -1160,6 +1154,7 @@
     "--jvm-arg=-XX:+UseStringDeduplication"
     :initializationOptions (:extendedClientCapabilities (:classFileContentsSupport t)))))
 
+;; <----------
 ;; ### Support jdt://
 
 ;; https://github.com/yveszoundi/eglot-java/blob/ff0f9515d78f94b8dfe158bf9a2c4f52216504c0/eglot-java.el#L770
@@ -1197,6 +1192,8 @@
     new-path))
 
 (add-to-list 'file-name-handler-alist '("\\`jdt://" . eglot-java--jdt-uri-handler))
+;; >----------
+
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -1259,6 +1256,9 @@
 ;; <--------------------------------------------------
 ;; # Whitespaces
 
+(require 'whitespace)
+(setq whitespace-style (delete 'lines whitespace-style))
+
 (setopt indent-tabs-mode nil)
 
 (keymap-global-set "s-i m w" #'whitespace-mode) ; [m]ode: [w]hitespace
@@ -1281,10 +1281,25 @@
 (setopt use-short-answers t)
 
 (electric-pair-mode)
+;; >--------------------------------------------------
 
-(put 'narrow-to-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
+
+
+;; <--------------------------------------------------
+;; # Bash
+
+(require 'sh-script)
+(advice-remove 'bash-ts-mode #'sh--redirect-bash-ts-mode)
+
+(add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; Dockerfile
+
+(require 'dockerfile-ts-mode)
 
 ;; Fix generate-dockerfile.sh|docker-dockerfile.md opened in this mode
 (delete '("\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'"
@@ -1292,21 +1307,22 @@
         auto-mode-alist)
 (add-to-list 'auto-mode-alist
              '("Dockerfile$" . dockerfile-ts-mode))
-
-(require 'whitespace)
-(setq whitespace-style (delete 'lines whitespace-style))
-
 ;; >--------------------------------------------------
 
 
 
 ;; <--------------------------------------------------
-;; # bash-ts-mode
+;; # Go
 
-(require 'sh-script)
-(advice-remove 'bash-ts-mode #'sh--redirect-bash-ts-mode)
+(require 'go-ts-mode)
+;; >--------------------------------------------------
 
-(add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
+
+
+;; <--------------------------------------------------
+;; # TypeScript
+
+(require 'typescript-ts-mode)
 ;; >--------------------------------------------------
 
 
