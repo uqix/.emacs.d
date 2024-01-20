@@ -27,6 +27,15 @@
 
 
 ;; <--------------------------------------------------
+;; Load util libs
+
+(require 's)
+(require 'dash)
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # Theme
 
 ;; (load-theme 'doom-one t)
@@ -1370,9 +1379,6 @@
 ;; ## Left margin
 
 ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-387945773
-
-(require 's)
-(require 'dash)
 
 (defvar edit-indirect--left-margin 0)
 
