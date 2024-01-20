@@ -370,8 +370,6 @@
 ;; M-\ -> delete-horizontal-space
 ;; M-; -> comment-dwim
 ;; M-' -> t
-;; M-, -> xref-pop-marker-stack
-;; M-. -> xref-find-definitions
 ;; M-/ -> dabbrev-completion
 
 ;; C-[ -> ESC-
@@ -620,10 +618,6 @@
 (keymap-global-set "s-h m" 'consult-mark)           ; [m]ark
 (keymap-global-set "s-h M" 'consult-global-mark)    ; [M]ark
 (keymap-global-set "s-h o" 'consult-outline)        ; [o]utline
-
-;; Use Consult to select xref locations with preview
-(setq xref-show-xrefs-function #'consult-xref
-      xref-show-definitions-function #'consult-xref)
 ;; >--------------------------------------------------
 
 
@@ -1077,20 +1071,21 @@
 ;; <--------------------------------------------------
 ;; # xref
 
-(setopt xref-history-storage 'xref-window-local-history)
-
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Xref.html
 
-;; * required by eglot
+;; M-. -> xref-find-definitions
+;; M-, -> xref-pop-marker-stack
+;; M-? -> xref-find-references
 
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Looking-Up-Identifiers.html
-;; M-. -> Find definitions of an identifier (xref-find-definitions).
-;; M-, -> Go back to where you previously invoked M-. and friends (xref-pop-marker-stack).
+(setopt xref-history-storage #'xref-window-local-history)
 
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Xref-Commands.html
+;; <-------------------------
+;; ## consult
 
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Identifier-Search.html
-;; M-? -> Find all the references for the identifier at point.
+(setopt xref-show-xrefs-function #'consult-xref)
+(setopt xref-show-definitions-function #'consult-xref)
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
