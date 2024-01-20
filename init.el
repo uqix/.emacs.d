@@ -140,10 +140,10 @@
 
 
 ;; <--------------------------------------------------
-;; Spellcheck
+;; # Spellcheck
 
 ;; <-------------------------
-;; ispell
+;; ## ispell
 
 (setopt ispell-dictionary "american")
 (setopt ispell-program-name "aspell")
@@ -152,7 +152,7 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; # flyspell
+;; ## flyspell
 
 (require 'flyspell)
 
@@ -166,6 +166,13 @@
 ;; TODO
 ;; (keymap-set flyspell-mode-map "C-," nil) ; flyspell-goto-next-error
 (keymap-set flyspell-mode-map "C-." nil) ; flyspell-auto-correct-word
+
+;; <----------
+;; ### flyspell-correct
+
+(define-key flyspell-mode-map (kbd "C-;") 'flyspell-correct-wrapper)
+;; >----------
+
 ;; >-------------------------
 
 ;; >--------------------------------------------------
