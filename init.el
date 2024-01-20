@@ -1655,6 +1655,8 @@
 
 (set-face-attribute 'consult-file nil :inherit 'consult-buffer)
 
+(set-face-attribute 'avy-lead-face nil :foreground "green" :background "reset")
+
 (let ((fg "#a9b7c6"))
   ;; (set-face-attribute 'default nil :family "JetBrains Mono" :height 130 :foreground fg)
 
