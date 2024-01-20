@@ -578,7 +578,7 @@
 
 
 ;; <--------------------------------------------------
-;; Region
+;; # Region
 
 (defun my/region/with-str (fn &optional fn-without-str)
   (let ((command
@@ -1359,6 +1359,8 @@
 (setq edit-indirect-guess-mode-function #'my/edit-indirect/guess-mode)
 
 ;; <-------------------------
+;; ## Left margin
+
 ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-387945773
 
 (require 's)
