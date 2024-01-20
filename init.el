@@ -61,6 +61,8 @@
 ;; <--------------------------------------------------
 ;; # Completion
 
+(add-to-list 'completion-ignored-extensions ".DS_Store")
+
 ;; <-------------------------
 ;; ## completion-at-point
 
@@ -523,15 +525,6 @@
 
 ;; >-------------------------
 
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
-;; # global vars
-
-;; https://www.gnu.org/software/emacs/manual/html_node/elisp/File-Name-Completion.html#index-completion_002dignored_002dextensions
-(add-to-list 'completion-ignored-extensions ".DS_Store")
 ;; >--------------------------------------------------
 
 
