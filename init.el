@@ -948,9 +948,11 @@
 ;;## doom-modeline
 
 ;; https://github.com/seagle0128/doom-modeline#install
-;;
+
+(require 'doom-modeline)
+(doom-modeline-mode 1)
+
 ;; M-x nerd-icons-install-fonts
-;; (add-hook 'after-init-hook #'doom-modeline-mode)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
