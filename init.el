@@ -170,7 +170,7 @@
 ;; <----------
 ;; ### flyspell-correct
 
-(define-key flyspell-mode-map (kbd "C-;") 'flyspell-correct-wrapper)
+(keymap-set flyspell-mode-map "C-;" #'flyspell-correct-wrapper)
 ;; >----------
 
 ;; >-------------------------
