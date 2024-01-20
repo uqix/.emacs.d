@@ -919,8 +919,23 @@
 (keymap-global-set "M-J" 'avy-resume)
 (keymap-global-set "M-g" 'avy-goto-line)       ; was goto-line
 
-;; ? -> actions
-;; https://karthinks.com/software/avy-can-do-anything/#avy-actions
+;; <----------
+;; ### embark
+
+;; https://karthinks.com/software/avy-can-do-anything/#a-division-of-responsibility
+
+(setf (alist-get ?. avy-dispatch-alist) #'my/avy/action-embark)
+
+(defun my/avy/action-embark (pt)
+  (unwind-protect
+      (save-excursion
+        (goto-char pt)
+        (embark-act))
+    (select-window
+     (cdr (ring-ref avy-ring 0))))
+  t)
+;; >----------
+
 ;; >-------------------------
 
 ;; <-------------------------
