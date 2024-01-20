@@ -61,13 +61,28 @@
 ;; <--------------------------------------------------
 ;; # Completion
 
-;; <--------------------
-;; ## Candidate matching
+;; <-------------------------
+;; ## completion-at-point
+
+;; <----------
+;; ### cape
+
+;; https://github.com/minad/cape
+
+(add-to-list 'completion-at-point-functions #'cape-dabbrev)
+(add-to-list 'completion-at-point-functions #'cape-file)
+
+(setopt cape-dabbrev-min-length 1)
+;; >----------
+
+;; >-------------------------
+
+;; ## Candidate matching styles
 
 ;; completion-at-point functions use completion styles
 
 ;; <----------
-;; ## orderless
+;; ### orderless
 
 ;; https://github.com/oantolin/orderless
 
@@ -79,12 +94,11 @@
 
 ;; >-------------------------
 
-;; >--------------------------------------------------
+;; <-------------------------
+;; ## In-buffer completion UI
 
-
-
-;; <--------------------------------------------------
-;; # corfu
+;; <----------
+;; ### corfu
 
 ;; https://github.com/minad/corfu
 
@@ -95,19 +109,7 @@
 
 (setopt corfu-auto t)
 
-;; <-------------------------
-;; # cape
-
-;; https://github.com/minad/cape#configuration
-;;
-(add-to-list 'completion-at-point-functions #'cape-dabbrev)
-(add-to-list 'completion-at-point-functions #'cape-file)
-
-(setopt cape-dabbrev-min-length 1)
-;; >-------------------------
-
 ;; https://github.com/minad/corfu#completing-in-the-minibuffer
-;;
 (defun my/corfu-minibuffer-setup-hook ()
   "Enable Corfu in the minibuffer if Vertico/Mct are not active."
   (unless (or (bound-and-true-p vertico--input)
@@ -120,8 +122,11 @@
 (add-hook 'minibuffer-setup-hook #'my/corfu-minibuffer-setup-hook 1)
 
 ;; https://github.com/minad/corfu#extensions
-;;
 (corfu-popupinfo-mode)
+;; >----------
+
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
