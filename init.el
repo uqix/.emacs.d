@@ -109,18 +109,6 @@
 
 (setopt corfu-auto t)
 
-;; https://github.com/minad/corfu#completing-in-the-minibuffer
-(defun my/corfu-minibuffer-setup-hook ()
-  "Enable Corfu in the minibuffer if Vertico/Mct are not active."
-  (unless (or (bound-and-true-p vertico--input)
-              (eq (current-local-map) read-passwd-map))
-    (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-    (setq-local corfu-auto nil
-                corfu-echo-delay nil
-                corfu-popupinfo-delay nil)
-    (corfu-mode 1)))
-(add-hook 'minibuffer-setup-hook #'my/corfu-minibuffer-setup-hook 1)
-
 ;; https://github.com/minad/corfu#extensions
 (corfu-popupinfo-mode)
 ;; >----------
@@ -199,7 +187,6 @@
 (require 'flymake)
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/flymake/Finding-diagnostics.html
-;;
 (keymap-set flymake-mode-map "M-N" 'flymake-show-buffer-diagnostics)
 (keymap-set flymake-mode-map "M-n" 'flymake-goto-next-error)
 (keymap-set flymake-mode-map "M-p" 'flymake-goto-prev-error)
@@ -227,10 +214,6 @@
 (add-hook 'minibuffer-setup-hook #'subword-mode)
 (add-hook 'minibuffer-setup-hook #'flyspell-mode)
 
-;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Recursive-Mini.html
-;;
-;; enable-recursive-minibuffers
-
 (keymap-set minibuffer-mode-map "C-c h" 'consult-history)
 
 ;; <-------------------------
@@ -239,22 +222,34 @@
 (global-unset-key (kbd "s-h")) ; was ns-do-hide-emacs
 
 ;; https://github.com/minad/vertico#configuration
-;;
 (vertico-mode)
 
 ;; https://www.emacswiki.org/emacs/SaveHist
-;;
 (savehist-mode 1)
 
 ;; https://github.com/minad/vertico/blob/main/extensions/vertico-repeat.el
-;;
 (keymap-global-set "s-h b" #'vertico-repeat) ; [b]ack to last interaction
 (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
 
 ;; https://github.com/minad/vertico/blob/main/extensions/vertico-quick.el
-;;
 (keymap-set vertico-map "M-g" #'vertico-quick-insert)
 
+;; >-------------------------
+
+;; <-------------------------
+;; ## corfu
+
+;; https://github.com/minad/corfu#completing-in-the-minibuffer
+(defun my/corfu/minibuffer-setup-hook ()
+  "Enable Corfu in the minibuffer if Vertico/Mct are not active."
+  (unless (or (bound-and-true-p vertico--input)
+              (eq (current-local-map) read-passwd-map))
+    (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+    (setq-local corfu-auto nil
+                corfu-echo-delay nil
+                corfu-popupinfo-delay nil)
+    (corfu-mode 1)))
+(add-hook 'minibuffer-setup-hook #'my/corfu/minibuffer-setup-hook 1)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -538,7 +533,6 @@
 ;; # global vars
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/File-Name-Completion.html#index-completion_002dignored_002dextensions
-;;
 (add-to-list 'completion-ignored-extensions ".DS_Store")
 ;; >--------------------------------------------------
 
@@ -609,7 +603,6 @@
 ;; ## recentf
 
 ;; https://www.emacswiki.org/emacs/RecentFiles
-;;
 (recentf-mode 1)
 ;; >-------------------------
 
@@ -657,7 +650,6 @@
 ;; ## marginalia
 
 ;; https://github.com/minad/marginalia#configuration
-;;
 (marginalia-mode)
 ;; >-------------------------
 
@@ -665,7 +657,6 @@
 ;; ## embark-consult
 
 ;; https://github.com/oantolin/embark#consult
-;;
 ;; Embark will automatically load it after Consult if found.
 
 (keymap-set embark-general-map "s-f" #'consult-line)
@@ -696,7 +687,6 @@
 ;; ## dirvish
 
 ;; https://github.com/alexluigit/dirvish?tab=readme-ov-file#macos
-;;
 ;; $ brew install coreutils fd poppler ffmpegthumbnailer mediainfo imagemagick
 
 ;; https://github.com/alexluigit/dirvish/blob/main/docs/CUSTOMIZING.org#dirvish
@@ -813,7 +803,6 @@
 ;; (require 'cc-mode)
 
 ;; ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Customizing-C-and-C_002b_002b-indentation.html
-;; ;;
 ;; (defun my/java-mode-hook ()
 ;;   (c-set-offset 'arglist-intro '+)
 ;;   (c-set-offset 'arglist-close '0)
@@ -1095,14 +1084,12 @@
 ;; * required by eglot
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Looking-Up-Identifiers.html
-;;
 ;; M-. -> Find definitions of an identifier (xref-find-definitions).
 ;; M-, -> Go back to where you previously invoked M-. and friends (xref-pop-marker-stack).
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Xref-Commands.html
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Identifier-Search.html
-;;
 ;; M-? -> Find all the references for the identifier at point.
 ;; >--------------------------------------------------
 
@@ -1239,7 +1226,6 @@
 ;; https://github.com/magnars/s.el
 
 ;; https://stackoverflow.com/a/61745441/9154901
-;;
 (defun my/region/convert (fn)
   (let ((command
          (lambda (begin end)
@@ -1536,7 +1522,6 @@
 
 ;; This is not available for tree-sitter variant.
 ;; Presumably some tree-sitter folding package will exist in the future.
-;;
 ;; (keymap-set yaml-pro-ts-mode-map "C-c c" 'yaml-pro-ts-fold-at-point)     ; [c]ollapse
 ;; (keymap-set yaml-pro-ts-mode-map "C-c e" 'yaml-pro-ts-unfold-at-point)   ; [e]xpand
 ;; >-------------------------
