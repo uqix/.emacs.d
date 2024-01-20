@@ -59,19 +59,26 @@
 
 
 ;; <--------------------------------------------------
-;; # orderless
+;; # Completion
+
+;; <--------------------
+;; ## Candidate matching
+
+;; completion-at-point functions use completion styles
+
+;; <----------
+;; ## orderless
 
 ;; https://github.com/oantolin/orderless
 
-;; TODO learn
-
+(setopt completion-styles '(orderless basic))
+(setopt completion-category-overrides '((file (styles basic partial-completion))))
 (setopt orderless-matching-styles
-        '(orderless-regexp orderless-literal orderless-initialism))
+        '(orderless-literal orderless-regexp orderless-initialism orderless-prefixes))
+;; >----------
 
-;; https://github.com/minad/vertico#configuration
-(setq completion-styles '(orderless basic)
-      completion-category-defaults nil
-      completion-category-overrides '((file (styles partial-completion))))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
