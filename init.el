@@ -816,7 +816,9 @@
   (interactive)
   (let* ((file (buffer-file-name))
          (is-main-file (string-match "^\\(.+/src/main/java/.+/.+\\).java$" file))
-         (is-test-file (and (not is-main-file) (string-match "^\\(.+/src/test/java/.+/.+\\)Test.java$" file))))
+         (is-test-file (and
+                        (not is-main-file)
+                        (string-match "^\\(.+/src/test/java/.+/.+\\)Test.java$" file))))
     (if is-main-file
         (let* ((test-file (match-string 1 file))
                (test-file (string-replace "/src/main/java/" "/src/test/java/" test-file))
@@ -829,7 +831,8 @@
             (find-file main-file))
         (message "No match")))))
 
-(keymap-set project-prefix-map "t f" #'my/project/test/file) ; [t]est: jump between main and test [f]iles
+; [t]est: jump between main and test [f]iles
+(keymap-set project-prefix-map "t f" #'my/project/test/file)
 ;; >-------------------------
 
 ;; <-------------------------
@@ -888,9 +891,10 @@
 (keymap-global-set "s-i v l" #'magit-log-buffer-file)  ; [v]c: [l]og
 (keymap-global-set "s-i v m" #'magit-submodule)        ; [v]c: sub[m]odule
 
-(keymap-set magit-revision-mode-map "o" #'magit-diff-visit-worktree-file-other-window) ; [o]pen; was magit-submodule
-(keymap-set magit-status-mode-map "o" #'magit-diff-visit-worktree-file-other-window)   ; [o]pen; was magit-submodule
-(keymap-set magit-diff-mode-map "o" #'magit-diff-visit-worktree-file-other-window)     ; [o]pen; was magit-submodule
+; [o]pen; was magit-submodule
+(keymap-set magit-revision-mode-map "o" #'magit-diff-visit-worktree-file-other-window)
+(keymap-set magit-status-mode-map "o" #'magit-diff-visit-worktree-file-other-window)
+(keymap-set magit-diff-mode-map "o" #'magit-diff-visit-worktree-file-other-window)
 
 (require 'with-editor)
 (keymap-set with-editor-mode-map "<remap> <save-buffer>" #'with-editor-finish)
@@ -1531,11 +1535,18 @@
 (keymap-set yaml-pro-ts-mode-map "C-c u" #'yaml-pro-ts-move-subtree-up)   ; [u]p move
 (keymap-set yaml-pro-ts-mode-map "C-c d" #'yaml-pro-ts-move-subtree-down) ; [d]own move
 (keymap-set yaml-pro-ts-mode-map "C-c k" #'yaml-pro-ts-kill-subtree)      ; [k]ill
-(keymap-set yaml-pro-ts-mode-map "C-M-n" #'yaml-pro-ts-next-subtree)      ; [n]ext sibling; was forward-list
-(keymap-set yaml-pro-ts-mode-map "C-M-p" #'yaml-pro-ts-prev-subtree)      ; [p]revious sibling; was backward-list
-(keymap-set yaml-pro-ts-mode-map "C-M-u" #'yaml-pro-ts-up-level)          ; [u]p level; was backward-up-list
-(keymap-set yaml-pro-ts-mode-map "C-c m" #'yaml-pro-ts-mark-subtree)      ; [m]ark
-(keymap-set yaml-pro-ts-mode-map "C-c y" #'yaml-pro-ts-paste-subtree)     ; [y]ank
+
+; [n]ext sibling; was forward-list
+(keymap-set yaml-pro-ts-mode-map "C-M-n" #'yaml-pro-ts-next-subtree)
+
+; [p]revious sibling; was backward-list
+(keymap-set yaml-pro-ts-mode-map "C-M-p" #'yaml-pro-ts-prev-subtree)
+
+; [u]p level; was backward-up-list
+(keymap-set yaml-pro-ts-mode-map "C-M-u" #'yaml-pro-ts-up-level)
+
+(keymap-set yaml-pro-ts-mode-map "C-c m" #'yaml-pro-ts-mark-subtree)  ; [m]ark
+(keymap-set yaml-pro-ts-mode-map "C-c y" #'yaml-pro-ts-paste-subtree) ; [y]ank
 
 ;; <----------
 ;; ### Save path
@@ -1593,9 +1604,15 @@
 (keymap-set markdown-mode-map "C-c h" #'markdown-insert-header-dwim)          ; insert [h]eader
 (keymap-set markdown-mode-map "C-c i" #'markdown-insert-image)                ; insert [i]mage
 (keymap-set markdown-mode-map "C-c I" #'markdown-toggle-inline-images)        ; show [I]mages
-(keymap-set markdown-mode-map "C-M-n" #'markdown-outline-next-same-level)     ; [n]ext sibling; was forward-list
-(keymap-set markdown-mode-map "C-M-p" #'markdown-outline-previous-same-level) ; [p]revious sibling; was backward-list
-(keymap-set markdown-mode-map "C-M-u" #'markdown-up-heading)                  ; [u]p level; was backward-up-list
+
+; [n]ext sibling; was forward-list
+(keymap-set markdown-mode-map "C-M-n" #'markdown-outline-next-same-level)
+
+; [p]revious sibling; was backward-list
+(keymap-set markdown-mode-map "C-M-p" #'markdown-outline-previous-same-level)
+
+; [u]p level; was backward-up-list
+(keymap-set markdown-mode-map "C-M-u" #'markdown-up-heading)
 
 ;; >--------------------------------------------------
 
