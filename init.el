@@ -27,7 +27,7 @@
 
 
 ;; <--------------------------------------------------
-;; Load util libs
+;; # Util libs
 
 (require 's)
 (require 'dash)
@@ -68,6 +68,8 @@
 
 ;; https://github.com/minad/cape
 
+(require 'cape)
+
 (add-to-list 'completion-at-point-functions #'cape-dabbrev)
 (add-to-list 'completion-at-point-functions #'cape-file)
 
@@ -85,6 +87,8 @@
 
 ;; https://github.com/oantolin/orderless
 
+(require 'orderless)
+
 (setopt completion-styles '(orderless basic))
 (setopt completion-category-overrides '((file (styles basic partial-completion))))
 (setopt orderless-matching-styles
@@ -100,6 +104,8 @@
 ;; ### corfu
 
 ;; https://github.com/minad/corfu
+
+(require 'corfu)
 
 (global-corfu-mode)
 
@@ -144,6 +150,8 @@
 ;; <-------------------------
 ;; ## ispell
 
+(require 'ispell)
+
 (setopt ispell-dictionary "american")
 (setopt ispell-program-name "aspell")
 (setopt ispell-extra-args '("--camel-case"))
@@ -165,7 +173,10 @@
 ;; <----------
 ;; ### flyspell-correct
 
-(keymap-set flyspell-mode-map "C-;" #'flyspell-correct-wrapper) ; was flyspell-auto-correct-previous-word
+(require 'flyspell-correct)
+
+; was flyspell-auto-correct-previous-word
+(keymap-set flyspell-mode-map "C-;" #'flyspell-correct-wrapper)
 ;; >----------
 
 ;; >-------------------------
@@ -193,6 +204,8 @@
 
 ;; https://github.com/mohkale/flymake-collection
 
+(require 'flymake-collection)
+
 (use-package flymake-collection
   :hook (after-init . flymake-collection-hook-setup))
 ;; >-------------------------
@@ -214,6 +227,8 @@
 ;; <-------------------------
 ;; ## vertico
 
+(require 'vertico)
+
 (global-unset-key (kbd "s-h")) ; was ns-do-hide-emacs
 
 ;; https://github.com/minad/vertico#configuration
@@ -228,7 +243,6 @@
 
 ;; https://github.com/minad/vertico/blob/main/extensions/vertico-quick.el
 (keymap-set vertico-map "M-g" #'vertico-quick-insert)
-
 ;; >-------------------------
 
 ;; <-------------------------
@@ -254,6 +268,8 @@
 ;; <--------------------------------------------------
 ;; # Block collapse/expand
 
+(require 'hideshow)
+
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
 (keymap-global-set "s-i b t" #'hs-toggle-hiding) ; [b]lock: [t]oggle
@@ -266,6 +282,8 @@
 
 ;; <--------------------------------------------------
 ;; # isearch
+
+(require 'isearch)
 
 (keymap-set key-translation-map "s-u" "C-s")
 (keymap-set key-translation-map "s-y" "C-r")
@@ -500,6 +518,8 @@
 ;; <-------------------------
 ;; ## ztree
 
+(require 'ztree)
+
 (keymap-global-set "s-i d d" #'ztree-diff) ; [d]iff: [d]irs
 ;; >-------------------------
 
@@ -546,6 +566,8 @@
 
 ;; https://github.com/magnars/expand-region.el
 
+(require 'expand-region)
+
 (keymap-global-set "M-[" 'er/expand-region)
 ;; >-------------------------
 
@@ -584,6 +606,7 @@
 (defalias 'my/select-text/java-text-block
   (kmacro "M-[ C-n C-a C-x C-x C-p C-e"))
 
+;; TODO
 (keymap-global-set "s-i s s" 'my/select-text/between-spaces)         ; [s]elect text between [s]paces
 (keymap-global-set "s-i s /" 'my/select-text/between-slashes)        ; [s]elect text between /
 (keymap-global-set "s-i s ," 'my/select-text/between-commas)         ; [s]elect text between ,
@@ -644,6 +667,8 @@
 
 ;; https://github.com/minad/consult#use-package-example
 
+(require 'consult)
+
 ;; <-------------------------
 ;; ## recentf
 
@@ -690,6 +715,8 @@
 ;; <-------------------------
 ;; ## marginalia
 
+(require 'marginalia)
+
 ;; https://github.com/minad/marginalia#configuration
 (marginalia-mode)
 ;; >-------------------------
@@ -708,7 +735,6 @@
 (defun my/grep/dir//read-initial ()
   (interactive)
   (consult-ripgrep '(4) (read-from-minibuffer "Grep: ")))
-
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -718,6 +744,8 @@
 ;; <--------------------------------------------------
 ;; # dired
 
+(require 'dired)
+
 (setq insert-directory-program "gls")
 (setopt dired-listing-switches
         "-l --almost-all --human-readable --group-directories-first --no-group")
@@ -726,6 +754,8 @@
 
 ;; <-------------------------
 ;; ## dirvish
+
+(require 'dirvish)
 
 ;; https://github.com/alexluigit/dirvish?tab=readme-ov-file#macos
 ;; $ brew install coreutils fd poppler ffmpegthumbnailer mediainfo imagemagick
@@ -872,6 +902,8 @@
 
 ;; https://codeberg.org/pidu/git-timemachine
 
+(require 'git-timemachine)
+
 (keymap-global-set "s-i v t" #'git-timemachine) ; [v]c: git-[t]imemachine
 ;; >-------------------------
 
@@ -902,7 +934,6 @@
    (message "Not splittable")))
 
 (keymap-global-set "s-t" #'my/split-window-sensibly)
-
 ;; >-------------------------
 
 (keymap-global-set "s-w" #'delete-window)
@@ -979,6 +1010,8 @@
 
 ;; https://github.com/magnars/multiple-cursors.el
 
+(require 'multiple-cursors)
+
 (keymap-global-set "s-i i m" 'mc/edit-lines) ; [i]nsert: [m]ultiple-cursors
 ;; >--------------------------------------------------
 
@@ -993,6 +1026,7 @@
 ;; https://github.com/seagle0128/doom-modeline#install
 
 (require 'doom-modeline)
+
 (doom-modeline-mode 1)
 
 ;; M-x nerd-icons-install-fonts
@@ -1127,6 +1161,8 @@
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Xref.html
 
+(require 'xref)
+
 ;; M-. -> xref-find-definitions
 ;; M-, -> xref-pop-marker-stack
 ;; M-? -> xref-find-references
@@ -1182,7 +1218,6 @@
 (keymap-set eglot-mode-map "s-l r" #'eglot-rename)              ; [l]sp: [r]ename
 (keymap-set eglot-mode-map "s-l i" #'eglot-find-implementation) ; [l]sp: [i]mplementation
 (keymap-set eglot-mode-map "s-l t" #'eglot-find-typeDefinition) ; [l]sp: [t]ype
-
 ;; >--------------------------------------------------
 
 
@@ -1267,6 +1302,8 @@
 
 ;; https://github.com/casouri/vundo
 
+(require 'vundo)
+
 (keymap-global-set "s-i u" 'vundo)
 ;; >--------------------------------------------------
 
@@ -1308,6 +1345,7 @@
 ;; # Whitespaces
 
 (require 'whitespace)
+
 (setq whitespace-style (delete 'lines whitespace-style))
 
 (setopt indent-tabs-mode nil)
@@ -1340,6 +1378,7 @@
 ;; # Bash
 
 (require 'sh-script)
+
 (advice-remove 'bash-ts-mode #'sh--redirect-bash-ts-mode)
 
 (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
@@ -1439,6 +1478,8 @@
 
 ;; <--------------------------------------------------
 ;; # JSON
+
+(require 'json-ts-mode)
 
 (keymap-global-set "s-i m j" #'json-ts-mode) ; [m]ode: [j]son
 
