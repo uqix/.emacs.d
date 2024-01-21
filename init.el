@@ -1689,9 +1689,6 @@
 ;; <--------------------------------------------------
 ;; # Custom faces
 
-;; Foreground:
-;; https://github.com/ianyepan/jetbrains-darcula-emacs-theme/blob/master/jetbrains-darcula-theme.el
-
 (set-face-attribute 'default nil :family "JetBrains Mono" :height 130)
 (set-face-attribute 'aw-leading-char-face nil :height 1.0 :weight 'bold :foreground "green")
 
@@ -1716,30 +1713,5 @@
 
 (set-face-attribute 'eglot-highlight-symbol-face nil :overline "SpringGreen1")
 
-(let ((fg "#a9b7c6"))
-  ;; (set-face-attribute 'default nil :family "JetBrains Mono" :height 130 :foreground fg)
-
-  ;; (custom-set-faces
-  ;;  '(eglot-highlight-symbol-face ((t (:underline "DarkGoldenrod"))))
-  ;;  '(flyspell-duplicate ((t (:underline nil)))))
-
-  ;; (set-face-foreground 'corfu-default fg)
-  ;; (set-face-attribute 'corfu-current nil :foreground fg :background "#42444a")
-
-  ;; (set-face-foreground 'font-lock-function-call-face fg)
-  ;; (set-face-foreground 'font-lock-variable-name-face fg)
-  ;; (set-face-foreground 'font-lock-type-face "#5B6268")
-
-  ;; (set-face-attribute 'diff-refine-added nil :background "unspecified" :inverse-video nil)
-  ;; (set-face-attribute 'diff-refine-removed nil :inverse-video nil)
-
-  ;; (set-face-attribute 'symbol-overlay-face-1 nil :background "unspecified" :underline "DeepSkyBlue1" :distant-foreground "unspecified")
-  ;; (set-face-attribute 'symbol-overlay-face-2 nil :background "unspecified" :underline "yellow1" :distant-foreground "unspecified")
-  ;; (set-face-attribute 'symbol-overlay-face-3 nil :background "unspecified" :underline "OrangeRed1" :distant-foreground "unspecified")
-  ;; (set-face-attribute 'symbol-overlay-face-4 nil :background "unspecified" :underline "green1" :distant-foreground "unspecified")
-  ;; (set-face-attribute 'symbol-overlay-face-5 nil :background "unspecified" :underline "MediumPurple1" :distant-foreground "unspecified")
-  ;; (set-face-attribute 'symbol-overlay-face-6 nil :background "unspecified" :underline "magenta1" :distant-foreground "unspecified")
-  ;; (set-face-attribute 'symbol-overlay-face-7 nil :background "unspecified" :underline "turquoise1" :distant-foreground "unspecified")
-  ;; (set-face-attribute 'symbol-overlay-face-8 nil :background "unspecified" :underline "orange1" :distant-foreground "unspecified")
-  )
+;; (set-face-foreground 'font-lock-type-face "#5B6268") ; shadow
 ;; >--------------------------------------------------
