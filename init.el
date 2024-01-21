@@ -1714,6 +1714,8 @@
 
 (set-face-attribute 'avy-lead-face nil :foreground "green" :background "reset")
 
+(set-face-attribute 'eglot-highlight-symbol-face nil :underline "SpringGreen1")
+
 (let ((fg "#a9b7c6"))
   ;; (set-face-attribute 'default nil :family "JetBrains Mono" :height 130 :foreground fg)
 
