@@ -385,13 +385,14 @@
 
 ;; <----------
 ;; ### Highlight (region aware)
-(keymap-global-set "s-i h r" 'my/highlight-regexp) ; [h]ighlight: [r]egexp
+
+(keymap-global-set "s-i h r" 'my/highlight-regexp)
 
 (defun my/highlight-regexp ()
   (interactive)
-  (my/region/with-str 'my/highlight-regexp//initial 'highlight-regexp))
+  (my/region/with-str 'my/highlight-regexp/initial 'highlight-regexp))
 
-(defun my/highlight-regexp//initial (initial)
+(defun my/highlight-regexp/initial (initial)
   (highlight-regexp (regexp-quote initial) 'diff-error))
 ;; >----------
 
@@ -629,8 +630,8 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
-(keymap-global-set "M-L" #'downcase-region) ; [L]owercase region
-(keymap-global-set "M-U" #'upcase-region)   ; [U]ppercase region
+(keymap-global-set "M-L" #'downcase-region) ; [L]owercase
+(keymap-global-set "M-U" #'upcase-region)
 
 ;; https://stackoverflow.com/a/61745441/9154901
 (defun my/region/convert (fn)
@@ -715,7 +716,7 @@
 (keymap-set embark-file-map "$" 'shell)
 
 (keymap-set embark-region-map "e" nil)              ; was eval-region
-(keymap-set embark-region-map "e e" #'eval-region)  ; [e]val elisp
+(keymap-set embark-region-map "e e" #'eval-region)  ; [e]val [e]lisp
 (keymap-set embark-region-map "a" nil)              ; was align
 (keymap-set embark-region-map "a a" #'align)        ; [a]lign
 (keymap-set embark-region-map "a r" #'align-regexp) ; [a]lign-[r]egexp
@@ -733,14 +734,15 @@
 ;; ## embark-consult
 
 ;; https://github.com/oantolin/embark#consult
+
 ;; Embark will automatically load it after Consult if found.
 
 (keymap-set embark-general-map "s-f" #'consult-line)
 (keymap-set embark-general-map "s-F" #'consult-line-multi)
 (keymap-set embark-general-map "s-g" #'consult-ripgrep)
-(keymap-set embark-general-map "s-G" #'my/grep/dir//read-initial)
+(keymap-set embark-general-map "s-G" #'my/grep/dir/read-initial)
 
-(defun my/grep/dir//read-initial ()
+(defun my/grep/dir/read-initial ()
   (interactive)
   (consult-ripgrep '(4) (read-from-minibuffer "Grep: ")))
 ;; >-------------------------
@@ -1078,9 +1080,10 @@
 
 (defun my/find/project ()
   (interactive)
-  (my/region/with-str 'my/find/project//initial 'consult-line-multi))
+  (my/region/with-str 'my/find/project/initial))
 
-(defun my/find/project//initial (initial)
+(defun my/find/project/initial (&optional initial)
+  (interactive)
   (consult-line-multi nil initial))
 ;; >-------------------------
 
@@ -1114,15 +1117,15 @@
 ;; <-------------------------
 ;; ## In project (region aware)
 
-(keymap-global-set "s-g" 'my/grep/project) ; [g]rep; was isearch-repeat-forward
+(keymap-global-set "s-g" 'my/grep/project) ; was isearch-repeat-forward
 
 (defun my/grep/project ()
   (interactive)
-  (my/region/with-str 'my/grep/project//initial 'consult-ripgrep))
+  (my/region/with-str 'my/grep/project/initial))
 
-(defun my/grep/project//initial (initial)
+(defun my/grep/project/initial (&optional initial)
+  (interactive)
   (consult-ripgrep nil initial))
-
 ;; >-------------------------
 
 ;; <-------------------------
@@ -1132,15 +1135,11 @@
 
 (defun my/grep/dir ()
   (interactive)
-  (my/region/with-str 'my/grep/dir//initial 'my/grep/dir//))
+  (my/region/with-str 'my/grep/dir/initial))
 
-(defun my/grep/dir//initial (initial)
-  (consult-ripgrep '(4) initial))
-
-(defun my/grep/dir// ()
+(defun my/grep/dir/initial (&optional initial)
   (interactive)
-  (consult-ripgrep '(4) nil))
-
+  (consult-ripgrep '(4) initial))
 ;; >-------------------------
 
 ;; <-------------------------
