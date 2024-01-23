@@ -543,6 +543,9 @@
 (require 'shell)
 
 (keymap-set shell-mode-map "C-c h" 'consult-history)
+(keymap-set shell-mode-map "C-c p" 'comint-previous-prompt)
+(keymap-set shell-mode-map "C-c n" 'comint-next-prompt)
+(keymap-set shell-mode-map "C-c c" 'comint-clear-buffer)
 ;; >--------------------------------------------------
 
 
