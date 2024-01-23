@@ -257,6 +257,8 @@
 ;; <-------------------------
 ;; ## corfu
 
+(add-hook 'minibuffer-setup-hook #'my/corfu/minibuffer-setup-hook 1)
+
 ;; https://github.com/minad/corfu#completing-in-the-minibuffer
 (defun my/corfu/minibuffer-setup-hook ()
   "Enable Corfu in the minibuffer if Vertico/Mct are not active."
@@ -267,7 +269,6 @@
                 corfu-echo-delay nil
                 corfu-popupinfo-delay nil)
     (corfu-mode 1)))
-(add-hook 'minibuffer-setup-hook #'my/corfu/minibuffer-setup-hook 1)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -300,13 +301,12 @@
 (keymap-set isearch-mode-map "s-r" #'isearch-query-replace)
 (keymap-set isearch-mode-map "s-f" #'consult-line)
 (keymap-set isearch-mode-map "C-c h" #'consult-isearch-history)
+(keymap-set isearch-mode-map "M-j" 'my/avy-isearch)
 
 (defun my/avy-isearch ()
   (interactive)
   (isearch-done)
   (avy-isearch))
-
-(keymap-set isearch-mode-map "M-j" 'my/avy-isearch)
 ;; >--------------------------------------------------
 
 
@@ -599,15 +599,6 @@
   (interactive)
   (my/select-text/between ?\s))
 
-(defun my/select-text/between (separator-char)
-  (re-search-backward (format "%c\\|^" separator-char))
-  (when (= (char-after) separator-char)
-    (forward-char))
-  (set-mark (point))
-  (re-search-forward (format "%c\\|$" separator-char))
-  (when (= (char-before) separator-char)
-    (backward-char)))
-
 (defun my/select-text/between-slashes ()
   (interactive)
   (my/select-text/between ?/))
@@ -630,6 +621,16 @@
 (defun my/select-text/between-back-quotes ()
   (interactive)
   (my/select-text/between ?`))
+
+
+(defun my/select-text/between (separator-char)
+  (re-search-backward (format "%c\\|^" separator-char))
+  (when (= (char-after) separator-char)
+    (forward-char))
+  (set-mark (point))
+  (re-search-forward (format "%c\\|$" separator-char))
+  (when (= (char-before) separator-char)
+    (backward-char)))
 ;; >-------------------------
 
 ;; <-------------------------
@@ -841,14 +842,14 @@
 
 ;; https://github.com/alexluigit/dirvish/blob/main/docs/CUSTOMIZING.org#mouse-settings
 
-(defun my/dirvish-setup-hook ()
-  (setq-local mouse-1-click-follows-link nil))
-
-(add-hook 'dirvish-setup-hook #'my/dirvish-setup-hook)
-
 (keymap-set dirvish-mode-map "<mouse-1>" #'dirvish-subtree-toggle-or-open)
 (keymap-set dirvish-mode-map "<mouse-2>" #'dirvish-subtree-toggle-or-open)
 (keymap-set dirvish-mode-map "<mouse-3>" #'dired-mouse-find-file-other-window)
+
+(add-hook 'dirvish-setup-hook #'my/dirvish-setup-hook)
+
+(defun my/dirvish-setup-hook ()
+  (setq-local mouse-1-click-follows-link nil))
 ;; >----------
 
 ;; >-------------------------
