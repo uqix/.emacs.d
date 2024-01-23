@@ -675,6 +675,50 @@
   (keymap-set embark-region-map "c C" #'my/region/convert/capitalize))
 ;; >-------------------------
 
+;; <-------------------------
+;; Format convert
+
+(with-eval-after-load 'embark
+  (keymap-set embark-region-map "c j y" #'my/region/convert/json/to-yaml)
+  (keymap-set embark-region-map "c j j" #'my/region/convert/json/prettify)
+  (keymap-set embark-region-map "c y j" #'my/region/convert/yaml/to-json)
+  (keymap-set embark-region-map "c y y" #'my/region/convert/yaml/prettify)
+  (keymap-set embark-region-map "c y p" #'my/region/convert/yaml/to-properties)
+  (keymap-set embark-region-map "c p y" #'my/region/convert/properties/to-yaml))
+
+(defun my/region/convert/json/to-yaml ()
+  (interactive)
+  (my/region/convert/by-shell-command "yq -p=json -o=yaml -"))
+
+(defun my/region/convert/json/prettify ()
+  (interactive)
+  (my/region/convert/by-shell-command "yq -p=json -o=json -"))
+
+(defun my/region/convert/yaml/to-json ()
+  (interactive)
+  (my/region/convert/by-shell-command "yq -p=yaml -o=json -"))
+
+(defun my/region/convert/yaml/prettify ()
+  (interactive)
+  (my/region/convert/by-shell-command "yq -p=yaml -o=yaml -"))
+
+(defun my/region/convert/yaml/to-properties ()
+  (interactive)
+  (my/region/convert/by-shell-command "yq -p=yaml -o=props -"))
+
+(defun my/region/convert/properties/to-yaml ()
+  (interactive)
+  (my/region/convert/by-shell-command "yq -p=props -o=yaml -"))
+
+(defun my/region/convert/by-shell-command (command)
+  (shell-command-on-region
+   (region-beginning)
+   (region-end)
+   command
+   t
+   t))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
