@@ -641,15 +641,12 @@
 (keymap-global-set "M-L" #'downcase-region) ; [L]owercase
 (keymap-global-set "M-U" #'upcase-region)
 
-;; https://stackoverflow.com/a/61745441/9154901
-(defun my/region/convert (fn)
-  (let ((command
-         (lambda (begin end)
-           (interactive "r")
-           (let ((region-str (buffer-substring begin end)))
-             (delete-region begin end)
-             (insert (funcall fn region-str))))))
-    (call-interactively command)))
+(with-eval-after-load 'embark
+  (keymap-set embark-region-map "c" nil)
+  (keymap-set embark-region-map "c s" #'my/region/convert/snake-case)
+  (keymap-set embark-region-map "c c" #'my/region/convert/camel-case)
+  (keymap-set embark-region-map "c k" #'my/region/convert/kebab-case)
+  (keymap-set embark-region-map "c C" #'my/region/convert/capitalize))
 
 (defun my/region/convert/snake-case ()
   (interactive)
@@ -667,16 +664,18 @@
   (interactive)
   (my/region/convert 's-capitalized-words))
 
-(with-eval-after-load 'embark
-  (keymap-set embark-region-map "c" nil)
-  (keymap-set embark-region-map "c s" #'my/region/convert/snake-case)
-  (keymap-set embark-region-map "c c" #'my/region/convert/camel-case)
-  (keymap-set embark-region-map "c k" #'my/region/convert/kebab-case)
-  (keymap-set embark-region-map "c C" #'my/region/convert/capitalize))
+(defun my/region/convert (fn)
+  (let ((command
+         (lambda (begin end)
+           (interactive "r")
+           (let ((region-str (buffer-substring begin end)))
+             (delete-region begin end)
+             (insert (funcall fn region-str))))))
+    (call-interactively command)))
 ;; >-------------------------
 
 ;; <-------------------------
-;; Format convert
+;; ## Format convert
 
 (with-eval-after-load 'embark
   (keymap-set embark-region-map "c j y" #'my/region/convert/json/to-yaml)
