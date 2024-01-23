@@ -1078,7 +1078,7 @@
 
 (require 'multiple-cursors)
 
-(keymap-global-set "s-i i m" 'mc/edit-lines) ; [i]nsert: [m]ultiple-cursors
+(keymap-global-set "s-i M" 'mc/edit-lines)
 ;; >--------------------------------------------------
 
 
