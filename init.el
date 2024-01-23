@@ -874,6 +874,9 @@
 ;; <-------------------------
 ;; ## Test file
 
+; [t]est: jump between main and test [f]iles
+(keymap-set project-prefix-map "t f" #'my/project/test/file)
+
 (defun my/project/test/file ()
   (interactive)
   (let* ((file (buffer-file-name))
@@ -892,13 +895,12 @@
                  (main-file (format "%s.java" main-file)))
             (find-file main-file))
         (message "No match")))))
-
-; [t]est: jump between main and test [f]iles
-(keymap-set project-prefix-map "t f" #'my/project/test/file)
 ;; >-------------------------
 
 ;; <-------------------------
 ;; ## Test class
+
+(keymap-set project-prefix-map "t c" #'my/project/test/class)
 
 (defun my/project/test/class (&optional method)
   (interactive)
@@ -916,19 +918,17 @@
                             (if method (format "#%s" method) ""))))
        (compile command)))
    (message "No match")))
-
-(keymap-set project-prefix-map "t c" #'my/project/test/class) ; [t]est: [c]lass
 ;; >-------------------------
 
 ;; <-------------------------
 ;; ## Test method
 
+(keymap-set project-prefix-map "t m" #'my/project/test/method)
+(keymap-set embark-identifier-map "t" #'my/project/test/method)
+
 (defun my/project/test/method ()
   (interactive)
   (my/project/test/class (read-from-minibuffer "Method: ")))
-
-(keymap-set project-prefix-map "t m" #'my/project/test/method) ; [t]est: [m]ethod
-(keymap-set embark-identifier-map "t" #'my/project/test/method)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -988,6 +988,8 @@
 ;; <-------------------------
 ;; ## Split
 
+(keymap-global-set "s-t" #'my/split-window-sensibly)
+
 (defun my/split-window-sensibly ()
   (interactive)
   (or
@@ -997,8 +999,6 @@
          (split-height-threshold 30))
      (split-window-sensibly))
    (message "Not splittable")))
-
-(keymap-global-set "s-t" #'my/split-window-sensibly)
 ;; >-------------------------
 
 (keymap-global-set "s-w" #'delete-window)
@@ -1307,6 +1307,8 @@
 
 ;; https://github.com/yveszoundi/eglot-java/blob/ff0f9515d78f94b8dfe158bf9a2c4f52216504c0/eglot-java.el#L770
 
+(add-to-list 'file-name-handler-alist '("\\`jdt://" . eglot-java--jdt-uri-handler))
+
 (defun eglot-java--jdt-uri-handler (operation &rest args)
   "Support Eclipse jdtls `jdt://' uri scheme."
   (let* ((uri (car args))
@@ -1338,8 +1340,6 @@
     (dolist (p new-path-elements)
       (setq new-path (concat (file-name-as-directory new-path) p)))
     new-path))
-
-(add-to-list 'file-name-handler-alist '("\\`jdt://" . eglot-java--jdt-uri-handler))
 ;; >----------
 
 ;; >-------------------------
@@ -1352,9 +1352,11 @@
 ;; # nxml-mode
 
 ;; ref rng-nxml-mode-init
+
+(add-hook 'nxml-mode-hook 'my/nxml-mode-hook)
+
 (defun my/nxml-mode-hook ()
   (add-to-list 'completion-at-point-functions #'cape-dabbrev))
-(add-hook 'nxml-mode-hook 'my/nxml-mode-hook)
 ;; >--------------------------------------------------
 
 
@@ -1378,11 +1380,6 @@
 
 (require 'polymode)
 
-(defun my/polymode/edit-chunk ()
-  (interactive)
-  (call-interactively 'polymode-mark-or-extend-chunk)
-  (call-interactively 'edit-indirect-region))
-
 (keymap-set polymode-mode-map "C-c p n" 'polymode-next-chunk)             ; [n]ext
 (keymap-set polymode-mode-map "C-c p p" 'polymode-previous-chunk)         ; [p]revious
 (keymap-set polymode-mode-map "C-c p t" 'polymode-toggle-chunk-narrowing) ; [t]oggle narrowing
@@ -1392,13 +1389,17 @@
 
 ;; https://polymode.github.io/defining-polymodes/
 
+(defun my/polymode/edit-chunk ()
+  (interactive)
+  (call-interactively 'polymode-mark-or-extend-chunk)
+  (call-interactively 'edit-indirect-region))
+
 (define-innermode poly-bash-innermode
   :mode 'bash-ts-mode
   :head-matcher "^ *#!/usr/bin/env \\(sh\\|bash\\)\n"
   :tail-matcher "^ *# </bash>$"
   :head-mode 'body
   :tail-mode 'body)
-
 ;; >--------------------------------------------------
 
 
@@ -1486,17 +1487,33 @@
 
 (keymap-set embark-region-map "e i" #'edit-indirect-region) ; [e]dit-[i]ndirect
 
+(setq edit-indirect-guess-mode-function #'my/edit-indirect/guess-mode)
+
 (defun my/edit-indirect/guess-mode (_parent-buffer _beg _end)
   (setq-local buffer-file-name (format "%s.-ei-" (buffer-file-name _parent-buffer)))
   (funcall (buffer-local-value 'major-mode _parent-buffer)))
-(setq edit-indirect-guess-mode-function #'my/edit-indirect/guess-mode)
 
 ;; <-------------------------
 ;; ## Left margin
 
 ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-387945773
+(add-hook 'edit-indirect-after-creation-hook #'vbe/edit-indirect/remove-left-margin)
+(add-hook 'edit-indirect-before-commit-hook #'vbe/edit-indirect/restore-left-margin)
+
+;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-1284144173
+(keymap-set edit-indirect-mode-map "<remap> <save-buffer>" #'edit-indirect-commit)
 
 (defvar edit-indirect--left-margin 0)
+
+(defun vbe/edit-indirect/remove-left-margin ()
+  "Remove left-margin and save it into a local variable."
+  (let ((lm (vbe/compute-left-margin (buffer-substring (point-min) (point-max)))))
+    (indent-rigidly (point-min) (point-max) (* -1 lm))
+    (setq-local edit-indirect--left-margin lm)
+    (setq-local write-contents-functions '(my/edit-indirect/commit-on-save))
+    ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-1055542145
+    ;; buffer-local variable whose value should not be reset when changing major modes
+    (put 'edit-indirect--left-margin 'permanent-local t)))
 
 (defun vbe/compute-left-margin (code)
   "Compute left margin of a string of code."
@@ -1513,25 +1530,9 @@
     (kill-buffer))
   t)
 
-(defun vbe/edit-indirect/remove-left-margin ()
-  "Remove left-margin and save it into a local variable."
-  (let ((lm (vbe/compute-left-margin (buffer-substring (point-min) (point-max)))))
-    (indent-rigidly (point-min) (point-max) (* -1 lm))
-    (setq-local edit-indirect--left-margin lm)
-    (setq-local write-contents-functions '(my/edit-indirect/commit-on-save))
-    ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-1055542145
-    ;; buffer-local variable whose value should not be reset when changing major modes
-    (put 'edit-indirect--left-margin 'permanent-local t)))
-
 (defun vbe/edit-indirect/restore-left-margin ()
   "Restore left-margin before commiting."
   (indent-rigidly (point-min) (point-max) edit-indirect--left-margin))
-
-(add-hook 'edit-indirect-after-creation-hook #'vbe/edit-indirect/remove-left-margin)
-(add-hook 'edit-indirect-before-commit-hook #'vbe/edit-indirect/restore-left-margin)
-
-;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-1284144173
-(keymap-set edit-indirect-mode-map "<remap> <save-buffer>" #'edit-indirect-commit)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
