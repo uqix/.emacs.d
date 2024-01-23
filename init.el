@@ -587,6 +587,18 @@
 ;; <-------------------------
 ;; ## Select by separator
 
+(keymap-global-set "s-i s SPC" 'my/select-text/between-spaces)
+(keymap-global-set "s-i s /" 'my/select-text/between-slashes)
+(keymap-global-set "s-i s ," 'my/select-text/between-commas)
+(keymap-global-set "s-i s '" 'my/select-text/between-single-quotes)
+(keymap-global-set "s-i s \"" 'my/select-text/between-double-quotes)
+(keymap-global-set "s-i s j" 'my/select-text/java-text-block)
+(keymap-global-set "s-i s `" 'my/select-text/between-back-quotes)
+
+(defun my/select-text/between-spaces ()
+  (interactive)
+  (my/select-text/between ?\s))
+
 (defun my/select-text/between (separator-char)
   (re-search-backward (format "%c\\|^" separator-char))
   (when (= (char-after) separator-char)
@@ -595,10 +607,6 @@
   (re-search-forward (format "%c\\|$" separator-char))
   (when (= (char-before) separator-char)
     (backward-char)))
-
-(defun my/select-text/between-spaces ()
-  (interactive)
-  (my/select-text/between ?\s))
 
 (defun my/select-text/between-slashes ()
   (interactive)
@@ -622,14 +630,6 @@
 (defun my/select-text/between-back-quotes ()
   (interactive)
   (my/select-text/between ?`))
-
-(keymap-global-set "s-i s SPC" 'my/select-text/between-spaces)
-(keymap-global-set "s-i s /" 'my/select-text/between-slashes)
-(keymap-global-set "s-i s ," 'my/select-text/between-commas)
-(keymap-global-set "s-i s '" 'my/select-text/between-single-quotes)
-(keymap-global-set "s-i s \"" 'my/select-text/between-double-quotes)
-(keymap-global-set "s-i s j" 'my/select-text/java-text-block)
-(keymap-global-set "s-i s `" 'my/select-text/between-back-quotes)
 ;; >-------------------------
 
 ;; <-------------------------
