@@ -1725,4 +1725,8 @@
 (set-face-attribute 'eglot-highlight-symbol-face nil :overline "SpringGreen1")
 
 ;; (set-face-foreground 'font-lock-type-face "#5B6268") ; shadow
+
+(let ((quote (face-attribute 'markdown-blockquote-face :foreground nil t)))
+  (set-face-attribute 'markdown-blockquote-face nil :foreground (doom-darken quote 0.2))
+  (set-face-attribute 'markdown-bold-face nil :foreground quote))
 ;; >--------------------------------------------------
