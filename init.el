@@ -616,12 +616,17 @@
 (defalias 'my/select-text/java-text-block
   (kmacro "M-[ C-n C-a C-x C-x C-p C-e"))
 
+(defun my/select-text/between-back-quotes ()
+  (interactive)
+  (my/select-text/between ?`))
+
 (keymap-global-set "s-i s SPC" 'my/select-text/between-spaces)
 (keymap-global-set "s-i s /" 'my/select-text/between-slashes)
 (keymap-global-set "s-i s ," 'my/select-text/between-commas)
 (keymap-global-set "s-i s '" 'my/select-text/between-single-quotes)
 (keymap-global-set "s-i s \"" 'my/select-text/between-double-quotes)
 (keymap-global-set "s-i s j" 'my/select-text/java-text-block)
+(keymap-global-set "s-i s `" 'my/select-text/between-back-quotes)
 ;; >-------------------------
 
 ;; <-------------------------
