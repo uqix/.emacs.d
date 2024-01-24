@@ -787,7 +787,11 @@
 
 (keymap-global-set "M-i" 'embark-act) ; was tab-to-tab-stop
 
-(keymap-set embark-file-map "$" 'shell)
+(keymap-set embark-file-map "$" #'my/shell)
+
+(defun my/shell ()
+  (interactive)
+  (shell (format "*sh* %s" (read-from-minibuffer "Buffer: "))))
 
 (keymap-set embark-region-map "e" nil)              ; was eval-region
 (keymap-set embark-region-map "e e" #'eval-region)  ; [e]val [e]lisp
