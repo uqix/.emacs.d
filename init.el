@@ -387,13 +387,33 @@
 ;; ### Highlight (region aware)
 
 (keymap-global-set "s-i h r" 'my/highlight-regexp)
+(keymap-global-set "s-i h R" 'my/highlight-regexp/all)
 
 (defun my/highlight-regexp ()
   (interactive)
-  (my/region/with-str 'my/highlight-regexp/initial 'highlight-regexp))
+  (my/region/with-str 'my/highlight-regexp/str))
 
-(defun my/highlight-regexp/initial (initial)
-  (highlight-regexp (regexp-quote initial) 'diff-error))
+(defun my/highlight-regexp/str (&optional str)
+  (interactive)
+  (let ((regexp (or
+                 (and str (regexp-quote str))
+                 (read-regexp "RegExp: "))))
+    (highlight-regexp regexp 'diff-error)))
+
+(defun my/highlight-regexp/all ()
+  (interactive)
+  (my/region/with-str 'my/highlight-regexp/all/str))
+
+(defun my/highlight-regexp/all/str (&optional str)
+  (interactive)
+  (let ((regexp (or
+                 (and str (regexp-quote str))
+                 (read-regexp "RegExp: "))))
+    (walk-windows
+     (lambda (window)
+       (with-current-buffer (window-buffer window)
+         (highlight-regexp regexp 'diff-error))))))
+
 ;; >----------
 
 ;; <----------
