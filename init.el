@@ -419,13 +419,15 @@
 ;; <----------
 ;; ### Unhighlight
 
-(keymap-global-set "s-i h u" 'unhighlight-regexp) ; [h]ighlight: [u]nhighlight
-
-(keymap-global-set "s-i h U" #'my/unhighlight-regexp/all) ; [h]ighlight: [U]nhighlight all
+(keymap-global-set "s-i h u" 'unhighlight-regexp)
+(keymap-global-set "s-i h U" #'my/unhighlight-regexp/all)
 
 (defun my/unhighlight-regexp/all ()
   (interactive)
-  (unhighlight-regexp t))
+  (walk-windows
+   (lambda (window)
+     (with-current-buffer (window-buffer window)
+       (unhighlight-regexp t)))))
 ;; >----------
 
 ;; <-------------------------
