@@ -398,7 +398,7 @@
   (let ((regexp (or
                  (and str (regexp-quote str))
                  (read-regexp "RegExp: "))))
-    (highlight-regexp regexp 'diff-error)))
+    (highlight-regexp regexp 'symbol-overlay-face-8)))
 
 (defun my/highlight-regexp/all ()
   (interactive)
@@ -412,7 +412,7 @@
     (walk-windows
      (lambda (window)
        (with-current-buffer (window-buffer window)
-         (highlight-regexp regexp 'diff-error))))))
+         (highlight-regexp regexp 'symbol-overlay-face-8))))))
 
 ;; >----------
 
