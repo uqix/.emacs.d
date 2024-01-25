@@ -577,9 +577,9 @@
 
 (defun my/region/with-str (fn &optional fn-without-str)
   (if (use-region-p)
-      (let ((region-str (buffer-substring (region-beginning) (region-end))))
+      (let ((str (buffer-substring (region-beginning) (region-end))))
         (deactivate-mark)
-        (funcall fn region-str))
+        (funcall fn str))
     (call-interactively (or fn-without-str fn))))
 
 ;; <-------------------------
@@ -684,13 +684,13 @@
   (my/region/convert 's-capitalized-words))
 
 (defun my/region/convert (fn)
-  (let ((command
-         (lambda (begin end)
-           (interactive "r")
-           (let ((region-str (buffer-substring begin end)))
-             (delete-region begin end)
-             (insert (funcall fn region-str))))))
-    (call-interactively command)))
+  (if (use-region-p)
+      (let* ((begin (region-beginning))
+             (end (region-end))
+             (str (buffer-substring begin end)))
+        (delete-region begin end)
+        (insert (funcall fn str)))
+    (message "No region")))
 ;; >-------------------------
 
 ;; <-------------------------
