@@ -337,6 +337,7 @@
 (global-unset-key (kbd "C-x C-z")) ; was suspend-frame (minimize)
 
 (keymap-set key-translation-map "s-SPC" "C-g")
+(keymap-set key-translation-map "s-," "C-c") ; was customize
 
 (keymap-global-set "C-z" ctl-x-map)
 (keymap-global-set "s-z" #'execute-extended-command)
