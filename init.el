@@ -787,7 +787,7 @@
 
 (defun my/shell ()
   (interactive)
-  (shell (format "*sh* %s" (read-from-minibuffer "Buffer: "))))
+  (shell (format "*shell* %s" (read-from-minibuffer "Buffer: "))))
 
 (keymap-set embark-region-map "e" nil)              ; was eval-region
 (keymap-set embark-region-map "e e" #'eval-region)  ; [e]val [e]lisp
