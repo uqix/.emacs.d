@@ -576,15 +576,11 @@
 ;; # Region
 
 (defun my/region/with-str (fn &optional fn-without-str)
-  (let ((command
-         (lambda (&optional begin end)
-           (interactive (if (use-region-p) (list (region-beginning) (region-end))))
-           (if begin
-               (let ((region-str (buffer-substring begin end)))
-                 (deactivate-mark)
-                 (funcall fn region-str))
-             (call-interactively (or fn-without-str fn))))))
-    (call-interactively command)))
+  (if (use-region-p)
+      (let ((region-str (buffer-substring (region-beginning) (region-end))))
+        (deactivate-mark)
+        (funcall fn region-str))
+    (call-interactively (or fn-without-str fn))))
 
 ;; <-------------------------
 ;; ## Narrowing
