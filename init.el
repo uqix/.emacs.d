@@ -1468,6 +1468,8 @@
 (advice-remove 'bash-ts-mode #'sh--redirect-bash-ts-mode)
 
 (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
+
+(keymap-global-set "s-i m b" #'bash-ts-mode)
 ;; >--------------------------------------------------
 
 
