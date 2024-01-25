@@ -568,6 +568,29 @@
 (keymap-set shell-mode-map "C-c p" 'comint-previous-prompt)
 (keymap-set shell-mode-map "C-c n" 'comint-next-prompt)
 (keymap-set shell-mode-map "C-c c" 'comint-clear-buffer)
+
+;; <-------------------------
+;; ## vterm
+
+(with-eval-after-load 'embark
+  (keymap-set embark-file-map "$" #'my/vterm))
+
+(defun my/vterm ()
+  (interactive)
+  (let* ((dirname (my/dirname (read-from-minibuffer "Buffer: ")))
+         (name (format "*shell* %s" dirname))
+         (buffer (get-buffer name)))
+    (if buffer
+        (switch-to-buffer buffer)
+      (vterm name))))
+
+(defun my/dirname (path)
+  (let* ((result (if (f-file-p path) (f-dirname path) path))
+         (result (abbreviate-file-name result))
+         (result (directory-file-name result)))
+    result))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
@@ -782,12 +805,6 @@
 (setopt embark-mixed-indicator-delay 1.5)
 
 (keymap-global-set "M-i" 'embark-act) ; was tab-to-tab-stop
-
-(keymap-set embark-file-map "$" #'my/shell)
-
-(defun my/shell ()
-  (interactive)
-  (shell (format "*shell* %s" (read-from-minibuffer "Buffer: "))))
 
 (keymap-set embark-region-map "e" nil)              ; was eval-region
 (keymap-set embark-region-map "e e" #'eval-region)  ; [e]val [e]lisp
