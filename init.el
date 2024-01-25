@@ -572,6 +572,15 @@
 ;; <-------------------------
 ;; ## vterm
 
+;; https://github.com/akermu/emacs-libvterm
+
+;; brew install cmake
+
+(require 'vterm)
+
+(keymap-set vterm-mode-map "C-c c" #'vterm-copy-mode)
+(keymap-set vterm-copy-mode-map "C-c c" #'vterm-copy-mode)
+
 (with-eval-after-load 'embark
   (keymap-set embark-file-map "$" #'my/vterm))
 
