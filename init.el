@@ -431,6 +431,19 @@
        (unhighlight-regexp t)))))
 ;; >----------
 
+;; <----------
+;; ### Current column
+
+(keymap-global-set "s-i h c" #'my/highlight-regexp/current-column)
+
+(defun my/highlight-regexp/current-column ()
+  (interactive)
+  (let ((regexp (format "^.\\{%s\\}\\(.\\)" (current-column))))
+    (highlight-regexp regexp 'symbol-overlay-face-7 1)))
+;; >----------
+
+;; >-------------------------
+
 ;; <-------------------------
 ;; ## symbol-overlay
 
