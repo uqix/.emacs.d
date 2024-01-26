@@ -150,6 +150,10 @@
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
+
+;; <-------------------------
+;; ## Title
+
 ;; https://www.emacswiki.org/emacs/FrameTitle#h5o-6
 
 (setq frame-title-format '(:eval (my/frame-title-format)))
@@ -160,16 +164,27 @@
          (project-path (consult--project-root))
          (project-path (and project-path (directory-file-name project-path))))
     (if project-path
-        (let* ((project-dir (file-name-nondirectory project-path))
+        (let* ((project-name (file-name-nondirectory project-path))
                (file-subpath (and file-path (file-relative-name file-path project-path)))
-               (file-dir-subpath (and file-subpath (file-name-parent-directory file-subpath)))
-               (project-parent-path (file-name-parent-directory project-path)))
-          (format "%s 💙 %s 🚦⤵ %s 🚦⤴ %s"
+               (file-parent-subpath (and file-subpath (f-dirname file-subpath)))
+               (project-parent-path (f-dirname project-path)))
+          (format "%s 💙 %s%s 🚦⤴ %s"
                   buffer-name
-                  project-dir
-                  file-dir-subpath
-                  project-parent-path))
-      (format "%s 💢 %s" buffer-name file-path))))
+                  project-name
+                  (if file-parent-subpath
+                      (format " 🚦⤵ %s" (my/abbreviate-path file-parent-subpath))
+                    "")
+                  (my/abbreviate-path project-parent-path)))
+      (format "%s 💢 %s"
+              buffer-name
+              (if file-path (my/abbreviate-path file-path) "")))))
+
+(defun my/abbreviate-path (path)
+  (let* ((result (abbreviate-file-name path))
+         (result (directory-file-name result)))
+    result))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
