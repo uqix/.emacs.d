@@ -1444,12 +1444,28 @@
   (call-interactively 'polymode-mark-or-extend-chunk)
   (call-interactively 'edit-indirect-region))
 
+;; <-------------------------
+;; ## Bash
+
 (define-innermode poly-bash-innermode
   :mode 'bash-ts-mode
   :head-matcher "^ *#!/usr/bin/env \\(sh\\|bash\\)\n"
   :tail-matcher "^ *# </bash>$"
   :head-mode 'body
   :tail-mode 'body)
+;; >-------------------------
+
+;; <-------------------------
+;; ## Nginx
+
+(define-innermode poly-nginx-innermode
+  :mode 'nginx-mode
+  :head-matcher "^ *# <nginx>\n"
+  :tail-matcher "^ *# </nginx>$"
+  :head-mode 'body
+  :tail-mode 'body)
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
@@ -1677,14 +1693,16 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; ## polymode
+;; ## Polymode
 
 (define-hostmode poly-yaml-ts-hostmode
   :mode 'yaml-ts-mode)
 
 (define-polymode poly-yaml-ts-mode
   :hostmode 'poly-yaml-ts-hostmode
-  :innermodes '(poly-bash-innermode))
+  :innermodes
+  '(poly-bash-innermode
+    poly-nginx-innermode))
 
 ;; https://github.com/polymode/polymode/issues/324#issuecomment-1872441449
 ;; (add-hook 'yaml-ts-mode-hook 'poly-yaml-ts-mode)
