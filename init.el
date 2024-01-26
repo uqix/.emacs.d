@@ -1326,7 +1326,7 @@
 
 (keymap-global-set "s-l e" #'eglot) ; [l]sp: [e]glot
 
-(keymap-set eglot-mode-map "s-," #'eglot-code-actions)          ; [l]sp: actions; was customize
+(keymap-set eglot-mode-map "s-." #'eglot-code-actions)          ; [l]sp: actions; was customize
 (keymap-set eglot-mode-map "s-l r" #'eglot-rename)              ; [l]sp: [r]ename
 (keymap-set eglot-mode-map "s-l i" #'eglot-find-implementation) ; [l]sp: [i]mplementation
 (keymap-set eglot-mode-map "s-l t" #'eglot-find-typeDefinition) ; [l]sp: [t]ype
