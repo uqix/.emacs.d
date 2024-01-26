@@ -151,7 +151,25 @@
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 ;; https://www.emacswiki.org/emacs/FrameTitle#h5o-6
-(setq frame-title-format "%b <%f>")
+
+(setq frame-title-format '(:eval (my/frame-title-format)))
+
+(defun my/frame-title-format ()
+  (let* ((buffer-name (buffer-name))
+         (file-path (buffer-file-name))
+         (project-path (consult--project-root))
+         (project-path (and project-path (directory-file-name project-path))))
+    (if project-path
+        (let* ((project-dir (file-name-nondirectory project-path))
+               (file-subpath (and file-path (file-relative-name file-path project-path)))
+               (file-dir-subpath (and file-subpath (file-name-parent-directory file-subpath)))
+               (project-parent-path (file-name-parent-directory project-path)))
+          (format "%s 💙 %s 👇 %s 👆 %s"
+                  buffer-name
+                  project-dir
+                  file-dir-subpath
+                  project-parent-path))
+      (format "%s todo" buffer-name))))
 
 ;; >--------------------------------------------------
 
