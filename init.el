@@ -55,11 +55,15 @@
 
 
 ;; <--------------------------------------------------
-;; # Dynamic abbrev expansion
+;; # Dabbrev
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Dynamic-Abbrevs.html
 
+(require 'dabbrev)
+
 ;; M-/ -> dabbrev-expand
+
+(setopt dabbrev-case-fold-search nil)
 ;; >--------------------------------------------------
 
 
