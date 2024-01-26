@@ -1430,12 +1430,12 @@
 
 (require 'polymode)
 
-(keymap-set polymode-mode-map "C-c p n" 'polymode-next-chunk)             ; [n]ext
-(keymap-set polymode-mode-map "C-c p p" 'polymode-previous-chunk)         ; [p]revious
-(keymap-set polymode-mode-map "C-c p t" 'polymode-toggle-chunk-narrowing) ; [t]oggle narrowing
-(keymap-set polymode-mode-map "C-c p k" 'polymode-kill-chunk)             ; [k]ill
-(keymap-set polymode-mode-map "C-c p m" 'polymode-mark-or-extend-chunk)   ; [m]ark
-(keymap-set polymode-mode-map "C-c p e" 'my/polymode/edit-chunk)          ; [e]dit by edit-indirect
+(keymap-set polymode-mode-map "C-c p n" #'polymode-next-chunk)
+(keymap-set polymode-mode-map "C-c p p" #'polymode-previous-chunk)
+(keymap-set polymode-mode-map "C-c p t" #'polymode-toggle-chunk-narrowing)
+(keymap-set polymode-mode-map "C-c p k" #'polymode-kill-chunk)
+(keymap-set polymode-mode-map "C-c p m" #'polymode-mark-or-extend-chunk)
+(keymap-set polymode-mode-map "C-c '" #'my/polymode/edit-chunk)
 
 ;; https://polymode.github.io/defining-polymodes/
 
