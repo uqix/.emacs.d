@@ -1492,8 +1492,9 @@
 
 (setopt indent-tabs-mode nil)
 
-(keymap-global-set "s-i m w" #'whitespace-mode) ; [m]ode: [w]hitespace
+(keymap-global-set "s-i m w" #'whitespace-mode)
 (keymap-global-set "M-\\" #'delete-trailing-whitespace) ; was delete-horizontal-space
+(keymap-global-set "M-|" #'delete-all-space)
 ;; >--------------------------------------------------
 
 
