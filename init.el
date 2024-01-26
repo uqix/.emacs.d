@@ -164,13 +164,12 @@
                (file-subpath (and file-path (file-relative-name file-path project-path)))
                (file-dir-subpath (and file-subpath (file-name-parent-directory file-subpath)))
                (project-parent-path (file-name-parent-directory project-path)))
-          (format "%s 💙 %s 👇 %s 👆 %s"
+          (format "%s 💙 %s 🚦⤵ %s 🚦⤴ %s"
                   buffer-name
                   project-dir
                   file-dir-subpath
                   project-parent-path))
-      (format "%s todo" buffer-name))))
-
+      (format "%s 💢 %s" buffer-name file-path))))
 ;; >--------------------------------------------------
 
 
