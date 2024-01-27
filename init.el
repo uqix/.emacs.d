@@ -169,14 +169,14 @@
                (file-parent-subpath (and file-subpath (f-dirname file-subpath)))
                (project-parent-path (f-dirname project-path)))
           (format "%s 💙 %s%s 🚦⤴ %s"
-                  (my/frame-title-format/project/buffer-name buffer-name project-path)
+                  (my/frame-title-format/buffer-name buffer-name project-path)
                   project-name
                   (if file-parent-subpath
                       (format " 🚦⤵ %s" (my/abbreviate-path file-parent-subpath))
                     "")
                   (my/abbreviate-path project-parent-path)))
       (format "%s 💢 %s"
-              buffer-name
+              (my/frame-title-format/buffer-name buffer-name)
               (if file-path (my/abbreviate-path file-path) "")))))
 
 (defun my/abbreviate-path (path)
@@ -184,16 +184,20 @@
          (result (directory-file-name result)))
     result))
 
-(defun my/frame-title-format/project/buffer-name (buffer-name project-path)
+(defun my/frame-title-format/buffer-name (buffer-name &optional project-path)
   (cond ((string-prefix-p vterm-buffer-name buffer-name)
          (let* ((prefix (format "%s " vterm-buffer-name))
                 (working-dir (string-remove-prefix prefix buffer-name))
-                (working-dir-subpath (file-relative-name working-dir
-                                                         (my/abbreviate-path project-path))))
+                (working-dir-subpath (and
+                                      project-path
+                                      (file-relative-name working-dir
+                                                          (my/abbreviate-path project-path)))))
            (format "%s%s%s"
                    prefix
                    (if vterm-copy-mode "🛑 " "")
-                   working-dir-subpath)))
+                   (or working-dir-subpath working-dir))))
+        ((string-prefix-p "*edit-indirect " buffer-name)
+         (string-replace "*edit-indirect " "*💥" buffer-name))
         (t
          buffer-name)))
 ;; >-------------------------
