@@ -632,6 +632,7 @@
 (keymap-set vterm-copy-mode-map "C-c c" #'vterm-copy-mode)
 
 (with-eval-after-load 'embark
+  (add-to-list 'embark-around-action-hooks '(my/vterm embark--cd))
   (keymap-set embark-file-map "$" #'my/vterm))
 
 (defun my/vterm ()
