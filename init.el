@@ -190,7 +190,10 @@
                 (working-dir (string-remove-prefix prefix buffer-name))
                 (working-dir-subpath (file-relative-name working-dir
                                                          (my/abbreviate-path project-path))))
-           (format "%s%s" prefix working-dir-subpath)))
+           (format "%s%s%s"
+                   prefix
+                   (if vterm-copy-mode "🛑 " "")
+                   working-dir-subpath)))
         (t
          buffer-name)))
 ;; >-------------------------
