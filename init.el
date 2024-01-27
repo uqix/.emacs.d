@@ -1925,7 +1925,21 @@
 
 ;; (set-face-foreground 'font-lock-type-face "#5B6268") ; shadow
 
+;; <-------------------------
+;; ## Markdown
+
 (let ((quote (face-attribute 'markdown-blockquote-face :foreground nil t)))
-  (set-face-attribute 'markdown-blockquote-face nil :foreground (doom-darken quote 0.2))
-  (set-face-attribute 'markdown-bold-face nil :foreground quote))
+  (set-face-attribute 'markdown-blockquote-face nil :foreground (doom-darken quote 0.25))
+  (set-face-attribute 'markdown-bold-face nil :foreground quote :weight 'normal))
+
+(let ((h1 (face-attribute 'font-lock-keyword-face :foreground))
+      (h4 (face-attribute 'font-lock-function-name-face :foreground)))
+  (set-face-attribute 'markdown-header-face-1 nil :weight 'bold :foreground h1)
+  (set-face-attribute 'markdown-header-face-2 nil :weight 'bold :foreground (doom-darken h1 0.1))
+  (set-face-attribute 'markdown-header-face-3 nil :weight 'bold :foreground (doom-darken h1 0.2))
+  (set-face-attribute 'markdown-header-face-4 nil :weight 'bold :foreground h4)
+  (set-face-attribute 'markdown-header-face-5 nil :weight 'bold :foreground (doom-darken h4 0.1))
+  (set-face-attribute 'markdown-header-face-6 nil :weight 'bold :foreground (doom-darken h4 0.2)))
+;; >-------------------------
+
 ;; >--------------------------------------------------
