@@ -159,17 +159,17 @@
 (setq frame-title-format '(:eval (my/frame-title-format)))
 
 (defun my/frame-title-format ()
-  (let* ((buffer-name (buffer-name))
+  (let ((buffer-name (buffer-name))
          (file-path (buffer-file-name))
-         (project-path (consult--project-root))
-         (project-path (and project-path (directory-file-name project-path))))
+         (project-path (consult--project-root)))
     (if project-path
-        (let* ((project-name (file-name-nondirectory project-path))
+        (let* ((project-path (directory-file-name project-path))
+               (project-name (file-name-nondirectory project-path))
                (file-subpath (and file-path (file-relative-name file-path project-path)))
                (file-parent-subpath (and file-subpath (f-dirname file-subpath)))
                (project-parent-path (f-dirname project-path)))
           (format "%s 💙 %s%s 🚦⤴ %s"
-                  buffer-name
+                  (my/frame-title-format/project/buffer-name buffer-name project-path)
                   project-name
                   (if file-parent-subpath
                       (format " 🚦⤵ %s" (my/abbreviate-path file-parent-subpath))
@@ -183,6 +183,16 @@
   (let* ((result (abbreviate-file-name path))
          (result (directory-file-name result)))
     result))
+
+(defun my/frame-title-format/project/buffer-name (buffer-name project-path)
+  (cond ((string-prefix-p vterm-buffer-name buffer-name)
+         (let* ((prefix (format "%s " vterm-buffer-name))
+                (working-dir (string-remove-prefix prefix buffer-name))
+                (working-dir-subpath (file-relative-name working-dir
+                                                         (my/abbreviate-path project-path))))
+           (format "%s%s" prefix working-dir-subpath)))
+        (t
+         buffer-name)))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -638,7 +648,7 @@
 (defun my/vterm ()
   (interactive)
   (let* ((dirname (my/dirname (read-from-minibuffer "Buffer: ")))
-         (name (format "*shell* %s" dirname))
+         (name (format "%s %s" vterm-buffer-name dirname))
          (buffer (get-buffer name)))
     (if buffer
         (switch-to-buffer buffer)
