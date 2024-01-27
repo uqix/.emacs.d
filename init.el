@@ -1511,7 +1511,7 @@
 (keymap-set polymode-mode-map "C-c p t" #'polymode-toggle-chunk-narrowing)
 (keymap-set polymode-mode-map "C-c p k" #'polymode-kill-chunk)
 (keymap-set polymode-mode-map "C-c p m" #'polymode-mark-or-extend-chunk)
-(keymap-set polymode-mode-map "C-c '" #'my/polymode/edit-chunk)
+(keymap-set polymode-mode-map "C-c p e" #'my/polymode/edit-chunk)
 
 ;; https://polymode.github.io/defining-polymodes/
 
