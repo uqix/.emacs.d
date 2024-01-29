@@ -649,6 +649,8 @@
 
 (require 'vterm)
 
+(keymap-global-set "s-i t" #'vterm)
+
 (keymap-set vterm-mode-map "C-c c" #'vterm-copy-mode)
 (keymap-set vterm-copy-mode-map "C-c c" #'vterm-copy-mode)
 
