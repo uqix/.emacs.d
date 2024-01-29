@@ -185,18 +185,21 @@
     result))
 
 (defun my/frame-title-format/buffer-name (buffer-name &optional project-path)
-  (let ((vterm-prefix (format "%s " vterm-buffer-name))
-        (edit-indirect-prefix "*edit-indirect "))
-    (cond ((string-prefix-p vterm-prefix buffer-name)
-           (let* ((working-dir (string-remove-prefix vterm-prefix buffer-name))
-                  (working-dir-subpath (and
-                                        project-path
-                                        (file-relative-name working-dir
-                                                            (my/abbreviate-path project-path)))))
+  (let ((edit-indirect-prefix "*edit-indirect "))
+    (cond ((eq major-mode 'vterm-mode)
+           (let* ((vterm-prefix (format "%s " vterm-buffer-name))
+                  (wd
+                   (if (string-prefix-p vterm-prefix buffer-name)
+                       (let* ((working-dir (string-remove-prefix vterm-prefix buffer-name))
+                              (working-dir-subpath
+                               (and project-path
+                                    (file-relative-name working-dir
+                                                        (my/abbreviate-path project-path)))))
+                         (or working-dir-subpath working-dir)))))
              (format "%s%s%s"
                      vterm-prefix
                      (if vterm-copy-mode "🛑 " "")
-                     (or working-dir-subpath working-dir))))
+                     (or wd ""))))
           ((string-prefix-p edit-indirect-prefix buffer-name)
            (string-replace edit-indirect-prefix "*💥" buffer-name))
           (t
