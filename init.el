@@ -506,7 +506,7 @@
 
 (require 'symbol-overlay)
 
-;; https://github.com/wolray/symbol-overlay/#usage
+(setopt symbol-overlay-priority 100)
 
 (global-unset-key (kbd "s-o"))
 
