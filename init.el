@@ -616,6 +616,8 @@
 
 (keymap-set diff-mode-shared-map "t" 'diff-delete-trailing-whitespace) ; [t]rim
 
+(require 'ediff)
+
 (keymap-global-set "s-i d b" #'ediff-buffers) ; [d]iff: [b]uffers
 
 ;; <-------------------------
