@@ -1931,6 +1931,13 @@
 ;; (set-face-foreground 'font-lock-type-face "#5B6268") ; shadow
 
 ;; <-------------------------
+;; ## ediff
+
+(set-face-attribute 'ediff-current-diff-A nil :inherit 'magit-diff-removed :background "unspecified")
+(set-face-attribute 'ediff-current-diff-B nil :inherit 'magit-diff-added :background "unspecified")
+;; >-------------------------
+
+;; <-------------------------
 ;; ## Markdown
 
 (let ((quote (face-attribute 'markdown-blockquote-face :foreground nil t)))
