@@ -514,7 +514,8 @@
 (defvar-keymap my/unhighlight-regexp/map
   "r" #'my/unhighlight-regexp
   "R" #'my/unhighlight-regexp/all
-  "c" #'my/unhighlight-regexp)
+  "c" #'my/unhighlight-regexp
+  "u" #'my/unhighlight-regexp/all)
 
 (dolist (cmd
          '(my/highlight-regexp
