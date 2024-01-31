@@ -69,6 +69,18 @@
 
 
 ;; <--------------------------------------------------
+;; repeat
+
+(require 'repeat)
+
+(repeat-mode)
+
+(keymap-global-set "s-i z" #'repeat) ; z z z…
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # Completion
 
 (add-to-list 'completion-ignored-extensions ".DS_Store")
@@ -411,8 +423,6 @@
 
 (keymap-global-set "C-." #'pop-to-mark-command) ; was flyspell-auto-correct-word
 
-(keymap-global-set "s-i z" #'repeat) ; z z z…
-
 ;; <-------------------------
 ;; Next match
 
@@ -471,7 +481,6 @@
      (lambda (window)
        (with-current-buffer (window-buffer window)
          (highlight-regexp regexp 'symbol-overlay-face-8))))))
-
 ;; >----------
 
 ;; <----------
@@ -480,12 +489,27 @@
 (keymap-global-set "s-i h u" 'unhighlight-regexp)
 (keymap-global-set "s-i h U" #'my/unhighlight-regexp/all)
 
+(defun my/unhighlight-regexp ()
+  (interactive)
+  (unhighlight-regexp t))
+
 (defun my/unhighlight-regexp/all ()
   (interactive)
   (walk-windows
    (lambda (window)
      (with-current-buffer (window-buffer window)
        (unhighlight-regexp t)))))
+
+(defvar-keymap my/unhighlight-regexp/map
+  "r" #'my/unhighlight-regexp
+  "R" #'my/unhighlight-regexp/all
+  "c" #'my/unhighlight-regexp)
+
+(dolist (cmd
+         '(my/highlight-regexp
+           my/highlight-regexp/all
+           my/highlight-regexp/current-column))
+  (put cmd 'repeat-map 'my/unhighlight-regexp/map))
 ;; >----------
 
 ;; <----------
