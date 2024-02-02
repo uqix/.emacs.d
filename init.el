@@ -345,16 +345,64 @@
 
 
 ;; <--------------------------------------------------
-;; # Block collapse/expand
+;; # Block hideshow
 
 (require 'hideshow)
 
 (add-hook 'prog-mode-hook 'hs-minor-mode)
-;; TODO repeat
-(keymap-global-set "s-i b t" #'hs-toggle-hiding) ; [b]lock: [t]oggle
-(keymap-global-set "s-i b H" #'hs-hide-all)      ; [b]lock: [H]ide all
-(keymap-global-set "s-i b S" #'hs-show-all)      ; [b]lock: [S]how all
 
+(defvar-keymap my/hideshow/repeat-map
+  :repeat t
+  "t" #'hs-toggle-hiding
+  "h" #'hs-hide-all
+  "s" #'hs-show-all
+  "1" #'my/hideshow/hide-level/1
+  "2" #'my/hideshow/hide-level/2
+  "3" #'my/hideshow/hide-level/3
+  "4" #'my/hideshow/hide-level/4
+  "5" #'my/hideshow/hide-level/5
+  "6" #'my/hideshow/hide-level/6
+  "7" #'my/hideshow/hide-level/7
+  "8" #'my/hideshow/hide-level/8
+  "9" #'my/hideshow/hide-level/9)
+
+(keymap-global-set "s-i b" my/hideshow/repeat-map)
+
+(defun my/hideshow/hide-level/1 ()
+  (interactive)
+  (hs-hide-level 1))
+
+(defun my/hideshow/hide-level/2 ()
+  (interactive)
+  (hs-hide-level 2))
+
+(defun my/hideshow/hide-level/3 ()
+  (interactive)
+  (hs-hide-level 3))
+
+(defun my/hideshow/hide-level/4 ()
+  (interactive)
+  (hs-hide-level 4))
+
+(defun my/hideshow/hide-level/5 ()
+  (interactive)
+  (hs-hide-level 5))
+
+(defun my/hideshow/hide-level/6 ()
+  (interactive)
+  (hs-hide-level 6))
+
+(defun my/hideshow/hide-level/7 ()
+  (interactive)
+  (hs-hide-level 7))
+
+(defun my/hideshow/hide-level/8 ()
+  (interactive)
+  (hs-hide-level 8))
+
+(defun my/hideshow/hide-level/9 ()
+  (interactive)
+  (hs-hide-level 9))
 ;; >--------------------------------------------------
 
 
@@ -393,9 +441,7 @@
 ;; <--------------------------------------------------
 ;; Buffer
 
-(keymap-global-set "s-i b r" #'revert-buffer)
-(keymap-global-set "s-i b k" #'kill-current-buffer)
-
+;; (keymap-global-set "s-i R" #'revert-buffer)
 ;; >--------------------------------------------------
 
 
