@@ -845,9 +845,6 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
-(keymap-global-set "M-L" #'downcase-region) ; [L]owercase
-(keymap-global-set "M-U" #'upcase-region)
-
 (with-eval-after-load 'embark
   (keymap-set embark-region-map "c" nil)
   (keymap-set embark-region-map "c s" #'my/region/convert/snake-case)
