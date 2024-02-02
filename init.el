@@ -69,7 +69,7 @@
 
 
 ;; <--------------------------------------------------
-;; repeat
+;; # repeat
 
 (require 'repeat)
 
@@ -378,7 +378,7 @@
   (avy-isearch))
 
 ;; <-------------------------
-;; Repeat
+;; ## Repeat
 
 (defvar-keymap my/isearch/repeat-map
   :repeat t
@@ -1139,18 +1139,27 @@
 ;; <--------------------------------------------------
 ;; # Window
 
-(keymap-global-set "s-i w t" #'enlarge-window)              ; [w]indow: [t]aller
-(keymap-global-set "s-i w s" #'shrink-window)               ; [w]indow: [s]horter
-(keymap-global-set "s-i w w" #'enlarge-window-horizontally) ; [w]indow: [w]ider
-(keymap-global-set "s-i w n" #'shrink-window-horizontally)  ; [w]indow: [n]arrower
-(keymap-global-set "s-i w b" #'balance-windows)             ; [w]indow: [b]alance
+;; <-------------------------
+;; ## Repeat
+
+(defvar-keymap my/window/repeat-map
+  :repeat t
+  "t" #'enlarge-window              ; [t]aller
+  "s" #'shrink-window               ; [s]horter
+  "w" #'enlarge-window-horizontally ; [w]ider
+  "n" #'shrink-window-horizontally  ; [n]arrower
+  "b" #'balance-windows             ; [b]alance
+  )
+
+(keymap-global-set "s-i w" my/window/repeat-map)
+;; >-------------------------
 
 ;; <-------------------------
 ;; ## Split
 
-(keymap-global-set "s-t" #'my/split-window-sensibly)
+(keymap-global-set "s-t" #'my/window/split-sensibly)
 
-(defun my/split-window-sensibly ()
+(defun my/window/split-sensibly ()
   (interactive)
   (or
    (let ((split-height-threshold nil))
