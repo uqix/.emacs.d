@@ -424,13 +424,11 @@
 (keymap-global-set "C-." #'pop-to-mark-command) ; was flyspell-auto-correct-word
 
 ;; <-------------------------
-;; Next match
+;; ## next-error
 
-;; normally uses the most recently started compilation, grep, or occur buffer
+;; Normally uses the most recently started compilation, grep, or occur buffer
 
-(keymap-global-set "s-{" #'next-error-select-buffer)
-(keymap-global-set "s-[" #'previous-error)
-(keymap-global-set "s-]" #'next-error)
+(keymap-global-set "s-i e" 'next-error-repeat-map)
 ;; >-------------------------
 
 (keymap-global-set "s-i m t" #'text-mode)    ; [m]ode: [t]ext
