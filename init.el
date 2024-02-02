@@ -428,7 +428,7 @@
 
 ;; Normally uses the most recently started compilation, grep, or occur buffer
 
-(keymap-global-set "s-i e" 'next-error-repeat-map)
+(keymap-global-set "s-i e" next-error-repeat-map)
 ;; >-------------------------
 
 (keymap-global-set "s-i m t" #'text-mode)    ; [m]ode: [t]ext
