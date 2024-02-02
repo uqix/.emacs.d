@@ -455,7 +455,14 @@
 ;; ### Highlight (region aware)
 
 (keymap-global-set "s-i h r" 'my/highlight-regexp)
-(keymap-global-set "s-i h R" 'my/highlight-regexp/all)
+(keymap-global-set "s-i h h" 'my/highlight-regexp/all)
+
+(defvar-keymap my/highlight-regexp/all/repeat-map
+  :repeat (:enter
+           (my/highlight-regexp/all)
+           :exit
+           (my/unhighlight-regexp/all))
+  "h" #'my/unhighlight-regexp/all)
 
 (defun my/highlight-regexp ()
   (interactive)
@@ -510,18 +517,6 @@
    (lambda (window)
      (with-current-buffer (window-buffer window)
        (unhighlight-regexp t)))))
-
-(defvar-keymap my/unhighlight-regexp/map
-  "r" #'my/unhighlight-regexp
-  "R" #'my/unhighlight-regexp/all
-  "c" #'my/unhighlight-regexp
-  "u" #'my/unhighlight-regexp/all)
-
-(dolist (cmd
-         '(my/highlight-regexp
-           my/highlight-regexp/all
-           my/highlight-regexp/current-column))
-  (put cmd 'repeat-map 'my/unhighlight-regexp/map))
 ;; >----------
 
 ;; >-------------------------
