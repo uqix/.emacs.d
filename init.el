@@ -1310,7 +1310,8 @@
 
 ;; https://github.com/mhayashi1120/Emacs-wgrep
 
-(keymap-set grep-mode-map "e" #'wgrep-change-to-wgrep-mode)             ; [e]dit
+(keymap-set grep-mode-map "e" #'wgrep-change-to-wgrep-mode)
+(keymap-set grep-mode-map "o" #'compile-goto-error)
 (keymap-set wgrep-mode-map "<remap> <save-buffer>" #'wgrep-finish-edit) ; commit
 
 ;; >-------------------------
