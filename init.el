@@ -649,8 +649,7 @@
 
 (require 'diff-mode)
 
-;; TODO m-\
-(keymap-set diff-mode-shared-map "t" 'diff-delete-trailing-whitespace) ; [t]rim
+(keymap-set diff-mode-shared-map "M-\\" 'diff-delete-trailing-whitespace)
 
 (require 'ediff)
 
