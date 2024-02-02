@@ -495,6 +495,13 @@
 
 (keymap-global-set "s-i h c" #'my/highlight-regexp/current-column)
 
+(defvar-keymap my/highlight-regexp/current-column/repeat-map
+  :repeat (:enter
+           (my/highlight-regexp/current-column)
+           :exit
+           (my/unhighlight-regexp))
+  "c" #'my/unhighlight-regexp)
+
 (defun my/highlight-regexp/current-column ()
   (interactive)
   (let ((regexp (format "^.\\{%s\\}\\(.\\)" (current-column))))
