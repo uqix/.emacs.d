@@ -376,6 +376,16 @@
   (interactive)
   (isearch-done)
   (avy-isearch))
+
+;; <-------------------------
+;; Repeat
+
+(defvar-keymap my/isearch/repeat-map
+  :repeat t
+  "s" #'isearch-repeat-forward
+  "r" #'isearch-repeat-backward)
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
