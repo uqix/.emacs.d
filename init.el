@@ -275,7 +275,7 @@
 (keymap-set flymake-mode-map "M-n" 'flymake-goto-next-error)
 (keymap-set flymake-mode-map "M-p" 'flymake-goto-prev-error)
 
-(keymap-global-set "s-i m f" #'flymake-mode) ; [m]ode: [f]lymake
+(keymap-global-set "s-i m f" #'flymake-mode)
 
 ;; <-------------------------
 ;; ## flymake-collection
@@ -316,7 +316,7 @@
 (savehist-mode 1)
 
 ;; https://github.com/minad/vertico/blob/main/extensions/vertico-repeat.el
-(keymap-global-set "s-h b" #'vertico-repeat) ; [b]ack to last interaction
+(keymap-global-set "s-h b" #'vertico-repeat) ; [b]ack
 (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
 
 ;; https://github.com/minad/vertico/blob/main/extensions/vertico-quick.el
@@ -350,7 +350,7 @@
 (require 'hideshow)
 
 (add-hook 'prog-mode-hook 'hs-minor-mode)
-
+;; TODO repeat
 (keymap-global-set "s-i b t" #'hs-toggle-hiding) ; [b]lock: [t]oggle
 (keymap-global-set "s-i b H" #'hs-hide-all)      ; [b]lock: [H]ide all
 (keymap-global-set "s-i b S" #'hs-show-all)      ; [b]lock: [S]how all
@@ -393,8 +393,8 @@
 ;; <--------------------------------------------------
 ;; Buffer
 
-(keymap-global-set "s-i b r" #'revert-buffer)       ; [b]uffer: [r]evert
-(keymap-global-set "s-i b k" #'kill-current-buffer) ; [b]uffer: [k]ill
+(keymap-global-set "s-i b r" #'revert-buffer)
+(keymap-global-set "s-i b k" #'kill-current-buffer)
 
 ;; >--------------------------------------------------
 
@@ -441,10 +441,10 @@
 (keymap-global-set "s-i e" next-error-repeat-map)
 ;; >-------------------------
 
-(keymap-global-set "s-i m t" #'text-mode)    ; [m]ode: [t]ext
+(keymap-global-set "s-i m t" #'text-mode)
 
-(keymap-global-set "C-h F" #'describe-face)   ; [h]elp: [F]ace
-(keymap-global-set "C-h K" #'describe-keymap) ; [h]elp: [K]eymap
+(keymap-global-set "C-h F" #'describe-face)
+(keymap-global-set "C-h K" #'describe-keymap)
 
 ;; s-1: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 1 (Misc)
 ;; s-2: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 2 (Emacs)
@@ -545,11 +545,11 @@
 
 (global-unset-key (kbd "s-o"))
 
-(keymap-global-set "M-o" 'symbol-overlay-put)               ; [o]verlay
+(keymap-global-set "M-o" 'symbol-overlay-put)
 (keymap-global-set "s-o n" 'symbol-overlay-switch-forward)  ; [n]ext
 (keymap-global-set "s-o p" 'symbol-overlay-switch-backward) ; [p]revious
-(keymap-global-set "s-o r" 'symbol-overlay-remove-all)      ; [r]emove
-(keymap-global-set "s-o m" 'symbol-overlay-mode)            ; [m]ode
+(keymap-global-set "s-o r" 'symbol-overlay-remove-all)
+(keymap-global-set "s-o m" 'symbol-overlay-mode)
 
 (keymap-set symbol-overlay-map "C-s" #'symbol-overlay-isearch-literally)
 
@@ -649,18 +649,19 @@
 
 (require 'diff-mode)
 
+;; TODO m-\
 (keymap-set diff-mode-shared-map "t" 'diff-delete-trailing-whitespace) ; [t]rim
 
 (require 'ediff)
 
-(keymap-global-set "s-i d b" #'ediff-buffers) ; [d]iff: [b]uffers
+(keymap-global-set "s-i d b" #'ediff-buffers)
 
 ;; <-------------------------
 ;; ## ztree
 
 (require 'ztree)
 
-(keymap-global-set "s-i d d" #'ztree-diff) ; [d]iff: [d]irs
+(keymap-global-set "s-i d d" #'ztree-diff)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -730,9 +731,9 @@
 
 (put 'narrow-to-region 'disabled nil)
 
-(keymap-global-set "s-i n n" #'narrow-to-region) ; [n]arrow: region
-(keymap-global-set "s-i n f" #'narrow-to-defun)  ; [n]arrow: [f]unction
-(keymap-global-set "s-i n w" #'widen)            ; [n]arrow: [w]iden
+(keymap-global-set "s-i n n" #'narrow-to-region)
+(keymap-global-set "s-i n f" #'narrow-to-defun)
+(keymap-global-set "s-i n w" #'widen)
 ;; >-------------------------
 
 ;; <-------------------------
@@ -897,20 +898,20 @@
 (recentf-mode 1)
 ;; >-------------------------
 
-(keymap-global-set "s-j" 'consult-buffer) ; [j]ump to buffer; was exchange-point-and-mark
+(keymap-global-set "s-j" 'consult-buffer) ; [j]ump; was exchange-point-and-mark
 
-(keymap-global-set "M-y" 'consult-yank-replace)                   ; [y]ank
+(keymap-global-set "M-y" 'consult-yank-replace)
 
-(keymap-global-set "s-h i" 'consult-imenu)          ; [i]menu
-(keymap-global-set "s-h I" 'consult-imenu-multi)    ; [I]menu
-(keymap-global-set "s-h e" 'consult-flymake)        ; [e]rrors
-(keymap-global-set "s-h r" 'consult-register-store) ; [r]egister: add
-(keymap-global-set "s-h R" 'consult-register)       ; [R]egister: list
-(keymap-global-set "s-h f" 'consult-focus-lines)    ; [f]ocus
-(keymap-global-set "s-h k" 'consult-keep-lines)     ; [k]eep
-(keymap-global-set "s-h m" 'consult-mark)           ; [m]ark
-(keymap-global-set "s-h M" 'consult-global-mark)    ; [M]ark
-(keymap-global-set "s-h o" 'consult-outline)        ; [o]utline
+(keymap-global-set "s-h i" 'consult-imenu)
+(keymap-global-set "s-h I" 'consult-imenu-multi)
+(keymap-global-set "s-h e" 'consult-flymake)
+(keymap-global-set "s-h r" 'consult-register-store)
+(keymap-global-set "s-h R" 'consult-register)
+(keymap-global-set "s-h f" 'consult-focus-lines)
+(keymap-global-set "s-h k" 'consult-keep-lines)
+(keymap-global-set "s-h m" 'consult-mark)
+(keymap-global-set "s-h M" 'consult-global-mark)
+(keymap-global-set "s-h o" 'consult-outline)
 ;; >--------------------------------------------------
 
 
@@ -988,12 +989,12 @@
       '(all-the-icons file-time file-size subtree-state))
 
 (keymap-set dirvish-mode-map "TAB" #'dirvish-subtree-toggle)
-(keymap-set dirvish-mode-map "s" #'dirvish-quicksort)         ; [s]ort; was dired-sort-toggle-or-edit
-(keymap-set dirvish-mode-map "M" #'dirvish-mark-menu)         ; [m]ark menu; was dired-do-chmod
-(keymap-set dirvish-mode-map "C-c m" #'dired-do-chmod)        ; ch[m]od
-(keymap-set dirvish-mode-map "C-c l" #'dirvish-layout-toggle) ; [l]ayout
+(keymap-set dirvish-mode-map "s" #'dirvish-quicksort) ; was dired-sort-toggle-or-edit
+(keymap-set dirvish-mode-map "M" #'dirvish-mark-menu) ; was dired-do-chmod
+(keymap-set dirvish-mode-map "C-c m" #'dired-do-chmod)
+(keymap-set dirvish-mode-map "C-c l" #'dirvish-layout-toggle)
 
-(keymap-global-set "s-J" 'dirvish-history-jump) ; [J]ump to dired
+(keymap-global-set "s-J" 'dirvish-history-jump)
 
 ;; <----------
 ;; ### Mouse
@@ -1033,7 +1034,6 @@
 ;; <-------------------------
 ;; ## Test file
 
-; [t]est: jump between main and test [f]iles
 (keymap-set project-prefix-map "t f" #'my/project/test/file)
 
 (defun my/project/test/file ()
@@ -1106,11 +1106,11 @@
 (setopt magit-diff-refine-hunk 'all)
 (setopt magit-diff-highlight-hunk-body nil)
 
-(keymap-global-set "s-m" 'magit-status)     ; [m]agit; was iconify-frame
+(keymap-global-set "s-m" 'magit-status)     ; was iconify-frame
 
-(keymap-global-set "s-i v d" #'magit-diff-buffer-file) ; [v]c: [d]iff
-(keymap-global-set "s-i v l" #'magit-log-buffer-file)  ; [v]c: [l]og
-(keymap-global-set "s-i v m" #'magit-submodule)        ; [v]c: sub[m]odule
+(keymap-global-set "s-i v d" #'magit-diff-buffer-file)
+(keymap-global-set "s-i v l" #'magit-log-buffer-file)
+(keymap-global-set "s-i v m" #'magit-submodule)
 
 ; [o]pen; was magit-submodule
 (keymap-set magit-revision-mode-map "o" #'magit-diff-visit-worktree-file-other-window)
@@ -1128,7 +1128,7 @@
 
 (require 'git-timemachine)
 
-(keymap-global-set "s-i v t" #'git-timemachine) ; [v]c: git-[t]imemachine
+(keymap-global-set "s-i v t" #'git-timemachine)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -1211,7 +1211,7 @@
 
 (setopt aw-background nil)
 
-(keymap-global-set "s-n" 'ace-window) ; [w]indow: [n]umber; was make-frame
+(keymap-global-set "s-n" 'ace-window) ; [n]umber; was make-frame
 
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 
@@ -1285,7 +1285,7 @@
 ;; <-------------------------
 ;; ## In current buffer (region aware)
 
-(keymap-global-set "s-f" 'my/find) ; [f]ind; was isearch-forward
+(keymap-global-set "s-f" 'my/find) ; was isearch-forward
 
 (defun my/find ()
   (interactive)
@@ -1309,7 +1309,7 @@
 ;; <-------------------------
 ;; ## Replace
 
-(keymap-global-set "s-i r r" #'query-replace-regexp) ; [r]eplace: regexp
+(keymap-global-set "s-i r r" #'query-replace-regexp)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -1450,14 +1450,14 @@
   "Eclipse JDT breaks spec and replies with edits as arguments."
   (mapc #'eglot--apply-workspace-edit arguments))
 
-(global-unset-key (kbd "s-l")) ; was goto-line
+(global-unset-key (kbd "s-l")) ; [l]sp; was goto-line
 
-(keymap-global-set "s-l e" #'eglot) ; [l]sp: [e]glot
+(keymap-global-set "s-l e" #'eglot)
 
-(keymap-set eglot-mode-map "s-." #'eglot-code-actions)          ; [l]sp: actions; was customize
-(keymap-set eglot-mode-map "s-l r" #'eglot-rename)              ; [l]sp: [r]ename
-(keymap-set eglot-mode-map "s-l i" #'eglot-find-implementation) ; [l]sp: [i]mplementation
-(keymap-set eglot-mode-map "s-l t" #'eglot-find-typeDefinition) ; [l]sp: [t]ype
+(keymap-set eglot-mode-map "s-." #'eglot-code-actions) ; was customize
+(keymap-set eglot-mode-map "s-l r" #'eglot-rename)
+(keymap-set eglot-mode-map "s-l i" #'eglot-find-implementation)
+(keymap-set eglot-mode-map "s-l t" #'eglot-find-typeDefinition)
 ;; >--------------------------------------------------
 
 
@@ -1700,7 +1700,7 @@
 
 (require 'edit-indirect)
 
-(keymap-set embark-region-map "e i" #'edit-indirect-region) ; [e]dit-[i]ndirect
+(keymap-set embark-region-map "e i" #'edit-indirect-region)
 
 (setq edit-indirect-guess-mode-function #'my/edit-indirect/guess-mode)
 
@@ -1759,7 +1759,7 @@
 
 (require 'json-ts-mode)
 
-(keymap-global-set "s-i m j" #'json-ts-mode) ; [m]ode: [j]son
+(keymap-global-set "s-i m j" #'json-ts-mode)
 
 ;; <-------------------------
 ;; ## flymake
@@ -1780,7 +1780,7 @@
 
 (require 'yaml-ts-mode)
 
-(keymap-global-set "s-i m y" #'yaml-ts-mode) ; [m]ode: [y]aml
+(keymap-global-set "s-i m y" #'yaml-ts-mode)
 
 ;; <-------------------------
 ;; ## flymake
@@ -1805,23 +1805,18 @@
 
 ;; https://github.com/zkry/yaml-pro#usage-1
 
-(keymap-set yaml-pro-ts-mode-map "C-c l" #'yaml-pro-ts-unindent-subtree)  ; [l]eft move
-(keymap-set yaml-pro-ts-mode-map "C-c r" #'yaml-pro-ts-indent-subtree)    ; [r]ight move
-(keymap-set yaml-pro-ts-mode-map "C-c u" #'yaml-pro-ts-move-subtree-up)   ; [u]p move
-(keymap-set yaml-pro-ts-mode-map "C-c d" #'yaml-pro-ts-move-subtree-down) ; [d]own move
-(keymap-set yaml-pro-ts-mode-map "C-c k" #'yaml-pro-ts-kill-subtree)      ; [k]ill
+(keymap-set yaml-pro-ts-mode-map "C-c l" #'yaml-pro-ts-unindent-subtree) ; [l]eft move
+(keymap-set yaml-pro-ts-mode-map "C-c r" #'yaml-pro-ts-indent-subtree)   ; [r]ight move
+(keymap-set yaml-pro-ts-mode-map "C-c u" #'yaml-pro-ts-move-subtree-up)
+(keymap-set yaml-pro-ts-mode-map "C-c d" #'yaml-pro-ts-move-subtree-down)
 
-; [n]ext sibling; was forward-list
-(keymap-set yaml-pro-ts-mode-map "C-M-n" #'yaml-pro-ts-next-subtree)
+(keymap-set yaml-pro-ts-mode-map "C-M-n" #'yaml-pro-ts-next-subtree) ; was forward-list
+(keymap-set yaml-pro-ts-mode-map "C-M-p" #'yaml-pro-ts-prev-subtree) ; was backward-list
+(keymap-set yaml-pro-ts-mode-map "C-M-u" #'yaml-pro-ts-up-level)     ; was backward-up-list
 
-; [p]revious sibling; was backward-list
-(keymap-set yaml-pro-ts-mode-map "C-M-p" #'yaml-pro-ts-prev-subtree)
-
-; [u]p level; was backward-up-list
-(keymap-set yaml-pro-ts-mode-map "C-M-u" #'yaml-pro-ts-up-level)
-
-(keymap-set yaml-pro-ts-mode-map "C-c m" #'yaml-pro-ts-mark-subtree)  ; [m]ark
-(keymap-set yaml-pro-ts-mode-map "C-c y" #'yaml-pro-ts-paste-subtree) ; [y]ank
+(keymap-set yaml-pro-ts-mode-map "C-c m" #'yaml-pro-ts-mark-subtree)
+(keymap-set yaml-pro-ts-mode-map "C-c y" #'yaml-pro-ts-paste-subtree)
+(keymap-set yaml-pro-ts-mode-map "C-c k" #'yaml-pro-ts-kill-subtree)
 
 ;; <----------
 ;; ### Save path
@@ -1871,25 +1866,20 @@
 (setopt markdown-fontify-code-blocks-natively t)
 (setopt markdown-max-image-size '(500 . 500))
 
-(keymap-set markdown-mode-map "C-c c" #'markdown-insert-code)                 ; inline [c]ode
-(keymap-set markdown-mode-map "C-c b" #'markdown-insert-gfm-code-block)       ; code [b]lock
-(keymap-set markdown-mode-map "C-c q" #'markdown-insert-blockquote)           ; [q]uote
-(keymap-set markdown-mode-map "C-c e" #'markdown-insert-bold)                 ; [e]mphasize
-(keymap-set markdown-mode-map "C-c l" #'markdown-insert-link)                 ; [l]ink
-(keymap-set markdown-mode-map "C-c n" #'markdown-next-visible-heading)        ; [n]ext heading
-(keymap-set markdown-mode-map "C-c p" #'markdown-previous-visible-heading)    ; [p]revious heading
-(keymap-set markdown-mode-map "C-c h" #'markdown-insert-header-dwim)          ; insert [h]eader
-(keymap-set markdown-mode-map "C-c i" #'markdown-insert-image)                ; insert [i]mage
-(keymap-set markdown-mode-map "C-c I" #'markdown-toggle-inline-images)        ; show [I]mages
+(keymap-set markdown-mode-map "C-c c" #'markdown-insert-code)
+(keymap-set markdown-mode-map "C-c b" #'markdown-insert-gfm-code-block)
+(keymap-set markdown-mode-map "C-c q" #'markdown-insert-blockquote)
+(keymap-set markdown-mode-map "C-c e" #'markdown-insert-bold) ; [e]mphasize
+(keymap-set markdown-mode-map "C-c l" #'markdown-insert-link)
+(keymap-set markdown-mode-map "C-c n" #'markdown-next-visible-heading)
+(keymap-set markdown-mode-map "C-c p" #'markdown-previous-visible-heading)
+(keymap-set markdown-mode-map "C-c h" #'markdown-insert-header-dwim)
+(keymap-set markdown-mode-map "C-c i" #'markdown-insert-image)
+(keymap-set markdown-mode-map "C-c I" #'markdown-toggle-inline-images)
 
-; [n]ext sibling; was forward-list
-(keymap-set markdown-mode-map "C-M-n" #'markdown-outline-next-same-level)
-
-; [p]revious sibling; was backward-list
-(keymap-set markdown-mode-map "C-M-p" #'markdown-outline-previous-same-level)
-
-; [u]p level; was backward-up-list
-(keymap-set markdown-mode-map "C-M-u" #'markdown-up-heading)
+(keymap-set markdown-mode-map "C-M-n" #'markdown-outline-next-same-level)     ; was forward-list
+(keymap-set markdown-mode-map "C-M-p" #'markdown-outline-previous-same-level) ; was backward-list
+(keymap-set markdown-mode-map "C-M-u" #'markdown-up-heading)                  ; was backward-up-list
 
 ;; >--------------------------------------------------
 
