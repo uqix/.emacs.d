@@ -748,39 +748,38 @@
 ;; <-------------------------
 ;; ## Select by separator
 
-(keymap-global-set "s-i s SPC" 'my/select-text/between-spaces)
-(keymap-global-set "s-i s /" 'my/select-text/between-slashes)
-(keymap-global-set "s-i s ," 'my/select-text/between-commas)
-(keymap-global-set "s-i s '" 'my/select-text/between-single-quotes)
-(keymap-global-set "s-i s \"" 'my/select-text/between-double-quotes)
+(keymap-global-set "s-i s SPC" 'my/select-text/between/spaces)
+(keymap-global-set "s-i s /" 'my/select-text/between/slashes)
+(keymap-global-set "s-i s ," 'my/select-text/between/commas)
+(keymap-global-set "s-i s '" 'my/select-text/between/single-quotes)
+(keymap-global-set "s-i s \"" 'my/select-text/between/double-quotes)
 (keymap-global-set "s-i s j" 'my/select-text/java-text-block)
-(keymap-global-set "s-i s `" 'my/select-text/between-back-quotes)
+(keymap-global-set "s-i s `" 'my/select-text/between/back-quotes)
 
-;; TODO rename to between/?
-(defun my/select-text/between-spaces ()
+(defun my/select-text/between/spaces ()
   (interactive)
   (my/select-text/between ?\s))
 
-(defun my/select-text/between-slashes ()
+(defun my/select-text/between/slashes ()
   (interactive)
   (my/select-text/between ?/))
 
-(defun my/select-text/between-commas ()
+(defun my/select-text/between/commas ()
   (interactive)
   (my/select-text/between ?,))
 
-(defun my/select-text/between-single-quotes ()
+(defun my/select-text/between/single-quotes ()
   (interactive)
   (my/select-text/between ?'))
 
-(defun my/select-text/between-double-quotes ()
+(defun my/select-text/between/double-quotes ()
   (interactive)
   (my/select-text/between 34)) ; ?" is mis-parsed as string begin by elisp-mode
 
 (defalias 'my/select-text/java-text-block
   (kmacro "M-[ C-n C-a C-x C-x C-p C-e"))
 
-(defun my/select-text/between-back-quotes ()
+(defun my/select-text/between/back-quotes ()
   (interactive)
   (my/select-text/between ?`))
 
