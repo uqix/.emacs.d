@@ -756,6 +756,7 @@
 (keymap-global-set "s-i s j" 'my/select-text/java-text-block)
 (keymap-global-set "s-i s `" 'my/select-text/between-back-quotes)
 
+;; TODO rename to between/?
 (defun my/select-text/between-spaces ()
   (interactive)
   (my/select-text/between ?\s))
@@ -782,7 +783,6 @@
 (defun my/select-text/between-back-quotes ()
   (interactive)
   (my/select-text/between ?`))
-
 
 (defun my/select-text/between (separator-char)
   (re-search-backward (format "%c\\|^" separator-char))
@@ -1600,7 +1600,7 @@
 
 
 ;; <--------------------------------------------------
-;; # Whitespaces
+;; # Whitespace
 
 (require 'whitespace)
 
@@ -1611,6 +1611,24 @@
 (keymap-global-set "s-i m w" #'whitespace-mode)
 (keymap-global-set "M-\\" #'delete-trailing-whitespace) ; was delete-horizontal-space
 (keymap-global-set "M-|" #'delete-all-space)
+
+;; <-------------------------
+;; ## Delete backward
+
+(keymap-global-set "s-[" #'my/whitespace/delete-backward)
+
+(defvar-keymap my/whitespace/delete-backward/repeat-map
+  :repeat t
+  "[" #'my/whitespace/delete-backward)
+
+(defun my/whitespace/delete-backward ()
+  (interactive)
+  (when-let ((from (point))
+             (_ (search-backward " " nil t)))
+    (delete-char 1)
+    (goto-char (- from 1))))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
