@@ -1219,7 +1219,7 @@
 
 (require 'avy)
 
-(setopt avy-timeout-seconds 0.7)
+;; (setopt avy-timeout-seconds 0.7)
 
 (keymap-global-set "M-j" 'avy-goto-char-timer) ; was default-indent-new-line
 (keymap-global-set "M-J" 'avy-resume)
