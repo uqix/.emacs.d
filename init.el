@@ -1665,7 +1665,7 @@
 (defun my/whitespace/delete-backward ()
   (interactive)
   (when-let ((from (point))
-             (_ (search-backward " " nil t)))
+             (_ (search-backward " " (pos-bol) t)))
     (delete-char 1)
     (goto-char (- from 1))))
 ;; >-------------------------
