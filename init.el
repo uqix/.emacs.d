@@ -360,11 +360,7 @@
   "2" #'my/hideshow/hide-level/2
   "3" #'my/hideshow/hide-level/3
   "4" #'my/hideshow/hide-level/4
-  "5" #'my/hideshow/hide-level/5
-  "6" #'my/hideshow/hide-level/6
-  "7" #'my/hideshow/hide-level/7
-  "8" #'my/hideshow/hide-level/8
-  "9" #'my/hideshow/hide-level/9)
+  "5" #'my/hideshow/hide-level/5)
 
 (keymap-global-set "s-i b" my/hideshow/repeat-map)
 
@@ -387,22 +383,6 @@
 (defun my/hideshow/hide-level/5 ()
   (interactive)
   (hs-hide-level 5))
-
-(defun my/hideshow/hide-level/6 ()
-  (interactive)
-  (hs-hide-level 6))
-
-(defun my/hideshow/hide-level/7 ()
-  (interactive)
-  (hs-hide-level 7))
-
-(defun my/hideshow/hide-level/8 ()
-  (interactive)
-  (hs-hide-level 8))
-
-(defun my/hideshow/hide-level/9 ()
-  (interactive)
-  (hs-hide-level 9))
 ;; >--------------------------------------------------
 
 
