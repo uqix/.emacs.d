@@ -1826,7 +1826,7 @@
 (add-hook 'yaml-ts-mode-hook #'yaml-pro-ts-mode)
 
 ;; <----------
-;; ### Indent repeat-map
+;; ### Indent (repeat-map)
 
 (defvar-keymap my/yaml-pro/indent-repeat-map
   :repeat t
@@ -1838,9 +1838,19 @@
 (keymap-set yaml-pro-ts-mode-map "C-c i" my/yaml-pro/indent-repeat-map)
 ;; >----------
 
+;; <----------
+;; ### Tree jump (repeat-map)
+
 (keymap-set yaml-pro-ts-mode-map "C-M-n" #'yaml-pro-ts-next-subtree) ; was forward-list
 (keymap-set yaml-pro-ts-mode-map "C-M-p" #'yaml-pro-ts-prev-subtree) ; was backward-list
 (keymap-set yaml-pro-ts-mode-map "C-M-u" #'yaml-pro-ts-up-level)     ; was backward-up-list
+
+(defvar-keymap my/yaml-pro/tree-jump-repeat-map
+  :repeat t
+  "n" #'yaml-pro-ts-next-subtree
+  "p" #'yaml-pro-ts-prev-subtree
+  "u" #'yaml-pro-ts-up-level)
+;; >----------
 
 (keymap-set yaml-pro-ts-mode-map "C-c m" #'yaml-pro-ts-mark-subtree)
 (keymap-set yaml-pro-ts-mode-map "C-c y" #'yaml-pro-ts-paste-subtree)
