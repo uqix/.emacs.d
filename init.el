@@ -1450,6 +1450,17 @@
 ;; # elisp
 
 (keymap-global-set "s-i m e" #'emacs-lisp-mode)
+
+;; <-------------------------
+;; ## lisp
+
+(defvar-keymap my/lisp/repeat-map
+  :repeat t
+  "n" #'forward-list
+  "p" #'backward-list
+  "u" #'backward-up-list)
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
