@@ -769,6 +769,10 @@
 (require 'expand-region)
 
 (keymap-global-set "M-[" 'er/expand-region)
+
+(defvar-keymap my/expand-region/repeat-map
+  :repeat t
+  "[" #'er/expand-region)
 ;; >-------------------------
 
 ;; <-------------------------
