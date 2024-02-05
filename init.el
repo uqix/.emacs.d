@@ -496,7 +496,8 @@
            (my/highlight-regexp/all)
            :exit
            (my/unhighlight-regexp/all))
-  "h" #'my/unhighlight-regexp/all)
+  "h" #'my/unhighlight-regexp/all
+  "u" #'my/unhighlight-regexp/all)
 
 (defun my/highlight-regexp ()
   (interactive)
@@ -534,7 +535,8 @@
            (my/highlight-regexp/current-column)
            :exit
            (my/unhighlight-regexp))
-  "c" #'my/unhighlight-regexp)
+  "c" #'my/unhighlight-regexp
+  "u" #'my/unhighlight-regexp)
 
 (defun my/highlight-regexp/current-column ()
   (interactive)
