@@ -1825,12 +1825,18 @@
 
 (add-hook 'yaml-ts-mode-hook #'yaml-pro-ts-mode)
 
-;; https://github.com/zkry/yaml-pro#usage-1
+;; <----------
+;; ### Indent repeat-map
 
-(keymap-set yaml-pro-ts-mode-map "C-c l" #'yaml-pro-ts-unindent-subtree) ; [l]eft move
-(keymap-set yaml-pro-ts-mode-map "C-c r" #'yaml-pro-ts-indent-subtree)   ; [r]ight move
-(keymap-set yaml-pro-ts-mode-map "C-c u" #'yaml-pro-ts-move-subtree-up)
-(keymap-set yaml-pro-ts-mode-map "C-c d" #'yaml-pro-ts-move-subtree-down)
+(defvar-keymap my/yaml-pro/indent-repeat-map
+  :repeat t
+  "l" #'yaml-pro-ts-unindent-subtree ; [l]eft
+  "r" #'yaml-pro-ts-indent-subtree   ; [r]ight
+  "u" #'yaml-pro-ts-move-subtree-up
+  "d" #'yaml-pro-ts-move-subtree-down)
+
+(keymap-set yaml-pro-ts-mode-map "C-c i" my/yaml-pro/indent-repeat-map)
+;; >----------
 
 (keymap-set yaml-pro-ts-mode-map "C-M-n" #'yaml-pro-ts-next-subtree) ; was forward-list
 (keymap-set yaml-pro-ts-mode-map "C-M-p" #'yaml-pro-ts-prev-subtree) ; was backward-list
