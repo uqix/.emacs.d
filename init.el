@@ -1458,7 +1458,13 @@
   :repeat t
   "n" #'forward-list
   "p" #'backward-list
-  "u" #'backward-up-list)
+  "u" #'backward-up-list
+  "a" #'beginning-of-defun
+  "e" #'end-of-defun)
+
+(dolist (cmd '(treesit-beginning-of-defun
+               treesit-end-of-defun))
+  (put cmd 'repeat-map 'my/lisp/repeat-map))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
