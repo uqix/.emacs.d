@@ -1939,15 +1939,26 @@
 (keymap-set markdown-mode-map "C-c q" #'markdown-insert-blockquote)
 (keymap-set markdown-mode-map "C-c e" #'markdown-insert-bold) ; [e]mphasize
 (keymap-set markdown-mode-map "C-c l" #'markdown-insert-link)
-(keymap-set markdown-mode-map "C-c n" #'markdown-next-visible-heading)
-(keymap-set markdown-mode-map "C-c p" #'markdown-previous-visible-heading)
 (keymap-set markdown-mode-map "C-c h" #'markdown-insert-header-dwim)
 (keymap-set markdown-mode-map "C-c i" #'markdown-insert-image)
 (keymap-set markdown-mode-map "C-c I" #'markdown-toggle-inline-images)
 
-(keymap-set markdown-mode-map "C-M-n" #'markdown-outline-next-same-level)     ; was forward-list
-(keymap-set markdown-mode-map "C-M-p" #'markdown-outline-previous-same-level) ; was backward-list
-(keymap-set markdown-mode-map "C-M-u" #'markdown-up-heading)                  ; was backward-up-list
+;; <-------------------------
+;; ## Heading jump (repeat-map)
+
+(keymap-set markdown-mode-map "C-M-n" #'markdown-forward-same-level)   ; was forward-list
+(keymap-set markdown-mode-map "C-M-p" #'markdown-backward-same-level)  ; was backward-list
+(keymap-set markdown-mode-map "C-M-u" #'markdown-up-heading)           ; was backward-up-list
+(keymap-set markdown-mode-map "C-M-d" #'markdown-next-visible-heading) ; was down-list
+
+(defvar-keymap my/markdown/heading-jump-repeat-map
+  :repeat t
+  "n" #'markdown-forward-same-level
+  "p" #'markdown-backward-same-level
+  "u" #'markdown-up-heading
+  "d" #'markdown-next-visible-heading
+  "U" #'markdown-previous-visible-heading)
+;; >-------------------------
 
 ;; >--------------------------------------------------
 
