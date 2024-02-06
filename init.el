@@ -1465,6 +1465,7 @@
   "n" #'forward-list
   "p" #'backward-list
   "u" #'backward-up-list
+  "d" #'down-list
   "a" #'beginning-of-defun
   "e" #'end-of-defun)
 
