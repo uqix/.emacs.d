@@ -787,6 +787,7 @@
 (keymap-global-set "s-i s \"" 'my/select-text/between/double-quotes)
 (keymap-global-set "s-i s j" 'my/select-text/java-text-block)
 (keymap-global-set "s-i s `" 'my/select-text/between/back-quotes)
+(keymap-global-set "s-i s \\" 'my/select-text/between/backslashes)
 
 (defun my/select-text/between/spaces ()
   (interactive)
@@ -815,14 +816,19 @@
   (interactive)
   (my/select-text/between ?`))
 
-(defun my/select-text/between (separator-char)
-  (re-search-backward (format "%c\\|^" separator-char))
-  (when (= (char-after) separator-char)
-    (forward-char))
-  (set-mark (point))
-  (re-search-forward (format "%c\\|$" separator-char))
-  (when (= (char-before) separator-char)
-    (backward-char)))
+(defun my/select-text/between/backslashes ()
+  (interactive)
+  (my/select-text/between ?\\))
+
+(defun my/select-text/between (separator)
+  (let ((separator-regexp (regexp-quote (string separator))))
+    (re-search-backward (format "%s\\|^" separator-regexp))
+    (when (= (char-after) separator)
+      (forward-char))
+    (set-mark (point))
+    (re-search-forward (format "%s\\|$" separator-regexp))
+    (when (= (char-before) separator)
+      (backward-char))))
 ;; >-------------------------
 
 ;; <-------------------------
