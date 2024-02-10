@@ -679,9 +679,15 @@
 
 (keymap-set diff-mode-shared-map "M-\\" 'diff-delete-trailing-whitespace)
 
+;; <-------------------------
+;; ## ediff
+
 (require 'ediff)
 
 (keymap-global-set "s-i d b" #'ediff-buffers)
+
+(setopt ediff-split-window-function #'split-window-horizontally)
+;; >-------------------------
 
 ;; <-------------------------
 ;; ## ztree
@@ -2075,7 +2081,11 @@
 (require 'doom-themes)
 
 (set-face-attribute 'default nil :family "JetBrains Mono" :height 130)
+
 (set-face-attribute 'aw-leading-char-face nil :height 1.0 :weight 'bold :foreground "green")
+
+;; <-------------------------
+;; ## Magit
 
 (let ((added (face-attribute 'magit-diff-added :foreground))
       (removed (face-attribute 'magit-diff-removed :foreground)))
@@ -2087,6 +2097,7 @@
 (set-face-attribute
  'magit-diff-hunk-heading-highlight nil :background
  (doom-darken (face-attribute 'magit-diff-base-highlight :background) 0.3))
+;; >-------------------------
 
 (set-face-attribute
  'highlight nil :background
