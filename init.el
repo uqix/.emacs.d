@@ -687,6 +687,8 @@
 (keymap-global-set "s-i d b" #'ediff-buffers)
 
 (setopt ediff-split-window-function #'split-window-horizontally)
+
+(add-hook 'ediff-after-quit-hook-internal #'winner-undo)
 ;; >-------------------------
 
 ;; <-------------------------
@@ -1284,6 +1286,14 @@
     ;; ;; ?i ?r ?t are used by hyperbole.el
     ;; (?? aw-show-dispatch-help)
     ))
+;; >-------------------------
+
+;; <-------------------------
+;; ## winner
+
+(require 'winner)
+
+(winner-mode)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
