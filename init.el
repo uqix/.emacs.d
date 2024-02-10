@@ -2105,6 +2105,16 @@
 
 (set-face-attribute 'ediff-current-diff-A nil :inherit 'magit-diff-removed :background "unspecified")
 (set-face-attribute 'ediff-current-diff-B nil :inherit 'magit-diff-added :background "unspecified")
+(set-face-attribute 'ediff-fine-diff-A nil :inherit 'diff-refine-removed :background "unspecified")
+(set-face-attribute 'ediff-fine-diff-B nil :inherit 'diff-refine-added :background "unspecified")
+
+(let* ((even (face-attribute 'ediff-even-diff-A :background))
+       (even (doom-darken even 0.15))
+       (odd (doom-darken even 0.1)))
+  (set-face-attribute 'ediff-even-diff-A nil :background even)
+  (set-face-attribute 'ediff-even-diff-B nil :background even)
+  (set-face-attribute 'ediff-odd-diff-A nil :background odd)
+  (set-face-attribute 'ediff-odd-diff-B nil :background odd))
 ;; >-------------------------
 
 ;; <-------------------------
