@@ -2052,6 +2052,21 @@
 
 
 ;; <--------------------------------------------------
+;; # webjump
+
+(require 'webjump)
+
+(setopt webjump-sites
+        '(("Google" .
+           [simple-query "www.google.com"
+		         "www.google.com/search?q=" ""])))
+
+(keymap-global-set "s-]" #'webjump)
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # Custom faces
 
 ;; Util
