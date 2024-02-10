@@ -1485,7 +1485,9 @@
   "u" #'backward-up-list
   "d" #'down-list
   "a" #'beginning-of-defun
-  "e" #'end-of-defun)
+  "e" #'end-of-defun
+  "f" #'forward-sexp
+  "b" #'backward-sexp)
 
 (dolist (cmd '(treesit-beginning-of-defun
                treesit-end-of-defun))
