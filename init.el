@@ -725,8 +725,8 @@
 
 (defun my/vterm ()
   (interactive)
-  (let* ((dirname (my/dirname (read-from-minibuffer "Buffer: ")))
-         (name (format "%s %s" vterm-buffer-name dirname))
+  (let* ((dir (my/dirname default-directory))
+         (name (format "%s %s" vterm-buffer-name dir))
          (buffer (get-buffer name)))
     (if buffer
         (switch-to-buffer buffer)
@@ -1065,6 +1065,18 @@
 
 (keymap-set project-prefix-map "b" #'consult-project-buffer)
 
+(setopt project-switch-commands
+        '((project-find-file "File")
+          (project-find-dir "Dir")
+          (consult-project-buffer "Buffer")
+          (my/grep/project "Grep" ?g)
+          (magit-project-status "Magit" ?m)
+          (my/project/shell "Shell" ?s)))
+
+(defun my/project/shell ()
+  (interactive)
+  (let ((default-directory (project-root (project-current t))))
+    (my/vterm)))
 ;; <-------------------------
 ;; ## Test file
 
