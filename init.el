@@ -1267,22 +1267,10 @@
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 
 (setq aw-dispatch-alist
-  '((?w aw-delete-window "Delete Window")
-    (?x aw-swap-window "Swap Windows")
-    ;; (?M aw-move-window "Move Window")
-    ;; (?c aw-copy-window "Copy Window")
-    ;; (?j aw-switch-buffer-in-window "Select Buffer")
-    (?b aw-flip-window)
-    ;; (?u aw-switch-buffer-other-window "Switch Buffer Other Window")
-    ;; (?e aw-execute-command-other-window "Execute Command Other Window")
-    ;; (?F aw-split-window-fair "Split Fair Window")
-    ;; (?v aw-split-window-vert "Split Vert Window")
-    ;; (?b aw-split-window-horz "Split Horz Window")
-    ;; (?o delete-other-windows "Delete Other Windows")
-    ;; (?T aw-transpose-frame "Transpose Frame")
-    ;; ;; ?i ?r ?t are used by hyperbole.el
-    ;; (?? aw-show-dispatch-help)
-    ))
+      '((?w aw-delete-window "Delete")
+        (?x aw-swap-window "Swap")
+        (?m aw-move-window "Move")
+        (?c aw-copy-window "Copy")))
 ;; >-------------------------
 
 ;; <-------------------------
