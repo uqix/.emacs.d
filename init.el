@@ -580,6 +580,7 @@
 (keymap-global-set "s-o m" 'symbol-overlay-mode)
 
 (keymap-set symbol-overlay-map "C-s" #'symbol-overlay-isearch-literally)
+(keymap-set symbol-overlay-map "o" #'symbol-overlay-put)
 
 ;; <----------
 ;; ### avy jump
