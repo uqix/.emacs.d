@@ -2118,6 +2118,7 @@
 (set-face-attribute 'avy-lead-face nil :foreground "green" :background "reset")
 
 (set-face-attribute 'eglot-highlight-symbol-face nil :overline "SpringGreen1")
+(set-face-attribute 'symbol-overlay-default-face nil :inherit 'eglot-highlight-symbol-face)
 
 ;; (set-face-foreground 'font-lock-type-face "#5B6268") ; shadow
 
