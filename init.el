@@ -576,7 +576,7 @@
 (keymap-global-set "M-o" 'symbol-overlay-put)
 (keymap-global-set "s-o n" 'symbol-overlay-switch-forward)  ; [n]ext
 (keymap-global-set "s-o p" 'symbol-overlay-switch-backward) ; [p]revious
-(keymap-global-set "s-o r" 'symbol-overlay-remove-all)
+(keymap-global-set "s-o u" 'symbol-overlay-remove-all)
 (keymap-global-set "s-o m" 'symbol-overlay-mode)
 
 (keymap-set symbol-overlay-map "C-s" #'symbol-overlay-isearch-literally)
