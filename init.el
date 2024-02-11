@@ -585,25 +585,10 @@
 ;; <----------
 ;; ### avy jump
 
+(keymap-global-set "s-o j" #'my/symbol-overlay/avy-jump)
 (keymap-set symbol-overlay-map "j" #'my/symbol-overlay/avy-jump)
 
 (defun my/symbol-overlay/avy-jump ()
-  (interactive)
-  (avy-with my/symbol-overlay/avy-jump
-    (avy-jump
-     (symbol-overlay-regexp (symbol-overlay-get-symbol))
-     :window-flip nil
-     :beg nil
-     :end nil)))
-;; >----------
-
-;; <----------
-;; ### avy jump among all
-
-(keymap-global-set "s-o j" #'my/symbol-overlay/avy-jump/all)
-(keymap-set symbol-overlay-map "J" #'my/symbol-overlay/avy-jump/all)
-
-(defun my/symbol-overlay/avy-jump/all ()
   (interactive)
   (let* ((overlays (symbol-overlay-get-list 0))
          (symbols (seq-map
@@ -619,7 +604,7 @@
     (message (format "regex: %s (%s)" symbols-regex (length symbols-regex)))
     (if (string-empty-p symbols-regex)
         (message "No symbol overlay")
-      (avy-with my/symbol-overlay/avy-jump/all
+      (avy-with my/symbol-overlay/avy-jump
         (avy-jump
          symbols-regex
          :window-flip nil
@@ -1202,8 +1187,7 @@
   "s" #'shrink-window               ; [s]horter
   "w" #'enlarge-window-horizontally ; [w]ider
   "n" #'shrink-window-horizontally  ; [n]arrower
-  "b" #'balance-windows             ; [b]alance
-  )
+  "b" #'balance-windows)
 
 (keymap-global-set "s-i w" my/window/repeat-map)
 ;; >-------------------------
