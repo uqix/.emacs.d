@@ -1002,6 +1002,16 @@
 (setopt dired-recursive-deletes 'always)
 
 ;; <-------------------------
+;; ## wdired
+
+(require 'wdired)
+
+(keymap-set dired-mode-map "e" #'dired-toggle-read-only)
+(keymap-set wdired-mode-map "<remap> <save-buffer>" #'wdired-finish-edit)
+(keymap-set wdired-mode-map "C-c k" #'wdired-abort-changes)
+;; >-------------------------
+
+;; <-------------------------
 ;; ## dirvish
 
 (require 'dirvish)
