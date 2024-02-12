@@ -830,6 +830,7 @@
 
 (keymap-global-set "s-i m \"" #'my/select-text/multiline/between/triple-double-quotes)
 (keymap-global-set "s-i m '" #'my/select-text/multiline/between/triple-single-quotes)
+(keymap-global-set "s-i m `" #'my/select-text/multiline/between/triple-back-quotes)
 
 (defun my/select-text/multiline/between/triple-double-quotes ()
   (interactive)
@@ -838,6 +839,10 @@
 (defun my/select-text/multiline/between/triple-single-quotes ()
   (interactive)
   (my/select-text/multiline/between "'''"))
+
+(defun my/select-text/multiline/between/triple-back-quotes ()
+  (interactive)
+  (my/select-text/multiline/between "```"))
 
 (defun my/select-text/multiline/between (separator)
   (when (search-backward separator nil t)
