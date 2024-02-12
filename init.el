@@ -2110,8 +2110,15 @@
 ;; <--------------------------------------------------
 ;; # Custom faces
 
+;; <-------------------------
 ;; Util
+
 (require 'doom-themes)
+
+(defun my/face/color-name-to-hex (name)
+  (let ((rgb (color-name-to-rgb name)))
+    (color-rgb-to-hex (nth 0 rgb) (nth 1 rgb) (nth 2 rgb))))
+;; >-------------------------
 
 (set-face-attribute 'default nil :family "JetBrains Mono" :height 130)
 
@@ -2141,9 +2148,18 @@
 (set-face-attribute 'avy-lead-face nil :foreground "green" :background "reset")
 
 (set-face-attribute 'eglot-highlight-symbol-face nil :overline "SpringGreen1")
+
+;; <-------------------------
+;; ## symbol-overlay
+
 (set-face-attribute 'symbol-overlay-default-face nil :inherit 'eglot-highlight-symbol-face)
 
-;; (set-face-foreground 'font-lock-type-face "#5B6268") ; shadow
+(dotimes (i 8)
+  (let ((face (intern (format "symbol-overlay-face-%s" (+ i 1)))))
+    (set-face-attribute
+     face nil :background
+     (doom-darken (my/face/color-name-to-hex (face-attribute face :background)) 0.3))))
+;; >-------------------------
 
 ;; <-------------------------
 ;; ## ediff
