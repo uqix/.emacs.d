@@ -2024,6 +2024,8 @@
 (keymap-set markdown-mode-map "C-c h" #'markdown-insert-header-dwim)
 (keymap-set markdown-mode-map "C-c i" #'markdown-insert-image)
 (keymap-set markdown-mode-map "C-c I" #'markdown-toggle-inline-images)
+(keymap-set markdown-mode-map "C-c m" #'markdown-mark-block)
+(keymap-set markdown-mode-map "C-c k" #'markdown-kill-block)
 
 ;; <-------------------------
 ;; ## Heading jump (repeat-map)
@@ -2032,6 +2034,8 @@
 (keymap-set markdown-mode-map "C-M-p" #'markdown-backward-same-level)  ; was backward-list
 (keymap-set markdown-mode-map "C-M-u" #'markdown-up-heading)           ; was backward-up-list
 (keymap-set markdown-mode-map "C-M-d" #'markdown-next-visible-heading) ; was down-list
+(keymap-set markdown-mode-map "C-M-f" #'markdown-forward-block)        ; was forward-sexp
+(keymap-set markdown-mode-map "C-M-b" #'markdown-backward-block)       ; was backward-sexp
 
 (defvar-keymap my/markdown/heading-jump-repeat-map
   :repeat t
@@ -2039,7 +2043,9 @@
   "p" #'markdown-backward-same-level
   "u" #'markdown-up-heading
   "d" #'markdown-next-visible-heading
-  "U" #'markdown-previous-visible-heading)
+  "U" #'markdown-previous-visible-heading
+  "f" #'markdown-forward-block
+  "b" #'markdown-backward-block)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
