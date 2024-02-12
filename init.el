@@ -499,8 +499,7 @@
            (my/highlight-regexp/all)
            :exit
            (my/unhighlight-regexp/all))
-  "h" #'my/unhighlight-regexp/all
-  "u" #'my/unhighlight-regexp/all)
+  "h" #'my/unhighlight-regexp/all)
 
 (defun my/highlight-regexp ()
   (interactive)
@@ -538,8 +537,7 @@
            (my/highlight-regexp/current-column)
            :exit
            (my/unhighlight-regexp))
-  "c" #'my/unhighlight-regexp
-  "u" #'my/unhighlight-regexp)
+  "c" #'my/unhighlight-regexp)
 
 (defun my/highlight-regexp/current-column ()
   (interactive)
@@ -599,17 +597,16 @@
                      (overlay-get overlay 'symbol))
                    overlays))
          (symbols (seq-uniq symbols))
-         (symbols-regex (seq-map
-                         (lambda (symbol)
-                           (symbol-overlay-regexp symbol))
-                         symbols))
-         (symbols-regex (string-join symbols-regex "\\|")))
-    (message (format "regex: %s (%s)" symbols-regex (length symbols-regex)))
-    (if (string-empty-p symbols-regex)
+         (symbols-regexp (seq-map
+                          (lambda (symbol)
+                            (symbol-overlay-regexp symbol))
+                          symbols))
+         (symbols-regexp (string-join symbols-regexp "\\|")))
+    (if (string-empty-p symbols-regexp)
         (message "No symbol overlay")
       (avy-with my/symbol-overlay/avy-jump
         (avy-jump
-         symbols-regex
+         symbols-regexp
          :window-flip nil
          :beg nil
          :end nil)))))
