@@ -1192,6 +1192,11 @@
 
 (keymap-global-set "s-;" #'previous-window-any-frame)
 
+(add-to-list 'window-selection-change-functions #'my/pulse-line)
+
+(defun my/pulse-line (_)
+  (pulse-momentary-highlight-one-line))
+
 ;; <-------------------------
 ;; ## Repeat
 
