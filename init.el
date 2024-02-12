@@ -775,12 +775,14 @@
 ;; <-------------------------
 ;; ## Select by separator
 
+;; <----------
+;; ### Single line
+
 (keymap-global-set "s-i s SPC" 'my/select-text/between/spaces)
 (keymap-global-set "s-i s /" 'my/select-text/between/slashes)
 (keymap-global-set "s-i s ," 'my/select-text/between/commas)
 (keymap-global-set "s-i s '" 'my/select-text/between/single-quotes)
 (keymap-global-set "s-i s \"" 'my/select-text/between/double-quotes)
-(keymap-global-set "s-i s j" 'my/select-text/java-text-block)
 (keymap-global-set "s-i s `" 'my/select-text/between/back-quotes)
 (keymap-global-set "s-i s \\" 'my/select-text/between/backslashes)
 
@@ -804,9 +806,6 @@
   (interactive)
   (my/select-text/between 34)) ; ?" is mis-parsed as string begin by elisp-mode
 
-(defalias 'my/select-text/java-text-block
-  (kmacro "M-[ C-n C-a C-x C-x C-p C-e"))
-
 (defun my/select-text/between/back-quotes ()
   (interactive)
   (my/select-text/between ?`))
@@ -824,6 +823,25 @@
     (re-search-forward (format "%s\\|$" separator-regexp))
     (when (= (char-before) separator)
       (backward-char))))
+;; >----------
+
+;; <----------
+;; ### Multiline
+
+(keymap-global-set "s-i m \"" 'my/select-text/multiline/between/triple-double-quotes)
+
+(defun my/select-text/multiline/between/triple-double-quotes ()
+  (interactive)
+  (my/select-text/multiline/between "\"\"\""))
+
+(defun my/select-text/multiline/between (separator)
+  (when (search-backward separator nil t)
+    (goto-char (+ (pos-eol) 1))
+    (set-mark (point))
+    (search-forward separator nil t)
+    (goto-char (pos-bol))))
+;; >----------
+
 ;; >-------------------------
 
 ;; <-------------------------
