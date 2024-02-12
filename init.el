@@ -1715,6 +1715,8 @@
 (setopt use-short-answers t)
 
 (electric-pair-mode)
+
+(setopt ring-bell-function #'ignore)
 ;; >--------------------------------------------------
 
 
