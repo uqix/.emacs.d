@@ -1740,6 +1740,11 @@
 (electric-pair-mode)
 
 (setopt ring-bell-function #'ignore)
+
+(defvar-keymap my/paragraphs/repeat-map
+  :repeat t
+  "{" #'backward-paragraph
+  "}" #'forward-paragraph)
 ;; >--------------------------------------------------
 
 
