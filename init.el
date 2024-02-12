@@ -673,6 +673,7 @@
 (keymap-global-set "s-i d b" #'ediff-buffers)
 
 (setopt ediff-split-window-function #'split-window-horizontally)
+(setopt ediff-window-setup-function #'ediff-setup-windows-plain)
 
 (add-hook 'ediff-after-quit-hook-internal #'winner-undo)
 ;; >-------------------------
