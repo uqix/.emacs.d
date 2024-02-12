@@ -405,6 +405,8 @@
   (isearch-done)
   (avy-isearch))
 
+(setopt isearch-lazy-count t)
+
 ;; <-------------------------
 ;; ## Repeat
 
