@@ -2157,8 +2157,11 @@
 (dotimes (i 8)
   (let ((face (intern (format "symbol-overlay-face-%s" (+ i 1)))))
     (set-face-attribute
-     face nil :background
-     (doom-darken (my/face/color-name-to-hex (face-attribute face :background)) 0.3))))
+     face nil
+     :background
+     (doom-darken (my/face/color-name-to-hex (face-attribute face :background)) 0.3)
+     :foreground
+     (doom-darken (face-attribute 'default :background) 0.3))))
 ;; >-------------------------
 
 ;; <-------------------------
