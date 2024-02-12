@@ -1003,6 +1003,8 @@
 
 (setopt dired-recursive-deletes 'always)
 
+(keymap-set dired-mode-map "l" #'magit-dired-log) ; was dired-do-redisplay
+
 ;; <-------------------------
 ;; ## wdired
 
@@ -1158,7 +1160,7 @@
 (setopt magit-diff-refine-hunk 'all)
 (setopt magit-diff-highlight-hunk-body nil)
 
-(keymap-global-set "s-m" 'magit-status)     ; was iconify-frame
+(keymap-global-set "s-m" 'magit-status) ; was iconify-frame
 
 (keymap-global-set "s-i v d" #'magit-diff-buffer-file)
 (keymap-global-set "s-i v l" #'magit-log-buffer-file)
