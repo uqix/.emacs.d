@@ -1016,6 +1016,27 @@
 ;; >-------------------------
 
 ;; <-------------------------
+;; ## ediff
+
+;; https://oremacs.com/2017/03/18/dired-ediff/
+
+(keymap-set dired-mode-map "=" #'my/dired/ediff) ; was dired-diff
+
+(defun my/dired/ediff ()
+  (interactive)
+  (let ((files (dired-get-marked-files)))
+    (if (<= (length files) 2)
+        (let* ((file1 (car files))
+               (file2 (if (cdr files) (cadr files)
+                        (read-file-name (format "Ediff %s with: " (file-name-nondirectory file1))
+                                        (dired-dwim-target-directory)))))
+          (if (file-newer-than-file-p file1 file2)
+              (ediff-files file2 file1)
+            (ediff-files file1 file2)))
+      (error "No more than 2 files should be marked"))))
+;; >-------------------------
+
+;; <-------------------------
 ;; ## dirvish
 
 (require 'dirvish)
