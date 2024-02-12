@@ -1196,6 +1196,7 @@
 
 (require 'with-editor)
 (keymap-set with-editor-mode-map "<remap> <save-buffer>" #'with-editor-finish)
+(keymap-set with-editor-mode-map "C-c k" #'with-editor-cancel)
 ;; >-------------------------
 
 ;; <-------------------------
