@@ -866,6 +866,8 @@
 ;; <-------------------------
 ;; ## Format convert
 
+;; $ brew install yq
+
 (with-eval-after-load 'embark
   (keymap-set embark-region-map "c j y" #'my/region/convert/json/to-yaml)
   (keymap-set embark-region-map "c j j" #'my/region/convert/json/prettify)
@@ -1084,6 +1086,8 @@
 
 (require 'project)
 
+;; $ brew install maven
+
 (setopt project-vc-extra-root-markers
         '("Chart.yaml"))
 
@@ -1103,6 +1107,7 @@
   (interactive)
   (let ((default-directory (project-root (project-current t))))
     (my/vterm)))
+
 ;; <-------------------------
 ;; ## Test file
 
@@ -1873,6 +1878,8 @@
 
 ;; <-------------------------
 ;; ## flymake
+
+;; $ brew install jq
 
 (add-hook 'json-ts-mode-hook 'flymake-mode)
 
