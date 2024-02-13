@@ -2157,12 +2157,14 @@
 
 (set-face-attribute 'symbol-overlay-default-face nil :inherit 'eglot-highlight-symbol-face)
 
+(set-face-attribute 'symbol-overlay-face-5 nil :background "burlywood") ; tan
+
 (dotimes (i 8)
   (let ((face (intern (format "symbol-overlay-face-%s" (+ i 1)))))
     (set-face-attribute
      face nil
      :background
-     (doom-darken (my/face/color-name-to-hex (face-attribute face :background)) 0.3)
+     (doom-darken (my/face/color-name-to-hex (face-attribute face :background)) 0.35)
      :foreground
      (face-attribute 'lazy-highlight :foreground))))
 ;; >-------------------------
