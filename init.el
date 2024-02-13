@@ -2157,7 +2157,8 @@
 
 (set-face-attribute 'symbol-overlay-default-face nil :inherit 'eglot-highlight-symbol-face)
 
-(set-face-attribute 'symbol-overlay-face-5 nil :background "burlywood") ; tan
+(set-face-attribute 'symbol-overlay-face-2 nil :background "lavender")
+(set-face-attribute 'symbol-overlay-face-5 nil :background "burlywood")
 
 (dotimes (i 8)
   (let ((face (intern (format "symbol-overlay-face-%s" (+ i 1)))))
