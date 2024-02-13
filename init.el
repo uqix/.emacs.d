@@ -230,6 +230,8 @@
 
 (require 'ispell)
 
+;; $ brew install aspell
+
 (setopt ispell-dictionary "american")
 (setopt ispell-program-name "aspell")
 (setopt ispell-extra-args '("--camel-case"))
@@ -667,7 +669,7 @@
 
 ;; https://github.com/akermu/emacs-libvterm
 
-;; brew install cmake
+;; $ brew install cmake
 
 (require 'vterm)
 
@@ -1396,6 +1398,8 @@
 
 (require 'grep)
 
+;; $ brew install ripgrep
+
 (keymap-set grep-mode-map "o" #'compile-goto-error)
 
 ;; <-------------------------
@@ -1564,6 +1568,8 @@
 
 ;; <-------------------------
 ;; ## eglot
+
+;; $ brew install jdtls
 
 (add-to-list
  'eglot-server-programs
@@ -1757,6 +1763,8 @@
 
 (require 'sh-script)
 
+;; $ brew install bash-language-server
+
 (advice-remove 'bash-ts-mode #'sh--redirect-bash-ts-mode)
 
 (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
@@ -1886,6 +1894,8 @@
 
 ;; <-------------------------
 ;; ## flymake
+
+;; $ brew install yamllint
 
 (add-hook 'yaml-ts-mode-hook 'flymake-mode)
 
