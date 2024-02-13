@@ -2161,7 +2161,7 @@
      :background
      (doom-darken (my/face/color-name-to-hex (face-attribute face :background)) 0.3)
      :foreground
-     (doom-darken (face-attribute 'default :background) 0.3))))
+     (face-attribute 'lazy-highlight :foreground))))
 ;; >-------------------------
 
 ;; <-------------------------
