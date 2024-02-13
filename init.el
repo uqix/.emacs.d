@@ -583,6 +583,7 @@
 (keymap-set symbol-overlay-map "C-s" #'symbol-overlay-isearch-literally)
 (keymap-set symbol-overlay-map "o" #'symbol-overlay-put)
 (keymap-set symbol-overlay-map "h" #'my/highlight-regexp/all) ; was symbol-overlay-map-help
+(keymap-set symbol-overlay-map "u" #'symbol-overlay-remove-all)
 
 ;; <----------
 ;; ### avy jump
