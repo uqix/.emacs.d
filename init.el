@@ -1187,6 +1187,8 @@
 (keymap-set magit-status-mode-map "o" #'magit-diff-visit-worktree-file-other-window)
 (keymap-set magit-diff-mode-map "o" #'magit-diff-visit-worktree-file-other-window)
 
+(keymap-set magit-revision-mode-map "C-c d" #'magit-dired-jump)
+
 (require 'with-editor)
 (keymap-set with-editor-mode-map "<remap> <save-buffer>" #'with-editor-finish)
 (keymap-set with-editor-mode-map "C-c k" #'with-editor-cancel)
