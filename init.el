@@ -1229,6 +1229,19 @@
 (keymap-global-set "s-i v t" #'git-timemachine)
 ;; >-------------------------
 
+;; <-------------------------
+;; ## diff-hl
+
+(global-diff-hl-mode)
+
+(add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+
+(keymap-global-set "s-i v =" #'diff-hl-diff-goto-hunk)
+(keymap-global-set "s-i v n" #'diff-hl-show-hunk-next)
+(keymap-global-set "s-i v p" #'diff-hl-show-hunk-previous)
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
