@@ -1052,8 +1052,7 @@
           file-time
           file-size
           subtree-state
-          ;; vc-state
-          ))
+          vc-state))
 
 (keymap-set dirvish-mode-map "TAB" #'dirvish-subtree-toggle)
 (keymap-set dirvish-mode-map "s" #'dirvish-quicksort) ; was dired-sort-toggle-or-edit
@@ -2259,6 +2258,15 @@
   (set-face-attribute 'markdown-header-face-4 nil :weight 'bold :foreground h4)
   (set-face-attribute 'markdown-header-face-5 nil :weight 'bold :foreground (doom-darken h4 0.1))
   (set-face-attribute 'markdown-header-face-6 nil :weight 'bold :foreground (doom-darken h4 0.2)))
+;; >-------------------------
+
+;; <-------------------------
+;; ## VC
+
+;; Used by dirvish
+(set-face-attribute 'vc-edited-state nil :inherit 'diff-hl-change)
+(set-face-attribute 'vc-locally-added-state nil :inherit 'diff-hl-insert)
+(set-face-attribute 'vc-removed-state nil :inherit 'diff-hl-delete)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
