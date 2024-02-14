@@ -1047,8 +1047,13 @@
 
 (dirvish-override-dired-mode)
 
-(setq dirvish-attributes
-      '(all-the-icons file-time file-size subtree-state))
+(setopt dirvish-attributes
+        '(all-the-icons
+          file-time
+          file-size
+          subtree-state
+          ;; vc-state
+          ))
 
 (keymap-set dirvish-mode-map "TAB" #'dirvish-subtree-toggle)
 (keymap-set dirvish-mode-map "s" #'dirvish-quicksort) ; was dired-sort-toggle-or-edit
