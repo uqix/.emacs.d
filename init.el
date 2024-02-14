@@ -1201,6 +1201,15 @@
 (keymap-set with-editor-mode-map "C-c k" #'with-editor-cancel)
 
 ;; <----------
+;; ### Repeat
+
+(defvar-keymap my/magit/repeat-map
+  :repeat t
+  "n" #'magit-section-forward-sibling
+  "p" #'magit-section-backward-sibling)
+;; >----------
+
+;; <----------
 ;; ### magit-todos
 
 (magit-todos-mode)
