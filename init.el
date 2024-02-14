@@ -1199,6 +1199,15 @@
 (require 'with-editor)
 (keymap-set with-editor-mode-map "<remap> <save-buffer>" #'with-editor-finish)
 (keymap-set with-editor-mode-map "C-c k" #'with-editor-cancel)
+
+;; <----------
+;; ### magit-todos
+
+(magit-todos-mode)
+
+(keymap-set magit-todos-item-section-map "o" #'magit-todos-jump-to-item)
+;; >----------
+
 ;; >-------------------------
 
 ;; <-------------------------
