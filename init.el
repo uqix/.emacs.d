@@ -427,7 +427,7 @@
 ;; <--------------------------------------------------
 ;; Buffer
 
-;; (keymap-global-set "s-i R" #'revert-buffer)
+(keymap-global-set "s-i r b" #'revert-buffer)
 ;; >--------------------------------------------------
 
 
