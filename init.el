@@ -1543,9 +1543,12 @@
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Lisp-Doc.html
 
-;; * required by eglot
+;; <-------------------------
+;; ## eldoc-box
 
-;; C-h . -> eldoc-doc-buffer
+(keymap-global-set "C-h ." #'eldoc-box-help-at-point) ; was eldoc-doc-buffer
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
