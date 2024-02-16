@@ -1063,6 +1063,7 @@
 (keymap-set dirvish-mode-map "M" #'dirvish-mark-menu) ; was dired-do-chmod
 (keymap-set dirvish-mode-map "C-c m" #'dired-do-chmod)
 (keymap-set dirvish-mode-map "C-c l" #'dirvish-layout-toggle)
+(keymap-set dirvish-mode-map "C-M-u" #'dirvish-subtree-up)
 
 (keymap-global-set "s-J" 'dirvish-history-jump)
 
