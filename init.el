@@ -309,7 +309,7 @@
 
 (require 'vertico)
 
-(global-unset-key (kbd "s-h")) ; was ns-do-hide-emacs
+(keymap-global-unset "s-h") ; was ns-do-hide-emacs
 
 ;; https://github.com/minad/vertico#configuration
 (vertico-mode)
@@ -442,8 +442,8 @@
 
 ;; s-i -> misc prefix key
 
-(global-unset-key (kbd "C-x C-c")) ; was quit emacs
-(global-unset-key (kbd "C-x C-z")) ; was suspend-frame (minimize)
+(keymap-global-unset "C-x C-c") ; was quit emacs
+(keymap-global-unset "C-x C-z") ; was suspend-frame (minimize)
 
 (keymap-set key-translation-map "s-SPC" "C-g")
 (keymap-set key-translation-map "s-," "C-c") ; was customize
@@ -576,7 +576,7 @@
 
 (setopt symbol-overlay-priority 100)
 
-(global-unset-key (kbd "s-o"))
+(keymap-global-unset "s-o")
 
 (keymap-global-set "M-o" 'symbol-overlay-put)
 (keymap-global-set "s-o n" 'symbol-overlay-switch-forward)  ; [n]ext
@@ -1593,7 +1593,7 @@
   "Eclipse JDT breaks spec and replies with edits as arguments."
   (mapc #'eglot--apply-workspace-edit arguments))
 
-(global-unset-key (kbd "s-l")) ; [l]sp; was goto-line
+(keymap-global-unset "s-l") ; [l]sp; was goto-line
 
 (keymap-global-set "s-l e" #'eglot)
 
