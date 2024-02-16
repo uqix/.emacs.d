@@ -1792,7 +1792,9 @@
 (defvar-keymap my/paragraphs/repeat-map
   :repeat t
   "{" #'backward-paragraph
-  "}" #'forward-paragraph)
+  "}" #'forward-paragraph
+  "[" #'backward-paragraph
+  "]" #'forward-paragraph)
 ;; >--------------------------------------------------
 
 
