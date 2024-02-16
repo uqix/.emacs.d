@@ -477,6 +477,8 @@
 (keymap-global-set "C-h F" #'describe-face)
 (keymap-global-set "C-h K" #'describe-keymap)
 
+(keymap-global-set "s-i r f" #'rename-visited-file)
+
 ;; s-1: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 1 (Misc)
 ;; s-2: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 2 (Emacs)
 ;; s-3: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 3 (Chrome)
