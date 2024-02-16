@@ -1626,11 +1626,11 @@
 ;; <----------
 ;; ### Support jdt://
 
-;; https://github.com/yveszoundi/eglot-java/blob/ff0f9515d78f94b8dfe158bf9a2c4f52216504c0/eglot-java.el#L770
+;; https://github.com/yveszoundi/eglot-java
 
 (add-to-list 'file-name-handler-alist '("\\`jdt://" . eglot-java--jdt-uri-handler))
 
-(defun eglot-java--jdt-uri-handler (operation &rest args)
+(defun eglot-java--jdt-uri-handler (_operation &rest args)
   "Support Eclipse jdtls `jdt://' uri scheme."
   (let* ((uri (car args))
          (cache-dir (expand-file-name ".eglot-java" (temporary-file-directory)))
@@ -1652,12 +1652,9 @@
     source-file))
 
 (defun eglot-java--make-path (root-dir &rest path-elements)
-  (let ((new-path          (expand-file-name (if (listp root-dir)
-                                                 (car root-dir)
-                                               root-dir)))
-        (new-path-elements (if (listp root-dir)
-                               (rest root-dir)
-                             path-elements)))
+  "Compose a path from a base folder ROOT-DIR and a set of items PATH-ELEMENTS."
+  (let ((new-path          (expand-file-name root-dir))
+        (new-path-elements path-elements))
     (dolist (p new-path-elements)
       (setq new-path (concat (file-name-as-directory new-path) p)))
     new-path))
