@@ -323,6 +323,8 @@
 
 ;; https://github.com/minad/vertico/blob/main/extensions/vertico-quick.el
 (keymap-set vertico-map "M-g" #'vertico-quick-insert)
+
+(vertico-multiform-mode)
 ;; >-------------------------
 
 ;; <-------------------------
