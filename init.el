@@ -2174,8 +2174,7 @@
 (require 'doom-themes)
 
 (defun my/face/color-name-to-hex (name)
-  (let ((rgb (color-name-to-rgb name)))
-    (color-rgb-to-hex (nth 0 rgb) (nth 1 rgb) (nth 2 rgb))))
+  (apply 'color-rgb-to-hex (color-name-to-rgb name)))
 ;; >-------------------------
 
 (set-face-attribute 'default nil :family "JetBrains Mono" :height 130)
