@@ -2255,19 +2255,19 @@
   (set-face-attribute 'markdown-bold-face nil :foreground quote :weight 'normal))
 
 (let ((h1 (face-attribute 'font-lock-keyword-face :foreground))
-      (h4 (face-attribute 'font-lock-function-name-face :foreground)))
+      (h2 (face-attribute 'font-lock-function-name-face :foreground)))
   (set-face-attribute 'markdown-header-face-1 nil
                       :weight 'bold :foreground h1)
-  (set-face-attribute 'markdown-header-face-2 nil
-                      :weight 'bold :foreground (my/color-darken-name h1 15))
   (set-face-attribute 'markdown-header-face-3 nil
-                      :weight 'bold :foreground (my/color-darken-name h1 30))
-  (set-face-attribute 'markdown-header-face-4 nil
-                      :weight 'bold :foreground h4)
+                      :weight 'bold :foreground (my/color-darken-name h1 15))
   (set-face-attribute 'markdown-header-face-5 nil
-                      :weight 'bold :foreground (my/color-darken-name h4 15))
+                      :weight 'bold :foreground (my/color-darken-name h1 30))
+  (set-face-attribute 'markdown-header-face-2 nil
+                      :weight 'bold :foreground h2)
+  (set-face-attribute 'markdown-header-face-4 nil
+                      :weight 'bold :foreground (my/color-darken-name h2 15))
   (set-face-attribute 'markdown-header-face-6 nil
-                      :weight 'bold :foreground (my/color-darken-name h4 30)))
+                      :weight 'bold :foreground (my/color-darken-name h2 30)))
 ;; >-------------------------
 
 ;; <-------------------------
