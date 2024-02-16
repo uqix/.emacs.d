@@ -2171,10 +2171,12 @@
 ;; <-------------------------
 ;; Util
 
-(require 'doom-themes)
-
 (defun my/face/color-name-to-hex (name)
   (apply 'color-rgb-to-hex (color-name-to-rgb name)))
+
+(defun my/color-darken-name (name percent &optional desaturate-percent)
+  (color-desaturate-name (color-darken-name name percent)
+                         (or desaturate-percent percent)))
 ;; >-------------------------
 
 (set-face-attribute 'default nil :family "JetBrains Mono" :height 130)
@@ -2186,19 +2188,19 @@
 
 (let ((added (face-attribute 'magit-diff-added :foreground))
       (removed (face-attribute 'magit-diff-removed :foreground)))
-  (set-face-attribute 'magit-diff-added nil :foreground (doom-darken added 0.3))
-  (set-face-attribute 'magit-diff-removed nil :foreground (doom-darken removed 0.3))
+  (set-face-attribute 'magit-diff-added nil :foreground (my/color-darken-name added 30 20))
+  (set-face-attribute 'magit-diff-removed nil :foreground (my/color-darken-name removed 30))
   (set-face-attribute 'diff-refine-added nil :foreground added)
   (set-face-attribute 'diff-refine-removed nil :foreground removed))
 
 (set-face-attribute
  'magit-diff-hunk-heading-highlight nil :background
- (doom-darken (face-attribute 'magit-diff-base-highlight :background) 0.3))
+ (my/color-darken-name (face-attribute 'magit-diff-base-highlight :background) 30))
 ;; >-------------------------
 
 (set-face-attribute
  'highlight nil :background
- (doom-darken (face-attribute 'highlight :background) 0.5))
+ (my/color-darken-name (face-attribute 'highlight :background) 30))
 
 (set-face-attribute 'consult-file nil :inherit 'consult-buffer)
 
@@ -2219,7 +2221,7 @@
     (set-face-attribute
      face nil
      :background
-     (doom-darken (my/face/color-name-to-hex (face-attribute face :background)) 0.35)
+     (my/color-darken-name (face-attribute face :background) 30)
      :foreground
      (face-attribute 'lazy-highlight :foreground))))
 ;; >-------------------------
@@ -2228,9 +2230,9 @@
 ;; ## ediff
 
 (let* ((current (face-attribute 'ediff-even-diff-A :background))
-       (current (doom-darken current 0.05))
-       (even (doom-darken current 0.16))
-       (odd (doom-darken current 0.17)))
+       ;; (current (my/color-darken-name current 5))
+       (even (my/color-darken-name current 18))
+       (odd (my/color-darken-name current 20)))
 
   (set-face-attribute 'ediff-current-diff-A nil :inherit 'magit-diff-removed :background current)
   (set-face-attribute 'ediff-current-diff-B nil :inherit 'magit-diff-added :background current)
@@ -2249,17 +2251,23 @@
 ;; ## Markdown
 
 (let ((quote (face-attribute 'markdown-blockquote-face :foreground nil t)))
-  (set-face-attribute 'markdown-blockquote-face nil :foreground (doom-darken quote 0.25))
+  (set-face-attribute 'markdown-blockquote-face nil :foreground (my/color-darken-name quote 20))
   (set-face-attribute 'markdown-bold-face nil :foreground quote :weight 'normal))
 
 (let ((h1 (face-attribute 'font-lock-keyword-face :foreground))
       (h4 (face-attribute 'font-lock-function-name-face :foreground)))
-  (set-face-attribute 'markdown-header-face-1 nil :weight 'bold :foreground h1)
-  (set-face-attribute 'markdown-header-face-2 nil :weight 'bold :foreground (doom-darken h1 0.1))
-  (set-face-attribute 'markdown-header-face-3 nil :weight 'bold :foreground (doom-darken h1 0.2))
-  (set-face-attribute 'markdown-header-face-4 nil :weight 'bold :foreground h4)
-  (set-face-attribute 'markdown-header-face-5 nil :weight 'bold :foreground (doom-darken h4 0.1))
-  (set-face-attribute 'markdown-header-face-6 nil :weight 'bold :foreground (doom-darken h4 0.2)))
+  (set-face-attribute 'markdown-header-face-1 nil
+                      :weight 'bold :foreground h1)
+  (set-face-attribute 'markdown-header-face-2 nil
+                      :weight 'bold :foreground (my/color-darken-name h1 15))
+  (set-face-attribute 'markdown-header-face-3 nil
+                      :weight 'bold :foreground (my/color-darken-name h1 30))
+  (set-face-attribute 'markdown-header-face-4 nil
+                      :weight 'bold :foreground h4)
+  (set-face-attribute 'markdown-header-face-5 nil
+                      :weight 'bold :foreground (my/color-darken-name h4 15))
+  (set-face-attribute 'markdown-header-face-6 nil
+                      :weight 'bold :foreground (my/color-darken-name h4 30)))
 ;; >-------------------------
 
 ;; <-------------------------
