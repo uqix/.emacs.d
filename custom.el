@@ -5,9 +5,10 @@
  ;; If there is more than one, they won't work right.
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(package-selected-packages
-   '(eldoc-box yasnippet-snippets diff-hl magit-todos powershell vterm doom-modeline flyspell-correct avy ace-window transient gruvbox-theme eglot-booster pdf-tools all-the-icons dirvish eglot edit-indirect nginx-mode polymode groovy-mode git-timemachine jinja2-mode flymake-collection docker yaml-pro vundo cape corfu wgrep vertico orderless embark-consult marginalia markdown-mode ztree multiple-cursors magit yasnippet symbol-overlay expand-region))
+   '(difftastic eldoc-box yasnippet-snippets diff-hl magit-todos powershell vterm doom-modeline flyspell-correct avy ace-window transient gruvbox-theme eglot-booster pdf-tools all-the-icons dirvish eglot edit-indirect nginx-mode polymode groovy-mode git-timemachine jinja2-mode flymake-collection docker yaml-pro vundo cape corfu wgrep vertico orderless embark-consult marginalia markdown-mode ztree multiple-cursors magit yasnippet symbol-overlay expand-region))
  '(package-vc-selected-packages
-   '((eglot-booster :url "https://github.com/jdtsmith/eglot-booster.git" :branch "allow-initialization-options"))))
+   '((difftastic :vc-backend Git :url "https://github.com/pkryger/difftastic.el")
+     (eglot-booster :url "https://github.com/jdtsmith/eglot-booster.git" :branch "allow-initialization-options"))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

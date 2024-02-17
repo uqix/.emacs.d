@@ -1228,6 +1228,35 @@
 (keymap-set magit-todos-item-section-map "o" #'magit-todos-jump-to-item)
 ;; >----------
 
+;; <----------
+;; ### difftastic.el
+
+;; https://github.com/pkryger/difftastic.el
+
+(require 'difftastic)
+
+(eval-after-load 'magit-diff
+  '(transient-append-suffix 'magit-diff '(-1 -1)
+     [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
+      ("S" "Difftastic show" difftastic-magit-show)]))
+(add-hook 'magit-blame-read-only-mode-hook
+          (lambda ()
+            (kemap-set magit-blame-read-only-mode-map
+                       "D" #'difftastic-magit-show)
+            (kemap-set magit-blame-read-only-mode-map
+                       "S" #'difftastic-magit-show)))
+
+(setopt difftastic-bright-colors-vector
+        '[ansi-color-bright-black
+          magit-diff-removed
+          magit-diff-added
+          magit-diff-hunk-heading
+          font-lock-comment-face
+          default
+          font-lock-warning-face
+          ansi-color-bright-white])
+;; >----------
+
 ;; >-------------------------
 
 ;; <-------------------------
