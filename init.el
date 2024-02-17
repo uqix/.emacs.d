@@ -1247,14 +1247,14 @@
                         "S" #'difftastic-magit-show)))
 
 (setopt difftastic-bright-colors-vector
-        '[ansi-color-bright-black
-          magit-diff-removed
-          magit-diff-added
-          magit-diff-hunk-heading
-          font-lock-comment-face
-          default
-          font-lock-warning-face
-          ansi-color-bright-white])
+        [ansi-color-bright-black
+         magit-diff-removed
+         magit-diff-added
+         magit-diff-hunk-heading
+         font-lock-comment-face
+         default
+         font-lock-warning-face
+         ansi-color-bright-white])
 ;; >----------
 
 ;; >-------------------------
