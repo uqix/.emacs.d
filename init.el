@@ -1255,6 +1255,14 @@
          default
          font-lock-warning-face
          ansi-color-bright-white])
+
+(defun my/difftastic/requested-window-width ()
+  (- (frame-width)
+     (fringe-columns 'left)
+     (fringe-columns 'right)))
+
+(setopt difftastic-requested-window-width-function
+        #'my/difftastic/requested-window-width)
 ;; >----------
 
 ;; >-------------------------
