@@ -1241,10 +1241,10 @@
       ("S" "Difftastic show" difftastic-magit-show)]))
 (add-hook 'magit-blame-read-only-mode-hook
           (lambda ()
-            (kemap-set magit-blame-read-only-mode-map
-                       "D" #'difftastic-magit-show)
-            (kemap-set magit-blame-read-only-mode-map
-                       "S" #'difftastic-magit-show)))
+            (keymap-set magit-blame-read-only-mode-map
+                        "D" #'difftastic-magit-show)
+            (keymap-set magit-blame-read-only-mode-map
+                        "S" #'difftastic-magit-show)))
 
 (setopt difftastic-bright-colors-vector
         '[ansi-color-bright-black
