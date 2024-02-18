@@ -1235,6 +1235,8 @@
 
 (require 'difftastic)
 
+;; $ brew install difftastic
+
 (eval-after-load 'magit-diff
   '(transient-append-suffix 'magit-diff '(-1 -1)
      [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
