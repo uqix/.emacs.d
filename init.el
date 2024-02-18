@@ -2028,12 +2028,14 @@
 (keymap-set yaml-pro-ts-mode-map "C-M-n" #'yaml-pro-ts-next-subtree) ; was forward-list
 (keymap-set yaml-pro-ts-mode-map "C-M-p" #'yaml-pro-ts-prev-subtree) ; was backward-list
 (keymap-set yaml-pro-ts-mode-map "C-M-u" #'yaml-pro-ts-up-level)     ; was backward-up-list
+(keymap-set yaml-pro-ts-mode-map "C-M-d" #'yaml-pro-ts-down-level)   ; was down-list
 
 (defvar-keymap my/yaml-pro/tree-jump-repeat-map
   :repeat t
   "n" #'yaml-pro-ts-next-subtree
   "p" #'yaml-pro-ts-prev-subtree
-  "u" #'yaml-pro-ts-up-level)
+  "u" #'yaml-pro-ts-up-level
+  "d" #'yaml-pro-ts-down-level)
 ;; >----------
 
 (keymap-set yaml-pro-ts-mode-map "C-c m" #'yaml-pro-ts-mark-subtree)
