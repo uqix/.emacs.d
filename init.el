@@ -1395,6 +1395,14 @@
 (require 'winner)
 
 (winner-mode)
+
+(keymap-global-set "s-i l u" #'winner-undo) ; [l]ayout
+(keymap-global-set "s-i l r" #'winner-redo)
+
+(defvar-keymap my/winner/repeat-map
+  :repeat t
+  "u" #'winner-undo
+  "r" #'winner-redo)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
