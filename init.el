@@ -2129,6 +2129,17 @@
   "b" #'markdown-backward-block)
 ;; >-------------------------
 
+;; <-------------------------
+;; ## Paragraph repeat-map
+
+(defvar-keymap my/markdown/paragraph-repeat-map
+  :repeat t
+  "{" #'markdown-backward-paragraph
+  "}" #'markdown-forward-paragraph
+  "[" #'markdown-backward-paragraph
+  "]" #'markdown-forward-paragraph)
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
