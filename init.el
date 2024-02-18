@@ -1103,14 +1103,17 @@
 (keymap-global-set "s-p" project-prefix-map)
 
 (keymap-set project-prefix-map "b" #'consult-project-buffer)
+(keymap-set project-prefix-map "g" #'my/grep/project)
+(keymap-set project-prefix-map "s" #'my/project/shell)
+(keymap-set project-prefix-map "m" #'magit-project-status)
 
 (setopt project-switch-commands
         '((project-find-file "File")
           (project-find-dir "Dir")
           (consult-project-buffer "Buffer")
-          (my/grep/project "Grep" ?g)
-          (magit-project-status "Magit" ?m)
-          (my/project/shell "Shell" ?s)))
+          (my/grep/project "Grep")
+          (my/project/shell "Shell")
+          (magit-project-status "Magit")))
 
 (defun my/project/shell ()
   (interactive)
