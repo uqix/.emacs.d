@@ -1866,13 +1866,6 @@
 ;; Dockerfile
 
 (require 'dockerfile-ts-mode)
-
-;; Fix generate-dockerfile.sh|docker-dockerfile.md opened in this mode
-(delete '("\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'"
-          . dockerfile-ts-mode)
-        auto-mode-alist)
-(add-to-list 'auto-mode-alist
-             '("Dockerfile$" . dockerfile-ts-mode))
 ;; >--------------------------------------------------
 
 
