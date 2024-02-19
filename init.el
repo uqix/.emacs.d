@@ -417,7 +417,9 @@
 (defvar-keymap my/isearch/repeat-map
   :repeat t
   "s" #'isearch-repeat-forward
-  "r" #'isearch-repeat-backward)
+  "r" #'isearch-repeat-backward
+  "u" #'isearch-repeat-forward
+  "y" #'isearch-repeat-backward)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
