@@ -2160,6 +2160,8 @@
 (require 'jinja2-mode)
 
 (keymap-set jinja2-mode-map "M-o" nil) ; facemenu-set-
+
+(keymap-global-set "s-i m J" #'jinja2-mode)
 ;; >--------------------------------------------------
 
 
