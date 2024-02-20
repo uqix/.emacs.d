@@ -2011,6 +2011,10 @@
 
 (add-hook 'yaml-ts-mode-hook #'yaml-pro-ts-mode)
 
+;; https://github.com/zkry/yaml-pro/issues/45
+;; (keymap-set yaml-pro-ts-mode-map "<return>" nil)
+;; TODO
+
 ;; <----------
 ;; ### Indent (repeat-map)
 
