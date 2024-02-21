@@ -1626,6 +1626,16 @@
 (dolist (cmd '(treesit-beginning-of-defun
                treesit-end-of-defun))
   (put cmd 'repeat-map 'my/lisp/repeat-map))
+
+;; <----------
+;; ### kill repeat-map
+
+(defvar-keymap my/lisp/kill-repeat-map
+  :repeat t
+  "k" #'kill-sexp
+  "<backspace>" #'backward-kill-sexp)
+;; >----------
+
 ;; >-------------------------
 
 ;; >--------------------------------------------------
