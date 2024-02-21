@@ -1304,8 +1304,6 @@
 ;; <--------------------------------------------------
 ;; # Window
 
-(keymap-global-set "s-;" #'previous-window-any-frame)
-
 (add-to-list 'window-selection-change-functions #'my/pulse-line)
 
 (defun my/pulse-line (_)
@@ -1351,9 +1349,10 @@
 
 ;; (setopt avy-timeout-seconds 0.7)
 
-(keymap-global-set "M-j" 'avy-goto-char-timer) ; was default-indent-new-line
-(keymap-global-set "M-J" 'avy-resume)
-(keymap-global-set "M-g" 'avy-goto-line)       ; was goto-line
+(keymap-global-set "M-j" #'avy-goto-char-timer) ; was default-indent-new-line
+(keymap-global-set "M-J" #'avy-resume)
+(keymap-global-set "M-g" #'avy-goto-line)       ; was goto-line
+(keymap-global-set "s-;" #'avy-pop-mark)
 
 ;; <----------
 ;; ### embark
