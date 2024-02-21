@@ -2238,6 +2238,8 @@
 ;; # just
 
 (keymap-global-set "s-i j" #'justl)
+
+(setopt justl-recipe-width 50)
 ;; >--------------------------------------------------
 
 
