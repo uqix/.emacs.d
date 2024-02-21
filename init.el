@@ -2237,9 +2237,27 @@
 ;; <--------------------------------------------------
 ;; # just
 
+;; <-------------------------
+;; ## just-mode
+
+(require 'just-mode)
+
+(modify-syntax-entry ?_ "_" just-mode-syntax-table)
+(modify-syntax-entry ?- "_" just-mode-syntax-table)
+;; >-------------------------
+
+;; <-------------------------
+;; ## justl
+
 (keymap-global-set "s-i j" #'justl)
 
 (setopt justl-recipe-width 50)
+
+;; https://github.com/psibi/justl.el/issues/43#issuecomment-1955686203
+;; (setopt justl-include-private-recipes nil)
+;; TODO
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
