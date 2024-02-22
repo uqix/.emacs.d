@@ -325,6 +325,18 @@
 (keymap-set vertico-map "M-g" #'vertico-quick-insert)
 
 (vertico-multiform-mode)
+
+;; <----------
+;; ### Group repeat-map
+
+(defvar-keymap my/vertico/group-repeat-map
+  :repeat t
+  "{" #'vertico-previous-group
+  "}" #'vertico-next-group
+  "[" #'vertico-previous-group
+  "]" #'vertico-next-group)
+;; >----------
+
 ;; >-------------------------
 
 ;; <-------------------------
