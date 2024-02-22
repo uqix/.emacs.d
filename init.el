@@ -1802,6 +1802,21 @@
   :tail-matcher "^ *# </bash>$"
   :head-mode 'body
   :tail-mode 'body)
+
+;; <----------
+;; ### Disable eglot
+
+;; https://github.com/polymode/polymode/issues/331
+
+(add-hook 'eglot-managed-mode-hook #'my/polymode/poly-bash-innermode/eglot-managed-mode-hook)
+
+(defun my/polymode/poly-bash-innermode/eglot-managed-mode-hook ()
+  (when (and polymode-mode
+             (eq major-mode 'bash-ts-mode)
+             (eglot-managed-p))
+    (eglot--managed-mode-off)))
+;; >----------
+
 ;; >-------------------------
 
 ;; <-------------------------
