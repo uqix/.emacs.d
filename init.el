@@ -1953,9 +1953,7 @@
   (edit-indirect--commit)
   (delete-overlay edit-indirect--overlay)
   (setq edit-indirect--overlay nil)
-  (if edit-indirect--should-quit-window
-      (quit-windows-on (current-buffer) t)
-    (kill-buffer))
+  (kill-buffer)
   t)
 
 (defun vbe/edit-indirect/restore-left-margin ()
