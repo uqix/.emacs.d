@@ -1326,6 +1326,9 @@
 (defun my/pulse-line (_)
   (pulse-momentary-highlight-one-line))
 
+(setopt switch-to-buffer-obey-display-actions t)
+;; switch-to-buffer-in-dedicated-window pop?
+
 ;; <-------------------------
 ;; ## Repeat
 
@@ -1401,7 +1404,7 @@
 
 (keymap-global-set "s-n" 'ace-window) ; [n]umber; was make-frame
 
-(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+(setopt aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 
 (setq aw-dispatch-alist
       '((?w aw-delete-window "Delete")
@@ -1424,6 +1427,28 @@
   :repeat t
   "u" #'winner-undo
   "r" #'winner-redo)
+;; >-------------------------
+
+;; <-------------------------
+;; ## Side window
+
+(setopt window-sides-slots '(0 0 0 1))
+
+(keymap-global-set "s-/" #'window-toggle-side-windows)
+;; >-------------------------
+
+;; <-------------------------
+;; ## display-buffer-alist
+
+(add-to-list
+ 'display-buffer-alist
+ `(,(rx (| "*vterm*"
+           "*Help*"
+           "*Customize Option:"
+           "*Messages*"))
+   display-buffer-in-side-window
+   (window-parameters . ((no-delete-other-windows . t)))
+   (window-height . 0.3)))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
