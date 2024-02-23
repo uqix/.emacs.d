@@ -1449,6 +1449,14 @@
    display-buffer-in-side-window
    (window-parameters . ((no-delete-other-windows . t)))
    (window-height . 0.3)))
+
+(add-to-list
+ 'display-buffer-alist
+ `(,(rx (| "*edit-indirect "
+           "*yaml-pro-edit*"))
+   display-buffer-in-side-window
+   (window-parameters . ((no-delete-other-windows . t)))
+   (window-height . 0.45)))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
