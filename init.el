@@ -1282,6 +1282,11 @@
 
 (setopt difftastic-requested-window-width-function
         #'my/difftastic/requested-window-width)
+
+(add-to-list 'display-buffer-alist
+  '("\\*difftastic.*\\*"
+    display-buffer-in-side-window
+    (window-height . 0.9)))
 ;; >----------
 
 ;; >-------------------------
