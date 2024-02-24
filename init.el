@@ -1441,6 +1441,25 @@
 (setopt window-sides-slots '(0 0 1 1)) ;; left top right bottom
 
 (keymap-global-set "s-/" #'window-toggle-side-windows)
+
+;; <----------
+;; ### Redisplay
+
+(keymap-global-set "s-'" #'my/window/redisplay-side) ; was next-window-any-frame
+
+(defun my/window/redisplay-side ()
+  (interactive)
+  (walk-windows
+   (lambda (window)
+     (if (eq (window-dedicated-p window) 'side)
+         (let* ((buffer (window-buffer window))
+                (select (eq window (selected-window)))
+                (_ (delete-window window))
+                (new-side-window (display-buffer buffer)))
+           (when select
+             (select-window new-side-window)))))))
+;; >----------
+
 ;; >-------------------------
 
 ;; <-------------------------
@@ -1454,7 +1473,7 @@
  'display-buffer-alist
  `(,(rx (| "*vterm*"
            "*Help*"
-           "*Customize Option:"
+           "*Customize "
            "*Messages*"
            "*compilation*"))
    display-buffer-in-side-window
@@ -1884,7 +1903,6 @@
   "p" #'polymode-previous-chunk
   "k" #'polymode-kill-chunk
   "m" #'polymode-mark-or-extend-chunk
-  "l" #'recenter-top-bottom
   "e" #'my/polymode/edit-chunk
   "SPC" #'my/region/deactivate-mark)
 
