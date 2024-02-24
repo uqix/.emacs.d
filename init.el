@@ -1282,11 +1282,6 @@
 
 (setopt difftastic-requested-window-width-function
         #'my/difftastic/requested-window-width)
-
-(add-to-list 'display-buffer-alist
-  '("\\*difftastic.*\\*"
-    display-buffer-in-side-window
-    (window-height . 0.9)))
 ;; >----------
 
 ;; >-------------------------
@@ -1432,13 +1427,17 @@
 ;; <-------------------------
 ;; ## Side window
 
-(setopt window-sides-slots '(0 0 0 1))
+(setopt window-sides-slots '(0 0 1 1)) ;; left top right bottom
 
 (keymap-global-set "s-/" #'window-toggle-side-windows)
 ;; >-------------------------
 
 ;; <-------------------------
 ;; ## display-buffer-alist
+
+(defun my/display-buffer-alist/condition-by-major-modes (major-modes)
+  (lambda (buffer-name action)
+    (with-current-buffer buffer-name (apply #'derived-mode-p major-modes))))
 
 (add-to-list
  'display-buffer-alist
@@ -1447,16 +1446,30 @@
            "*Customize Option:"
            "*Messages*"))
    display-buffer-in-side-window
-   (window-parameters . ((no-delete-other-windows . t)))
-   (window-height . 0.3)))
+   (window-height . 0.3)
+   (window-parameters (no-delete-other-windows . t))))
 
 (add-to-list
  'display-buffer-alist
  `(,(rx (| "*edit-indirect "
            "*yaml-pro-edit*"))
    display-buffer-in-side-window
-   (window-parameters . ((no-delete-other-windows . t)))
-   (window-height . 0.45)))
+   (window-height . 0.45)
+   (window-parameters (no-delete-other-windows . t))))
+
+(add-to-list
+ 'display-buffer-alist
+ '("\\*difftastic.*\\*"
+   display-buffer-in-side-window
+   (window-height . 0.9)))
+
+(add-to-list
+ 'display-buffer-alist
+ `(,(my/display-buffer-alist/condition-by-major-modes '(dired-mode))
+   display-buffer-in-side-window
+   (side . right)
+   (window-width . 0.3)
+   (window-parameters (no-delete-other-windows . t))))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
