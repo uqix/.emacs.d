@@ -724,6 +724,10 @@
 ;; <--------------------------------------------------
 ;; # Region
 
+(defun my/region/deactivate-mark ()
+  (interactive)
+  (deactivate-mark))
+
 ;; symbol-overlay aware
 (defun my/region/with-str (fn &optional fn-without-str)
   (cond ((use-region-p)
@@ -1872,14 +1876,18 @@
 
 (require 'polymode)
 
-(keymap-set polymode-mode-map "C-c p n" #'polymode-next-chunk)
-(keymap-set polymode-mode-map "C-c p p" #'polymode-previous-chunk)
-(keymap-set polymode-mode-map "C-c p t" #'polymode-toggle-chunk-narrowing)
-(keymap-set polymode-mode-map "C-c p k" #'polymode-kill-chunk)
-(keymap-set polymode-mode-map "C-c p m" #'polymode-mark-or-extend-chunk)
-(keymap-set polymode-mode-map "C-c p e" #'my/polymode/edit-chunk)
+(defvar-keymap my/polymode/repeat-map
+  :repeat (:exit
+           (my/polymode/edit-chunk))
+  "n" #'polymode-next-chunk
+  "p" #'polymode-previous-chunk
+  "k" #'polymode-kill-chunk
+  "m" #'polymode-mark-or-extend-chunk
+  "l" #'recenter-top-bottom
+  "e" #'my/polymode/edit-chunk
+  "SPC" #'my/region/deactivate-mark)
 
-;; https://polymode.github.io/defining-polymodes/
+(keymap-set polymode-mode-map "C-c p" my/polymode/repeat-map)
 
 (defun my/polymode/edit-chunk ()
   (interactive)
