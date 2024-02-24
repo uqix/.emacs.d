@@ -1444,7 +1444,8 @@
  `(,(rx (| "*vterm*"
            "*Help*"
            "*Customize Option:"
-           "*Messages*"))
+           "*Messages*"
+           "*compilation*"))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
@@ -1543,6 +1544,8 @@
 ;; # compilation-mode
 
 ;; compilation-mode-map
+
+(setopt compilation-scroll-output t)
 ;; >--------------------------------------------------
 
 
