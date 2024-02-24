@@ -1476,7 +1476,8 @@
            "*Customize "
            "*Messages*"
            "*compilation*"
-           "*eldoc*"))
+           "*eldoc*"
+           "*just"))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
