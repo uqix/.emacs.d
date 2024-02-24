@@ -1218,6 +1218,7 @@
 (setopt magit-save-repository-buffers 'dontask)
 (setopt magit-diff-refine-hunk 'all)
 (setopt magit-diff-highlight-hunk-body nil)
+(setopt magit-commit-show-diff nil)
 
 (keymap-global-set "s-m" 'magit-status) ; was iconify-frame
 
