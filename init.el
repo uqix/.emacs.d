@@ -2210,10 +2210,7 @@
   '(poly-bash-innermode
     poly-nginx-innermode))
 
-;; https://github.com/polymode/polymode/issues/324#issuecomment-1872441449
-;; (add-hook 'yaml-ts-mode-hook 'poly-yaml-ts-mode)
-
-(keymap-set yaml-ts-mode-map "C-c P" 'poly-yaml-ts-mode)
+(add-to-list 'auto-mode-alist '("\\.yaml" . poly-yaml-ts-mode))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -2328,10 +2325,7 @@
   :hostmode 'poly-groovy-hostmode
   :innermodes '(poly-bash-innermode))
 
-;; https://github.com/polymode/polymode/issues/324#issuecomment-1872441449
-;; (add-hook 'groovy-mode-hook 'poly-groovy-mode)
-
-(keymap-set groovy-mode-map "C-c P" 'poly-groovy-mode)
+(add-to-list 'auto-mode-alist '("\\.groovy" . poly-groovy-mode))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
