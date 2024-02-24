@@ -1467,7 +1467,8 @@
  'display-buffer-alist
  `(,(my/display-buffer-alist/condition-by-major-modes
      '(grep-mode
-       occur-mode))
+       occur-mode
+       justl-mode))
    display-buffer-in-side-window
    (window-width . 0.3)
    (window-parameters (no-delete-other-windows . t))))
@@ -2366,9 +2367,13 @@
 ;; <-------------------------
 ;; ## justl
 
+(require 'justl)
+
 (keymap-global-set "s-i j" #'justl)
 
 (setopt justl-recipe-width 50)
+
+(keymap-set justl-mode-map "o" #'justl-go-to-recipe)
 
 ;; https://github.com/psibi/justl.el/issues/43#issuecomment-1955686203
 ;; (setopt justl-include-private-recipes nil)
