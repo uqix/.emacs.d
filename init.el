@@ -2221,6 +2221,7 @@
 ;; ### Edit scalar
 
 (keymap-set yaml-pro-edit-mode-map "<remap> <save-buffer>" #'yaml-pro-edit-complete)
+(keymap-set yaml-pro-edit-mode-map "C-c k" #'yaml-pro-edit-quit)
 ;; >----------
 
 ;; >-------------------------
