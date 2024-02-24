@@ -1469,7 +1469,8 @@
  `(,(my/display-buffer-alist/condition-by-major-modes
      '(grep-mode
        occur-mode
-       justl-mode))
+       justl-mode
+       xref--xref-buffer-mode))
    display-buffer-in-side-window
    (window-width . 0.3)
    (window-parameters (no-delete-other-windows . t))))
