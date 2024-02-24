@@ -301,6 +301,7 @@
 
 (add-hook 'minibuffer-setup-hook #'subword-mode)
 (add-hook 'minibuffer-setup-hook #'flyspell-mode)
+(add-hook 'minibuffer-setup-hook #'yas-minor-mode)
 
 (keymap-set minibuffer-mode-map "C-c h" 'consult-history)
 
