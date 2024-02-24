@@ -1465,11 +1465,22 @@
 
 (add-to-list
  'display-buffer-alist
+ `(,(my/display-buffer-alist/condition-by-major-modes '(grep-mode))
+   display-buffer-in-side-window
+   (window-width . 0.3)
+   (window-parameters (no-delete-other-windows . t))))
+
+;; <----------
+;; ### dired
+
+(add-to-list
+ 'display-buffer-alist
  `(,(my/display-buffer-alist/condition-by-major-modes '(dired-mode))
    display-buffer-in-side-window
    (side . right)
    (window-width . 0.3)
    (window-parameters (no-delete-other-windows . t))))
+;; >----------
 
 ;; <----------
 ;; ### Magit
