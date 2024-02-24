@@ -1470,6 +1470,24 @@
    (side . right)
    (window-width . 0.3)
    (window-parameters (no-delete-other-windows . t))))
+
+;; <----------
+;; ### Magit
+
+(setopt magit-display-buffer-function #'display-buffer)
+
+(add-to-list
+ 'display-buffer-alist
+ `(,(my/display-buffer-alist/condition-by-major-modes '(magit-mode))
+   display-buffer-in-side-window
+   (window-height . 0.6)))
+
+(add-to-list
+ 'display-buffer-alist
+ `("COMMIT_EDITMSG"
+   display-buffer-in-side-window
+   (window-height . 0.6)
+   (window-parameters (no-delete-other-windows . t))))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
