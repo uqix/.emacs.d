@@ -1023,6 +1023,11 @@
 
 (keymap-set dired-mode-map "l" #'magit-dired-log) ; was dired-do-redisplay
 
+(add-hook 'dired-mode-hook #'my/dired/mode-hook)
+
+(defun my/dired/mode-hook ()
+  (setq-local truncate-lines t))
+
 ;; <-------------------------
 ;; ## wdired
 
@@ -1068,8 +1073,8 @@
 
 (setopt dirvish-attributes
         '(all-the-icons
-          file-time
-          file-size
+          ;; file-time
+          ;; file-size
           subtree-state
           vc-state))
 
@@ -1091,9 +1096,9 @@
 (keymap-set dirvish-mode-map "<mouse-2>" #'dirvish-subtree-toggle-or-open)
 (keymap-set dirvish-mode-map "<mouse-3>" #'dired-mouse-find-file-other-window)
 
-(add-hook 'dirvish-setup-hook #'my/dirvish-setup-hook)
+(add-hook 'dirvish-setup-hook #'my/dirvish/setup-hook/mouse)
 
-(defun my/dirvish-setup-hook ()
+(defun my/dirvish/setup-hook/mouse ()
   (setq-local mouse-1-click-follows-link nil))
 ;; >----------
 
