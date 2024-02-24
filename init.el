@@ -1475,7 +1475,8 @@
            "*Help*"
            "*Customize "
            "*Messages*"
-           "*compilation*"))
+           "*compilation*"
+           "*eldoc*"))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
@@ -1726,7 +1727,8 @@
 ;; <-------------------------
 ;; ## eldoc-box
 
-(keymap-global-set "C-h ." #'eldoc-box-help-at-point) ; was eldoc-doc-buffer
+;; (keymap-global-set "C-h ." #'eldoc-box-help-at-point) ; was eldoc-doc-buffer
+;; Deleted, prefer side window
 ;; >-------------------------
 
 ;; >--------------------------------------------------
