@@ -567,8 +567,8 @@
 ;; <----------
 ;; ### Unhighlight
 
-(keymap-global-set "s-i h u" 'unhighlight-regexp)
-(keymap-global-set "s-i h U" #'my/unhighlight-regexp/all)
+(keymap-global-set "s-i h u" #'my/unhighlight-regexp/all)
+(keymap-global-set "s-i h U" #'unhighlight-regexp)
 
 (defun my/unhighlight-regexp ()
   (interactive)
