@@ -2470,7 +2470,15 @@
 
 (set-face-attribute
  'magit-diff-hunk-heading-highlight nil :background
- (my/color-darken-name (face-attribute 'magit-diff-base-highlight :background) 30))
+ (my/color-darken-name (face-attribute 'magit-diff-base-highlight :background) 45))
+
+(set-face-attribute
+ 'magit-section-highlight nil :background
+ (my/color-darken-name (face-attribute 'magit-section-highlight :background) 20))
+
+(set-face-attribute
+ 'magit-diff-hunk-heading nil :background
+ (my/color-darken-name (face-attribute 'magit-diff-hunk-heading :background) 45))
 ;; >-------------------------
 
 (set-face-attribute
