@@ -504,6 +504,8 @@
 ;; <--------------------------------------------------
 ;; # Highlight
 
+(require 'hl-line)
+
 ;; <-------------------------
 ;; ## Regexp
 
@@ -1037,6 +1039,7 @@
 
 (add-hook 'dired-mode-hook #'toggle-truncate-lines)
 (add-hook 'dired-mode-hook #'dired-hide-details-mode)
+(add-hook 'dired-mode-hook #'hl-line-mode)
 
 ;; <-------------------------
 ;; ## wdired
@@ -2457,6 +2460,10 @@
 (set-face-attribute 'default nil :family "JetBrains Mono" :height 130)
 
 (set-face-attribute 'aw-leading-char-face nil :height 1.0 :weight 'bold :foreground "green")
+
+(set-face-attribute
+ 'hl-line nil :background
+ (my/color-darken-name (face-attribute 'hl-line :background) 20))
 
 ;; <-------------------------
 ;; ## Magit
