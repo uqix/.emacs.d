@@ -1027,10 +1027,8 @@
 
 (keymap-set dired-mode-map "l" #'magit-dired-log) ; was dired-do-redisplay
 
-(add-hook 'dired-mode-hook #'my/dired/mode-hook)
-
-(defun my/dired/mode-hook ()
-  (setq-local truncate-lines t))
+(add-hook 'dired-mode-hook #'toggle-truncate-lines)
+(add-hook 'dired-mode-hook #'dired-hide-details-mode)
 
 ;; <-------------------------
 ;; ## wdired
@@ -1064,46 +1062,15 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; ## dirvish
+;; ## dired-hacks
 
-(require 'dirvish)
-
-;; https://github.com/alexluigit/dirvish?tab=readme-ov-file#macos
-;; $ brew install coreutils fd poppler ffmpegthumbnailer mediainfo imagemagick
-
-;; https://github.com/alexluigit/dirvish/blob/main/docs/CUSTOMIZING.org#dirvish
-
-(dirvish-override-dired-mode)
-
-(setopt dirvish-attributes
-        '(all-the-icons
-          ;; file-time
-          ;; file-size
-          subtree-state
-          vc-state))
-
-(keymap-set dirvish-mode-map "TAB" #'dirvish-subtree-toggle)
-(keymap-set dirvish-mode-map "s" #'dirvish-quicksort) ; was dired-sort-toggle-or-edit
-(keymap-set dirvish-mode-map "M" #'dirvish-mark-menu) ; was dired-do-chmod
-(keymap-set dirvish-mode-map "C-c m" #'dired-do-chmod)
-(keymap-set dirvish-mode-map "C-c l" #'dirvish-layout-toggle)
-(keymap-set dirvish-mode-map "C-M-u" #'dirvish-subtree-up)
-
-(keymap-global-set "s-J" 'dirvish-history-jump)
+;; https://github.com/Fuco1/dired-hacks
 
 ;; <----------
-;; ### Mouse
+;; ### dired-subtree
 
-;; https://github.com/alexluigit/dirvish/blob/main/docs/CUSTOMIZING.org#mouse-settings
-
-(keymap-set dirvish-mode-map "<mouse-1>" #'dirvish-subtree-toggle-or-open)
-(keymap-set dirvish-mode-map "<mouse-2>" #'dirvish-subtree-toggle-or-open)
-(keymap-set dirvish-mode-map "<mouse-3>" #'dired-mouse-find-file-other-window)
-
-(add-hook 'dirvish-setup-hook #'my/dirvish/setup-hook/mouse)
-
-(defun my/dirvish/setup-hook/mouse ()
-  (setq-local mouse-1-click-follows-link nil))
+(keymap-set dired-mode-map "i" #'dired-subtree-insert) ; was dired-maybe-insert-subdir
+(keymap-set dired-mode-map "TAB" #'dired-subtree-toggle)
 ;; >----------
 
 ;; >-------------------------
