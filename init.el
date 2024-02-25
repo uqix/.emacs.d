@@ -1071,6 +1071,23 @@
 
 (keymap-set dired-mode-map "i" #'dired-subtree-insert) ; was dired-maybe-insert-subdir
 (keymap-set dired-mode-map "TAB" #'dired-subtree-toggle)
+
+;; <---
+;; #### Tree repeat-map
+
+(keymap-set dired-mode-map "C-M-n" #'dired-subtree-next-sibling)     ; was dired-next-subdir
+(keymap-set dired-mode-map "C-M-p" #'dired-subtree-previous-sibling) ; was dired-prev-subdir
+(keymap-set dired-mode-map "C-M-u" #'dired-subtree-up)               ; was dired-tree-up
+(keymap-set dired-mode-map "C-M-d" #'dired-subtree-down)             ; was dired-tree-down
+
+(defvar-keymap my/dired-subtree/tree-repeat-map
+  :repeat t
+  "n" #'dired-subtree-next-sibling
+  "p" #'dired-subtree-previous-sibling
+  "u" #'dired-subtree-up
+  "d" #'dired-subtree-down)
+;; >---
+
 ;; >----------
 
 ;; >-------------------------
@@ -2140,7 +2157,7 @@
 ;; TODO
 
 ;; <----------
-;; ### Indent (repeat-map)
+;; ### Indent repeat-map
 
 (defvar-keymap my/yaml-pro/indent-repeat-map
   :repeat t
@@ -2153,14 +2170,14 @@
 ;; >----------
 
 ;; <----------
-;; ### Tree jump (repeat-map)
+;; ### Tree repeat-map
 
 (keymap-set yaml-pro-ts-mode-map "C-M-n" #'yaml-pro-ts-next-subtree) ; was forward-list
 (keymap-set yaml-pro-ts-mode-map "C-M-p" #'yaml-pro-ts-prev-subtree) ; was backward-list
 (keymap-set yaml-pro-ts-mode-map "C-M-u" #'yaml-pro-ts-up-level)     ; was backward-up-list
 (keymap-set yaml-pro-ts-mode-map "C-M-d" #'yaml-pro-ts-down-level)   ; was down-list
 
-(defvar-keymap my/yaml-pro/tree-jump-repeat-map
+(defvar-keymap my/yaml-pro/tree-repeat-map
   :repeat t
   "n" #'yaml-pro-ts-next-subtree
   "p" #'yaml-pro-ts-prev-subtree
