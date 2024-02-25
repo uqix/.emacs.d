@@ -2295,7 +2295,12 @@
   "d" #'markdown-next-visible-heading
   "U" #'markdown-previous-visible-heading
   "f" #'markdown-forward-block
-  "b" #'markdown-backward-block)
+  "b" #'markdown-backward-block
+  "SPC" #'my/markdown/set-mark)
+
+(defun my/markdown/set-mark ()
+  (interactive)
+  (my/region/set-mark 'my/markdown/set-mark))
 ;; >-------------------------
 
 ;; <-------------------------
