@@ -74,8 +74,6 @@
 (require 'repeat)
 
 (repeat-mode)
-
-(keymap-global-set "s-i z" #'repeat) ; z z z…
 ;; >--------------------------------------------------
 
 
@@ -724,9 +722,8 @@
 ;; <--------------------------------------------------
 ;; # Region
 
-(defun my/region/deactivate-mark ()
-  (interactive)
-  (deactivate-mark))
+;; <-------------------------
+;; ## Utils
 
 ;; symbol-overlay aware
 (defun my/region/with-str (fn &optional fn-without-str)
@@ -740,6 +737,17 @@
            t))
         (t
          (call-interactively (or fn-without-str fn)))))
+
+(defun my/region/set-mark (command-name)
+  (if (eq last-command command-name)
+      (if (region-active-p)
+          (progn
+            (deactivate-mark)
+            (message "Mark deactivated"))
+        (activate-mark)
+        (message "Mark activated"))
+    (set-mark-command nil)))
+;; >-------------------------
 
 ;; <-------------------------
 ;; ## Narrowing
@@ -1731,12 +1739,12 @@
 
 
 ;; <--------------------------------------------------
-;; # elisp
+;; # lisp
 
 (keymap-global-set "s-i m e" #'emacs-lisp-mode)
 
 ;; <-------------------------
-;; ## lisp
+;; ## Tree repeat-map
 
 (defvar-keymap my/lisp/tree-repeat-map
   :repeat t
@@ -1747,21 +1755,18 @@
   "a" #'beginning-of-defun
   "e" #'end-of-defun
   "f" #'forward-sexp
-  "b" #'backward-sexp)
+  "b" #'backward-sexp
+  "k" #'kill-sexp
+  "<backspace>" #'backward-kill-sexp
+  "SPC" #'my/lisp/set-mark)
 
 (dolist (cmd '(treesit-beginning-of-defun
                treesit-end-of-defun))
   (put cmd 'repeat-map 'my/lisp/tree-repeat-map))
 
-;; <----------
-;; ### kill repeat-map
-
-(defvar-keymap my/lisp/kill-repeat-map
-  :repeat t
-  "k" #'kill-sexp
-  "<backspace>" #'backward-kill-sexp)
-;; >----------
-
+(defun my/lisp/set-mark ()
+  (interactive)
+  (my/region/set-mark 'my/lisp/set-mark))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -1901,7 +1906,7 @@
   "k" #'polymode-kill-chunk
   "m" #'polymode-mark-or-extend-chunk
   "e" #'my/polymode/edit-chunk
-  "SPC" #'my/region/deactivate-mark)
+  "SPC" #'my/polymode/set-mark)
 
 (keymap-set polymode-mode-map "C-c p" my/polymode/repeat-map)
 
@@ -1909,6 +1914,10 @@
   (interactive)
   (call-interactively 'polymode-mark-or-extend-chunk)
   (call-interactively 'edit-indirect-region))
+
+(defun my/polymode/set-mark ()
+  (interactive)
+  (my/region/set-mark 'my/polymode/set-mark))
 
 ;; <-------------------------
 ;; ## Bash
@@ -2192,7 +2201,12 @@
   "n" #'yaml-pro-ts-next-subtree
   "p" #'yaml-pro-ts-prev-subtree
   "u" #'yaml-pro-ts-up-level
-  "d" #'yaml-pro-ts-down-level)
+  "d" #'yaml-pro-ts-down-level
+  "SPC" #'my/yaml-pro/set-mark)
+
+(defun my/yaml-pro/set-mark ()
+  (interactive)
+  (my/region/set-mark 'my/yaml-pro/set-mark))
 ;; >----------
 
 (keymap-set yaml-pro-ts-mode-map "C-c m" #'yaml-pro-ts-mark-subtree)
