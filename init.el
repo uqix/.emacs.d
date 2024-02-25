@@ -1079,13 +1079,21 @@
 (keymap-set dired-mode-map "C-M-p" #'dired-subtree-previous-sibling) ; was dired-prev-subdir
 (keymap-set dired-mode-map "C-M-u" #'dired-subtree-up)               ; was dired-tree-up
 (keymap-set dired-mode-map "C-M-d" #'dired-subtree-down)             ; was dired-tree-down
+(keymap-set dired-mode-map "C-M-a" #'dired-subtree-beginning)        ; was beginning-of-defun
+(keymap-set dired-mode-map "C-M-e" #'dired-subtree-end)              ; was end-of-defun
 
 (defvar-keymap my/dired-subtree/tree-repeat-map
   :repeat t
   "n" #'dired-subtree-next-sibling
   "p" #'dired-subtree-previous-sibling
   "u" #'dired-subtree-up
-  "d" #'dired-subtree-down)
+  "d" #'dired-subtree-down
+  "a" #'dired-subtree-beginning
+  "e" #'dired-subtree-end
+  "m" #'dired-subtree-mark-subtree
+  "U" #'dired-subtree-unmark-subtree
+  "N" #'dired-subtree-narrow
+  "TAB" #'dired-subtree-toggle)
 ;; >---
 
 ;; >----------
@@ -1728,7 +1736,7 @@
 ;; <-------------------------
 ;; ## lisp
 
-(defvar-keymap my/lisp/repeat-map
+(defvar-keymap my/lisp/tree-repeat-map
   :repeat t
   "n" #'forward-list
   "p" #'backward-list
@@ -1741,7 +1749,7 @@
 
 (dolist (cmd '(treesit-beginning-of-defun
                treesit-end-of-defun))
-  (put cmd 'repeat-map 'my/lisp/repeat-map))
+  (put cmd 'repeat-map 'my/lisp/tree-repeat-map))
 
 ;; <----------
 ;; ### kill repeat-map
