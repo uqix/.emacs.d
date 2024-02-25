@@ -1310,6 +1310,8 @@
 (keymap-global-set "s-i v =" #'diff-hl-diff-goto-hunk)
 (keymap-global-set "s-i v n" #'diff-hl-show-hunk-next)
 (keymap-global-set "s-i v p" #'diff-hl-show-hunk-previous)
+
+(add-hook 'dired-mode-hook #'diff-hl-dired-mode)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -2514,15 +2516,6 @@
                       :weight 'bold :foreground (my/color-darken-name h2 15))
   (set-face-attribute 'markdown-header-face-6 nil
                       :weight 'bold :foreground (my/color-darken-name h2 30)))
-;; >-------------------------
-
-;; <-------------------------
-;; ## VC
-
-;; Used by dirvish
-(set-face-attribute 'vc-edited-state nil :inherit 'diff-hl-change)
-(set-face-attribute 'vc-locally-added-state nil :inherit 'diff-hl-insert)
-(set-face-attribute 'vc-removed-state nil :inherit 'diff-hl-delete)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
