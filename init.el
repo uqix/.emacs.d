@@ -1089,6 +1089,8 @@
 (keymap-set dired-mode-map "C-M-d" #'dired-subtree-down)             ; was dired-tree-down
 (keymap-set dired-mode-map "C-M-a" #'dired-subtree-beginning)        ; was beginning-of-defun
 (keymap-set dired-mode-map "C-M-e" #'dired-subtree-end)              ; was end-of-defun
+(keymap-set dired-mode-map "C-M-k" #'dired-subtree-remove)           ; was kill-sexp
+(keymap-set dired-mode-map "C-M-<backspace>" #'dired-subtree-remove) ; was backward-kill-sexp
 
 (defvar-keymap my/dired-subtree/tree-repeat-map
   :repeat t
@@ -1101,6 +1103,9 @@
   "m" #'dired-subtree-mark-subtree
   "U" #'dired-subtree-unmark-subtree
   "N" #'dired-subtree-narrow
+  "k" #'dired-subtree-remove
+  "<backspace>" #'dired-subtree-remove
+  "g" #'dired-subtree-revert
   "TAB" #'dired-subtree-toggle)
 ;; >---
 
