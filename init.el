@@ -1516,7 +1516,7 @@
        justl-mode
        xref--xref-buffer-mode))
    display-buffer-in-side-window
-   (window-width . 0.3)
+   (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
 
 ;; <----------
@@ -1527,7 +1527,7 @@
  `(,(my/display-buffer-alist/condition-by-major-modes '(dired-mode))
    display-buffer-in-side-window
    (side . right)
-   (window-width . 0.3)
+   (window-width . 0.2)
    (window-parameters (no-delete-other-windows . t))))
 ;; >----------
 
