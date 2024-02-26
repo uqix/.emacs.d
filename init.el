@@ -1779,6 +1779,15 @@
   (my/region/set-mark 'my/lisp/set-mark))
 ;; >-------------------------
 
+;; <-------------------------
+;; ## highlight-function-calls
+
+(require 'highlight-function-calls)
+
+;; https://github.com/alphapapa/highlight-function-calls
+(add-hook 'emacs-lisp-mode-hook #'highlight-function-calls-mode)
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
@@ -2466,6 +2475,10 @@
 (set-face-attribute
  'hl-line nil :background
  (my/color-darken-name (face-attribute 'hl-line :background) 20))
+
+(set-face-attribute
+ 'highlight-function-calls-face nil
+ :underline nil :inherit 'font-lock-function-call-face)
 
 ;; <-------------------------
 ;; ## Magit
