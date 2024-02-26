@@ -2200,10 +2200,8 @@
 
 (defvar-keymap my/yaml-pro/indent-repeat-map
   :repeat t
-  "l" #'yaml-pro-ts-unindent-subtree ; [l]eft
-  "r" #'yaml-pro-ts-indent-subtree   ; [r]ight
-  "u" #'yaml-pro-ts-move-subtree-up
-  "d" #'yaml-pro-ts-move-subtree-down)
+  "i" #'yaml-pro-ts-indent-subtree
+  "u" #'yaml-pro-ts-unindent-subtree)
 
 (keymap-set yaml-pro-ts-mode-map "C-c i" my/yaml-pro/indent-repeat-map)
 ;; >----------
@@ -2219,6 +2217,7 @@
 (keymap-set yaml-pro-ts-mode-map "C-M-<backspace>" #'yaml-pro-ts-kill-subtree) ; was backward-kill-sexp
 (keymap-set yaml-pro-ts-mode-map "C-M-a" #'yaml-pro-ts-first-sibling)          ; was beginning-of-defun
 (keymap-set yaml-pro-ts-mode-map "C-M-e" #'yaml-pro-ts-last-sibling)           ; was end-of-defun
+(keymap-set yaml-pro-ts-mode-map "C-M-t" #'yaml-pro-ts-move-subtree-up)        ; was transpose-sexps
 
 (defvar-keymap my/yaml-pro/tree-repeat-map
   :repeat t
@@ -2230,6 +2229,8 @@
   "k" #'yaml-pro-ts-kill-subtree
   "a" #'yaml-pro-ts-first-sibling
   "e" #'yaml-pro-ts-last-sibling
+  "t" #'yaml-pro-ts-move-subtree-up
+  "T" #'yaml-pro-ts-move-subtree-down
   "SPC" #'my/yaml-pro/set-mark)
 
 (defun my/yaml-pro/set-mark ()
