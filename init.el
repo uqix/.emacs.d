@@ -1489,7 +1489,8 @@
            "*compilation*"
            "*eldoc*"
            "*just"
-           "*Warnings*"))
+           "*Warnings*"
+           "*docker-containers*"))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
