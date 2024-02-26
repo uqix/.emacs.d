@@ -1487,7 +1487,8 @@
            "*Messages*"
            "*compilation*"
            "*eldoc*"
-           "*just"))
+           "*just"
+           "*Warnings*"))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
