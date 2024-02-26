@@ -1367,7 +1367,8 @@
 (defun my/window/split-sensibly ()
   (interactive)
   (or
-   (let ((split-height-threshold nil))
+   (let ((split-width-threshold 150)
+         (split-height-threshold nil))
      (split-window-sensibly))
    (let ((split-width-threshold nil)
          (split-height-threshold 30))
@@ -2497,7 +2498,7 @@
 
 (set-face-attribute 'avy-lead-face nil :foreground "green" :background "reset")
 
-(set-face-attribute 'eglot-highlight-symbol-face nil :overline "SpringGreen1")
+(set-face-attribute 'eglot-highlight-symbol-face nil :overline "SpringGreen3")
 
 ;; <-------------------------
 ;; ## symbol-overlay
