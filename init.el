@@ -2216,6 +2216,8 @@
 (keymap-set yaml-pro-ts-mode-map "C-M-d" #'yaml-pro-ts-down-level)             ; was down-list
 (keymap-set yaml-pro-ts-mode-map "C-M-k" #'yaml-pro-ts-kill-subtree)           ; was kill-sexp
 (keymap-set yaml-pro-ts-mode-map "C-M-<backspace>" #'yaml-pro-ts-kill-subtree) ; was backward-kill-sexp
+(keymap-set yaml-pro-ts-mode-map "C-M-a" #'yaml-pro-ts-first-sibling)          ; was beginning-of-defun
+(keymap-set yaml-pro-ts-mode-map "C-M-e" #'yaml-pro-ts-last-sibling)           ; was end-of-defun
 
 (defvar-keymap my/yaml-pro/tree-repeat-map
   :repeat t
@@ -2225,6 +2227,8 @@
   "d" #'yaml-pro-ts-down-level
   "m" #'yaml-pro-ts-mark-subtree
   "k" #'yaml-pro-ts-kill-subtree
+  "a" #'yaml-pro-ts-first-sibling
+  "e" #'yaml-pro-ts-last-sibling
   "SPC" #'my/yaml-pro/set-mark)
 
 (defun my/yaml-pro/set-mark ()
