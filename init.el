@@ -1233,6 +1233,7 @@
 (keymap-global-set "s-i v d" #'magit-diff-buffer-file)
 (keymap-global-set "s-i v l" #'magit-log-buffer-file)
 (keymap-global-set "s-i v m" #'magit-submodule)
+(keymap-global-set "s-i v b" #'magit-blame)
 
 ; [o]pen; was magit-submodule
 (keymap-set magit-revision-mode-map "o" #'magit-diff-visit-worktree-file-other-window)
@@ -2507,6 +2508,10 @@
 (set-face-attribute
  'magit-diff-hunk-heading nil :background
  (my/color-darken-name (face-attribute 'magit-diff-hunk-heading :background) 45))
+
+(set-face-attribute
+ 'magit-blame-heading nil :background
+ (my/color-darken-name (face-attribute 'magit-blame-heading :background) 35))
 ;; >-------------------------
 
 (set-face-attribute
