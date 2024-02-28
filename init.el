@@ -1497,7 +1497,8 @@
            "*eldoc*"
            "*just"
            "*Warnings*"
-           "*docker-containers*"))
+           "*docker-containers*"
+           "*diff-syntax:"))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
@@ -1552,10 +1553,12 @@
 
 (add-to-list
  'display-buffer-alist
- `("COMMIT_EDITMSG"
+ '("COMMIT_EDITMSG"
    display-buffer-in-side-window
    (window-height . 0.6)
    (window-parameters (no-delete-other-windows . t))))
+;; >----------
+
 ;; >-------------------------
 
 ;; >--------------------------------------------------
