@@ -1513,12 +1513,6 @@
 
 (add-to-list
  'display-buffer-alist
- '("\\*difftastic.*\\*"
-   display-buffer-in-side-window
-   (window-height . 0.9)))
-
-(add-to-list
- 'display-buffer-alist
  `(,(my/display-buffer-alist/condition-by-major-modes
      '(grep-mode
        occur-mode
@@ -1547,7 +1541,9 @@
 
 (add-to-list
  'display-buffer-alist
- `(,(my/display-buffer-alist/condition-by-major-modes '(magit-mode))
+ `(,(my/display-buffer-alist/condition-by-major-modes
+     '(magit-mode
+       difftastic-mode))
    display-buffer-in-side-window
    (window-height . 0.6)))
 
