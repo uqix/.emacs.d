@@ -1264,7 +1264,9 @@
 ;; <----------
 ;; ### magit-todos
 
-(magit-todos-mode)
+(require 'magit-todos)
+
+(keymap-set project-prefix-map "t d" #'magit-todos-list)
 
 (keymap-set magit-todos-item-section-map "o" #'magit-todos-jump-to-item)
 ;; >----------
