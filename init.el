@@ -1804,6 +1804,8 @@
 
 (require 'eglot)
 
+(fset #'jsonrpc--log-event #'ignore)
+
 (setopt eglot-events-buffer-config '(:size 0 :format full))
 (setopt eglot-report-progress nil)
 
