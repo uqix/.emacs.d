@@ -2451,7 +2451,7 @@
 
 (require 'justl)
 
-(keymap-global-set "s-i j" #'justl)
+(keymap-set project-prefix-map "j" #'justl)
 
 (setopt justl-recipe-width 50)
 
