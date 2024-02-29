@@ -1928,6 +1928,8 @@
 
 ;; https://github.com/polymode/polymode
 
+(setq polymode-prefix-key "\C-cP")
+
 (require 'polymode)
 
 (defvar-keymap my/polymode/repeat-map
