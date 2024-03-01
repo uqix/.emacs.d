@@ -1897,12 +1897,16 @@
 ;; <--------------------------------------------------
 ;; # nxml-mode
 
+(require 'nxml-mode)
+
 ;; ref rng-nxml-mode-init
 
 (add-hook 'nxml-mode-hook 'my/nxml-mode-hook)
 
 (defun my/nxml-mode-hook ()
   (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+
+(setopt nxml-child-indent 4)
 ;; >--------------------------------------------------
 
 
