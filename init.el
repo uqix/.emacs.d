@@ -1498,7 +1498,8 @@
            "*just"
            "*Warnings*"
            "*docker-containers*"
-           "*diff-syntax:"))
+           "*diff-syntax:"
+           "*Embark Actions*"))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
