@@ -1491,6 +1491,7 @@
  'display-buffer-alist
  `(,(rx (| "*vterm*"
            "*Help*"
+           "*info*"
            "*Customize "
            "*Messages*"
            "*compilation*"
