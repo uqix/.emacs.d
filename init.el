@@ -2603,4 +2603,7 @@
                       :weight 'bold :foreground (my/color-darken-name h2 30)))
 ;; >-------------------------
 
+(set-face-attribute
+ 'default nil :foreground
+ (my/color-darken-name (face-attribute 'default :foreground) 10))
 ;; >--------------------------------------------------
