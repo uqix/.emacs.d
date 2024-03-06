@@ -1509,9 +1509,7 @@
  'display-buffer-alist
  `(,(rx (| "*edit-indirect "
            "*yaml-pro-edit*"))
-   display-buffer-in-side-window
-   (window-height . 0.45)
-   (window-parameters (no-delete-other-windows . t))))
+   display-buffer-same-window))
 
 (add-to-list
  'display-buffer-alist
