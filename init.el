@@ -2525,6 +2525,10 @@
 (set-face-attribute
  'magit-blame-heading nil :background
  (my/color-darken-name (face-attribute 'magit-blame-heading :background) 35))
+
+(set-face-attribute 'magit-diff-revision-summary nil :inherit 'magit-header-line)
+(set-face-attribute 'magit-filename nil :inherit 'font-lock-type-face)
+(set-face-attribute 'magit-diff-file-heading nil :inherit 'font-lock-type-face)
 ;; >-------------------------
 
 (set-face-attribute
