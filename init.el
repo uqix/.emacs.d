@@ -1546,14 +1546,15 @@
      '(magit-mode
        difftastic-mode))
    display-buffer-in-side-window
-   (window-height . 0.6)))
+   (window-height . 0.8)
+   (window-parameters (no-delete-other-windows . nil))))
 
 (add-to-list
  'display-buffer-alist
  '("COMMIT_EDITMSG"
    display-buffer-in-side-window
-   (window-height . 0.6)
-   (window-parameters (no-delete-other-windows . t))))
+   (window-height . 0.8)
+   (window-parameters (no-delete-other-windows . nil))))
 ;; >----------
 
 ;; >-------------------------
