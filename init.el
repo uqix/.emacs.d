@@ -1428,13 +1428,14 @@
 
 (keymap-global-set "s-n" 'ace-window) ; [n]umber; was make-frame
 
-(setopt aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+(setopt aw-keys '(?a ?s ?d ?f ?g ?h ?k ?l))
 
 (setq aw-dispatch-alist
       '((?w aw-delete-window "Delete")
         (?x aw-swap-window "Swap")
         (?m aw-move-window "Move")
-        (?c aw-copy-window "Copy")))
+        (?c aw-copy-window "Copy")
+        (?j aw-switch-buffer-in-window "Buffer")))
 ;; >-------------------------
 
 ;; <-------------------------
