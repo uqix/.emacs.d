@@ -697,6 +697,8 @@
 (keymap-global-set "s-i t" #'vterm)
 
 (keymap-set vterm-mode-map "C-c c" #'vterm-copy-mode)
+(keymap-set vterm-mode-map "M-g" #'avy-goto-line)
+
 (keymap-set vterm-copy-mode-map "C-c c" #'vterm-copy-mode)
 
 (with-eval-after-load 'embark
