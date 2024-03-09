@@ -299,7 +299,6 @@
 
 (add-hook 'minibuffer-setup-hook #'subword-mode)
 (add-hook 'minibuffer-setup-hook #'flyspell-mode)
-(add-hook 'minibuffer-setup-hook #'yas-minor-mode)
 
 (keymap-set minibuffer-mode-map "C-c h" 'consult-history)
 
@@ -353,6 +352,16 @@
                 corfu-echo-delay nil
                 corfu-popupinfo-delay nil)
     (corfu-mode 1)))
+;; >-------------------------
+
+;; <-------------------------
+;; ## yasnippet
+
+(add-hook 'minibuffer-setup-hook #'yas-minor-mode)
+(add-hook 'minibuffer-setup-hook #'my/minibuffer/yasnippet-setup-hook)
+
+(defun my/minibuffer/yasnippet-setup-hook ()
+  (setq yas-buffer-local-condition '(= (point) 13))) ; "Switch to: X"
 ;; >-------------------------
 
 ;; >--------------------------------------------------
