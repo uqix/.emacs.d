@@ -1588,7 +1588,7 @@
 
 (require 'multiple-cursors)
 
-(keymap-global-set "s-i M" 'mc/edit-lines)
+(keymap-global-set "s-i m c" 'mc/edit-lines)
 ;; >--------------------------------------------------
 
 
