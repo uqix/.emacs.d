@@ -2024,6 +2024,11 @@
 (setopt indent-tabs-mode nil)
 
 (keymap-global-set "s-i m w" #'whitespace-mode)
+
+(defvar-keymap my/whitespace-mode/repeat-map
+  :repeat t
+  "w" #'whitespace-mode)
+
 (keymap-global-set "M-\\" #'delete-trailing-whitespace) ; was delete-horizontal-space
 (keymap-global-set "M-|" #'delete-all-space)
 
