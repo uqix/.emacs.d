@@ -2041,6 +2041,21 @@
 
 (keymap-set indent-rigidly-map "i" #'indent-rigidly-right)
 (keymap-set indent-rigidly-map "u" #'indent-rigidly-left)
+
+;; <----------
+;; ### New line
+
+(keymap-global-set "s-i RET" #'my/indent/newline)
+
+(defun my/indent/newline ()
+  (interactive)
+  (back-to-indentation)
+  (let ((col (current-column)))
+    (move-end-of-line nil)
+    (electric-indent-just-newline nil)
+    (indent-to-column col)))
+;; >----------
+
 ;; >-------------------------
 
 ;; <-------------------------
