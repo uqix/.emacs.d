@@ -2307,6 +2307,7 @@
   "d" #'yaml-pro-ts-down-level
   "m" #'yaml-pro-ts-mark-subtree
   "k" #'yaml-pro-ts-kill-subtree
+  "<backspace>" #'my/yaml-pro-ts-kill-subtree/tree-repeat
   "a" #'yaml-pro-ts-first-sibling
   "e" #'yaml-pro-ts-last-sibling
   "t" #'yaml-pro-ts-move-subtree-up
@@ -2316,6 +2317,12 @@
 (defun my/yaml-pro/set-mark ()
   (interactive)
   (my/region/set-mark 'my/yaml-pro/set-mark))
+
+(defun my/yaml-pro-ts-kill-subtree/tree-repeat ()
+  (interactive)
+  (if (use-region-p)
+      (delete-active-region)
+    (yaml-pro-ts-kill-subtree)))
 ;; >----------
 
 (keymap-set yaml-pro-ts-mode-map "C-c m" #'yaml-pro-ts-mark-subtree)
