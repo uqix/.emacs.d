@@ -737,6 +737,12 @@
 ;; <--------------------------------------------------
 ;; # Region
 
+(keymap-global-set "M-]" #'exchange-point-and-mark)
+
+(defvar-keymap my/exchange-point-and-mark/repeat-map
+  :repeat t
+  "]" #'exchange-point-and-mark)
+
 ;; <-------------------------
 ;; ## Utils
 
@@ -781,7 +787,7 @@
 
 (require 'expand-region)
 
-(keymap-global-set "M-[" 'er/expand-region)
+(keymap-global-set "M-[" #'er/expand-region)
 
 (defvar-keymap my/expand-region/repeat-map
   :repeat t
