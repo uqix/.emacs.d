@@ -2040,7 +2040,7 @@
 ;; <-------------------------
 ;; ## Indent
 
-(keymap-global-set "s-i i" #'indent-rigidly)
+(keymap-set embark-region-map "i" #'indent-rigidly)
 
 (keymap-set indent-rigidly-map "i" #'indent-rigidly-right)
 (keymap-set indent-rigidly-map "u" #'indent-rigidly-left)
