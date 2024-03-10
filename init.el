@@ -2420,6 +2420,8 @@
 (keymap-set jinja2-mode-map "M-o" nil) ; facemenu-set-
 
 (keymap-global-set "s-i m J" #'jinja2-mode)
+
+(modify-syntax-entry ?. "." jinja2-mode-syntax-table)
 ;; >--------------------------------------------------
 
 
