@@ -1290,7 +1290,7 @@
 ;; >----------
 
 ;; <----------
-;; ### difftastic.el
+;; ### difftastic
 
 ;; https://github.com/pkryger/difftastic.el
 
@@ -1313,7 +1313,7 @@
         [ansi-color-bright-black
          magit-diff-removed
          magit-diff-added
-         magit-diff-hunk-heading
+         magit-filename
          font-lock-comment-face
          default
          font-lock-warning-face
