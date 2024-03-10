@@ -300,7 +300,7 @@
 (add-hook 'minibuffer-setup-hook #'subword-mode)
 (add-hook 'minibuffer-setup-hook #'flyspell-mode)
 
-(keymap-set minibuffer-mode-map "C-c h" 'consult-history)
+(keymap-set minibuffer-mode-map "C-h" 'consult-history)
 
 ;; <-------------------------
 ;; ## vertico
@@ -421,7 +421,7 @@
 
 (keymap-set isearch-mode-map "s-r" #'isearch-query-replace)
 (keymap-set isearch-mode-map "s-f" #'consult-line)
-(keymap-set isearch-mode-map "C-c h" #'consult-isearch-history)
+(keymap-set isearch-mode-map "C-h" #'consult-isearch-history)
 (keymap-set isearch-mode-map "M-j" 'my/avy-isearch)
 
 (defun my/avy-isearch ()
@@ -689,7 +689,7 @@
 
 (require 'shell)
 
-(keymap-set shell-mode-map "C-c h" 'consult-history)
+(keymap-set shell-mode-map "C-h" 'consult-history)
 (keymap-set shell-mode-map "C-c p" 'comint-previous-prompt)
 (keymap-set shell-mode-map "C-c n" 'comint-next-prompt)
 (keymap-set shell-mode-map "C-c c" 'comint-clear-buffer)
