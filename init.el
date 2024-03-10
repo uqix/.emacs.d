@@ -1373,6 +1373,14 @@
 ;; switch-to-buffer-in-dedicated-window pop?
 
 ;; <-------------------------
+;; ## winner
+
+(require 'winner)
+
+(winner-mode)
+;; >-------------------------
+
+;; <-------------------------
 ;; ## Repeat
 
 (defvar-keymap my/window/repeat-map
@@ -1381,7 +1389,9 @@
   "s" #'shrink-window               ; [s]horter
   "w" #'enlarge-window-horizontally ; [w]ider
   "n" #'shrink-window-horizontally  ; [n]arrower
-  "b" #'balance-windows)
+  "b" #'balance-windows
+  "r" #'winner-redo
+  "u" #'winner-undo)
 
 (keymap-global-set "s-i w" my/window/repeat-map)
 ;; >-------------------------
@@ -1456,22 +1466,6 @@
         (?m aw-move-window "Move")
         (?c aw-copy-window "Copy")
         (?j aw-switch-buffer-in-window "Buffer")))
-;; >-------------------------
-
-;; <-------------------------
-;; ## winner
-
-(require 'winner)
-
-(winner-mode)
-
-(keymap-global-set "s-i l u" #'winner-undo) ; [l]ayout
-(keymap-global-set "s-i l r" #'winner-redo)
-
-(defvar-keymap my/winner/repeat-map
-  :repeat t
-  "u" #'winner-undo
-  "r" #'winner-redo)
 ;; >-------------------------
 
 ;; <-------------------------
