@@ -505,6 +505,8 @@
 
 (keymap-global-set "s-i s b" #'scratch-buffer)
 
+(keymap-global-set "s-i a f" #'write-file) ; Save [a]s
+
 ;; s-1: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 1 (Misc)
 ;; s-2: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 2 (Emacs)
 ;; s-3: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 3 (Chrome)
