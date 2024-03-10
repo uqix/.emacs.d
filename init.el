@@ -1788,7 +1788,8 @@
 ;; ## Tree repeat-map
 
 (defvar-keymap my/lisp/tree-repeat-map
-  :repeat t
+  :repeat (:enter
+           (backward-kill-sexp))
   "n" #'forward-list
   "p" #'backward-list
   "u" #'backward-up-list
@@ -1798,7 +1799,7 @@
   "f" #'forward-sexp
   "b" #'backward-sexp
   "k" #'kill-sexp
-  "<backspace>" #'backward-kill-sexp
+  "<backspace>" #'my/backward-kill-sexp/tree-repeat
   "SPC" #'my/lisp/set-mark)
 
 (dolist (cmd '(treesit-beginning-of-defun
@@ -1808,6 +1809,12 @@
 (defun my/lisp/set-mark ()
   (interactive)
   (my/region/set-mark 'my/lisp/set-mark))
+
+(defun my/backward-kill-sexp/tree-repeat ()
+  (interactive)
+  (if (use-region-p)
+      (delete-active-region)
+    (backward-kill-sexp)))
 ;; >-------------------------
 
 ;; <-------------------------
