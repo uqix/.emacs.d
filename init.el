@@ -709,6 +709,7 @@
 
 (keymap-set vterm-mode-map "C-c c" #'vterm-copy-mode)
 (keymap-set vterm-mode-map "M-g" #'avy-goto-line)
+(keymap-set vterm-mode-map "M-j" #'avy-goto-char-timer)
 (keymap-set vterm-mode-map "M-y" #'vterm-yank-pop)
 
 (keymap-set vterm-copy-mode-map "C-c c" #'vterm-copy-mode)
