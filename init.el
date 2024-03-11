@@ -1515,15 +1515,15 @@
            "*Warnings*"
            "*docker-containers*"
            "*diff-syntax:"
-           "*Embark Actions*"))
+           "*Embark Actions*"
+           "*yaml-pro-edit*"))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
 
 (add-to-list
  'display-buffer-alist
- `(,(rx (| "*edit-indirect "
-           "*yaml-pro-edit*"))
+ `(,(rx (| "*edit-indirect "))
    display-buffer-same-window))
 
 (add-to-list
@@ -1542,7 +1542,8 @@
 
 (add-to-list
  'display-buffer-alist
- `(,(my/display-buffer-alist/condition-by-major-modes '(dired-mode))
+ `(,(my/display-buffer-alist/condition-by-major-modes
+     '(dired-mode))
    display-buffer-in-side-window
    (side . right)
    (window-width . 0.2)
