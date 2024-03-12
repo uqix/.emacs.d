@@ -277,6 +277,10 @@
 
 (keymap-global-set "s-i m f" #'flymake-mode)
 
+(defvar-keymap my/flymake/mode-repeat-map
+  :repeat t
+  "f" #'flymake-mode)
+
 ;; <-------------------------
 ;; ## flymake-collection
 
