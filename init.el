@@ -1155,7 +1155,8 @@
 ;; $ brew install maven
 
 (setopt project-vc-extra-root-markers
-        '("Chart.yaml"))
+        '("Chart.yaml"
+          "my.proj"))
 
 (keymap-global-set "s-p" project-prefix-map)
 
