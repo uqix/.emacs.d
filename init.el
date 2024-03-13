@@ -324,7 +324,7 @@
 (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
 
 ;; https://github.com/minad/vertico/blob/main/extensions/vertico-quick.el
-(keymap-set vertico-map "M-g" #'vertico-quick-insert)
+(keymap-set vertico-map "M-g" #'vertico-quick-exit)
 
 (vertico-multiform-mode)
 
