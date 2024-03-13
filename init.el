@@ -2008,7 +2008,8 @@
   (when (and polymode-mode
              (eq major-mode 'bash-ts-mode)
              (eglot-managed-p))
-    (eglot--managed-mode-off)))
+    (eglot--managed-mode-off)
+    (flymake-mode -1)))
 ;; >----------
 
 ;; >-------------------------
