@@ -2410,6 +2410,7 @@
 (setopt markdown-display-remote-images t)
 (setopt markdown-fontify-code-blocks-natively t)
 (setopt markdown-max-image-size '(500 . 500))
+(setopt markdown-asymmetric-header t)
 
 (keymap-set markdown-mode-map "C-c c" #'markdown-insert-code)
 (keymap-set markdown-mode-map "C-c b" #'markdown-insert-gfm-code-block)
