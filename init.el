@@ -816,7 +816,11 @@
 (keymap-global-set "s-i s `" 'my/select-text/between/back-quotes)
 (keymap-global-set "s-i s \\" 'my/select-text/between/backslashes)
 (keymap-global-set "s-i s |" 'my/select-text/between/pipes)
+
 (keymap-global-set "s-i s (" 'my/select-text/between/parentheses)
+(keymap-global-set "s-i s [" 'my/select-text/between/square-brackets)
+(keymap-global-set "s-i s {" 'my/select-text/between/braces)
+(keymap-global-set "s-i s <" 'my/select-text/between/angle-brackets)
 
 (defun my/select-text/between/spaces ()
   (interactive)
@@ -853,6 +857,18 @@
 (defun my/select-text/between/parentheses ()
   (interactive)
   (my/select-text/between ?( ?)))
+
+(defun my/select-text/between/square-brackets ()
+  (interactive)
+  (my/select-text/between ?[ ?]))
+
+(defun my/select-text/between/braces ()
+  (interactive)
+  (my/select-text/between ?{ ?}))
+
+(defun my/select-text/between/angle-brackets ()
+  (interactive)
+  (my/select-text/between ?< ?>))
 
 (defun my/select-text/between (opening-sep &optional closing-sep)
   (let ((closing-sep (or closing-sep opening-sep)))
