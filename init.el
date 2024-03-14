@@ -815,7 +815,8 @@
 (keymap-global-set "s-i s \"" 'my/select-text/between/double-quotes)
 (keymap-global-set "s-i s `" 'my/select-text/between/back-quotes)
 (keymap-global-set "s-i s \\" 'my/select-text/between/backslashes)
-(keymap-global-set "s-i s |" 'my/select-text/between/pipe)
+(keymap-global-set "s-i s |" 'my/select-text/between/pipes)
+(keymap-global-set "s-i s (" 'my/select-text/between/parentheses)
 
 (defun my/select-text/between/spaces ()
   (interactive)
@@ -845,18 +846,22 @@
   (interactive)
   (my/select-text/between ?\\))
 
-(defun my/select-text/between/pipe ()
+(defun my/select-text/between/pipes ()
   (interactive)
   (my/select-text/between ?|))
 
-(defun my/select-text/between (separator)
-  (let ((separator-regexp (regexp-quote (string separator))))
-    (re-search-backward (format "%s\\|^" separator-regexp))
-    (when (= (char-after) separator)
+(defun my/select-text/between/parentheses ()
+  (interactive)
+  (my/select-text/between ?( ?)))
+
+(defun my/select-text/between (opening-sep &optional closing-sep)
+  (let ((closing-sep (or closing-sep opening-sep)))
+    (re-search-backward (format "%s\\|^" (regexp-quote (string opening-sep))))
+    (when (= (char-after) opening-sep)
       (forward-char))
     (set-mark (point))
-    (re-search-forward (format "%s\\|$" separator-regexp))
-    (when (= (char-before) separator)
+    (re-search-forward (format "%s\\|$" (regexp-quote (string closing-sep))))
+    (when (= (char-before) closing-sep)
       (backward-char))))
 ;; >----------
 
