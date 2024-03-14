@@ -815,6 +815,7 @@
 (keymap-global-set "s-i s \"" 'my/select-text/between/double-quotes)
 (keymap-global-set "s-i s `" 'my/select-text/between/back-quotes)
 (keymap-global-set "s-i s \\" 'my/select-text/between/backslashes)
+(keymap-global-set "s-i s |" 'my/select-text/between/pipe)
 
 (defun my/select-text/between/spaces ()
   (interactive)
@@ -843,6 +844,10 @@
 (defun my/select-text/between/backslashes ()
   (interactive)
   (my/select-text/between ?\\))
+
+(defun my/select-text/between/pipe ()
+  (interactive)
+  (my/select-text/between ?|))
 
 (defun my/select-text/between (separator)
   (let ((separator-regexp (regexp-quote (string separator))))
