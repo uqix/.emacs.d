@@ -276,7 +276,7 @@
 (keymap-set flymake-mode-map "M-p" 'flymake-goto-prev-error)
 
 (keymap-global-set "s-i m f" #'flymake-mode)
-
+;; TODO: rm it, add error-repeat-map
 (defvar-keymap my/flymake/mode-repeat-map
   :repeat t
   "f" #'flymake-mode)
