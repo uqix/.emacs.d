@@ -365,7 +365,7 @@
 (add-hook 'minibuffer-setup-hook #'my/minibuffer/yasnippet-setup-hook)
 
 (defun my/minibuffer/yasnippet-setup-hook ()
-  (setq yas-buffer-local-condition '(= (point) 13))) ; "Switch to: X"
+  (setq-local yas-buffer-local-condition '(= (point) 13))) ; "Switch to: X"
 ;; >-------------------------
 
 ;; >--------------------------------------------------
