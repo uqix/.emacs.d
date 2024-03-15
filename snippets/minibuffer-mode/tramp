@@ -1,0 +1,3 @@
+# key: t
+# --
+/ssh:${1:winning}@${2:devops}:${0:~/tmp/}
