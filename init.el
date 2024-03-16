@@ -2501,8 +2501,12 @@
 (require 'pdf-tools)
 
 (pdf-loader-install)
+
 (add-hook 'pdf-view-mode-hook #'pdf-view-midnight-minor-mode)
+
 (keymap-set pdf-view-mode-map  "M-g" #'pdf-view-goto-page)
+(keymap-set pdf-view-mode-map  "j" #'pdf-view-next-line-or-next-page)
+(keymap-set pdf-view-mode-map  "k" #'pdf-view-previous-line-or-previous-page)
 ;; >--------------------------------------------------
 
 
