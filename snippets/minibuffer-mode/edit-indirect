@@ -1,3 +1,4 @@
 # key: e
+# condition: 'consult-buffer
 # --
 *edit-indirect 

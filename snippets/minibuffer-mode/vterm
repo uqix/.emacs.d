@@ -1,3 +1,4 @@
 # key: v
+# condition: 'consult-buffer
 # --
 *vterm* 

@@ -365,7 +365,13 @@
 (add-hook 'minibuffer-setup-hook #'my/minibuffer/yasnippet-setup-hook)
 
 (defun my/minibuffer/yasnippet-setup-hook ()
-  (setq-local yas-buffer-local-condition '(= (point) 13))) ; "Switch to: X"
+  (setq-local my/minibuffer/current-command this-command)
+  (setq-local yas-buffer-local-condition
+              '(pcase my/minibuffer/current-command
+                 ('consult-buffer (and
+                                   (= (point) (+ (length "Switch to: ?") 1))
+                                   '(require-snippet-condition . consult-buffer)))
+                 (cmd `(require-snippet-condition . ,cmd)))))
 ;; >-------------------------
 
 ;; >--------------------------------------------------

@@ -1,0 +1,4 @@
+# key: ta
+# condition: 'project-find-file
+# --
+tekton-run/catalog/stepaction/stepaction.yaml 

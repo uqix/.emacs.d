@@ -1,3 +1,5 @@
+# -*- mode: snippet -*-
 # key: t
+# condition: 'find-file
 # --
 /ssh:${1:winning}@${2:devops}:${0:~/tmp/}
