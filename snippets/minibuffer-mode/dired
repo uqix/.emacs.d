@@ -1,0 +1,4 @@
+# key: d
+# condition: 'consult-buffer
+# --
+&Dired 
