@@ -357,6 +357,8 @@
 (add-hook 'minibuffer-setup-hook #'yas-minor-mode)
 (add-hook 'minibuffer-setup-hook #'my/minibuffer/yasnippet-setup-hook)
 
+(defvar-local my/minibuffer/current-command nil)
+
 (defun my/minibuffer/yasnippet-setup-hook ()
   (setq-local my/minibuffer/current-command this-command)
   (setq-local yas-buffer-local-condition
@@ -2207,7 +2209,7 @@
 ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-1284144173
 (keymap-set edit-indirect-mode-map "<remap> <save-buffer>" #'edit-indirect-commit)
 
-(defvar edit-indirect--left-margin 0)
+(defvar-local edit-indirect--left-margin 0)
 
 (defun vbe/edit-indirect/remove-left-margin ()
   "Remove left-margin and save it into a local variable."
