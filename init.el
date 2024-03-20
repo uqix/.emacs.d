@@ -49,7 +49,7 @@
 
 
 ;; <--------------------------------------------------
-;; # Dabbrev
+;; # DAbbrev
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Dynamic-Abbrevs.html
 
@@ -58,6 +58,8 @@
 ;; M-/ -> dabbrev-expand
 
 (setopt dabbrev-case-fold-search nil)
+
+(keymap-global-set "C-M-/" #'cape-dabbrev) ; was dabbrev-completion
 ;; >--------------------------------------------------
 
 
