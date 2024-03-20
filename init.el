@@ -59,7 +59,11 @@
 
 (setopt dabbrev-case-fold-search nil)
 
-(keymap-global-set "C-M-/" #'cape-dabbrev) ; was dabbrev-completion
+(keymap-global-set "C-M-/" #'my/dabbrev/completion) ; was dabbrev-completion
+
+(defun my/dabbrev/completion ()
+  (interactive)
+  (dabbrev-completion 16))
 ;; >--------------------------------------------------
 
 
