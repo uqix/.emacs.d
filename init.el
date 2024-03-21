@@ -2433,7 +2433,7 @@
 (keymap-set markdown-mode-map "C-c k" #'markdown-kill-block)
 
 ;; <-------------------------
-;; ## Heading jump (repeat-map)
+;; ## Heading repeat-map
 
 (keymap-set markdown-mode-map "C-M-n" #'markdown-forward-same-level)   ; was forward-list
 (keymap-set markdown-mode-map "C-M-p" #'markdown-backward-same-level)  ; was backward-list
@@ -2442,7 +2442,7 @@
 (keymap-set markdown-mode-map "C-M-f" #'markdown-forward-block)        ; was forward-sexp
 (keymap-set markdown-mode-map "C-M-b" #'markdown-backward-block)       ; was backward-sexp
 
-(defvar-keymap my/markdown/heading-jump-repeat-map
+(defvar-keymap my/markdown/heading-repeat-map
   :repeat t
   "n" #'markdown-forward-same-level
   "p" #'markdown-backward-same-level
@@ -2467,6 +2467,15 @@
   "}" #'markdown-forward-paragraph
   "[" #'markdown-backward-paragraph
   "]" #'markdown-forward-paragraph)
+;; >-------------------------
+
+;; <-------------------------
+;; ## Link repeat-map
+
+(defvar-keymap my/markdown/link-repeat-map
+  :repeat t
+  "n" #'markdown-next-link
+  "p" #'markdown-previous-link)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
