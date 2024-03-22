@@ -2431,6 +2431,12 @@
 (keymap-set markdown-mode-map "C-c I" #'markdown-toggle-inline-images)
 (keymap-set markdown-mode-map "C-c m" #'markdown-mark-block)
 (keymap-set markdown-mode-map "C-c k" #'markdown-kill-block)
+(keymap-set markdown-mode-map "C-c '" #'my/markdown-edit-code-block)
+
+(defun my/markdown-edit-code-block ()
+  (interactive)
+  (search-backward "```" nil t)
+  (markdown-edit-code-block))
 
 ;; <-------------------------
 ;; ## Heading repeat-map
