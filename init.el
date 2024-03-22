@@ -2433,6 +2433,9 @@
 (keymap-set markdown-mode-map "C-c k" #'markdown-kill-block)
 (keymap-set markdown-mode-map "C-c '" #'my/markdown-edit-code-block)
 
+(keymap-set markdown-mode-map "C-c t" #'markdown-insert-gfm-checkbox) ; [t]odo
+(keymap-set markdown-mode-map "C-c d" #'markdown-toggle-gfm-checkbox) ; [d]one
+
 (defun my/markdown-edit-code-block ()
   (interactive)
   (search-backward "```" nil t)
