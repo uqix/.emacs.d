@@ -507,6 +507,7 @@
 
 (keymap-global-unset "C-x C-c") ; was quit emacs
 (keymap-global-unset "C-x C-z") ; was suspend-frame (minimize)
+(keymap-global-unset "C-s-SPC") ; was ns-do-show-character-palette
 
 (keymap-set key-translation-map "s-SPC" "C-g")
 (keymap-set key-translation-map "s-," "C-c") ; was customize
@@ -525,6 +526,8 @@
 (keymap-global-set "C-\\" #'toggle-truncate-lines) ; was toggle-input-method
 
 (keymap-global-set "C-." #'pop-to-mark-command) ; was flyspell-auto-correct-word
+
+(keymap-global-set "s-i E" #'ns-do-show-character-palette) ; [E]moji
 
 ;; <-------------------------
 ;; ## next-error
