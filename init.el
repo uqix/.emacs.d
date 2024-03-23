@@ -660,6 +660,7 @@
 (keymap-set symbol-overlay-map "o" #'symbol-overlay-put)
 (keymap-set symbol-overlay-map "h" #'my/highlight-regexp/all) ; was symbol-overlay-map-help
 (keymap-set symbol-overlay-map "u" #'symbol-overlay-remove-all)
+(keymap-set symbol-overlay-map "R" #'symbol-overlay-query-replace)
 
 ;; <----------
 ;; ### avy jump
