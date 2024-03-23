@@ -895,11 +895,11 @@
 
 (defun my/select-text/between/parentheses ()
   (interactive)
-  (my/select-text/between ?( ?)))
+  (my/select-text/between ?\( ?\)))
 
 (defun my/select-text/between/square-brackets ()
   (interactive)
-  (my/select-text/between ?[ ?]))
+  (my/select-text/between ?\[ ?\]))
 
 (defun my/select-text/between/braces ()
   (interactive)
