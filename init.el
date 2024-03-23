@@ -1591,7 +1591,8 @@
            "*docker-containers*"
            "*diff-syntax:"
            "*Embark Actions*"
-           "*yaml-pro-edit*"))
+           "*yaml-pro-edit*"
+           "*Flymake diagnostics for "))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
