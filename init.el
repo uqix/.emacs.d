@@ -1322,6 +1322,7 @@
 (setopt magit-diff-refine-hunk 'all)
 (setopt magit-diff-highlight-hunk-body nil)
 (setopt magit-commit-show-diff nil)
+(setopt magit-diff-extra-stat-arguments #'magit-diff-use-window-width-as-stat-width)
 
 (keymap-global-set "s-m" 'magit-status) ; was iconify-frame
 
