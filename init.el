@@ -2545,6 +2545,7 @@
 (keymap-global-set "s-i m J" #'jinja2-mode)
 
 (modify-syntax-entry ?. "." jinja2-mode-syntax-table)
+(modify-syntax-entry ?: "." jinja2-mode-syntax-table)
 ;; >--------------------------------------------------
 
 
