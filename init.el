@@ -2807,11 +2807,11 @@
 (set-face-attribute 'ztreep-diff-model-add-face nil :foreground
                     (face-attribute 'font-lock-function-name-face :foreground))
 
-(set-face-attribute 'ztreep-diff-header-face nil :foreground
-                    (face-attribute 'ztreep-diff-model-normal-face :foreground))
+(set-face-attribute 'ztreep-diff-header-face nil
+                    :foreground (face-attribute 'shadow :foreground))
 
-(set-face-attribute 'ztreep-diff-header-small-face nil :foreground
-                    (face-attribute 'ztreep-diff-model-normal-face :foreground))
+(set-face-attribute 'ztreep-diff-header-small-face nil
+                    :foreground (face-attribute 'shadow :foreground) :weight 'normal)
 ;; >-------------------------
 
 (set-face-attribute
