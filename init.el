@@ -2684,9 +2684,13 @@
  'hl-line nil :background
  (my/color-darken-name (face-attribute 'hl-line :background) 20))
 
+;; <-------------------------
+;; ## elisp
+
 (set-face-attribute
  'highlight-function-calls-face nil
  :underline nil :inherit 'font-lock-function-call-face)
+;; >-------------------------
 
 ;; <-------------------------
 ;; ## Magit
@@ -2789,6 +2793,22 @@
                       :weight 'bold :foreground (my/color-darken-name h2 15))
   (set-face-attribute 'markdown-header-face-6 nil
                       :weight 'bold :foreground (my/color-darken-name h2 30)))
+;; >-------------------------
+
+;; <-------------------------
+;; ## ztree
+
+(set-face-attribute 'ztreep-diff-model-diff-face nil :foreground
+                    (face-attribute 'font-lock-type-face :foreground))
+
+(set-face-attribute 'ztreep-diff-model-add-face nil :foreground
+                    (face-attribute 'font-lock-function-name-face :foreground))
+
+(set-face-attribute 'ztreep-diff-header-face nil :foreground
+                    (face-attribute 'ztreep-diff-model-normal-face :foreground))
+
+(set-face-attribute 'ztreep-diff-header-small-face nil :foreground
+                    (face-attribute 'ztreep-diff-model-normal-face :foreground))
 ;; >-------------------------
 
 (set-face-attribute
