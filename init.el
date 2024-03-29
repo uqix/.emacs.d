@@ -724,6 +724,9 @@
 (require 'ztree)
 
 (keymap-global-set "s-i d d" #'ztree-diff)
+
+(keymap-set ztree-mode-map "n" #'ztree-next-line)
+(keymap-set ztree-mode-map "p" #'ztree-previous-line)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
