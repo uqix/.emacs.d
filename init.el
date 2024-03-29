@@ -723,6 +723,10 @@
 
 (require 'ztree)
 
+;; Prefer winner-undo
+(defun ztree-diff-ediff (file-a file-b &optional startup-hooks)
+  (ediff file-a file-b startup-hooks))
+
 (keymap-global-set "s-i d d" #'ztree-diff)
 
 (keymap-set ztree-mode-map "n" #'ztree-next-line)
