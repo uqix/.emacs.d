@@ -727,6 +727,9 @@
 (defun ztree-diff-ediff (file-a file-b &optional startup-hooks)
   (ediff file-a file-b startup-hooks))
 
+;; Prefer manual refresh
+(defun ztree-view-on-window-configuration-changed ())
+
 (keymap-global-set "s-i d d" #'ztree-diff)
 
 (keymap-set ztree-mode-map "n" #'ztree-next-line)
