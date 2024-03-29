@@ -539,6 +539,7 @@
 
 (keymap-global-set "s-i m t" #'text-mode)
 (keymap-global-set "s-i m v" #'view-mode)
+(keymap-global-set "s-i m r" #'auto-revert-mode)
 
 (keymap-global-set "C-h F" #'describe-face)
 (keymap-global-set "C-h K" #'describe-keymap)
