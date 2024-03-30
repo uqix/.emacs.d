@@ -170,8 +170,8 @@
 
 (defun my/frame-title-format ()
   (let ((buffer-name (buffer-name))
-         (file-path (buffer-file-name))
-         (project-path (consult--project-root)))
+        (file-path (buffer-file-name))
+        (project-path (consult--project-root)))
     (if project-path
         (let* ((project-path (directory-file-name project-path))
                (project-name (file-name-nondirectory project-path))
@@ -184,7 +184,8 @@
                   (if file-parent-subpath
                       (format " 🚦⤵ %s" (my/abbreviate-path file-parent-subpath))
                     "")
-                  (my/abbreviate-path project-parent-path)))
+                  (my/abbreviate-path
+                   (my/frame-title-format/project-parent-path project-parent-path))))
       (format "%s 💢 %s"
               (my/frame-title-format/buffer-name buffer-name)
               (if file-path (my/abbreviate-path file-path) "")))))
@@ -214,6 +215,16 @@
            (string-replace edit-indirect-prefix "*💥" buffer-name))
           (t
            buffer-name))))
+
+(defun my/frame-title-format/project-parent-path (project-parent-path)
+  (let ((repo-root (vc-git-root project-parent-path)))
+    (if repo-root
+        (let* ((repo-path (directory-file-name repo-root))
+               (repo-name (file-name-nondirectory repo-path))
+               (repo-parent-path (f-dirname repo-path))
+               (project-parent-subpath (file-relative-name project-parent-path repo-path)))
+          (format "%s/📚%s📚/%s" repo-parent-path repo-name project-parent-subpath))
+      project-parent-path)))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
