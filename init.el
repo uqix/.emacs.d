@@ -171,9 +171,9 @@
 (defun my/frame-title-format ()
   (let ((buffer-name (buffer-name))
         (file-path (buffer-file-name))
-        (project-path (consult--project-root)))
-    (if project-path
-        (let* ((project-path (directory-file-name project-path))
+        (project-root (consult--project-root)))
+    (if project-root
+        (let* ((project-path (directory-file-name project-root))
                (project-name (file-name-nondirectory project-path))
                (file-subpath (and file-path (file-relative-name file-path project-path)))
                (file-parent-subpath (and file-subpath (f-dirname file-subpath)))
@@ -196,7 +196,8 @@
     result))
 
 (defun my/frame-title-format/buffer-name (buffer-name &optional project-path)
-  (let ((edit-indirect-prefix "*edit-indirect "))
+  (let ((edit-indirect-prefix "*edit-indirect ")
+        (project-name (and project-path (file-name-nondirectory project-path))))
     (cond ((eq major-mode 'vterm-mode)
            (let* ((vterm-prefix (format "%s " vterm-buffer-name))
                   (wd
@@ -213,6 +214,8 @@
                      (or wd ""))))
           ((string-prefix-p edit-indirect-prefix buffer-name)
            (string-replace edit-indirect-prefix "*💥" buffer-name))
+          (project-name
+           (string-remove-suffix (format "<%s>" project-name) buffer-name))
           (t
            buffer-name))))
 
