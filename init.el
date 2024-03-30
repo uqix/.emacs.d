@@ -178,15 +178,13 @@
                (file-subpath (and file-path (file-relative-name file-path project-path)))
                (file-parent-subpath (and file-subpath (f-dirname file-subpath)))
                (project-parent-path (f-dirname project-path)))
-          (format "%s 💙 %s%s 🚦⤴ %s"
+          (format "%s 💙%s💙/%s 🛖%s"
                   (my/frame-title-format/buffer-name buffer-name project-path)
                   project-name
-                  (if file-parent-subpath
-                      (format " 🚦⤵ %s" (my/abbreviate-path file-parent-subpath))
-                    "")
+                  (if file-parent-subpath (my/abbreviate-path file-parent-subpath) "")
                   (my/abbreviate-path
                    (my/frame-title-format/project-parent-path project-parent-path))))
-      (format "%s 💢 %s"
+      (format "%s 💢%s"
               (my/frame-title-format/buffer-name buffer-name)
               (if file-path (my/abbreviate-path file-path) "")))))
 
