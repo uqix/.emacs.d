@@ -2828,5 +2828,5 @@
 
 (set-face-attribute
  'default nil :foreground
- (my/color-darken-name (face-attribute 'default :foreground) 20))
+ (my/color-darken-name (face-attribute 'default :foreground) 15 30))
 ;; >--------------------------------------------------
