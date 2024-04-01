@@ -2460,7 +2460,7 @@
   '(poly-bash-innermode
     poly-nginx-innermode))
 
-(add-to-list 'auto-mode-alist '("\\.yaml" . poly-yaml-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.ya?ml" . poly-yaml-ts-mode))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
