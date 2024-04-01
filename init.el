@@ -1702,6 +1702,8 @@
 
 (require 'doom-modeline)
 
+(setopt doom-modeline-check-simple-format t)
+
 (doom-modeline-mode 1)
 
 ;; M-x nerd-icons-install-fonts
