@@ -2699,7 +2699,7 @@
 
 (set-face-attribute
  'hl-line nil :background
- (my/color-darken-name (face-attribute 'hl-line :background) 20))
+ (my/color-darken-name (face-attribute 'hl-line :background) 10))
 
 ;; <-------------------------
 ;; ## elisp
