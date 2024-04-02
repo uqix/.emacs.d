@@ -2546,6 +2546,16 @@
   "p" #'markdown-previous-link)
 ;; >-------------------------
 
+;; <-------------------------
+;; ## preview
+
+(require 'markdown-xwidget)
+
+(setopt markdown-xwidget-github-theme "dark-dimmed")
+(setopt markdown-xwidget-code-block-theme "github-dark-dimmed")
+(setopt markdown-xwidget-mermaid-theme "dark")
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
