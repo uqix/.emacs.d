@@ -1758,6 +1758,20 @@
 (keymap-global-set "s-i r r" #'query-replace-regexp)
 ;; >-------------------------
 
+;; <-------------------------
+;; ## Remove empty lines in region
+
+(keymap-global-set "s-i r e" #'my/remove-empty-lines)
+
+(defun my/remove-empty-lines ()
+  (interactive)
+  (if (use-region-p)
+      (let ((begin (region-beginning))
+            (end (region-end)))
+        (flush-lines "^$" begin end))
+    (message "No region")))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
