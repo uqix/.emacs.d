@@ -265,7 +265,7 @@
 
 (require 'flyspell-correct)
 
-; was flyspell-auto-correct-previous-word
+;; was flyspell-auto-correct-previous-word
 (keymap-set flyspell-mode-map "C-;" #'flyspell-correct-wrapper)
 ;; >----------
 
@@ -1354,7 +1354,7 @@
 (keymap-global-set "s-i v m" #'magit-submodule)
 (keymap-global-set "s-i v b" #'magit-blame)
 
-; [o]pen; was magit-submodule
+;; [o]pen; was magit-submodule
 (keymap-set magit-revision-mode-map "o" #'magit-diff-visit-worktree-file-other-window)
 (keymap-set magit-status-mode-map "o" #'magit-diff-visit-worktree-file-other-window)
 (keymap-set magit-diff-mode-map "o" #'magit-diff-visit-worktree-file-other-window)
@@ -2702,6 +2702,9 @@
 (defclass eglot-sqls (eglot-lsp-server) ())
 (add-to-list 'eglot-server-programs '(sql-mode . (eglot-sqls "sqls")))
 
+(defvar my/eglot/sqls/current-connection nil)
+(defvar my/eglot/sqls/current-database nil)
+
 (cl-defmethod eglot-execute
   :around
   ((server eglot-sqls) action)
@@ -2732,7 +2735,8 @@
             (connection (completing-read "Switch to connection: " collection nil t))
             (index (number-to-string (string-to-number connection)))
             (action (plist-put action :arguments (vector index))))
-       (cl-call-next-method server action)))
+       (cl-call-next-method server action)
+       (setq my/eglot/sqls/current-connection connection)))
 
     ("switchDatabase"
      (let* ((databases (eglot--request server :workspace/executeCommand
@@ -2740,16 +2744,35 @@
             (collection (split-string databases "\n"))
             (database (completing-read "Switch to database: " collection nil t))
             (action (plist-put action :arguments (vector database))))
-       (cl-call-next-method server action)))
+       (cl-call-next-method server action)
+       (setq my/eglot/sqls/current-database database)))
 
     (_
      (cl-call-next-method))))
 
 (defun my/eglot/sqls/show-result (result)
   (with-current-buffer (get-buffer-create "*sqls result*")
+    (setq-local header-line-format
+                '(:eval (my/eglot/sqls/show-result/header-line-format)))
     (erase-buffer)
     (insert result)
     (display-buffer (current-buffer))))
+
+(defun my/eglot/sqls/show-result/header-line-format ()
+  (let* ((connection (or my/eglot/sqls/current-connection ""))
+         (parts (split-string connection " "))
+         (driver (nth 1 parts))
+         (alias (nth 2 parts))
+         (result (format "[%s] %s/%s"
+                         (or driver "?")
+                         (or alias "?")
+                         (or my/eglot/sqls/current-database "?"))))
+    (propertize result
+                'face 'my/eglot/sqls/show-result/header-line-face)))
+
+(defface my/eglot/sqls/show-result/header-line-face
+  '((t (:inherit 'magit-header-line)))
+  "*sqls result* header-line face")
 ;; >--------------------------------------------------
 
 
