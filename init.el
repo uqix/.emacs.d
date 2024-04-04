@@ -1616,7 +1616,9 @@
            "*diff-syntax:"
            "*Embark Actions*"
            "*yaml-pro-edit*"
-           "*Flymake diagnostics for "))
+           "*Flymake diagnostics for "
+           "*EGLOT "
+           "*sqls result*"))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
@@ -2690,6 +2692,64 @@
 ;; # TRAMP
 
 (setopt tramp-connection-timeout 3)
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; # SQL
+
+(defclass eglot-sqls (eglot-lsp-server) ())
+(add-to-list 'eglot-server-programs '(sql-mode . (eglot-sqls "sqls")))
+
+(cl-defmethod eglot-execute
+  :around
+  ((server eglot-sqls) action)
+
+  (pcase (plist-get action :command)
+    ("executeQuery"
+     (if (use-region-p)
+         (let* ((begin (region-beginning))
+                (end (region-end))
+                (begin-lsp (eglot--pos-to-lsp-position begin))
+                (end-lsp (eglot--pos-to-lsp-position end))
+                (action (plist-put action :range `(:start ,begin-lsp :end ,end-lsp)))
+                (result (cl-call-next-method server action)))
+           (my/eglot/sqls/show-result result))
+       (message "No region")))
+
+    ((or
+      "showConnections"
+      "showDatabases"
+      "showSchemas"
+      "showTables")
+     (my/eglot/sqls/show-result (cl-call-next-method)))
+
+    ("switchConnections"
+     (let* ((connections (eglot--request server :workspace/executeCommand
+                                         '(:command "showConnections")))
+            (collection (split-string connections "\n"))
+            (connection (completing-read "Switch to connection: " collection nil t))
+            (index (number-to-string (string-to-number connection)))
+            (action (plist-put action :arguments (vector index))))
+       (cl-call-next-method server action)))
+
+    ("switchDatabase"
+     (let* ((databases (eglot--request server :workspace/executeCommand
+                                       '(:command "showDatabases")))
+            (collection (split-string databases "\n"))
+            (database (completing-read "Switch to database: " collection nil t))
+            (action (plist-put action :arguments (vector database))))
+       (cl-call-next-method server action)))
+
+    (_
+     (cl-call-next-method))))
+
+(defun my/eglot/sqls/show-result (result)
+  (with-current-buffer (get-buffer-create "*sqls result*")
+    (erase-buffer)
+    (insert result)
+    (display-buffer (current-buffer))))
 ;; >--------------------------------------------------
 
 
