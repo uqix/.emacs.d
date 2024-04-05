@@ -1054,6 +1054,23 @@
    t))
 ;; >-------------------------
 
+;; <-------------------------
+;; ## Code formatter
+
+(with-eval-after-load 'embark
+  (keymap-set embark-region-map "f" nil)
+  (keymap-set embark-region-map "f s m" #'my/region/format/sql/mysql)
+  (keymap-set embark-region-map "f s p" #'my/region/format/sql/postgresql))
+
+(defun my/region/format/sql/mysql ()
+  (interactive)
+  (my/region/convert/by-shell-command "sqlfluff format -n -d mysql --disable-progress-bar -"))
+
+(defun my/region/format/sql/postgresql ()
+  (interactive)
+  (my/region/convert/by-shell-command "sqlfluff format -n -d postgres --disable-progress-bar -"))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
