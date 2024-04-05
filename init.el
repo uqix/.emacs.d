@@ -2364,11 +2364,11 @@
 
 ;; $ brew install yamllint
 
-(add-hook 'yaml-ts-mode-hook 'flymake-mode)
+(add-hook 'yaml-ts-mode-hook #'my/yaml/flymake-hook)
 
-(use-package yaml-ts-mode
-  :flymake-hook
-  (yaml-ts-mode flymake-collection-yamllint))
+(defun my/yaml/flymake-hook ()
+  (add-hook 'flymake-diagnostic-functions #'flymake-collection-yamllint nil t)
+  (flymake-mode))
 ;; >-------------------------
 
 ;; <-------------------------
