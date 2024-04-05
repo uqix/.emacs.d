@@ -298,9 +298,6 @@
 ;; https://github.com/mohkale/flymake-collection
 
 (require 'flymake-collection)
-
-(use-package flymake-collection
-  :hook (after-init . flymake-collection-hook-setup))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -2699,6 +2696,9 @@
 ;; <--------------------------------------------------
 ;; # SQL
 
+;; <-------------------------
+;; ## eglot
+
 (defclass eglot-sqls (eglot-lsp-server) ())
 (add-to-list 'eglot-server-programs '(sql-mode . (eglot-sqls "sqls")))
 
@@ -2773,6 +2773,26 @@
 (defface my/eglot/sqls/show-result/header-line-face
   '((t (:inherit 'magit-header-line)))
   "*sqls result* header-line face")
+;; >-------------------------
+
+;; <-------------------------
+;; ## flymake
+
+;; $ gem install sqlint
+;; $ brew install sql-lint
+
+(add-hook 'sql-mode-hook #'my/sql/flymake-hook)
+
+(defun my/sql/flymake-hook ()
+  (add-hook 'flymake-diagnostic-functions #'flymake-collection-sqlint nil t)
+  (add-hook 'flymake-diagnostic-functions #'flymake-collection-sql-lint nil t)
+  (flymake-mode)
+  (setq-local eglot-stay-out-of '(flymake))
+  (add-hook 'flymake-diagnostic-functions #'eglot-flymake-backend nil t))
+
+(setopt flymake-collection-sql-lint-driver "mysql")
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
