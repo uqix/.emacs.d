@@ -970,7 +970,7 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; ## Case convert
+;; ## Case converters
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -1009,15 +1009,13 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; ## Format convert
+;; ## Format converters
 
 ;; $ brew install yq
 
 (with-eval-after-load 'embark
   (keymap-set embark-region-map "c j y" #'my/region/convert/json/to-yaml)
-  (keymap-set embark-region-map "c j j" #'my/region/convert/json/prettify)
   (keymap-set embark-region-map "c y j" #'my/region/convert/yaml/to-json)
-  (keymap-set embark-region-map "c y y" #'my/region/convert/yaml/prettify)
   (keymap-set embark-region-map "c y p" #'my/region/convert/yaml/to-properties)
   (keymap-set embark-region-map "c p y" #'my/region/convert/properties/to-yaml))
 
@@ -1025,17 +1023,9 @@
   (interactive)
   (my/region/convert/by-shell-command "yq -p=json -o=yaml -"))
 
-(defun my/region/convert/json/prettify ()
-  (interactive)
-  (my/region/convert/by-shell-command "yq -p=json -o=json -"))
-
 (defun my/region/convert/yaml/to-json ()
   (interactive)
   (my/region/convert/by-shell-command "yq -p=yaml -o=json -"))
-
-(defun my/region/convert/yaml/prettify ()
-  (interactive)
-  (my/region/convert/by-shell-command "yq -p=yaml -o=yaml -"))
 
 (defun my/region/convert/yaml/to-properties ()
   (interactive)
@@ -1055,12 +1045,14 @@
 ;; >-------------------------
 
 ;; <-------------------------
-;; ## Code formatter
+;; ## Code formatters
 
 (with-eval-after-load 'embark
   (keymap-set embark-region-map "f" nil)
   (keymap-set embark-region-map "f s m" #'my/region/format/sql/mysql)
-  (keymap-set embark-region-map "f s p" #'my/region/format/sql/postgresql))
+  (keymap-set embark-region-map "f s p" #'my/region/format/sql/postgresql)
+  (keymap-set embark-region-map "f j" #'my/region/format/json)
+  (keymap-set embark-region-map "f y" #'my/region/format/yaml))
 
 (defun my/region/format/sql/mysql ()
   (interactive)
@@ -1069,6 +1061,14 @@
 (defun my/region/format/sql/postgresql ()
   (interactive)
   (my/region/convert/by-shell-command "sqlfluff format -n -d postgres --disable-progress-bar -"))
+
+(defun my/region/format/json ()
+  (interactive)
+  (my/region/convert/by-shell-command "yq -p=json -o=json -"))
+
+(defun my/region/format/yaml ()
+  (interactive)
+  (my/region/convert/by-shell-command "yq -p=yaml -o=yaml -"))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
