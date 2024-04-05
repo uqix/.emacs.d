@@ -779,7 +779,7 @@
 
 (with-eval-after-load 'embark
   (add-to-list 'embark-around-action-hooks '(my/vterm embark--cd))
-  (keymap-set embark-file-map "$" #'my/vterm))
+  (keymap-set embark-file-map "s" #'my/vterm)) ; was make-symbolic-link
 
 (defun my/vterm ()
   (interactive)
