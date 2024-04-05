@@ -1047,6 +1047,8 @@
 ;; <-------------------------
 ;; ## Code formatters
 
+;; $ brew install sqlfluff
+
 (with-eval-after-load 'embark
   (keymap-set embark-region-map "f" nil)
   (keymap-set embark-region-map "f s m" #'my/region/format/sql/mysql)
