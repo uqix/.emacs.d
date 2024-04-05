@@ -2335,11 +2335,11 @@
 
 ;; $ brew install jq
 
-(add-hook 'json-ts-mode-hook 'flymake-mode)
+(add-hook 'json-ts-mode-hook #'my/json/flymake-hook)
 
-(use-package json-ts-mode
-  :flymake-hook
-  (json-ts-mode flymake-collection-jq))
+(defun my/json/flymake-hook ()
+  (add-hook 'flymake-diagnostic-functions #'flymake-collection-jq nil t)
+  (flymake-mode))
 ;; >-------------------------
 
 ;; <-------------------------
