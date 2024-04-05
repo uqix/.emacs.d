@@ -2601,6 +2601,10 @@
          (dir (f-dirname result)))
     (make-directory dir t)
     result))
+
+(remove-hook 'kill-buffer-query-functions #'xwidget-kill-buffer-query-function)
+
+(keymap-set markdown-mode-map "C-c p" #'markdown-xwidget-preview-mode)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
