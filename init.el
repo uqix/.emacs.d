@@ -2596,7 +2596,7 @@
 (defun markdown-live-preview-get-filename ()
   "Standardize the filename exported by `markdown-live-preview-export'."
   (let* ((result (markdown-export-file-name ".html"))
-         (result (format "~/tmp/markdown-preview%s" result))
+         (result (format "~/tmp/.emacs-markdown-preview%s" result))
          (result (expand-file-name result))
          (dir (f-dirname result)))
     (make-directory dir t)
