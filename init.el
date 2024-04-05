@@ -2120,22 +2120,6 @@
   :tail-matcher "^ *# </bash>$"
   :head-mode 'body
   :tail-mode 'body)
-
-;; <----------
-;; ### Disable eglot
-
-;; https://github.com/polymode/polymode/issues/331
-
-(add-hook 'eglot-managed-mode-hook #'my/polymode/poly-bash-innermode/eglot-managed-mode-hook)
-
-(defun my/polymode/poly-bash-innermode/eglot-managed-mode-hook ()
-  (when (and polymode-mode
-             (eq major-mode 'bash-ts-mode)
-             (eglot-managed-p))
-    (eglot--managed-mode-off)
-    (flymake-mode -1)))
-;; >----------
-
 ;; >-------------------------
 
 ;; <-------------------------
@@ -2255,6 +2239,25 @@
 (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
 
 (keymap-global-set "s-i m b" #'bash-ts-mode)
+
+;; <-------------------------
+;; ## eglot
+
+;; https://github.com/polymode/polymode/issues/331
+
+(define-derived-mode my/bash-ts-mode
+  bash-ts-mode "MyBash"
+  "Major mode for Bash in non-poly buffer.")
+
+(add-to-list 'eglot-server-programs
+             '(my/bash-ts-mode . ("bash-language-server" "start")))
+
+(add-to-list 'eglot-server-programs
+             '(bash-ts-mode . ("disabled")))
+
+(add-to-list 'auto-mode-alist '("\\.sh" . my/bash-ts-mode))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
@@ -2294,7 +2297,10 @@
 
 (defun my/edit-indirect/guess-mode (_parent-buffer _beg _end)
   (setq-local buffer-file-name (format "%s.-ei-" (buffer-file-name _parent-buffer)))
-  (funcall (buffer-local-value 'major-mode _parent-buffer)))
+  (let ((parent-mode (buffer-local-value 'major-mode _parent-buffer)))
+    (if (eq parent-mode #'bash-ts-mode)
+        (my/bash-ts-mode)
+      (funcall parent-mode))))
 
 ;; <-------------------------
 ;; ## Left margin
