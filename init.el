@@ -2853,6 +2853,27 @@
 
 
 ;; <--------------------------------------------------
+;; # sops
+
+;; $ brew install sops
+
+(keymap-global-set "s-i s e" 'my/sops/encrypt)
+(keymap-global-set "s-i s d" 'my/sops/decrypt)
+
+(defun my/sops/encrypt ()
+  (interactive)
+  (when-let ((file (buffer-file-name)))
+    (shell-command (format "sops -e -i '%s'" file))))
+
+(defun my/sops/decrypt ()
+  (interactive)
+  (when-let ((file (buffer-file-name)))
+    (shell-command (format "sops -d -i '%s'" file))))
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # Custom faces
 
 ;; <-------------------------
