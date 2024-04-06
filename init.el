@@ -2055,7 +2055,7 @@
 
 
 ;; <--------------------------------------------------
-;; # nxml-mode
+;; # XML
 
 (require 'nxml-mode)
 
@@ -2067,6 +2067,23 @@
   (add-to-list 'completion-at-point-functions #'cape-dabbrev))
 
 (setopt nxml-child-indent 4)
+
+;; <-------------------------
+;; ## Tree repeat-map
+
+(defvar-keymap my/xml/tree-repeat-map
+  :repeat t
+  "n" #'nxml-forward-element
+  "p" #'nxml-backward-element
+  "u" #'nxml-backward-up-element
+  "d" #'nxml-down-element
+  "SPC" #'my/xml/set-mark)
+
+(defun my/xml/set-mark ()
+  (interactive)
+  (my/region/set-mark 'my/xml/set-mark))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
