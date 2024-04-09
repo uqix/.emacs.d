@@ -2321,15 +2321,15 @@
         (my/bash-ts-mode)
       (funcall parent-mode))))
 
+(keymap-set edit-indirect-mode-map "<remap> <save-buffer>" #'edit-indirect-commit)
+(keymap-set edit-indirect-mode-map "C-c k" #'edit-indirect-abort)
+
 ;; <-------------------------
 ;; ## Left margin
 
 ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-387945773
 (add-hook 'edit-indirect-after-creation-hook #'vbe/edit-indirect/remove-left-margin)
 (add-hook 'edit-indirect-before-commit-hook #'vbe/edit-indirect/restore-left-margin)
-
-;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-1284144173
-(keymap-set edit-indirect-mode-map "<remap> <save-buffer>" #'edit-indirect-commit)
 
 (defvar-local edit-indirect--left-margin 0)
 
