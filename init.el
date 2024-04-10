@@ -179,13 +179,13 @@
                (file-parent-subpath (and file-subpath (f-dirname file-subpath)))
                (project-parent-path (f-dirname project-path)))
           (format "%s 💙%s💙/%s 🛖%s"
-                  (my/frame-title-format/buffer-name buffer-name project-path)
+                  (my/frame-title-format/buffer-name buffer-name file-path project-path)
                   project-name
                   (if file-parent-subpath (my/abbreviate-path file-parent-subpath) "")
                   (my/abbreviate-path
                    (my/frame-title-format/project-parent-path project-parent-path))))
       (format "%s 💢%s"
-              (my/frame-title-format/buffer-name buffer-name)
+              (my/frame-title-format/buffer-name buffer-name file-path)
               (if file-path (my/abbreviate-path file-path) "")))))
 
 (defun my/abbreviate-path (path)
@@ -193,9 +193,9 @@
          (result (directory-file-name result)))
     result))
 
-(defun my/frame-title-format/buffer-name (buffer-name &optional project-path)
+(defun my/frame-title-format/buffer-name (buffer-name file-path &optional project-path)
   (let ((edit-indirect-prefix "*edit-indirect ")
-        (project-name (and project-path (file-name-nondirectory project-path))))
+        (filename (and file-path (file-name-nondirectory file-path))))
     (cond ((eq major-mode 'vterm-mode)
            (let* ((vterm-prefix (format "%s " vterm-buffer-name))
                   (wd
@@ -212,8 +212,8 @@
                      (or wd ""))))
           ((string-prefix-p edit-indirect-prefix buffer-name)
            (string-replace edit-indirect-prefix "*💥" buffer-name))
-          (project-name
-           (string-remove-suffix (format "<%s>" project-name) buffer-name))
+          (filename
+           filename)
           (t
            buffer-name))))
 
