@@ -2068,6 +2068,9 @@
 
 (setopt nxml-child-indent 4)
 
+(keymap-set nxml-mode-map "C-c i" #'nxml-balanced-close-start-tag-inline)
+(keymap-set nxml-mode-map "C-c b" #'nxml-balanced-close-start-tag-block)
+
 ;; <-------------------------
 ;; ## Tree repeat-map
 
