@@ -1977,6 +1977,9 @@
 (keymap-set eglot-mode-map "s-l r" #'eglot-rename)
 (keymap-set eglot-mode-map "s-l i" #'eglot-find-implementation)
 (keymap-set eglot-mode-map "s-l t" #'eglot-find-typeDefinition)
+
+(keymap-set eglot-mode-map "s-l s" #'eglot-shutdown)
+(keymap-set eglot-mode-map "s-l S" #'eglot-shutdown-all)
 ;; >--------------------------------------------------
 
 
