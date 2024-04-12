@@ -2882,6 +2882,8 @@
 ;; <--------------------------------------------------
 ;; # web-mode
 
+(setopt web-mode-enable-auto-indentation nil)
+
 ;; <-------------------------
 ;; ## FreeMarker
 
