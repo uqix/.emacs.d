@@ -2897,8 +2897,9 @@
 
 (font-lock-add-keywords
  'my/freemarker-mode
- '(("\\[=[^]]+\\]" . font-lock-preprocessor-face)
-   ("\\[=\\([^]]+\\)\\]" 1 font-lock-variable-name-face t))
+ '(("\\[=\\([^]]+\\)\\]"
+    (0 font-lock-preprocessor-face)
+    (1 font-lock-variable-name-face t)))
  t)
 ;; >-------------------------
 
