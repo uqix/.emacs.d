@@ -2655,6 +2655,21 @@
 
 (modify-syntax-entry ?. "." jinja2-mode-syntax-table)
 (modify-syntax-entry ?: "." jinja2-mode-syntax-table)
+
+;; <-------------------------
+;; ## Helm template
+
+(define-derived-mode my/helm-template-mode
+  jinja2-mode "HelmTpl"
+  "Major mode for Helm templates.")
+
+(font-lock-add-keywords
+ 'my/helm-template-mode
+ '(("{{-? \\(include\\|if\\|range\\|end\\) [^}]*}}"
+    1 font-lock-preprocessor-face t))
+ t)
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
@@ -2891,7 +2906,7 @@
 
 (define-derived-mode my/freemarker-mode
   web-mode "FreeMarker"
-  "Major mode for FreeMarker.")
+  "Major mode for FreeMarker templates.")
 
 (add-to-list 'auto-mode-alist '("\\.ftl" . my/freemarker-mode))
 
