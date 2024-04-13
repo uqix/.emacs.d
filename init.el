@@ -2882,12 +2882,24 @@
 ;; <--------------------------------------------------
 ;; # web-mode
 
+(require 'web-mode)
+
 (setopt web-mode-enable-auto-indentation nil)
 
 ;; <-------------------------
 ;; ## FreeMarker
 
-(add-to-list 'auto-mode-alist '("\\.ftl" . web-mode))
+(define-derived-mode my/freemarker-mode
+  web-mode "FreeMarker"
+  "Major mode for FreeMarker.")
+
+(add-to-list 'auto-mode-alist '("\\.ftl" . my/freemarker-mode))
+
+(font-lock-add-keywords
+ 'my/freemarker-mode
+ '(("\\[=[^]]+\\]" . font-lock-preprocessor-face)
+   ("\\[=\\([^]]+\\)\\]" 1 font-lock-variable-name-face t))
+ t)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
