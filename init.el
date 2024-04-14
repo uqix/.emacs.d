@@ -1716,7 +1716,7 @@
 ;; <-------------------------
 ;; ## doom-modeline
 
-;; https://github.com/seagle0128/doom-modeline#install
+;; M-x nerd-icons-install-fonts
 
 (require 'doom-modeline)
 
@@ -1724,7 +1724,7 @@
 
 (doom-modeline-mode 1)
 
-;; M-x nerd-icons-install-fonts
+(setopt doom-modeline-buffer-encoding 'nondefault)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
