@@ -772,7 +772,7 @@
 
 (keymap-set vterm-mode-map "C-c c" #'vterm-copy-mode)
 (keymap-set vterm-mode-map "M-g" #'avy-goto-line)
-(keymap-set vterm-mode-map "M-j" #'avy-goto-char-timer)
+(keymap-set vterm-mode-map "M-j" #'avy-goto-char-2)
 (keymap-set vterm-mode-map "M-y" #'vterm-yank-pop)
 
 (keymap-set vterm-copy-mode-map "C-c c" #'vterm-copy-mode)
@@ -1534,9 +1534,9 @@
 
 ;; (setopt avy-timeout-seconds 0.7)
 
-(keymap-global-set "M-j" #'avy-goto-char-timer) ; was default-indent-new-line
+(keymap-global-set "M-j" #'avy-goto-char-2) ; was default-indent-new-line
 (keymap-global-set "M-J" #'avy-resume)
-(keymap-global-set "M-g" #'avy-goto-line)       ; was goto-line
+(keymap-global-set "M-g" #'avy-goto-line)   ; was goto-line
 (keymap-global-set "s-;" #'avy-pop-mark)
 
 ;; <----------
