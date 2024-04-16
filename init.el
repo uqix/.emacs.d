@@ -2924,6 +2924,33 @@
 
 
 ;; <--------------------------------------------------
+;; # Yank
+
+;; <-------------------------
+;; ## yank-to-buffer
+
+(keymap-global-set "s-i y" #'my/yank-to-buffer)
+(keymap-global-set "s-i Y" #'my/yank-to-buffer/append)
+
+(defun my/yank-to-buffer (&optional append)
+  (interactive)
+  (and (use-region-p) (kill-ring-save nil nil t))
+  (with-current-buffer (get-buffer-create "*yank*")
+    (or append (erase-buffer))
+    (end-of-buffer)
+    (yank)
+    (display-buffer (current-buffer))))
+
+(defun my/yank-to-buffer/append ()
+  (interactive)
+  (my/yank-to-buffer t))
+;; >-------------------------
+
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # Custom faces
 
 ;; <-------------------------
