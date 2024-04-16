@@ -2263,7 +2263,7 @@
 
 (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
 
-(keymap-global-set "s-i m b" #'bash-ts-mode)
+(keymap-global-set "s-i m b" #'my/bash-ts-mode)
 
 ;; <-------------------------
 ;; ## eglot
@@ -2274,13 +2274,14 @@
   bash-ts-mode "MyBash"
   "Major mode for Bash in non-poly buffer.")
 
-(add-to-list 'eglot-server-programs
-             '(my/bash-ts-mode . ("bash-language-server" "start")))
+(add-to-list 'interpreter-mode-alist '("bash\\|sh" . my/bash-ts-mode))
+;; (add-to-list 'auto-mode-alist '("\\.sh\\'" . my/bash-ts-mode))
 
 (add-to-list 'eglot-server-programs
              '(bash-ts-mode . ("disabled")))
 
-(add-to-list 'auto-mode-alist '("\\.sh" . my/bash-ts-mode))
+(add-to-list 'eglot-server-programs
+             '(my/bash-ts-mode . ("bash-language-server" "start")))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
