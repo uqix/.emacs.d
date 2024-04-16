@@ -1725,6 +1725,7 @@
 (doom-modeline-mode 1)
 
 (setopt doom-modeline-buffer-encoding 'nondefault)
+(setopt doom-modeline-buffer-file-name-style 'file-name-with-project)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
