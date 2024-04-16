@@ -2275,7 +2275,7 @@
   "Major mode for Bash in non-poly buffer.")
 
 (add-to-list 'interpreter-mode-alist '("bash\\|sh" . my/bash-ts-mode))
-;; (add-to-list 'auto-mode-alist '("\\.sh\\'" . my/bash-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.sh\\'" . my/bash-ts-mode))
 
 (add-to-list 'eglot-server-programs
              '(bash-ts-mode . ("disabled")))
