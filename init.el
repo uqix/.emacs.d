@@ -2524,7 +2524,7 @@
   '(poly-bash-innermode
     poly-nginx-innermode))
 
-(add-to-list 'auto-mode-alist '("\\.ya?ml" . poly-yaml-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . poly-yaml-ts-mode))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -2708,7 +2708,7 @@
   :hostmode 'poly-groovy-hostmode
   :innermodes '(poly-bash-innermode))
 
-(add-to-list 'auto-mode-alist '("\\.groovy" . poly-groovy-mode))
+(add-to-list 'auto-mode-alist '("\\.groovy\\'" . poly-groovy-mode))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -2909,7 +2909,7 @@
   web-mode "FreeMarker"
   "Major mode for FreeMarker templates.")
 
-(add-to-list 'auto-mode-alist '("\\.ftl" . my/freemarker-mode))
+(add-to-list 'auto-mode-alist '("\\.ftl\\'" . my/freemarker-mode))
 
 (font-lock-add-keywords
  'my/freemarker-mode
