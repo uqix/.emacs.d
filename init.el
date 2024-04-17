@@ -1095,16 +1095,22 @@
 
 (keymap-global-set "M-y" 'consult-yank-replace)
 
-(keymap-global-set "s-h i" 'consult-imenu)
-(keymap-global-set "s-h I" 'consult-imenu-multi)
-(keymap-global-set "s-h e" 'consult-flymake)
-(keymap-global-set "s-h r" 'consult-register-store)
-(keymap-global-set "s-h R" 'consult-register)
-(keymap-global-set "s-h f" 'consult-focus-lines)
-(keymap-global-set "s-h k" 'consult-keep-lines)
-(keymap-global-set "s-h m" 'consult-mark)
-(keymap-global-set "s-h M" 'consult-global-mark)
-(keymap-global-set "s-h o" 'consult-outline)
+(keymap-global-set "s-h i" #'consult-imenu)
+(keymap-global-set "s-h I" #'consult-imenu-multi)
+(keymap-global-set "s-h e" #'consult-flymake)
+(keymap-global-set "s-h r" #'consult-register-store)
+(keymap-global-set "s-h R" #'consult-register)
+(keymap-global-set "s-h f" #'consult-focus-lines)
+(keymap-global-set "s-h k" #'consult-keep-lines)
+(keymap-global-set "s-h m" #'consult-mark)
+(keymap-global-set "s-h M" #'consult-global-mark)
+(keymap-global-set "s-h o" #'consult-outline)
+
+(keymap-global-set "s-h l" #'my/consult-fd) ; [l]ocate
+
+(defun my/consult-fd ()
+  (interactive)
+  (consult-fd '(4)))
 ;; >--------------------------------------------------
 
 
@@ -2262,6 +2268,7 @@
 
 (advice-remove 'bash-ts-mode #'sh--redirect-bash-ts-mode)
 
+;; TODO: not works in .md sh code block
 (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
 
 (keymap-global-set "s-i m b" #'my/bash-ts-mode)
