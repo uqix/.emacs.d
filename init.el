@@ -1128,8 +1128,8 @@
 (keymap-set embark-region-map "e" nil)              ; was eval-region
 (keymap-set embark-region-map "e e" #'eval-region)  ; [e]val [e]lisp
 (keymap-set embark-region-map "a" nil)              ; was align
-(keymap-set embark-region-map "a a" #'align)        ; [a]lign
-(keymap-set embark-region-map "a r" #'align-regexp) ; [a]lign-[r]egexp
+(keymap-set embark-region-map "a a" #'align)
+(keymap-set embark-region-map "a r" #'align-regexp)
 
 ;; <-------------------------
 ;; ## marginalia
