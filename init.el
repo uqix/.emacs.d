@@ -2947,7 +2947,7 @@
     (or append (erase-buffer))
     (end-of-buffer)
     (yank)
-    (display-buffer (current-buffer))))
+    (select-window (display-buffer (current-buffer)))))
 
 (defun my/yank-to-buffer/append ()
   (interactive)
