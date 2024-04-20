@@ -2567,10 +2567,11 @@
 (setopt markdown-fontify-code-blocks-natively t)
 (setopt markdown-max-image-size '(500 . 500))
 (setopt markdown-asymmetric-header t)
+(setopt markdown-gfm-additional-languages '("helm"))
 
 (add-to-list 'markdown-code-lang-modes '("shell" . bash-ts-mode))
-(add-to-list 'markdown-code-lang-modes '("bash" . bash-ts-mode))
 (add-to-list 'markdown-code-lang-modes '("freemarker" . my/freemarker-mode))
+(add-to-list 'markdown-code-lang-modes '("helm" . my/helm-template-mode))
 
 (keymap-set markdown-mode-map "C-c c" #'markdown-insert-code)
 (keymap-set markdown-mode-map "C-c b" #'markdown-insert-gfm-code-block)
@@ -2699,6 +2700,8 @@
  '(("{{-? \\(include\\|if\\|range\\|end\\) [^}]*}}"
     1 font-lock-preprocessor-face t))
  t)
+
+(add-to-list 'auto-mode-alist '("\\.htl\\'" . my/helm-template-mode))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
