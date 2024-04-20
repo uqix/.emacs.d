@@ -1073,6 +1073,24 @@
   (my/region/convert/by-shell-command "yq -p=yaml -o=yaml -"))
 ;; >-------------------------
 
+;; <-------------------------
+;; ## Path converters
+
+(with-eval-after-load 'embark
+  (keymap-set embark-region-map "p" nil) ; was fill-region-as-paragraph
+  (keymap-set embark-region-map "p f" #'fill-region-as-paragraph)
+  (keymap-set embark-region-map "p e" #'my/region/path/expand)
+  (keymap-set embark-region-map "p a" #'my/region/path/abbreviate))
+
+(defun my/region/path/expand ()
+  (interactive)
+  (my/region/convert #'expand-file-name))
+
+(defun my/region/path/abbreviate ()
+  (interactive)
+  (my/region/convert #'abbreviate-file-name))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
