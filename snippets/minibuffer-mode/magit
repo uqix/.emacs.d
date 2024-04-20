@@ -1,4 +1,4 @@
 # key: m
 # condition: 'consult-buffer
 # --
-magit: 
+!magit-process: magit: 
