@@ -2550,6 +2550,10 @@
 (setopt markdown-max-image-size '(500 . 500))
 (setopt markdown-asymmetric-header t)
 
+(add-to-list 'markdown-code-lang-modes '("shell" . bash-ts-mode))
+(add-to-list 'markdown-code-lang-modes '("bash" . bash-ts-mode))
+(add-to-list 'markdown-code-lang-modes '("freemarker" . my/freemarker-mode))
+
 (keymap-set markdown-mode-map "C-c c" #'markdown-insert-code)
 (keymap-set markdown-mode-map "C-c b" #'markdown-insert-gfm-code-block)
 (keymap-set markdown-mode-map "C-c q" #'markdown-insert-blockquote)
@@ -2916,6 +2920,11 @@
 (define-derived-mode my/freemarker-mode
   web-mode "FreeMarker"
   "Major mode for FreeMarker templates.")
+
+(add-hook 'my/freemarker-mode-hook #'my/freemarker-mode/hook)
+
+(defun my/freemarker-mode/hook ()
+  (web-mode-set-engine "freemarker"))
 
 (add-to-list 'auto-mode-alist '("\\.ftl\\'" . my/freemarker-mode))
 
