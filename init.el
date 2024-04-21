@@ -1655,7 +1655,6 @@
            "*docker-containers*"
            "*diff-syntax:"
            "*Embark Actions*"
-           "*yaml-pro-edit*"
            "*Flymake diagnostics for "
            "*EGLOT "
            "*sqls result*"))
@@ -1665,7 +1664,8 @@
 
 (add-to-list
  'display-buffer-alist
- `(,(rx (| "*edit-indirect "))
+ `(,(rx (| "*edit-indirect "
+           "*yaml-pro-edit*"))
    display-buffer-same-window))
 
 (add-to-list
