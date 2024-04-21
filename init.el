@@ -2326,6 +2326,13 @@
 ;; # Go
 
 (require 'go-ts-mode)
+
+(setopt go-ts-mode-indent-offset 4)
+
+(add-hook 'go-ts-mode-hook #'my/go-ts-mode-hook)
+
+(defun my/go-ts-mode-hook ()
+  (setq-local tab-width 4))
 ;; >--------------------------------------------------
 
 
