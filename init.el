@@ -2575,6 +2575,7 @@
 (setopt markdown-max-image-size '(500 . 500))
 (setopt markdown-asymmetric-header t)
 (setopt markdown-gfm-additional-languages '("helm"))
+(setopt markdown-hide-urls t)
 
 (add-to-list 'markdown-code-lang-modes '("shell" . bash-ts-mode))
 (add-to-list 'markdown-code-lang-modes '("freemarker" . my/freemarker-mode))
@@ -2585,6 +2586,7 @@
 (keymap-set markdown-mode-map "C-c q" #'markdown-insert-blockquote)
 (keymap-set markdown-mode-map "C-c e" #'markdown-insert-bold) ; [e]mphasize
 (keymap-set markdown-mode-map "C-c l" #'markdown-insert-link)
+(keymap-set markdown-mode-map "C-c L" #'markdown-toggle-url-hiding)
 (keymap-set markdown-mode-map "C-c h" #'markdown-insert-header-dwim)
 (keymap-set markdown-mode-map "C-c i" #'markdown-insert-image)
 (keymap-set markdown-mode-map "C-c I" #'markdown-toggle-inline-images)
