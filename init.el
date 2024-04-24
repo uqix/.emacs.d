@@ -1238,7 +1238,7 @@
 ;; ### dired-subtree
 
 (keymap-set dired-mode-map "i" #'dired-subtree-insert) ; was dired-maybe-insert-subdir
-(keymap-set dired-mode-map "TAB" #'dired-subtree-toggle)
+(keymap-set dired-mode-map "TAB" #'dired-subtree-cycle)
 
 ;; <---
 ;; #### Tree repeat-map
@@ -1266,7 +1266,7 @@
   "k" #'dired-subtree-remove
   "<backspace>" #'dired-subtree-remove
   "g" #'dired-subtree-revert
-  "TAB" #'dired-subtree-toggle)
+  "TAB" #'dired-subtree-cycle)
 ;; >---
 
 ;; >----------
