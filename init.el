@@ -2255,7 +2255,7 @@
 
 (setopt inhibit-startup-screen t)
 (setopt initial-major-mode 'text-mode)
-(setopt fill-column 90)
+(setopt fill-column 85)
 (setopt make-backup-files nil)
 (setopt scroll-bar-mode nil)
 (setopt tool-bar-mode nil)
