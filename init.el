@@ -2204,6 +2204,7 @@
 
 (keymap-global-set "M-\\" #'delete-trailing-whitespace) ; was delete-horizontal-space
 (keymap-global-set "M-|" #'delete-all-space)
+(keymap-global-set "s-i j" #'join-line)
 
 ;; <-------------------------
 ;; ## Indent
