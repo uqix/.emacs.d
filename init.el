@@ -2283,6 +2283,13 @@
   "}" #'forward-paragraph
   "[" #'backward-paragraph
   "]" #'forward-paragraph)
+
+(keymap-global-set "s-i o" #'my/find-file/dev-notes)
+
+(defun my/find-file/dev-notes ()
+  (interactive)
+  (let ((default-directory "~/Documents/notes/dev/"))
+    (call-interactively #'find-file)))
 ;; >--------------------------------------------------
 
 
