@@ -842,7 +842,6 @@
 
 (put 'narrow-to-region 'disabled nil)
 
-(keymap-global-set "s-i n n" #'narrow-to-region)
 (keymap-global-set "s-i n f" #'narrow-to-defun)
 (keymap-global-set "s-i n w" #'widen)
 ;; >-------------------------
