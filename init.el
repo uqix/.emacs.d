@@ -1122,6 +1122,7 @@
 (keymap-global-set "s-h m" #'consult-mark)
 (keymap-global-set "s-h M" #'consult-global-mark)
 (keymap-global-set "s-h o" #'consult-outline)
+(keymap-global-set "s-h p" #'consult-bookmark) ; [p]ositions
 
 (keymap-global-set "s-h l" #'my/consult-fd) ; [l]ocate
 
