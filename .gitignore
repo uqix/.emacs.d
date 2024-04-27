@@ -11,6 +11,5 @@
 /projects
 /recentf
 .DS_Store
-/bookmarks
 *.el.rej
 /tramp
