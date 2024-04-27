@@ -2,16 +2,4 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("e"
- (filename . "~/.emacs.d/init.el")
- (front-context-string . ";;; -*- lexical-")
- (rear-context-string)
- (position . 1)
- (last-modified 26156 46450 9849 0))
-("n"
- (filename . "~/Documents/notes/dev/emacs.md")
- (front-context-string . "# ggtags\n\n```sh\n")
- (rear-context-string)
- (position . 1)
- (last-modified 26156 43036 430951 0))
-)
+()
