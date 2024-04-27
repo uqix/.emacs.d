@@ -1189,6 +1189,7 @@
         "-l --almost-all --human-readable --group-directories-first --no-group")
 
 (setopt dired-recursive-deletes 'always)
+(setopt dired-free-space nil)
 
 (keymap-set dired-mode-map "l" #'magit-dired-log) ; was dired-do-redisplay
 
