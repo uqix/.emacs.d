@@ -1872,8 +1872,8 @@
 ;; <-------------------------
 ;; ## No .gitignore
 
-(keymap-global-set "s-i g" #'consult-grep)
-(keymap-global-set "s-i G" #'my/consult-grep/dir)
+(keymap-global-set "s-h g" #'consult-grep)
+(keymap-global-set "s-h G" #'my/consult-grep/dir)
 
 (defun my/consult-grep/dir ()
   (interactive)
