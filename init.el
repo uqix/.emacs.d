@@ -499,6 +499,7 @@
 
 (keymap-global-set "s-i b r" #'revert-buffer)
 (keymap-global-set "s-i b w" #'write-file)
+(keymap-global-set "s-i b n" #'rename-buffer)
 ;; >--------------------------------------------------
 
 
