@@ -198,18 +198,18 @@
         (filename (and file-path (file-name-nondirectory file-path))))
     (cond ((eq major-mode 'vterm-mode)
            (let* ((vterm-prefix (format "%s " vterm-buffer-name))
-                  (wd
+                  (name
                    (if (string-prefix-p vterm-prefix buffer-name)
                        (let* ((working-dir (string-remove-prefix vterm-prefix buffer-name))
                               (working-dir-subpath
                                (and project-path
                                     (file-relative-name working-dir
                                                         (my/abbreviate-path project-path)))))
-                         (or working-dir-subpath working-dir)))))
-             (format "%s%s%s"
-                     vterm-prefix
+                         (or working-dir-subpath working-dir))
+                     buffer-name)))
+             (format "🖥️ %s%s"
                      (if vterm-copy-mode "🛑 " "")
-                     (or wd ""))))
+                     name)))
           ((string-prefix-p edit-indirect-prefix buffer-name)
            (string-replace edit-indirect-prefix "*💥" buffer-name))
           (filename
