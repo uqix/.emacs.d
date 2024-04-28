@@ -495,9 +495,10 @@
 
 
 ;; <--------------------------------------------------
-;; Buffer
+;; # Buffer
 
-(keymap-global-set "s-i r b" #'revert-buffer)
+(keymap-global-set "s-i b r" #'revert-buffer)
+(keymap-global-set "s-i b w" #'write-file)
 ;; >--------------------------------------------------
 
 
@@ -556,8 +557,6 @@
 (keymap-global-set "s-i r f" #'rename-visited-file)
 
 (keymap-global-set "s-i s b" #'scratch-buffer)
-
-(keymap-global-set "s-i a f" #'write-file) ; Save [a]s
 
 ;; s-1: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 1 (Misc)
 ;; s-2: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 2 (Emacs)
