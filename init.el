@@ -1114,8 +1114,6 @@
 (keymap-global-set "s-h i" #'consult-imenu)
 (keymap-global-set "s-h I" #'consult-imenu-multi)
 (keymap-global-set "s-h e" #'consult-flymake)
-(keymap-global-set "s-h r" #'consult-register-store)
-(keymap-global-set "s-h R" #'consult-register)
 (keymap-global-set "s-h f" #'consult-focus-lines)
 (keymap-global-set "s-h k" #'consult-keep-lines)
 (keymap-global-set "s-h m" #'consult-mark)
@@ -1798,6 +1796,7 @@
 ;; <-------------------------
 ;; ## Replace
 
+(keymap-global-set "s-i r q" #'query-replace)
 (keymap-global-set "s-i r r" #'query-replace-regexp)
 ;; >-------------------------
 
@@ -2255,6 +2254,10 @@
 ;; # Bookmar & register
 
 (setopt bookmark-save-flag 1)
+
+(keymap-global-set "s-i r s" #'consult-register-store)
+(keymap-global-set "s-i r w" #'window-configuration-to-register)
+(keymap-global-set "s-h r" #'consult-register)
 ;; >--------------------------------------------------
 
 
