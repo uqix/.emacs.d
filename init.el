@@ -1014,6 +1014,7 @@
 (with-eval-after-load 'embark
   (keymap-set embark-region-map "c j y" #'my/region/convert/json/to-yaml)
   (keymap-set embark-region-map "c y j" #'my/region/convert/yaml/to-json)
+  (keymap-set embark-region-map "c y J" #'my/region/convert/yaml/to-json/compact)
   (keymap-set embark-region-map "c y p" #'my/region/convert/yaml/to-properties)
   (keymap-set embark-region-map "c p y" #'my/region/convert/properties/to-yaml))
 
@@ -1024,6 +1025,10 @@
 (defun my/region/convert/yaml/to-json ()
   (interactive)
   (my/region/convert/by-shell-command "yq -p=yaml -o=json -"))
+
+(defun my/region/convert/yaml/to-json/compact ()
+  (interactive)
+  (my/region/convert/by-shell-command "yq -p=yaml -o=json -I 0 -"))
 
 (defun my/region/convert/yaml/to-properties ()
   (interactive)
@@ -1052,6 +1057,7 @@
   (keymap-set embark-region-map "f s m" #'my/region/format/sql/mysql)
   (keymap-set embark-region-map "f s p" #'my/region/format/sql/postgresql)
   (keymap-set embark-region-map "f j" #'my/region/format/json)
+  (keymap-set embark-region-map "f J" #'my/region/format/json/compact)
   (keymap-set embark-region-map "f y" #'my/region/format/yaml))
 
 (defun my/region/format/sql/mysql ()
@@ -1065,6 +1071,10 @@
 (defun my/region/format/json ()
   (interactive)
   (my/region/convert/by-shell-command "yq -p=json -o=json -"))
+
+(defun my/region/format/json/compact ()
+  (interactive)
+  (my/region/convert/by-shell-command "yq -p=json -o=json -I 0 -"))
 
 (defun my/region/format/yaml ()
   (interactive)
@@ -1672,7 +1682,8 @@
      '(grep-mode
        occur-mode
        justl-mode
-       xref--xref-buffer-mode))
+       xref--xref-buffer-mode
+       vterm-mode))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
@@ -2599,6 +2610,7 @@
 (add-to-list 'markdown-code-lang-modes '("shell" . bash-ts-mode))
 (add-to-list 'markdown-code-lang-modes '("freemarker" . my/freemarker-mode))
 (add-to-list 'markdown-code-lang-modes '("helm" . my/helm-template-mode))
+(add-to-list 'markdown-code-lang-modes '("jinja" . jinja2-mode))
 
 (keymap-set markdown-mode-map "C-c c" #'markdown-insert-code)
 (keymap-set markdown-mode-map "C-c b" #'markdown-insert-gfm-code-block)
