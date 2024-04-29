@@ -516,6 +516,7 @@
 ;; s-i -> misc prefix key
 
 (keymap-global-unset "C-x C-c") ; was quit emacs
+(keymap-global-unset "s-q")
 (keymap-global-unset "C-x C-z") ; was suspend-frame (minimize)
 (keymap-global-unset "C-s-SPC") ; was ns-do-show-character-palette
 
