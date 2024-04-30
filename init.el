@@ -516,7 +516,6 @@
 ;; s-i -> misc prefix key
 
 (keymap-global-unset "C-x C-c") ; was quit emacs
-(keymap-global-unset "s-q")
 (keymap-global-unset "C-x C-z") ; was suspend-frame (minimize)
 (keymap-global-unset "C-s-SPC") ; was ns-do-show-character-palette
 
@@ -531,8 +530,6 @@
 (keymap-global-set "s-d" #'duplicate-dwim) ; was isearch-repeat-backward
 
 (keymap-global-set "s-i f" #'find-file)
-
-(keymap-global-set "s-r" #'replace-string)
 
 (keymap-global-set "C-\\" #'toggle-truncate-lines) ; was toggle-input-method
 
@@ -1808,6 +1805,7 @@
 ;; <-------------------------
 ;; ## Replace
 
+(keymap-global-set "s-i r s" #'replace-string)
 (keymap-global-set "s-i r q" #'query-replace)
 (keymap-global-set "s-i r r" #'query-replace-regexp)
 ;; >-------------------------
@@ -2267,9 +2265,9 @@
 
 (setopt bookmark-save-flag 1)
 
-(keymap-global-set "s-i r s" #'consult-register-store)
+(keymap-global-set "s-r" #'consult-register-store)
+(keymap-global-set "s-q" #'consult-register)
 (keymap-global-set "s-i r w" #'window-configuration-to-register)
-(keymap-global-set "s-h r" #'consult-register)
 ;; >--------------------------------------------------
 
 
