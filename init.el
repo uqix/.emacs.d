@@ -2392,8 +2392,25 @@
         (my/bash-ts-mode)
       (funcall parent-mode))))
 
+;; <-------------------------
+;; ## Tweak for left margin non-repeatability
+
 (keymap-set edit-indirect-mode-map "<remap> <save-buffer>" #'edit-indirect-commit)
 (keymap-set edit-indirect-mode-map "C-c k" #'edit-indirect-abort)
+
+(defun edit-indirect--commit-on-save ()
+  (edit-indirect-commit)
+  t)
+
+(defun edit-indirect--abort (kill)
+  "Abort an indirect edit and clean up the edit-indirect buffer."
+  (let ((parent-buffer (overlay-buffer edit-indirect--overlay)))
+    (delete-overlay edit-indirect--overlay)
+    (setq edit-indirect--overlay nil)
+    (when kill
+      (kill-buffer)
+      (display-buffer-same-window parent-buffer nil))))
+;; >-------------------------
 
 ;; <-------------------------
 ;; ## Left margin
@@ -2410,9 +2427,6 @@
     (indent-rigidly (point-min) (point-max) (* -1 lm))
     (setq-local edit-indirect--left-margin lm)
 
-    ;; save-some-buffers magit-save-repository-buffers
-    (setq-local write-contents-functions '(my/edit-indirect/commit-on-save))
-
     ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-1055542145
     ;; buffer-local variable whose value should not be reset when changing major modes
     (put 'edit-indirect--left-margin 'permanent-local t)))
@@ -2422,13 +2436,6 @@
   (-min
    (-map #'(lambda (line) (length (car (s-match "^\\s-*" line))))
          (-remove 's-blank? (s-lines code)))))
-
-(defun my/edit-indirect/commit-on-save ()
-  (edit-indirect--commit)
-  (delete-overlay edit-indirect--overlay)
-  (setq edit-indirect--overlay nil)
-  (kill-buffer)
-  t)
 
 (defun vbe/edit-indirect/restore-left-margin ()
   "Restore left-margin before commiting."
