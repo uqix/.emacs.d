@@ -997,6 +997,11 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
+(keymap-global-set "s-i c s" #'my/region/convert/snake-case)
+(keymap-global-set "s-i c c" #'my/region/convert/camel-case)
+(keymap-global-set "s-i c k" #'my/region/convert/kebab-case)
+(keymap-global-set "s-i c C" #'my/region/convert/capitalize)
+
 (with-eval-after-load 'embark
   (keymap-set embark-region-map "c" nil)
   (keymap-set embark-region-map "c s" #'my/region/convert/snake-case)
