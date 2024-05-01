@@ -2409,7 +2409,10 @@
   (let ((lm (vbe/compute-left-margin (buffer-substring (point-min) (point-max)))))
     (indent-rigidly (point-min) (point-max) (* -1 lm))
     (setq-local edit-indirect--left-margin lm)
+
+    ;; save-some-buffers magit-save-repository-buffers
     (setq-local write-contents-functions '(my/edit-indirect/commit-on-save))
+
     ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-1055542145
     ;; buffer-local variable whose value should not be reset when changing major modes
     (put 'edit-indirect--left-margin 'permanent-local t)))
