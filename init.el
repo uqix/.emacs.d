@@ -171,7 +171,7 @@
 (defun my/frame-title-format ()
   (let ((buffer-name (buffer-name))
         (file-path (buffer-file-name))
-        (dir-path (and default-directory (directory-file-name default-directory)))
+        (dir-path (and default-directory (expand-file-name (directory-file-name default-directory))))
         (project-root (consult--project-root)))
     (if project-root
         (let* ((project-path (directory-file-name project-root))
@@ -180,19 +180,20 @@
                (dir-subpath (and dir-path (file-relative-name dir-path project-path)))
                (file-parent-subpath (and file-subpath (f-dirname file-subpath)))
                (dir-parent-subpath (and dir-subpath (directory-file-name (f-dirname dir-subpath))))
-               (project-parent-path (f-dirname project-path)))
+               (project-parent-path (f-dirname project-path))
+               (dir-is-project-root (string= dir-path project-path)))
           (format "%s 💙%s💙/%s 🛖%s"
-                  (my/frame-title-format/buffer-name buffer-name file-path dir-path)
+                  (my/frame-title-format/buffer-name buffer-name file-path dir-path dir-is-project-root)
                   project-name
 
                   (cond (file-parent-subpath
                          (my/abbreviate-path file-parent-subpath))
                         ((derived-mode-p 'vterm-mode)
                          (if (string-prefix-p (format "%s " vterm-buffer-name) buffer-name)
-                             dir-parent-subpath
+                             (if dir-is-project-root "." dir-parent-subpath)
                            dir-subpath))
                         ((derived-mode-p 'dired-mode)
-                         dir-parent-subpath)
+                         (if dir-is-project-root "." dir-parent-subpath))
                         (t
                          ""))
 
@@ -218,7 +219,7 @@
          (result (directory-file-name result)))
     result))
 
-(defun my/frame-title-format/buffer-name (buffer-name file-path dir-path)
+(defun my/frame-title-format/buffer-name (buffer-name file-path dir-path &optional dir-is-project-root)
   (let ((edit-indirect-prefix "*edit-indirect ")
         (filename (and file-path (file-name-nondirectory file-path)))
         (dir-name (and dir-path (file-name-nondirectory dir-path))))
@@ -228,10 +229,10 @@
                        "🛑 "
                      "")
                    (if (string-prefix-p (format "%s " vterm-buffer-name) buffer-name)
-                       dir-name
-                     buffer-name)))
+                       (if dir-is-project-root "." dir-name)
+                     (format "@%s" buffer-name))))
           ((derived-mode-p 'dired-mode)
-           (format "📂 %s" buffer-name))
+           (format "📂 %s" (if dir-is-project-root "." buffer-name)))
           ((string-prefix-p edit-indirect-prefix buffer-name)
            (string-replace edit-indirect-prefix "*💥" buffer-name))
           (filename
