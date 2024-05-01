@@ -171,44 +171,67 @@
 (defun my/frame-title-format ()
   (let ((buffer-name (buffer-name))
         (file-path (buffer-file-name))
+        (dir-path (and default-directory (directory-file-name default-directory)))
         (project-root (consult--project-root)))
     (if project-root
         (let* ((project-path (directory-file-name project-root))
                (project-name (file-name-nondirectory project-path))
                (file-subpath (and file-path (file-relative-name file-path project-path)))
+               (dir-subpath (and dir-path (file-relative-name dir-path project-path)))
                (file-parent-subpath (and file-subpath (f-dirname file-subpath)))
+               (dir-parent-subpath (and dir-subpath (directory-file-name (f-dirname dir-subpath))))
                (project-parent-path (f-dirname project-path)))
           (format "%s 💙%s💙/%s 🛖%s"
-                  (my/frame-title-format/buffer-name buffer-name file-path project-path)
+                  (my/frame-title-format/buffer-name buffer-name file-path dir-path)
                   project-name
-                  (if file-parent-subpath (my/abbreviate-path file-parent-subpath) "")
+
+                  (cond (file-parent-subpath
+                         (my/abbreviate-path file-parent-subpath))
+                        ((derived-mode-p 'vterm-mode)
+                         (if (string-prefix-p (format "%s " vterm-buffer-name) buffer-name)
+                             dir-parent-subpath
+                           dir-subpath))
+                        ((derived-mode-p 'dired-mode)
+                         dir-parent-subpath)
+                        (t
+                         ""))
+
                   (my/abbreviate-path
                    (my/frame-title-format/project-parent-path project-parent-path))))
       (format "%s 💢%s"
-              (my/frame-title-format/buffer-name buffer-name file-path)
-              (if file-path (my/abbreviate-path file-path) "")))))
+              (my/frame-title-format/buffer-name buffer-name file-path dir-path)
+
+              (cond
+               (file-path
+                (my/abbreviate-path (f-dirname file-path)))
+               ((derived-mode-p 'vterm-mode)
+                (if (string-prefix-p (format "%s " vterm-buffer-name) buffer-name)
+                    (my/abbreviate-path (f-dirname dir-path))
+                  (my/abbreviate-path dir-path)))
+               ((derived-mode-p 'dired-mode)
+                (my/abbreviate-path (f-dirname dir-path)))
+               (t
+                ""))))))
 
 (defun my/abbreviate-path (path)
   (let* ((result (abbreviate-file-name path))
          (result (directory-file-name result)))
     result))
 
-(defun my/frame-title-format/buffer-name (buffer-name file-path &optional project-path)
+(defun my/frame-title-format/buffer-name (buffer-name file-path dir-path)
   (let ((edit-indirect-prefix "*edit-indirect ")
-        (filename (and file-path (file-name-nondirectory file-path))))
-    (cond ((eq major-mode 'vterm-mode)
-           (let* ((dir-prefix (format "%s " vterm-buffer-name))
-                  (name
-                   (if (string-prefix-p dir-prefix buffer-name)
-                       (let* ((dir (string-remove-prefix dir-prefix buffer-name))
-                              (dir-subpath
-                               (and project-path
-                                    (file-relative-name dir (my/abbreviate-path project-path)))))
-                         (or dir-subpath dir))
+        (filename (and file-path (file-name-nondirectory file-path)))
+        (dir-name (and dir-path (file-name-nondirectory dir-path))))
+    (cond ((derived-mode-p 'vterm-mode)
+           (format "🖥️ %s%s"
+                   (if vterm-copy-mode
+                       "🛑 "
+                     "")
+                   (if (string-prefix-p (format "%s " vterm-buffer-name) buffer-name)
+                       dir-name
                      buffer-name)))
-             (format "🖥️ %s%s"
-                     (if vterm-copy-mode "🛑 " "")
-                     name)))
+          ((derived-mode-p 'dired-mode)
+           (format "📂 %s" buffer-name))
           ((string-prefix-p edit-indirect-prefix buffer-name)
            (string-replace edit-indirect-prefix "*💥" buffer-name))
           (filename
