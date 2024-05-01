@@ -997,6 +997,7 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
+;; embark-region-map not works in minibuffer
 (keymap-global-set "s-i c s" #'my/region/convert/snake-case)
 (keymap-global-set "s-i c c" #'my/region/convert/camel-case)
 (keymap-global-set "s-i c k" #'my/region/convert/kebab-case)
