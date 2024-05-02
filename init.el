@@ -375,18 +375,14 @@
 ;; <-------------------------
 ;; ## corfu
 
-(add-hook 'minibuffer-setup-hook #'my/corfu/minibuffer-setup-hook 1)
+(add-hook 'minibuffer-setup-hook #'my/minibuffer/corfu-setup-hook 1)
 
 ;; https://github.com/minad/corfu#completing-in-the-minibuffer
-(defun my/corfu/minibuffer-setup-hook ()
-  "Enable Corfu in the minibuffer if Vertico/Mct are not active."
-  (unless (or (bound-and-true-p vertico--input)
-              (eq (current-local-map) read-passwd-map))
-    (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-    (setq-local corfu-auto nil
-                corfu-echo-delay nil
-                corfu-popupinfo-delay nil)
-    (corfu-mode 1)))
+(defun my/minibuffer/corfu-setup-hook ()
+  (setq-local corfu-auto nil
+              corfu-echo-delay nil
+              corfu-popupinfo-delay nil)
+  (corfu-mode 1))
 ;; >-------------------------
 
 ;; <-------------------------
