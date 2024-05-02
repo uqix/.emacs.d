@@ -1905,7 +1905,13 @@
 
 (defun my/grep/dir/initial (&optional initial)
   (interactive)
-  (consult-ripgrep '(4) initial))
+  (let* ((file-or-dir (read-file-name "Grep in: "))
+         (dir `(,file-or-dir)))
+    (setq this-command
+          (lambda ()
+            (interactive)
+            (consult-ripgrep dir)))
+    (consult-ripgrep dir initial)))
 ;; >-------------------------
 
 ;; <-------------------------
