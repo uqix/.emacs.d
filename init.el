@@ -189,7 +189,7 @@
                   (cond (file-parent-subpath
                          (my/abbreviate-path file-parent-subpath))
                         ((derived-mode-p 'vterm-mode)
-                         (if (string-prefix-p (format "%s " vterm-buffer-name) buffer-name)
+                         (if (string-prefix-p my/vterm/buffer-name-prefix buffer-name)
                              (if dir-is-project-root "." dir-parent-subpath)
                            dir-subpath))
                         ((derived-mode-p 'dired-mode)
@@ -206,7 +206,7 @@
                (file-path
                 (my/abbreviate-path (f-dirname file-path)))
                ((derived-mode-p 'vterm-mode)
-                (if (string-prefix-p (format "%s " vterm-buffer-name) buffer-name)
+                (if (string-prefix-p my/vterm/buffer-name-prefix buffer-name)
                     (my/abbreviate-path (f-dirname dir-path))
                   (my/abbreviate-path dir-path)))
                ((derived-mode-p 'dired-mode)
@@ -228,7 +228,7 @@
                    (if vterm-copy-mode
                        "🛑 "
                      "")
-                   (if (string-prefix-p (format "%s " vterm-buffer-name) buffer-name)
+                   (if (string-prefix-p my/vterm/buffer-name-prefix buffer-name)
                        (if dir-is-project-root "." dir-name)
                      (format "@%s" buffer-name))))
           ((derived-mode-p 'dired-mode)
@@ -804,10 +804,13 @@
   (add-to-list 'embark-around-action-hooks '(my/vterm embark--cd))
   (keymap-set embark-file-map "s" #'my/vterm)) ; was make-symbolic-link
 
+(defvar my/vterm/buffer-name-prefix
+  (format "%s " vterm-buffer-name))
+
 (defun my/vterm ()
   (interactive)
   (let* ((dir (my/dirname default-directory))
-         (name (format "%s %s" vterm-buffer-name dir))
+         (name (format "%s%s" my/vterm/buffer-name-prefix dir))
          (buffer (get-buffer name)))
     (if buffer
         (switch-to-buffer buffer)
