@@ -192,7 +192,7 @@
                          (if (string-prefix-p my/vterm/buffer-name-prefix buffer-name)
                              (if dir-is-project-root "." dir-parent-subpath)
                            dir-subpath))
-                        ((derived-mode-p 'dired-mode)
+                        ((derived-mode-p 'dired-mode 'grep-mode)
                          (if dir-is-project-root "." dir-parent-subpath))
                         (t
                          ""))
@@ -232,7 +232,9 @@
                        (if dir-is-project-root "." dir-name)
                      (format "@%s" buffer-name))))
           ((derived-mode-p 'dired-mode)
-           (format "📂 %s" (if dir-is-project-root "." buffer-name)))
+           (format "📂 %s" (if dir-is-project-root "." dir-name)))
+          ((derived-mode-p 'grep-mode)
+           (format "🔎 %s" (if dir-is-project-root "." dir-name)))
           ((string-prefix-p edit-indirect-prefix buffer-name)
            (string-replace edit-indirect-prefix "*💥" buffer-name))
           (filename
