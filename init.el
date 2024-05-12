@@ -789,6 +789,8 @@
 
 (require 'vterm)
 
+(setopt vterm-max-scrollback 10000)
+
 (keymap-global-set "s-i t" #'vterm)
 
 (keymap-set vterm-mode-map "C-c c" #'vterm-copy-mode)
