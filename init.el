@@ -1911,8 +1911,7 @@
 
 (defun my/grep/dir/initial (&optional initial)
   (interactive)
-  (let* ((file-or-dir (read-file-name "Grep in: "))
-         (dir `(,file-or-dir)))
+  (let ((dir (read-directory-name "Grep in: ")))
     (setq this-command
           (lambda ()
             (interactive)
