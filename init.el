@@ -317,6 +317,8 @@
   "n" #'flymake-goto-next-error
   "p" #'flymake-goto-prev-error)
 
+(keymap-global-set "s-i m f" #'flymake-mode)
+
 ;; <-------------------------
 ;; ## flymake-collection
 
