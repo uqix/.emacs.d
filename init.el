@@ -3116,8 +3116,8 @@
       (removed (face-attribute 'magit-diff-removed :foreground)))
   (set-face-attribute 'magit-diff-added nil :foreground (my/color-darken-name added 30 20))
   (set-face-attribute 'magit-diff-removed nil :foreground (my/color-darken-name removed 30))
-  (set-face-attribute 'diff-refine-added nil :foreground added)
-  (set-face-attribute 'diff-refine-removed nil :foreground removed))
+  (set-face-attribute 'diff-refine-added nil :foreground added :background 'unspecified :weight 'unspecified)
+  (set-face-attribute 'diff-refine-removed nil :foreground removed :background 'unspecified :weight 'unspecified))
 
 (set-face-attribute
  'magit-diff-hunk-heading-highlight nil :background
