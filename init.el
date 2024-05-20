@@ -2242,8 +2242,10 @@
 ;; # Whitespace
 
 (require 'whitespace)
-(setopt whitespace-style '(face tab-mark tabs trailing))
+
 (setopt indent-tabs-mode nil)
+(setopt whitespace-line-column 100)
+(setopt whitespace-style '(face tab-mark tabs trailing lines-tail))
 
 (add-hook 'text-mode-hook #'whitespace-mode)
 (add-hook 'prog-mode-hook #'whitespace-mode)
