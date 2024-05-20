@@ -2242,10 +2242,11 @@
 ;; # Whitespace
 
 (require 'whitespace)
-
-(setq whitespace-style (delete 'lines whitespace-style))
-
+(setopt whitespace-style '(face tab-mark tabs trailing))
 (setopt indent-tabs-mode nil)
+
+(add-hook 'text-mode-hook #'whitespace-mode)
+(add-hook 'prog-mode-hook #'whitespace-mode)
 
 (keymap-global-set "s-i m w" #'whitespace-mode)
 
@@ -2403,7 +2404,8 @@
 (add-hook 'go-ts-mode-hook #'my/go-ts-mode-hook)
 
 (defun my/go-ts-mode-hook ()
-  (setq-local tab-width 4))
+  (setq-local tab-width 4)
+  (whitespace-toggle-options '(tab-mark tabs)))
 ;; >--------------------------------------------------
 
 
@@ -3226,6 +3228,14 @@
 
 (set-face-attribute 'ztreep-diff-header-small-face nil
                     :foreground (face-attribute 'shadow :foreground) :weight 'normal)
+;; >-------------------------
+
+;; <-------------------------
+;; ## Whitespace
+
+(set-face-attribute 'whitespace-tab nil
+                    :foreground (face-foreground 'whitespace-trailing)
+                    :background (face-background 'whitespace-trailing))
 ;; >-------------------------
 
 (set-face-attribute
