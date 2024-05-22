@@ -2202,6 +2202,7 @@
   "SPC" #'my/polymode/set-mark)
 
 (keymap-set polymode-mode-map "C-c p" my/polymode/repeat-map)
+(keymap-set polymode-mode-map "C-c '" #'my/polymode/edit-chunk)
 
 (defun my/polymode/edit-chunk ()
   (interactive)
