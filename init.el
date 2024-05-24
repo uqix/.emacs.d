@@ -317,7 +317,7 @@
   "n" #'flymake-goto-next-error
   "p" #'flymake-goto-prev-error)
 
-(keymap-global-set "s-i m f" #'flymake-mode)
+(keymap-global-set "s-i m d" #'flymake-mode) ; [d]iagnostics
 
 ;; <-------------------------
 ;; ## flymake-collection
@@ -2342,10 +2342,12 @@
   "[" #'backward-paragraph
   "]" #'forward-paragraph)
 
-(keymap-global-set "s-i o" #'my/find-file/dev-notes)
+(keymap-global-set "s-i m f" #'follow-mode)
 
 ;; <-------------------------
 ;; ## find-file
+
+(keymap-global-set "s-i o" #'my/find-file/dev-notes)
 
 (defun my/find-file/dev-notes ()
   (interactive)
