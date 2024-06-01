@@ -1093,7 +1093,8 @@
   (keymap-set embark-region-map "f s p" #'my/region/format/sql/postgresql)
   (keymap-set embark-region-map "f j" #'my/region/format/json)
   (keymap-set embark-region-map "f J" #'my/region/format/json/compact)
-  (keymap-set embark-region-map "f y" #'my/region/format/yaml))
+  (keymap-set embark-region-map "f y" #'my/region/format/yaml)
+  (keymap-set embark-region-map "f x" #'my/region/format/xml))
 
 (defun my/region/format/sql/mysql ()
   (interactive)
@@ -1114,6 +1115,10 @@
 (defun my/region/format/yaml ()
   (interactive)
   (my/region/convert/by-shell-command "yq -p=yaml -o=yaml -"))
+
+(defun my/region/format/xml ()
+  (interactive)
+  (my/region/convert/by-shell-command "yq -p=xml -o=xml -I4 -"))
 ;; >-------------------------
 
 ;; <-------------------------
