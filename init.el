@@ -404,6 +404,9 @@
                  ('consult-buffer (and
                                    (= (point) (+ (length "Switch to: ?") 1))
                                    '(require-snippet-condition . consult-buffer)))
+                 ('find-file (and
+                              (= (point) (+ (length "Find file: ?") 1))
+                              '(require-snippet-condition . find-file)))
                  (cmd `(require-snippet-condition . ,cmd)))))
 ;; >-------------------------
 
