@@ -2577,6 +2577,8 @@
 ;; (keymap-set yaml-pro-ts-mode-map "<return>" nil)
 ;; TODO
 
+(keymap-set yaml-pro-ts-mode-map "C-c e" #'yaml-pro-edit-ts-scalar)
+
 ;; <----------
 ;; ### Indent repeat-map
 
