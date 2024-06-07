@@ -2151,6 +2151,8 @@
 
 (require 'nxml-mode)
 
+(keymap-global-set "s-i m x" #'xml-mode)
+
 ;; ref rng-nxml-mode-init
 
 (add-hook 'nxml-mode-hook 'my/nxml-mode-hook)
