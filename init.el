@@ -606,6 +606,10 @@
 (keymap-global-set "s-i h r" 'my/highlight-regexp)
 (keymap-global-set "s-i h h" 'my/highlight-regexp/all)
 
+(defface my/highlight-regexp-face
+  '((t (:strike-through "red")))
+  "my/highlight-regexp face")
+
 (defvar-keymap my/highlight-regexp/all/repeat-map
   :repeat (:enter
            (my/highlight-regexp/all)
@@ -622,7 +626,7 @@
   (let ((regexp (or
                  (and str (regexp-quote str))
                  (read-regexp "RegExp: "))))
-    (highlight-regexp regexp 'symbol-overlay-face-8)))
+    (highlight-regexp regexp 'my/highlight-regexp-face)))
 
 (defun my/highlight-regexp/all ()
   (interactive)
@@ -636,7 +640,7 @@
     (walk-windows
      (lambda (window)
        (with-current-buffer (window-buffer window)
-         (highlight-regexp regexp 'symbol-overlay-face-8))))))
+         (highlight-regexp regexp 'my/highlight-regexp-face))))))
 ;; >----------
 
 ;; <----------
