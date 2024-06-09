@@ -1169,6 +1169,17 @@
   (my/region/convert #'abbreviate-file-name))
 ;; >-------------------------
 
+;; <-------------------------
+;; ## Escape & unescape
+
+(with-eval-after-load 'embark
+  (keymap-set embark-region-map "e j" #'my/region/unescape/json-string))
+
+(defun my/region/unescape/json-string ()
+  (interactive)
+  (my/region/convert/by-shell-command "jq -r '.' -"))
+;; >-------------------------
+
 ;; >--------------------------------------------------
 
 
