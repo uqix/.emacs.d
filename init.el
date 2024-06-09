@@ -2783,24 +2783,24 @@
 ;; <-------------------------
 ;; ## preview
 
-(require 'markdown-xwidget)
+;; (require 'markdown-xwidget)
 
-(setopt markdown-xwidget-github-theme "dark-dimmed")
-(setopt markdown-xwidget-code-block-theme "github-dark-dimmed")
-(setopt markdown-xwidget-mermaid-theme "dark")
+;; (setopt markdown-xwidget-github-theme "dark-dimmed")
+;; (setopt markdown-xwidget-code-block-theme "github-dark-dimmed")
+;; (setopt markdown-xwidget-mermaid-theme "dark")
 
-(defun markdown-live-preview-get-filename ()
-  "Standardize the filename exported by `markdown-live-preview-export'."
-  (let* ((result (markdown-export-file-name ".html"))
-         (result (format "~/tmp/.emacs-markdown-preview%s" result))
-         (result (expand-file-name result))
-         (dir (f-dirname result)))
-    (make-directory dir t)
-    result))
+;; (defun markdown-live-preview-get-filename ()
+;;   "Standardize the filename exported by `markdown-live-preview-export'."
+;;   (let* ((result (markdown-export-file-name ".html"))
+;;          (result (format "~/tmp/.emacs-markdown-preview%s" result))
+;;          (result (expand-file-name result))
+;;          (dir (f-dirname result)))
+;;     (make-directory dir t)
+;;     result))
 
-(remove-hook 'kill-buffer-query-functions #'xwidget-kill-buffer-query-function)
+;; (remove-hook 'kill-buffer-query-functions #'xwidget-kill-buffer-query-function)
 
-(keymap-set markdown-mode-map "C-c p" #'markdown-xwidget-preview-mode)
+;; (keymap-set markdown-mode-map "C-c p" #'markdown-xwidget-preview-mode)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
