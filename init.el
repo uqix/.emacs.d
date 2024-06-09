@@ -3180,24 +3180,28 @@
 
 (set-face-attribute 'avy-lead-face nil :foreground "green" :background "reset")
 
-(set-face-attribute 'eglot-highlight-symbol-face nil :overline "SpringGreen3")
-
 ;; <-------------------------
 ;; ## symbol-overlay
 
-(set-face-attribute 'symbol-overlay-default-face nil :inherit 'eglot-highlight-symbol-face)
-
-(set-face-attribute 'symbol-overlay-face-2 nil :background "lavender")
-(set-face-attribute 'symbol-overlay-face-5 nil :background "burlywood")
-
 (dotimes (i 8)
   (let ((face (intern (format "symbol-overlay-face-%s" (+ i 1)))))
-    (set-face-attribute
-     face nil
-     :background
-     (my/color-darken-name (face-attribute face :background) 30)
-     :foreground
-     (face-attribute 'lazy-highlight :foreground))))
+    (set-face-attribute face nil
+                        :foreground 'unspecified
+                        :background 'unspecified
+                        :overline (face-background face))))
+
+(set-face-attribute 'symbol-overlay-default-face nil
+                    :inherit 'symbol-overlay-face-1
+                    :overline "SpringGreen3"
+                    :weight 'bold)
+;; >-------------------------
+
+;; <-------------------------
+;; ## eglot
+
+(set-face-attribute 'eglot-highlight-symbol-face nil
+                    :inherit 'symbol-overlay-default-face
+                    :slant 'italic)
 ;; >-------------------------
 
 ;; <-------------------------
