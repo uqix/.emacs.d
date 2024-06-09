@@ -804,14 +804,22 @@
 
 (keymap-set vterm-mode-map "C-c c" #'vterm-copy-mode)
 (keymap-set vterm-mode-map "M-g" #'avy-goto-line)
-(keymap-set vterm-mode-map "M-j" #'avy-goto-char-2)
+(keymap-set vterm-mode-map "M-j" #'my/vterm/avy-goto-char-2)
 (keymap-set vterm-mode-map "M-y" #'vterm-yank-pop)
+(keymap-set vterm-mode-map "s-f" #'my/vterm/find)
 
-(keymap-set vterm-copy-mode-map "C-c c" #'vterm-copy-mode)
+(defun my/vterm/avy-goto-char-2 ()
+  (interactive)
+  (vterm-copy-mode)
+  (call-interactively #'avy-goto-char-2))
 
-(with-eval-after-load 'embark
-  (add-to-list 'embark-around-action-hooks '(my/vterm embark--cd))
-  (keymap-set embark-file-map "s" #'my/vterm)) ; was make-symbolic-link
+(defun my/vterm/find ()
+  (interactive)
+  (vterm-copy-mode)
+  (call-interactively #'my/find))
+
+;; <----------
+;; ### my/vterm (default-directory aware)
 
 (defvar my/vterm/buffer-name-prefix
   (format "%s " vterm-buffer-name))
@@ -830,6 +838,16 @@
          (result (abbreviate-file-name result))
          (result (directory-file-name result)))
     result))
+;; >----------
+
+;; <----------
+;; ### embark
+
+(with-eval-after-load 'embark
+  (add-to-list 'embark-around-action-hooks '(my/vterm embark--cd))
+  (keymap-set embark-file-map "s" #'my/vterm)) ; was make-symbolic-link
+;; >----------
+
 ;; >-------------------------
 
 ;; >--------------------------------------------------
