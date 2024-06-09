@@ -415,6 +415,52 @@
 
 
 ;; <--------------------------------------------------
+;; # embark
+
+(require 'embark)
+
+(setopt embark-confirm-act-all nil)
+(setopt embark-mixed-indicator-delay 1.5)
+
+(keymap-global-set "M-i" 'embark-act) ; was tab-to-tab-stop
+
+(keymap-set embark-region-map "e" nil)              ; was eval-region
+(keymap-set embark-region-map "e e" #'eval-region)  ; [e]val [e]lisp
+(keymap-set embark-region-map "a" nil)              ; was align
+(keymap-set embark-region-map "a a" #'align)
+(keymap-set embark-region-map "a r" #'align-regexp)
+
+;; <-------------------------
+;; ## marginalia
+
+(require 'marginalia)
+
+;; https://github.com/minad/marginalia#configuration
+(marginalia-mode)
+;; >-------------------------
+
+;; <-------------------------
+;; ## embark-consult
+
+;; https://github.com/oantolin/embark#consult
+
+;; Embark will automatically load it after Consult if found.
+
+(keymap-set embark-general-map "s-f" #'consult-line)
+(keymap-set embark-general-map "s-F" #'consult-line-multi)
+(keymap-set embark-general-map "s-g" #'consult-ripgrep)
+(keymap-set embark-general-map "s-G" #'my/grep/dir/read-initial)
+
+(defun my/grep/dir/read-initial ()
+  (interactive)
+  (consult-ripgrep '(4) (read-from-minibuffer "Grep: ")))
+;; >-------------------------
+
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # Block hideshow
 
 (require 'hideshow)
@@ -843,9 +889,8 @@
 ;; <----------
 ;; ### embark
 
-(with-eval-after-load 'embark
-  (add-to-list 'embark-around-action-hooks '(my/vterm embark--cd))
-  (keymap-set embark-file-map "s" #'my/vterm)) ; was make-symbolic-link
+(add-to-list 'embark-around-action-hooks '(my/vterm embark--cd))
+(keymap-set embark-file-map "s" #'my/vterm) ; was make-symbolic-link
 ;; >----------
 
 ;; >-------------------------
@@ -1038,12 +1083,11 @@
 (keymap-global-set "s-i c k" #'my/region/convert/kebab-case)
 (keymap-global-set "s-i c C" #'my/region/convert/capitalize)
 
-(with-eval-after-load 'embark
-  (keymap-set embark-region-map "c" nil)
-  (keymap-set embark-region-map "c s" #'my/region/convert/snake-case)
-  (keymap-set embark-region-map "c c" #'my/region/convert/camel-case)
-  (keymap-set embark-region-map "c k" #'my/region/convert/kebab-case)
-  (keymap-set embark-region-map "c C" #'my/region/convert/capitalize))
+(keymap-set embark-region-map "c" nil)
+(keymap-set embark-region-map "c s" #'my/region/convert/snake-case)
+(keymap-set embark-region-map "c c" #'my/region/convert/camel-case)
+(keymap-set embark-region-map "c k" #'my/region/convert/kebab-case)
+(keymap-set embark-region-map "c C" #'my/region/convert/capitalize)
 
 (defun my/region/convert/snake-case ()
   (interactive)
@@ -1076,12 +1120,11 @@
 
 ;; $ brew install yq
 
-(with-eval-after-load 'embark
-  (keymap-set embark-region-map "c j y" #'my/region/convert/json/to-yaml)
-  (keymap-set embark-region-map "c y j" #'my/region/convert/yaml/to-json)
-  (keymap-set embark-region-map "c y J" #'my/region/convert/yaml/to-json/compact)
-  (keymap-set embark-region-map "c y p" #'my/region/convert/yaml/to-properties)
-  (keymap-set embark-region-map "c p y" #'my/region/convert/properties/to-yaml))
+(keymap-set embark-region-map "c j y" #'my/region/convert/json/to-yaml)
+(keymap-set embark-region-map "c y j" #'my/region/convert/yaml/to-json)
+(keymap-set embark-region-map "c y J" #'my/region/convert/yaml/to-json/compact)
+(keymap-set embark-region-map "c y p" #'my/region/convert/yaml/to-properties)
+(keymap-set embark-region-map "c p y" #'my/region/convert/properties/to-yaml)
 
 (defun my/region/convert/json/to-yaml ()
   (interactive)
@@ -1117,14 +1160,13 @@
 
 ;; $ brew install sqlfluff
 
-(with-eval-after-load 'embark
-  (keymap-set embark-region-map "f" nil)
-  (keymap-set embark-region-map "f s m" #'my/region/format/sql/mysql)
-  (keymap-set embark-region-map "f s p" #'my/region/format/sql/postgresql)
-  (keymap-set embark-region-map "f j" #'my/region/format/json)
-  (keymap-set embark-region-map "f J" #'my/region/format/json/compact)
-  (keymap-set embark-region-map "f y" #'my/region/format/yaml)
-  (keymap-set embark-region-map "f x" #'my/region/format/xml))
+(keymap-set embark-region-map "f" nil)
+(keymap-set embark-region-map "f s m" #'my/region/format/sql/mysql)
+(keymap-set embark-region-map "f s p" #'my/region/format/sql/postgresql)
+(keymap-set embark-region-map "f j" #'my/region/format/json)
+(keymap-set embark-region-map "f J" #'my/region/format/json/compact)
+(keymap-set embark-region-map "f y" #'my/region/format/yaml)
+(keymap-set embark-region-map "f x" #'my/region/format/xml)
 
 (defun my/region/format/sql/mysql ()
   (interactive)
@@ -1154,11 +1196,10 @@
 ;; <-------------------------
 ;; ## Path converters
 
-(with-eval-after-load 'embark
-  (keymap-set embark-region-map "p" nil) ; was fill-region-as-paragraph
-  (keymap-set embark-region-map "p f" #'fill-region-as-paragraph)
-  (keymap-set embark-region-map "p e" #'my/region/path/expand)
-  (keymap-set embark-region-map "p a" #'my/region/path/abbreviate))
+(keymap-set embark-region-map "p" nil) ; was fill-region-as-paragraph
+(keymap-set embark-region-map "p f" #'fill-region-as-paragraph)
+(keymap-set embark-region-map "p e" #'my/region/path/expand)
+(keymap-set embark-region-map "p a" #'my/region/path/abbreviate)
 
 (defun my/region/path/expand ()
   (interactive)
@@ -1172,8 +1213,7 @@
 ;; <-------------------------
 ;; ## Escape & unescape
 
-(with-eval-after-load 'embark
-  (keymap-set embark-region-map "e j" #'my/region/unescape/json-string))
+(keymap-set embark-region-map "e j" #'my/region/unescape/json-string)
 
 (defun my/region/unescape/json-string ()
   (interactive)
@@ -1217,52 +1257,6 @@
 (defun my/consult-fd ()
   (interactive)
   (consult-fd '(4)))
-;; >--------------------------------------------------
-
-
-
-;; <--------------------------------------------------
-;; # embark
-
-(require 'embark)
-
-(setopt embark-confirm-act-all nil)
-(setopt embark-mixed-indicator-delay 1.5)
-
-(keymap-global-set "M-i" 'embark-act) ; was tab-to-tab-stop
-
-(keymap-set embark-region-map "e" nil)              ; was eval-region
-(keymap-set embark-region-map "e e" #'eval-region)  ; [e]val [e]lisp
-(keymap-set embark-region-map "a" nil)              ; was align
-(keymap-set embark-region-map "a a" #'align)
-(keymap-set embark-region-map "a r" #'align-regexp)
-
-;; <-------------------------
-;; ## marginalia
-
-(require 'marginalia)
-
-;; https://github.com/minad/marginalia#configuration
-(marginalia-mode)
-;; >-------------------------
-
-;; <-------------------------
-;; ## embark-consult
-
-;; https://github.com/oantolin/embark#consult
-
-;; Embark will automatically load it after Consult if found.
-
-(keymap-set embark-general-map "s-f" #'consult-line)
-(keymap-set embark-general-map "s-F" #'consult-line-multi)
-(keymap-set embark-general-map "s-g" #'consult-ripgrep)
-(keymap-set embark-general-map "s-G" #'my/grep/dir/read-initial)
-
-(defun my/grep/dir/read-initial ()
-  (interactive)
-  (consult-ripgrep '(4) (read-from-minibuffer "Grep: ")))
-;; >-------------------------
-
 ;; >--------------------------------------------------
 
 
