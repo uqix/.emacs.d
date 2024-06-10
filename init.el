@@ -654,7 +654,7 @@
 (keymap-global-set "s-i h h" 'my/highlight-regexp/all)
 
 (defface my/highlight-regexp-face
-  '((t (:strike-through "red")))
+  '((t (:strike-through "DarkSlateGray1")))
   "my/highlight-regexp face")
 
 (defvar-keymap my/highlight-regexp/all/repeat-map
