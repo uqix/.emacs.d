@@ -3152,7 +3152,8 @@
 
 (set-face-attribute 'default nil
                     :family "JetBrains Mono"
-                    :height 130)
+                    :height 130
+                    :foreground (my/color-darken-name (face-foreground 'default) 15 30))
 
 (set-face-attribute 'aw-leading-char-face nil
                     :height 1.0
@@ -3341,6 +3342,4 @@
                     :background (face-background 'whitespace-trailing))
 ;; >-------------------------
 
-(set-face-attribute 'default nil
-                    :foreground (my/color-darken-name (face-foreground 'default) 15 30))
 ;; >--------------------------------------------------
