@@ -361,6 +361,7 @@
 ;; https://github.com/minad/vertico/blob/main/extensions/vertico-quick.el
 (keymap-set vertico-map "M-g" #'vertico-quick-exit)
 
+;; https://github.com/minad/vertico/blob/main/extensions/vertico-multiform.el
 (vertico-multiform-mode)
 
 ;; <----------
