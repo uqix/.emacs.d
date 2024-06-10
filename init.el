@@ -3156,7 +3156,7 @@
 
 (set-face-attribute
  'hl-line nil :background
- (my/color-darken-name (face-attribute 'hl-line :background) 10))
+ (my/color-darken-name (face-background 'hl-line) 10))
 
 ;; <-------------------------
 ;; ## elisp
@@ -3169,8 +3169,8 @@
 ;; <-------------------------
 ;; ## Magit
 
-(let ((added (face-attribute 'magit-diff-added :foreground))
-      (removed (face-attribute 'magit-diff-removed :foreground)))
+(let ((added (face-foreground 'magit-diff-added))
+      (removed (face-foreground 'magit-diff-removed)))
   (set-face-attribute 'magit-diff-added nil :foreground (my/color-darken-name added 30 20))
   (set-face-attribute 'magit-diff-removed nil :foreground (my/color-darken-name removed 30))
   (set-face-attribute 'diff-refine-added nil :foreground added :background 'unspecified :weight 'unspecified)
@@ -3178,19 +3178,19 @@
 
 (set-face-attribute
  'magit-diff-hunk-heading-highlight nil :background
- (my/color-darken-name (face-attribute 'magit-diff-base-highlight :background) 45))
+ (my/color-darken-name (face-background 'magit-diff-base-highlight) 45))
 
 (set-face-attribute
  'magit-section-highlight nil :background
- (my/color-darken-name (face-attribute 'magit-section-highlight :background) 20))
+ (my/color-darken-name (face-background 'magit-section-highlight) 20))
 
 (set-face-attribute
  'magit-diff-hunk-heading nil :background
- (my/color-darken-name (face-attribute 'magit-diff-hunk-heading :background) 45))
+ (my/color-darken-name (face-background 'magit-diff-hunk-heading) 45))
 
 (set-face-attribute
  'magit-blame-heading nil :background
- (my/color-darken-name (face-attribute 'magit-blame-heading :background) 35))
+ (my/color-darken-name (face-background 'magit-blame-heading) 35))
 
 (set-face-attribute 'magit-diff-revision-summary nil :inherit 'magit-header-line)
 (set-face-attribute 'magit-filename nil :inherit 'font-lock-type-face)
@@ -3199,7 +3199,7 @@
 
 (set-face-attribute
  'highlight nil :background
- (my/color-darken-name (face-attribute 'highlight :background) 30))
+ (my/color-darken-name (face-background 'highlight) 30))
 
 (set-face-attribute 'consult-file nil :inherit 'consult-buffer)
 
@@ -3232,7 +3232,7 @@
 ;; <-------------------------
 ;; ## ediff
 
-(let* ((current (face-attribute 'ediff-even-diff-A :background))
+(let* ((current (face-background 'ediff-even-diff-A))
        ;; (current (my/color-darken-name current 5))
        (even (my/color-darken-name current 18))
        (odd (my/color-darken-name current 20)))
@@ -3253,12 +3253,12 @@
 ;; <-------------------------
 ;; ## Markdown
 
-(let ((quote (face-attribute 'markdown-blockquote-face :foreground nil t)))
+(let ((quote (face-foreground 'markdown-blockquote-face nil t)))
   (set-face-attribute 'markdown-blockquote-face nil :foreground (my/color-darken-name quote 20))
   (set-face-attribute 'markdown-bold-face nil :foreground quote :weight 'normal))
 
-(let ((h1 (face-attribute 'font-lock-keyword-face :foreground))
-      (h2 (face-attribute 'font-lock-function-name-face :foreground)))
+(let ((h1 (face-foreground 'font-lock-keyword-face))
+      (h2 (face-foreground 'font-lock-function-name-face)))
   (set-face-attribute 'markdown-header-face-1 nil
                       :weight 'bold :foreground h1)
   (set-face-attribute 'markdown-header-face-3 nil
@@ -3276,17 +3276,18 @@
 ;; <-------------------------
 ;; ## ztree
 
-(set-face-attribute 'ztreep-diff-model-diff-face nil :foreground
-                    (face-attribute 'font-lock-type-face :foreground))
+(set-face-attribute 'ztreep-diff-model-diff-face nil
+                    :foreground (face-foreground 'font-lock-type-face))
 
-(set-face-attribute 'ztreep-diff-model-add-face nil :foreground
-                    (face-attribute 'font-lock-function-name-face :foreground))
+(set-face-attribute 'ztreep-diff-model-add-face nil
+                    :foreground (face-foreground 'font-lock-function-name-face))
 
 (set-face-attribute 'ztreep-diff-header-face nil
-                    :foreground (face-attribute 'shadow :foreground))
+                    :foreground (face-foreground 'shadow))
 
 (set-face-attribute 'ztreep-diff-header-small-face nil
-                    :foreground (face-attribute 'shadow :foreground) :weight 'normal)
+                    :foreground (face-foreground 'shadow)
+                    :weight 'normal)
 ;; >-------------------------
 
 ;; <-------------------------
@@ -3297,7 +3298,6 @@
                     :background (face-background 'whitespace-trailing))
 ;; >-------------------------
 
-(set-face-attribute
- 'default nil :foreground
- (my/color-darken-name (face-attribute 'default :foreground) 15 30))
+(set-face-attribute 'default nil
+                    :foreground (my/color-darken-name (face-foreground 'default) 15 30))
 ;; >--------------------------------------------------
