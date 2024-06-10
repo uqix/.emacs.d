@@ -3150,20 +3150,24 @@
                          (or desaturate-percent percent)))
 ;; >-------------------------
 
-(set-face-attribute 'default nil :family "JetBrains Mono" :height 130)
+(set-face-attribute 'default nil
+                    :family "JetBrains Mono"
+                    :height 130)
 
-(set-face-attribute 'aw-leading-char-face nil :height 1.0 :weight 'bold :foreground "green")
+(set-face-attribute 'aw-leading-char-face nil
+                    :height 1.0
+                    :weight 'bold
+                    :foreground "green")
 
-(set-face-attribute
- 'hl-line nil :background
- (my/color-darken-name (face-background 'hl-line) 10))
+(set-face-background 'hl-line
+                     (my/color-darken-name (face-background 'hl-line) 10))
 
 ;; <-------------------------
 ;; ## elisp
 
-(set-face-attribute
- 'highlight-function-calls-face nil
- :underline nil :inherit 'font-lock-function-call-face)
+(set-face-attribute 'highlight-function-calls-face nil
+                    :underline nil
+                    :inherit 'font-lock-function-call-face)
 ;; >-------------------------
 
 ;; <-------------------------
@@ -3171,39 +3175,53 @@
 
 (let ((added (face-foreground 'magit-diff-added))
       (removed (face-foreground 'magit-diff-removed)))
-  (set-face-attribute 'magit-diff-added nil :foreground (my/color-darken-name added 30 20))
-  (set-face-attribute 'magit-diff-removed nil :foreground (my/color-darken-name removed 30))
-  (set-face-attribute 'diff-refine-added nil :foreground added :background 'unspecified :weight 'unspecified)
-  (set-face-attribute 'diff-refine-removed nil :foreground removed :background 'unspecified :weight 'unspecified))
+  (set-face-foreground 'magit-diff-added
+                       (my/color-darken-name added 30 20))
 
-(set-face-attribute
- 'magit-diff-hunk-heading-highlight nil :background
- (my/color-darken-name (face-background 'magit-diff-base-highlight) 45))
+  (set-face-foreground 'magit-diff-removed
+                       (my/color-darken-name removed 30))
 
-(set-face-attribute
- 'magit-section-highlight nil :background
- (my/color-darken-name (face-background 'magit-section-highlight) 20))
+  (set-face-attribute 'diff-refine-added nil
+                      :foreground added
+                      :background 'unspecified
+                      :weight 'unspecified)
 
-(set-face-attribute
- 'magit-diff-hunk-heading nil :background
- (my/color-darken-name (face-background 'magit-diff-hunk-heading) 45))
+  (set-face-attribute 'diff-refine-removed nil
+                      :foreground removed
+                      :background 'unspecified
+                      :weight 'unspecified))
 
-(set-face-attribute
- 'magit-blame-heading nil :background
- (my/color-darken-name (face-background 'magit-blame-heading) 35))
+(set-face-background 'magit-diff-hunk-heading-highlight
+                     (my/color-darken-name (face-background 'magit-diff-base-highlight) 45))
 
-(set-face-attribute 'magit-diff-revision-summary nil :inherit 'magit-header-line)
-(set-face-attribute 'magit-filename nil :inherit 'font-lock-type-face)
-(set-face-attribute 'magit-diff-file-heading nil :inherit 'font-lock-type-face)
+(set-face-background 'magit-section-highlight
+                     (my/color-darken-name (face-background 'magit-section-highlight) 20))
+
+(set-face-background 'magit-diff-hunk-heading
+                     (my/color-darken-name (face-background 'magit-diff-hunk-heading) 45))
+
+(set-face-background 'magit-blame-heading
+                     (my/color-darken-name (face-background 'magit-blame-heading) 35))
+
+(set-face-attribute 'magit-diff-revision-summary nil
+                    :inherit 'magit-header-line)
+
+(set-face-attribute 'magit-filename nil
+                    :inherit 'font-lock-type-face)
+
+(set-face-attribute 'magit-diff-file-heading nil
+                    :inherit 'font-lock-type-face)
 ;; >-------------------------
 
-(set-face-attribute
- 'highlight nil :background
- (my/color-darken-name (face-background 'highlight) 30))
+(set-face-background 'highlight
+                     (my/color-darken-name (face-background 'highlight) 30))
 
-(set-face-attribute 'consult-file nil :inherit 'consult-buffer)
+(set-face-attribute 'consult-file nil
+                    :inherit 'consult-buffer)
 
-(set-face-attribute 'avy-lead-face nil :foreground "green" :background "reset")
+(set-face-attribute 'avy-lead-face nil
+                    :foreground "green"
+                    :background "reset")
 
 ;; <-------------------------
 ;; ## symbol-overlay
@@ -3237,53 +3255,78 @@
        (even (my/color-darken-name current 18))
        (odd (my/color-darken-name current 20)))
 
-  (set-face-attribute 'ediff-current-diff-A nil :inherit 'magit-diff-removed :background current)
-  (set-face-attribute 'ediff-current-diff-B nil :inherit 'magit-diff-added :background current)
+  (set-face-attribute 'ediff-current-diff-A nil
+                      :inherit 'magit-diff-removed
+                      :background current)
 
-  (set-face-attribute 'ediff-fine-diff-A nil :inherit 'diff-refine-removed :background current)
-  (set-face-attribute 'ediff-fine-diff-B nil :inherit 'diff-refine-added :background current)
+  (set-face-attribute 'ediff-current-diff-B nil
+                      :inherit 'magit-diff-added
+                      :background current)
 
-  (set-face-attribute 'ediff-even-diff-A nil :background even)
-  (set-face-attribute 'ediff-even-diff-B nil :background even)
+  (set-face-attribute 'ediff-fine-diff-A nil
+                      :inherit 'diff-refine-removed
+                      :background current)
 
-  (set-face-attribute 'ediff-odd-diff-A nil :background odd)
-  (set-face-attribute 'ediff-odd-diff-B nil :background odd))
+  (set-face-attribute 'ediff-fine-diff-B nil
+                      :inherit 'diff-refine-added
+                      :background current)
+
+  (set-face-background 'ediff-even-diff-A even)
+  (set-face-background 'ediff-even-diff-B even)
+
+  (set-face-background 'ediff-odd-diff-A odd)
+  (set-face-background 'ediff-odd-diff-B odd))
 ;; >-------------------------
 
 ;; <-------------------------
 ;; ## Markdown
 
 (let ((quote (face-foreground 'markdown-blockquote-face nil t)))
-  (set-face-attribute 'markdown-blockquote-face nil :foreground (my/color-darken-name quote 20))
-  (set-face-attribute 'markdown-bold-face nil :foreground quote :weight 'normal))
+  (set-face-foreground 'markdown-blockquote-face
+                       (my/color-darken-name quote 20))
+
+  (set-face-attribute 'markdown-bold-face nil
+                      :foreground quote
+                      :weight 'normal))
 
 (let ((h1 (face-foreground 'font-lock-keyword-face))
       (h2 (face-foreground 'font-lock-function-name-face)))
   (set-face-attribute 'markdown-header-face-1 nil
-                      :weight 'bold :foreground h1)
+                      :weight 'bold
+                      :foreground h1)
+
   (set-face-attribute 'markdown-header-face-3 nil
-                      :weight 'bold :foreground (my/color-darken-name h1 15))
+                      :weight 'bold
+                      :foreground (my/color-darken-name h1 15))
+
   (set-face-attribute 'markdown-header-face-5 nil
-                      :weight 'bold :foreground (my/color-darken-name h1 30))
+                      :weight 'bold
+                      :foreground (my/color-darken-name h1 30))
+
   (set-face-attribute 'markdown-header-face-2 nil
-                      :weight 'bold :foreground h2)
+                      :weight 'bold
+                      :foreground h2)
+
   (set-face-attribute 'markdown-header-face-4 nil
-                      :weight 'bold :foreground (my/color-darken-name h2 15))
+                      :weight 'bold
+                      :foreground (my/color-darken-name h2 15))
+
   (set-face-attribute 'markdown-header-face-6 nil
-                      :weight 'bold :foreground (my/color-darken-name h2 30)))
+                      :weight 'bold
+                      :foreground (my/color-darken-name h2 30)))
 ;; >-------------------------
 
 ;; <-------------------------
 ;; ## ztree
 
-(set-face-attribute 'ztreep-diff-model-diff-face nil
-                    :foreground (face-foreground 'font-lock-type-face))
+(set-face-foreground 'ztreep-diff-model-diff-face
+                     (face-foreground 'font-lock-type-face))
 
-(set-face-attribute 'ztreep-diff-model-add-face nil
-                    :foreground (face-foreground 'font-lock-function-name-face))
+(set-face-foreground 'ztreep-diff-model-add-face
+                     (face-foreground 'font-lock-function-name-face))
 
-(set-face-attribute 'ztreep-diff-header-face nil
-                    :foreground (face-foreground 'shadow))
+(set-face-foreground 'ztreep-diff-header-face
+                     (face-foreground 'shadow))
 
 (set-face-attribute 'ztreep-diff-header-small-face nil
                     :foreground (face-foreground 'shadow)
