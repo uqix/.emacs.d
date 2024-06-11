@@ -863,7 +863,7 @@
 (defun my/vterm/find ()
   (interactive)
   (vterm-copy-mode)
-  (call-interactively #'my/find))
+  (my/find))
 
 ;; <----------
 ;; ### my/vterm (default-directory aware)
