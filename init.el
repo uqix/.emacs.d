@@ -2468,6 +2468,8 @@
 ;; # TypeScript
 
 (require 'typescript-ts-mode)
+
+(setopt typescript-ts-mode-indent-offset 4)
 ;; >--------------------------------------------------
 
 
