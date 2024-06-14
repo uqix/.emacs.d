@@ -2293,6 +2293,7 @@
 (keymap-global-set "M-\\" #'delete-trailing-whitespace) ; was delete-horizontal-space
 (keymap-global-set "M-|" #'delete-all-space)
 (keymap-global-set "s-i j" #'join-line)
+(keymap-global-set "s-i T" #'untabify)
 
 ;; <-------------------------
 ;; ## Indent
@@ -2367,6 +2368,8 @@
 (electric-pair-mode)
 
 (setopt ring-bell-function #'ignore)
+
+(setopt debug-on-error t)
 
 (defvar-keymap my/paragraphs/repeat-map
   :repeat t
