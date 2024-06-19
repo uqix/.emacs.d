@@ -1741,7 +1741,8 @@
            "*Flymake diagnostics for "
            "*EGLOT "
            "*sqls result*"
-           "*Backtrace*"))
+           "*Backtrace*"
+           "*Deletions*"))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
