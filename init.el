@@ -1268,8 +1268,7 @@
 (require 'dired)
 
 (setq insert-directory-program "gls")
-(setopt dired-listing-switches
-        "-l --almost-all --human-readable --group-directories-first --no-group")
+(setopt dired-listing-switches "-lAhG")
 
 (setopt dired-recursive-deletes 'always)
 (setopt dired-free-space nil)
