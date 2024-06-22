@@ -2383,7 +2383,7 @@
 
 (setopt ring-bell-function #'ignore)
 
-(setopt debug-on-error t)
+;; (setopt debug-on-error t)
 
 (defvar-keymap my/paragraphs/repeat-map
   :repeat t
