@@ -851,14 +851,15 @@
 
 (keymap-set vterm-mode-map "C-c c" #'vterm-copy-mode)
 (keymap-set vterm-mode-map "M-g" #'avy-goto-line)
-(keymap-set vterm-mode-map "M-j" #'my/vterm/avy-goto-char-2)
+(keymap-set vterm-mode-map "M-j" #'avy-goto-char-2)
+(keymap-set vterm-mode-map "M-v" #'my/vterm/scroll-down)
 (keymap-set vterm-mode-map "M-y" #'vterm-yank-pop)
 (keymap-set vterm-mode-map "s-f" #'my/vterm/find)
 
-(defun my/vterm/avy-goto-char-2 ()
+(defun my/vterm/scroll-down ()
   (interactive)
   (vterm-copy-mode)
-  (call-interactively #'avy-goto-char-2))
+  (scroll-down-command))
 
 (defun my/vterm/find ()
   (interactive)
@@ -1126,6 +1127,8 @@
 (keymap-set embark-region-map "c y J" #'my/region/convert/yaml/to-json/compact)
 (keymap-set embark-region-map "c y p" #'my/region/convert/yaml/to-properties)
 (keymap-set embark-region-map "c p y" #'my/region/convert/properties/to-yaml)
+(keymap-set embark-region-map "c x y" #'my/region/convert/xml/to-yaml)
+(keymap-set embark-region-map "c v y" #'my/region/convert/csv/to-yaml)
 
 (defun my/region/convert/json/to-yaml ()
   (interactive)
@@ -1146,6 +1149,14 @@
 (defun my/region/convert/properties/to-yaml ()
   (interactive)
   (my/region/convert/by-shell-command "yq -p=props -o=yaml -"))
+
+(defun my/region/convert/xml/to-yaml ()
+  (interactive)
+  (my/region/convert/by-shell-command "yq -p=xml -o=yaml -"))
+
+(defun my/region/convert/csv/to-yaml ()
+  (interactive)
+  (my/region/convert/by-shell-command "yq -p=csv -o=yaml -"))
 
 (defun my/region/convert/by-shell-command (command)
   (shell-command-on-region
@@ -1742,7 +1753,9 @@
            "*EGLOT "
            "*sqls result*"
            "*Backtrace*"
-           "*Deletions*"))
+           "*Deletions*"
+           "*KeePass*"
+           "*Error*"))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
@@ -3068,6 +3081,18 @@
   (interactive)
   (when-let ((file (buffer-file-name)))
     (shell-command (format "sops -d -i '%s'" file))))
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
+;; # keepass
+
+(keymap-global-set "s-i k" #'my/keepass/export)
+
+(defun my/keepass/export ()
+  (interactive)
+  (shell-command "~/Documents/notes/keepass/export.sh" "*KeePass*"))
 ;; >--------------------------------------------------
 
 
