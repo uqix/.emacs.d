@@ -2241,27 +2241,19 @@
 
 (require 'polymode)
 
-(defvar-keymap my/polymode/repeat-map
-  :repeat (:exit
-           (my/polymode/edit-chunk))
+(defvar-keymap my/polymode/map
   "n" #'polymode-next-chunk
   "p" #'polymode-previous-chunk
   "k" #'polymode-kill-chunk
-  "m" #'polymode-mark-or-extend-chunk
-  "e" #'my/polymode/edit-chunk
-  "SPC" #'my/polymode/set-mark)
+  "m" #'polymode-mark-or-extend-chunk)
 
-(keymap-set polymode-mode-map "C-c p" my/polymode/repeat-map)
+(keymap-set polymode-mode-map "C-c p" my/polymode/map)
 (keymap-set polymode-mode-map "C-c '" #'my/polymode/edit-chunk)
 
 (defun my/polymode/edit-chunk ()
   (interactive)
   (call-interactively 'polymode-mark-or-extend-chunk)
   (call-interactively 'edit-indirect-region))
-
-(defun my/polymode/set-mark ()
-  (interactive)
-  (my/region/set-mark 'my/polymode/set-mark))
 
 ;; <-------------------------
 ;; ## Bash
