@@ -408,6 +408,9 @@
                  ('find-file (and
                               (= (point) (+ (length "Find file: ?") 1))
                               '(require-snippet-condition . find-file)))
+                 ('my/find (and
+                            (= (point) (+ (length "Go to line: ?") 1))
+                            '(require-snippet-condition . my/find)))
                  (cmd `(require-snippet-condition . ,cmd)))))
 ;; >-------------------------
 
