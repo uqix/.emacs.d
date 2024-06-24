@@ -634,10 +634,6 @@
 (keymap-global-set "s-i r f" #'rename-visited-file)
 
 (keymap-global-set "s-i s b" #'scratch-buffer)
-
-;; s-1: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 1 (Misc)
-;; s-2: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 2 (Emacs)
-;; s-3: macOS Keyboard Shortcuts - Mission Control - Switch to Desktop 3 (Chrome)
 ;; >--------------------------------------------------
 
 
@@ -2800,14 +2796,14 @@
 ;; (setopt markdown-xwidget-code-block-theme "github-dark-dimmed")
 ;; (setopt markdown-xwidget-mermaid-theme "dark")
 
-;; (defun markdown-live-preview-get-filename ()
-;;   "Standardize the filename exported by `markdown-live-preview-export'."
-;;   (let* ((result (markdown-export-file-name ".html"))
-;;          (result (format "~/tmp/.emacs-markdown-preview%s" result))
-;;          (result (expand-file-name result))
-;;          (dir (f-dirname result)))
-;;     (make-directory dir t)
-;;     result))
+(defun markdown-live-preview-get-filename ()
+  "Standardize the filename exported by `markdown-live-preview-export'."
+  (let* ((result (markdown-export-file-name ".html"))
+         (result (format "~/tmp/.emacs-markdown-preview%s" result))
+         (result (expand-file-name result))
+         (dir (f-dirname result)))
+    (make-directory dir t)
+    result))
 
 ;; (remove-hook 'kill-buffer-query-functions #'xwidget-kill-buffer-query-function)
 
@@ -2908,7 +2904,7 @@
 (setopt webjump-sites
         '(("Google" .
            [simple-query "www.google.com"
-		         "www.google.com/search?q=" ""])))
+                         "www.google.com/search?q=" ""])))
 
 (keymap-global-set "s-]" #'webjump)
 ;; >--------------------------------------------------
