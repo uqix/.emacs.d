@@ -1346,7 +1346,7 @@
 (keymap-set dired-mode-map "C-M-k" #'dired-subtree-remove)           ; was kill-sexp
 (keymap-set dired-mode-map "C-M-<backspace>" #'dired-subtree-remove) ; was backward-kill-sexp
 
-(keymap-set dired-mode-map "C-c n" #'dired-subtree-narrow)
+(keymap-set dired-mode-map "N" #'dired-subtree-narrow) ; was dired-do-man
 (keymap-set dired-mode-map "C-c g" #'dired-subtree-revert)
 (keymap-set dired-mode-map "TAB" #'dired-subtree-cycle)
 
