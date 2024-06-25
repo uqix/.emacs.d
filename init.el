@@ -1350,7 +1350,7 @@
 (keymap-set dired-mode-map "C-c g" #'dired-subtree-revert)
 (keymap-set dired-mode-map "TAB" #'dired-subtree-cycle)
 
-(defvar-keymap my/dired-subtree/tree-repeat-map
+(defvar-keymap my/dired/tree-repeat-map
   :repeat t
   "n" #'dired-subtree-next-sibling
   "p" #'dired-subtree-previous-sibling
@@ -2782,7 +2782,8 @@
 (defvar-keymap my/markdown/link-repeat-map
   :repeat t
   "n" #'markdown-next-link
-  "p" #'markdown-previous-link)
+  "p" #'markdown-previous-link
+  "f" #'markdown-follow-thing-at-point)
 ;; >-------------------------
 
 ;; <-------------------------
