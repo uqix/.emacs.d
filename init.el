@@ -849,6 +849,7 @@
 (keymap-global-set "s-i t" #'vterm)
 
 (keymap-set vterm-mode-map "C-c c" #'vterm-copy-mode)
+(keymap-set vterm-copy-mode-map "<return>" #'vterm-copy-mode) ; was vterm-copy-mode-done
 (keymap-set vterm-mode-map "M-g" #'avy-goto-line)
 (keymap-set vterm-mode-map "M-j" #'avy-goto-char-2)
 (keymap-set vterm-mode-map "M-v" #'my/vterm/scroll-down)
