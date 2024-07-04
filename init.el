@@ -1264,11 +1264,20 @@
 (keymap-global-set "s-h o" #'consult-outline)
 (keymap-global-set "s-h p" #'consult-bookmark) ; [p]ositions
 
-(keymap-global-set "s-h l" #'my/consult-fd) ; [l]ocate
+(keymap-global-set "s-h l" #'my/locate/dir) ; [l]ocate
 
-(defun my/consult-fd ()
+(defun my/locate/dir ()
   (interactive)
-  (consult-fd '(4)))
+  (my/region/with-str 'my/locate/dir/initial))
+
+(defun my/locate/dir/initial (&optional initial)
+  (interactive)
+  (let ((dir (read-directory-name "Locate in: ")))
+    (setq this-command
+          (lambda ()
+            (interactive)
+            (consult-fd dir)))
+    (consult-fd dir initial)))
 ;; >--------------------------------------------------
 
 
