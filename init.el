@@ -2654,11 +2654,6 @@
 (keymap-set yaml-pro-ts-mode-map "C-c y" #'yaml-pro-ts-paste-subtree)
 (keymap-set yaml-pro-ts-mode-map "C-c w" #'yaml-pro-copy-node-path-at-point)
 
-;; This is not available for tree-sitter variant.
-;; Presumably some tree-sitter folding package will exist in the future.
-;; (keymap-set yaml-pro-ts-mode-map "C-c c" 'yaml-pro-ts-fold-at-point)     ; [c]ollapse
-;; (keymap-set yaml-pro-ts-mode-map "C-c e" 'yaml-pro-ts-unfold-at-point)   ; [e]xpand
-
 ;; <----------
 ;; ### Edit scalar
 
