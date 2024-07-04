@@ -2025,14 +2025,6 @@
 ;; # eldoc
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Lisp-Doc.html
-
-;; <-------------------------
-;; ## eldoc-box
-
-;; (keymap-global-set "C-h ." #'eldoc-box-help-at-point) ; was eldoc-doc-buffer
-;; Deleted, prefer side window
-;; >-------------------------
-
 ;; >--------------------------------------------------
 
 
@@ -2518,6 +2510,7 @@
 ;; ## Left margin
 
 ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-387945773
+
 (add-hook 'edit-indirect-after-creation-hook #'vbe/edit-indirect/remove-left-margin)
 (add-hook 'edit-indirect-before-commit-hook #'vbe/edit-indirect/restore-left-margin)
 
@@ -2528,9 +2521,6 @@
   (let ((lm (vbe/compute-left-margin (buffer-substring (point-min) (point-max)))))
     (indent-rigidly (point-min) (point-max) (* -1 lm))
     (setq-local edit-indirect--left-margin lm)
-
-    ;; https://github.com/Fanael/edit-indirect/issues/6#issuecomment-1055542145
-    ;; buffer-local variable whose value should not be reset when changing major modes
     (put 'edit-indirect--left-margin 'permanent-local t)))
 
 (defun vbe/compute-left-margin (code)
@@ -3256,7 +3246,6 @@
 ;; ## ediff
 
 (let* ((current (face-background 'ediff-even-diff-A))
-       ;; (current (my/color-darken-name current 5))
        (even (my/color-darken-name current 18))
        (odd (my/color-darken-name current 20)))
 
