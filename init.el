@@ -2789,12 +2789,6 @@
 ;; <-------------------------
 ;; ## preview
 
-;; (require 'markdown-xwidget)
-
-;; (setopt markdown-xwidget-github-theme "dark-dimmed")
-;; (setopt markdown-xwidget-code-block-theme "github-dark-dimmed")
-;; (setopt markdown-xwidget-mermaid-theme "dark")
-
 (defun markdown-live-preview-get-filename ()
   "Standardize the filename exported by `markdown-live-preview-export'."
   (let* ((result (markdown-export-file-name ".html"))
@@ -2804,9 +2798,7 @@
     (make-directory dir t)
     result))
 
-;; (remove-hook 'kill-buffer-query-functions #'xwidget-kill-buffer-query-function)
-
-;; (keymap-set markdown-mode-map "C-c p" #'markdown-xwidget-preview-mode)
+(keymap-set markdown-mode-map "C-c p" #'markdown-live-preview-mode)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
