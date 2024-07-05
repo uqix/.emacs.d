@@ -271,6 +271,7 @@
 (setopt ispell-program-name "aspell")
 (setopt ispell-extra-args '("--camel-case"))
 
+(keymap-global-set "s-i s c" #'ispell-word) ; [s]pell [c]heck
 ;; >-------------------------
 
 ;; <-------------------------
