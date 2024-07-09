@@ -2710,6 +2710,7 @@
 (add-to-list 'markdown-code-lang-modes '("freemarker" . my/freemarker-mode))
 (add-to-list 'markdown-code-lang-modes '("helm" . my/helm-template-mode))
 (add-to-list 'markdown-code-lang-modes '("jinja" . jinja2-mode))
+(add-to-list 'markdown-code-lang-modes '("toml" . conf-toml-mode))
 
 (keymap-set markdown-mode-map "C-c c" #'markdown-insert-code)
 (keymap-set markdown-mode-map "C-c b" #'markdown-insert-gfm-code-block)
