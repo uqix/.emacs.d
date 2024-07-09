@@ -846,6 +846,7 @@
 (require 'vterm)
 
 (setopt vterm-max-scrollback 10000)
+(setopt vterm-clear-scrollback-when-clearing t)
 
 (keymap-global-set "s-i t" #'vterm)
 
