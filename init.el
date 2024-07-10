@@ -2418,6 +2418,7 @@
 
 ;; $ brew install bash-language-server
 
+(add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
 (advice-remove 'bash-ts-mode #'sh--redirect-bash-ts-mode)
 
 (keymap-global-set "s-i m b" #'my/bash-ts-mode)
