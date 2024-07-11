@@ -3137,7 +3137,7 @@
 ;; # Custom faces
 
 ;; <-------------------------
-;; Util
+;; ## Util
 
 (defun my/face/color-name-to-hex (name)
   (apply 'color-rgb-to-hex (color-name-to-rgb name)))
@@ -3336,6 +3336,13 @@
 (set-face-attribute 'whitespace-tab nil
                     :foreground (face-foreground 'whitespace-trailing)
                     :background (face-background 'whitespace-trailing))
+;; >-------------------------
+
+;; <-------------------------
+;; ## dired
+
+(set-face-attribute 'dired-directory nil
+                    :inherit 'font-lock-property-use-face)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
