@@ -2306,12 +2306,12 @@
 (keymap-global-set "M-\\" #'delete-trailing-whitespace) ; was delete-horizontal-space
 (keymap-global-set "M-|" #'delete-all-space)
 (keymap-global-set "s-i j" #'join-line)
-(keymap-global-set "s-i T" #'untabify)
 
 ;; <-------------------------
 ;; ## Indent
 
 (keymap-set embark-region-map "i" #'indent-rigidly)
+(keymap-set embark-region-map "T" #'untabify)
 
 (keymap-set indent-rigidly-map "i" #'indent-rigidly-right)
 (keymap-set indent-rigidly-map "u" #'indent-rigidly-left)
