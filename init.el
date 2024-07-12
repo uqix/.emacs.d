@@ -849,6 +849,7 @@
 (setopt vterm-clear-scrollback-when-clearing t)
 
 (keymap-global-set "s-i t" #'vterm)
+(keymap-global-set "s-i T" #'my/vterm)
 
 (keymap-set vterm-mode-map "C-c c" #'vterm-copy-mode)
 (keymap-set vterm-copy-mode-map "<return>" #'vterm-copy-mode) ; was vterm-copy-mode-done
