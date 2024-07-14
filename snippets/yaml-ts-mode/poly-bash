@@ -1,5 +1,5 @@
 # key: pb
 # --
 #!/usr/bin/env bash
-echo ""
+${0:echo}
 # </bash>
