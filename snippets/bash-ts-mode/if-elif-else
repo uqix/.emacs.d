@@ -1,0 +1,11 @@
+# key: iei
+# --
+if [[ $1 ]]
+then
+    $2
+elif [[ $3 ]]
+then
+    $4
+else
+    $0
+fi
