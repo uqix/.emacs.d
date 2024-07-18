@@ -2836,7 +2836,7 @@
 
 (font-lock-add-keywords
  'my/helm-template-mode
- '(("{{-? \\(include\\|if\\|range\\|end\\|with\\) [^}]*}}"
+ '(("{{-? \\(include\\|if\\|else\\|else if\\|range\\|end\\|with\\) [^}]*}}"
     1 font-lock-preprocessor-face t))
  t)
 
