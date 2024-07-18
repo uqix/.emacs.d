@@ -1,0 +1,6 @@
+# key: la
+# --
+for ${1:a}
+do
+    $0
+done

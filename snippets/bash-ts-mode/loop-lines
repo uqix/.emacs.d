@@ -1,0 +1,6 @@
+# key: ll
+# --
+while IFS= read -r ${1:l}
+do
+    $0
+done < "${2:f}"
