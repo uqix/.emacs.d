@@ -2439,7 +2439,7 @@
   "Major mode for Bash in non-poly buffer.")
 
 (add-to-list 'interpreter-mode-alist '("bash\\|sh" . my/bash-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.sh\\'" . my/bash-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.sh$" . my/bash-ts-mode))
 
 (add-to-list 'eglot-server-programs
              '(bash-ts-mode . ("disabled")))
@@ -2691,7 +2691,7 @@
   '(poly-bash-innermode
     poly-nginx-innermode))
 
-(add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . poly-yaml-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.ya?ml$" . poly-yaml-ts-mode))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -2840,7 +2840,7 @@
     1 font-lock-preprocessor-face t))
  t)
 
-(add-to-list 'auto-mode-alist '("\\.htl\\'" . my/helm-template-mode))
+(add-to-list 'auto-mode-alist '("\\.htl$" . my/helm-template-mode))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -2880,7 +2880,7 @@
   :hostmode 'poly-groovy-hostmode
   :innermodes '(poly-bash-innermode))
 
-(add-to-list 'auto-mode-alist '("\\.groovy\\'" . poly-groovy-mode))
+(add-to-list 'auto-mode-alist '("\\.groovy$" . poly-groovy-mode))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
@@ -3098,7 +3098,7 @@
 (defun my/freemarker-mode/hook ()
   (web-mode-set-engine "freemarker"))
 
-(add-to-list 'auto-mode-alist '("\\.ftl\\'" . my/freemarker-mode))
+(add-to-list 'auto-mode-alist '("\\.ftl$" . my/freemarker-mode))
 
 (font-lock-add-keywords
  'my/freemarker-mode
