@@ -2841,6 +2841,8 @@
  t)
 
 (add-to-list 'auto-mode-alist '("\\.htl$" . my/helm-template-mode))
+
+(keymap-set my/helm-template-mode-map "RET" #'my/indent/newline)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
