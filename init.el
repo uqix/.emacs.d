@@ -1234,10 +1234,15 @@
 ;; ## Escape & unescape
 
 (keymap-set embark-region-map "e j" #'my/region/unescape/json-string)
+(keymap-set embark-region-map "e J" #'my/region/escape/json-string)
 
 (defun my/region/unescape/json-string ()
   (interactive)
   (my/region/convert/by-shell-command "jq -r '.' -"))
+
+(defun my/region/escape/json-string ()
+  (interactive)
+  (my/region/convert/by-shell-command "jq --raw-input --slurp ."))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
