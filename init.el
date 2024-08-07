@@ -2826,6 +2826,7 @@
 (require 'jinja2-mode)
 
 (keymap-set jinja2-mode-map "M-o" nil) ; facemenu-set-
+(keymap-set jinja2-mode-map "RET" #'my/indent/newline)
 
 (keymap-global-set "s-i m J" #'jinja2-mode)
 
@@ -2846,8 +2847,6 @@
  t)
 
 (add-to-list 'auto-mode-alist '("\\.htl$" . my/helm-template-mode))
-
-(keymap-set my/helm-template-mode-map "RET" #'my/indent/newline)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
