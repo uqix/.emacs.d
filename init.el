@@ -27,6 +27,29 @@
 
 
 ;; <--------------------------------------------------
+;; # treesit
+
+(setq treesit-language-source-alist
+      '((typescript "https://github.com/tree-sitter/tree-sitter-typescript" nil "typescript/src")
+        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" nil "tsx/src")
+        (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")
+        (yaml "https://github.com/ikatyang/tree-sitter-yaml")
+        (go "https://github.com/tree-sitter/tree-sitter-go")
+        (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
+        (javascript "https://github.com/tree-sitter/tree-sitter-javascript")
+        (bash "https://github.com/tree-sitter/tree-sitter-bash")
+        (java "https://github.com/tree-sitter/tree-sitter-java")
+        (json "https://github.com/tree-sitter/tree-sitter-json")))
+
+(defun my/treesit/install-language-grammars ()
+  (interactive)
+  (mapc #'treesit-install-language-grammar
+        (mapcar #'car treesit-language-source-alist)))
+;; >--------------------------------------------------
+
+
+
+;; <--------------------------------------------------
 ;; # Util libs
 
 (require 's)
