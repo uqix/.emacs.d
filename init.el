@@ -1002,6 +1002,7 @@
 (keymap-global-set "s-i s |" 'my/select-text/between/pipes)
 (keymap-global-set "s-i s :" 'my/select-text/between/colons)
 (keymap-global-set "s-i s =" 'my/select-text/between/equal-signs)
+(keymap-global-set "s-i s ." 'my/select-text/between/dots)
 
 (keymap-global-set "s-i s (" 'my/select-text/between/parentheses)
 (keymap-global-set "s-i s [" 'my/select-text/between/square-brackets)
@@ -1047,6 +1048,10 @@
 (defun my/select-text/between/equal-signs ()
   (interactive)
   (my/select-text/between ?=))
+
+(defun my/select-text/between/dots ()
+  (interactive)
+  (my/select-text/between ?.))
 
 (defun my/select-text/between/parentheses ()
   (interactive)
