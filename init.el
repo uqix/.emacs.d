@@ -426,15 +426,6 @@
   (setq-local my/minibuffer/current-command this-command)
   (setq-local yas-buffer-local-condition
               '(pcase my/minibuffer/current-command
-                 ('consult-buffer (and
-                                   (= (point) (+ (length "Switch to: ?") 1))
-                                   '(require-snippet-condition . consult-buffer)))
-                 ('find-file (and
-                              (= (point) (+ (length "Find file: ?") 1))
-                              '(require-snippet-condition . find-file)))
-                 ('my/find (and
-                            (= (point) (+ (length "Go to line: ?") 1))
-                            '(require-snippet-condition . my/find)))
                  (cmd `(require-snippet-condition . ,cmd)))))
 ;; >-------------------------
 
