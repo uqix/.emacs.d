@@ -558,29 +558,6 @@
 
 ;; >-------------------------
 
-;; <-------------------------
-;; ## search
-
-(keymap-global-set "s-i n SPC" #'my/search/next-space)
-(keymap-global-set "s-i p SPC" #'my/search/previous-space)
-
-(defvar-keymap my/search/next-repeat-map
-  :repeat t
-  "SPC" #'my/search/next-space)
-
-(defvar-keymap my/search/previous-space
-  :repeat t
-  "SPC" #'my/search/previous-space)
-
-(defun my/search/next-space ()
-  (interactive)
-  (search-forward " "))
-
-(defun my/search/previous-space ()
-  (interactive)
-  (search-backward " "))
-;; >-------------------------
-
 ;; >--------------------------------------------------
 
 
