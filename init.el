@@ -849,6 +849,7 @@
 (keymap-set vterm-mode-map "M-v" #'my/vterm/scroll-down)
 (keymap-set vterm-mode-map "M-y" #'vterm-yank-pop)
 (keymap-set vterm-mode-map "s-f" #'my/vterm/find)
+(keymap-set vterm-mode-map "M-<" #'my/vterm/beginning-of-buffer)
 
 (defun my/vterm/scroll-down ()
   (interactive)
@@ -859,6 +860,11 @@
   (interactive)
   (vterm-copy-mode)
   (my/find))
+
+(defun my/vterm/beginning-of-buffer ()
+  (interactive)
+  (vterm-copy-mode)
+  (beginning-of-buffer))
 
 ;; <----------
 ;; ### my/vterm (default-directory aware)
