@@ -3107,6 +3107,8 @@
   web-mode "FreeMarker"
   "Major mode for FreeMarker templates.")
 
+(keymap-set my/freemarker-mode-map "RET" #'my/indent/newline)
+
 (add-hook 'my/freemarker-mode-hook #'my/freemarker-mode/hook)
 
 (defun my/freemarker-mode/hook ()
