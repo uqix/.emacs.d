@@ -2734,7 +2734,6 @@
 (keymap-set markdown-mode-map "C-c q" #'markdown-insert-blockquote)
 (keymap-set markdown-mode-map "C-c e" #'markdown-insert-bold) ; [e]mphasize
 (keymap-set markdown-mode-map "C-c l" #'markdown-insert-link)
-(keymap-set markdown-mode-map "C-c L" #'markdown-toggle-url-hiding)
 (keymap-set markdown-mode-map "C-c h" #'markdown-insert-header-dwim)
 (keymap-set markdown-mode-map "C-c i" #'markdown-insert-image)
 (keymap-set markdown-mode-map "C-c I" #'markdown-toggle-inline-images)
@@ -2797,6 +2796,17 @@
   "n" #'markdown-next-link
   "p" #'markdown-previous-link
   "f" #'markdown-follow-thing-at-point)
+;; >-------------------------
+
+;; <-------------------------
+;; ## URL hiding repeat-map
+
+(keymap-set markdown-mode-map "C-c L" #'markdown-toggle-url-hiding)
+
+(defvar-keymap my/markdown/url-hiding-repeat-map
+  :repeat t
+  "L" #'markdown-toggle-url-hiding
+  "l" #'markdown-toggle-url-hiding)
 ;; >-------------------------
 
 ;; <-------------------------
