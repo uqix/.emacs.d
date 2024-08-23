@@ -2805,7 +2805,6 @@
 
 (defvar-keymap my/markdown/url-hiding-repeat-map
   :repeat t
-  "L" #'markdown-toggle-url-hiding
   "l" #'markdown-toggle-url-hiding)
 ;; >-------------------------
 
