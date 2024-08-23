@@ -641,19 +641,24 @@
 ;; <----------
 ;; ### Highlight (region aware)
 
-(keymap-global-set "s-i h r" 'my/highlight-regexp)
-(keymap-global-set "s-i h h" 'my/highlight-regexp/all)
+(keymap-global-set "s-i h r" #'my/highlight-regexp)
 
 (defface my/highlight-regexp-face
   '((t (:strike-through "DarkSlateGray1")))
   "my/highlight-regexp face")
+
+;; <---
+;; #### repeat-map
+
+(keymap-global-set "C-'" #'my/highlight-regexp/all)
 
 (defvar-keymap my/highlight-regexp/all/repeat-map
   :repeat (:enter
            (my/highlight-regexp/all)
            :exit
            (my/unhighlight-regexp/all))
-  "h" #'my/unhighlight-regexp/all)
+  "'" #'my/unhighlight-regexp/all)
+;; >---
 
 (defun my/highlight-regexp ()
   (interactive)
@@ -736,7 +741,7 @@
 
 (keymap-set symbol-overlay-map "C-s" #'symbol-overlay-isearch-literally)
 (keymap-set symbol-overlay-map "o" #'symbol-overlay-put)
-(keymap-set symbol-overlay-map "h" #'my/highlight-regexp/all) ; was symbol-overlay-map-help
+(keymap-set symbol-overlay-map "'" #'my/highlight-regexp/all)
 (keymap-set symbol-overlay-map "u" #'symbol-overlay-remove-all)
 (keymap-set symbol-overlay-map "R" #'symbol-overlay-query-replace)
 
