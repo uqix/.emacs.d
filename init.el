@@ -1210,7 +1210,7 @@
 
 (defun my/region/format/json ()
   (interactive)
-  (my/region/convert/by-shell-command "yq -p=json -o=json -"))
+  (my/region/convert/by-shell-command "jq -S"))
 
 (defun my/region/format/json/compact ()
   (interactive)
