@@ -2738,7 +2738,6 @@
 (keymap-set markdown-mode-map "C-c b" #'markdown-insert-gfm-code-block)
 (keymap-set markdown-mode-map "C-c q" #'markdown-insert-blockquote)
 (keymap-set markdown-mode-map "C-c e" #'markdown-insert-bold) ; [e]mphasize
-(keymap-set markdown-mode-map "C-c l" #'markdown-insert-link)
 (keymap-set markdown-mode-map "C-c h" #'markdown-insert-header-dwim)
 (keymap-set markdown-mode-map "C-c i" #'markdown-insert-image)
 (keymap-set markdown-mode-map "C-c I" #'markdown-toggle-inline-images)
@@ -2796,11 +2795,15 @@
 ;; <-------------------------
 ;; ## Link repeat-map
 
+(keymap-set markdown-mode-map "C-c l" #'markdown-insert-link)
+
 (defvar-keymap my/markdown/link-repeat-map
-  :repeat t
+  :repeat (:exit
+           (markdown-insert-link))
   "n" #'markdown-next-link
   "p" #'markdown-previous-link
-  "f" #'markdown-follow-thing-at-point)
+  "f" #'markdown-follow-thing-at-point
+  "l" #'markdown-insert-link)
 ;; >-------------------------
 
 ;; <-------------------------
