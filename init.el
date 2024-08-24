@@ -567,7 +567,6 @@
 
 (keymap-global-set "s-i b r" #'revert-buffer-quick)
 (keymap-global-set "s-i b w" #'write-file)
-(keymap-global-set "s-i b n" #'rename-buffer)
 
 (setopt revert-buffer-quick-short-answers t)
 ;; >--------------------------------------------------
@@ -623,9 +622,19 @@
 (keymap-global-set "C-h F" #'describe-face)
 (keymap-global-set "C-h K" #'describe-keymap)
 
-(keymap-global-set "s-i r f" #'rename-visited-file)
+;; <-------------------------
+;; ## Rename file or buffer
 
-(keymap-global-set "s-i s b" #'scratch-buffer)
+(keymap-global-set "s-i R" #'my/rename-file-or-buffer)
+
+(defun my/rename-file-or-buffer ()
+  (interactive)
+  (if (buffer-file-name)
+      (call-interactively 'rename-visited-file)
+    (call-interactively 'rename-buffer)))
+;; >-------------------------
+
+(keymap-global-set "s-S" #'scratch-buffer)
 ;; >--------------------------------------------------
 
 
@@ -1933,7 +1942,7 @@
 ;; ## Replace
 
 (keymap-global-set "s-i r s" #'replace-string)
-(keymap-global-set "s-i r q" #'query-replace)
+(keymap-global-set "s-R" #'query-replace)
 (keymap-global-set "s-i r r" #'query-replace-regexp)
 ;; >-------------------------
 
