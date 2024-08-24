@@ -566,7 +566,7 @@
 ;; # Buffer
 
 (keymap-global-set "s-N" #'revert-buffer-quick) ; re[N]ew
-(keymap-global-set "s-W" #'write-file)
+(keymap-global-set "s-i s a" #'write-file)      ; [s]ave [a]s
 
 (setopt revert-buffer-quick-short-answers t)
 ;; >--------------------------------------------------
@@ -957,7 +957,7 @@
 (put 'narrow-to-region 'disabled nil)
 
 (keymap-global-set "s-i n f" #'narrow-to-defun)
-(keymap-global-set "s-i n w" #'widen)
+(keymap-global-set "s-W" #'widen)
 ;; >-------------------------
 
 ;; <-------------------------
