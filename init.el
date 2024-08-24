@@ -565,8 +565,8 @@
 ;; <--------------------------------------------------
 ;; # Buffer
 
-(keymap-global-set "s-i b r" #'revert-buffer-quick)
-(keymap-global-set "s-i b w" #'write-file)
+(keymap-global-set "s-N" #'revert-buffer-quick) ; re[N]ew
+(keymap-global-set "s-W" #'write-file)
 
 (setopt revert-buffer-quick-short-answers t)
 ;; >--------------------------------------------------
