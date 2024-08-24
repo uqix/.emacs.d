@@ -1340,9 +1340,9 @@
 
 ;; https://oremacs.com/2017/03/18/dired-ediff/
 
-(keymap-set dired-mode-map "=" #'my/dired/ediff) ; was dired-diff
+(keymap-set dired-mode-map "=" #'my/dired/diff) ; was dired-diff
 
-(defun my/dired/ediff ()
+(defun my/dired/diff ()
   (interactive)
   (let ((files (dired-get-marked-files)))
     (if (<= (length files) 2)
@@ -1352,9 +1352,11 @@
                         (read-file-name (format "Ediff %s with: " (file-name-nondirectory file1))
                                         (dired-dwim-target-directory)))))
           (window-toggle-side-windows)
-          (if (file-newer-than-file-p file1 file2)
-              (ediff-files file2 file1)
-            (ediff-files file1 file2)))
+          (if (f-file-p file1)
+              (if (file-newer-than-file-p file1 file2)
+                  (ediff-files file2 file1)
+                (ediff-files file1 file2))
+            (ztree-diff file1 file2)))
       (error "No more than 2 files should be marked"))))
 ;; >-------------------------
 
