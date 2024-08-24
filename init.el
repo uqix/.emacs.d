@@ -1799,7 +1799,8 @@
            "*Backtrace*"
            "*Deletions*"
            "*KeePass*"
-           "*Error*"))
+           "*Error*"
+           "*Register Preview*"))
    display-buffer-in-side-window
    (window-height . 0.3)
    (window-parameters (no-delete-other-windows . t))))
@@ -2387,9 +2388,20 @@
 
 (setopt bookmark-save-flag 1)
 
-(keymap-global-set "s-r" #'consult-register-store)
+(keymap-global-set "s-r" #'my/register)
 (keymap-global-set "s-q" #'consult-register)
 (keymap-global-set "s-i r w" #'window-configuration-to-register)
+
+(defvar my/register/point-name ?A)
+
+(defun my/register ()
+  (interactive)
+  (if (use-region-p)
+      (call-interactively 'consult-register-store)
+    (if (>= my/register/point-name (+ ?A 15))
+        (setq my/register/point-name ?A))
+    (point-to-register my/register/point-name)
+    (cl-incf my/register/point-name)))
 ;; >--------------------------------------------------
 
 
