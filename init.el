@@ -710,7 +710,7 @@
 (defun my/highlight-regexp/current-column ()
   (interactive)
   (let ((regexp (format "^.\\{%s\\}\\(.\\)" (current-column))))
-    (highlight-regexp regexp 'symbol-overlay-face-7 1)))
+    (highlight-regexp regexp 'lazy-highlight 1)))
 ;; >----------
 
 ;; <----------
