@@ -864,6 +864,8 @@
 (keymap-set vterm-mode-map "M-y" #'vterm-yank-pop)
 (keymap-set vterm-mode-map "s-f" #'my/vterm/find)
 (keymap-set vterm-mode-map "M-<" #'my/vterm/beginning-of-buffer)
+(keymap-set vterm-mode-map "M-n" #'vterm-next-prompt)
+(keymap-set vterm-mode-map "M-p" #'vterm-previous-prompt)
 
 (defun my/vterm/scroll-down ()
   (interactive)
