@@ -1298,10 +1298,10 @@
 (keymap-global-set "s-h m" #'consult-mark)
 (keymap-global-set "s-h M" #'consult-global-mark)
 (keymap-global-set "s-h o" #'consult-outline)
-(keymap-global-set "s-h p" #'consult-bookmark) ; [p]ositions
+(keymap-global-set "s-P" #'consult-bookmark) ; [p]ositions
 (keymap-global-set "s-h c" #'consult-compile-error)
 
-(keymap-global-set "s-h l" #'my/locate/dir) ; [l]ocate
+(keymap-global-set "s-L" #'my/locate/dir)
 
 (defun my/locate/dir ()
   (interactive)
