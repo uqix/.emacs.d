@@ -2897,6 +2897,8 @@
  t)
 
 (add-to-list 'auto-mode-alist '("\\.htl$" . my/helm-template-mode))
+
+(keymap-global-set "s-i m h" #'my/helm-template-mode)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
