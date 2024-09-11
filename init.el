@@ -3226,6 +3226,9 @@
 (set-face-background 'hl-line
                      (my/color-darken-name (face-background 'hl-line) 10))
 
+(set-face-foreground 'link
+                     (face-foreground 'font-lock-variable-name-face))
+
 ;; <-------------------------
 ;; ## elisp
 
@@ -3408,7 +3411,7 @@
 ;; ## dired
 
 (set-face-attribute 'dired-directory nil
-                    :inherit 'font-lock-property-use-face)
+                    :inherit 'font-lock-variable-name-face)
 ;; >-------------------------
 
 ;; >--------------------------------------------------
