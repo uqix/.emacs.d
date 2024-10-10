@@ -3062,6 +3062,8 @@
     (setq-local header-line-format
                 '(:eval (my/eglot/sqls/show-result/header-line-format)))
     (erase-buffer)
+    (unless (derived-mode-p 'org-mode)
+      (org-mode))
     (insert result)
     (display-buffer (current-buffer))))
 
