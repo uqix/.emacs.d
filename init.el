@@ -3203,4 +3203,7 @@
 (set-face-attribute 'default nil
                     :family "JetBrains Mono"
                     :height 130)
+
+(set-face-attribute 'aw-leading-char-face nil
+                    :height 1.0)
 ;; >--------------------------------------------------
