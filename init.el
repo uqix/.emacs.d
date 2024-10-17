@@ -3206,4 +3206,13 @@
 
 (set-face-attribute 'aw-leading-char-face nil
                     :height 1.0)
+
+;; <-------------------------
+;; ## Markdown
+
+(set-face-attribute 'markdown-bold-face nil
+                    :foreground (face-foreground 'markdown-header-face-6 nil t)
+                    :weight 'normal)
+;; >-------------------------
+
 ;; >--------------------------------------------------
