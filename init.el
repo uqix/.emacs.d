@@ -3223,4 +3223,11 @@
                     :inherit 'font-lock-function-call-face)
 ;; >-------------------------
 
+;; <-------------------------
+;; ## Eglot
+
+(set-face-attribute 'eglot-highlight-symbol-face nil
+                    :background (face-background 'symbol-overlay-default-face nil t))
+;; >-------------------------
+
 ;; >--------------------------------------------------
