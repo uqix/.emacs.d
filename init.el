@@ -3215,4 +3215,12 @@
                     :weight 'normal)
 ;; >-------------------------
 
+;; <-------------------------
+;; ## ELisp
+
+(set-face-attribute 'highlight-function-calls-face nil
+                    :underline nil
+                    :inherit 'font-lock-function-call-face)
+;; >-------------------------
+
 ;; >--------------------------------------------------
