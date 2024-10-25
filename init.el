@@ -802,11 +802,24 @@
 (require 'ediff)
 
 (keymap-global-set "s-i d b" #'ediff-buffers)
+(keymap-global-set "s-i d r" #'my/ediff/show-registry)
 
 (setopt ediff-split-window-function #'split-window-horizontally)
 (setopt ediff-window-setup-function #'ediff-setup-windows-plain)
 
 (add-hook 'ediff-after-quit-hook-internal #'winner-undo)
+
+(defun my/ediff/show-registry ()
+  (interactive)
+  (unless (one-window-p)
+    (walk-windows
+     (lambda (window)
+       (if (eq (window-dedicated-p window) 'side)
+           (delete-window window))))
+    (when (ediff-in-control-buffer-p)
+      (other-window 1))
+    (delete-other-windows))
+  (ediff-show-registry))
 ;; >-------------------------
 
 ;; <-------------------------
