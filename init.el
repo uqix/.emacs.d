@@ -1649,6 +1649,16 @@
 (require 'winner)
 
 (winner-mode)
+
+(keymap-global-set "s-<" #'winner-undo)
+(keymap-global-set "s->" #'winner-redo)
+
+(defvar-keymap my/winner/repeat-map
+  :repeat t
+  "<" #'winner-undo
+  "," #'winner-undo
+  ">" #'winner-redo
+  "." #'winner-redo)
 ;; >-------------------------
 
 ;; <-------------------------
@@ -1660,9 +1670,7 @@
   "s" #'shrink-window               ; [s]horter
   "w" #'enlarge-window-horizontally ; [w]ider
   "n" #'shrink-window-horizontally  ; [n]arrower
-  "b" #'balance-windows
-  "r" #'winner-redo
-  "u" #'winner-undo)
+  "b" #'balance-windows)
 
 (keymap-global-set "s-i w" my/window/repeat-map)
 ;; >-------------------------
