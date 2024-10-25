@@ -1603,6 +1603,8 @@
 
 (setopt difftastic-requested-window-width-function
         #'my/difftastic/requested-window-width)
+
+(keymap-global-set "s-i d D" #'difftastic-buffers)
 ;; >----------
 
 ;; >-------------------------
