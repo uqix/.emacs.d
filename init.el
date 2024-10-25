@@ -419,10 +419,14 @@
 (defvar-local my/minibuffer/current-command nil)
 
 (defun my/minibuffer/yasnippet-setup-hook ()
+  ;; (message (format "%s" this-command))
   (setq-local my/minibuffer/current-command this-command)
   (setq-local yas-buffer-local-condition
               '(pcase my/minibuffer/current-command
-                 (cmd `(require-snippet-condition . ,cmd)))))
+                 ((or 'my/grep/project 'my/grep/dir 'consult-grep)
+                  '(require-snippet-condition . consult-ripgrep))
+                 (cmd
+                  `(require-snippet-condition . ,cmd)))))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
