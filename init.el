@@ -419,11 +419,11 @@
 (defvar-local my/minibuffer/current-command nil)
 
 (defun my/minibuffer/yasnippet-setup-hook ()
-  ;; (message (format "%s" this-command))
   (setq-local my/minibuffer/current-command this-command)
   (setq-local yas-buffer-local-condition
               '(pcase my/minibuffer/current-command
-                 ((or 'my/grep/project 'my/grep/dir 'consult-grep)
+                 ((or 'my/grep/project
+                      (app documentation "crd"))
                   '(require-snippet-condition . consult-ripgrep))
                  (cmd
                   `(require-snippet-condition . ,cmd)))))
@@ -2024,20 +2024,10 @@
   (let ((dir (read-directory-name "Grep in: ")))
     (setq this-command
           (lambda ()
+            "crd"
             (interactive)
             (consult-ripgrep dir)))
     (consult-ripgrep dir initial)))
-;; >-------------------------
-
-;; <-------------------------
-;; ## No .gitignore
-
-(keymap-global-set "s-h g" #'consult-grep)
-(keymap-global-set "s-h G" #'my/consult-grep/dir)
-
-(defun my/consult-grep/dir ()
-  (interactive)
-  (consult-grep '(4) nil))
 ;; >-------------------------
 
 ;; >--------------------------------------------------
