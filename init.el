@@ -1796,13 +1796,15 @@
 ;; <-------------------------
 ;; ## display-buffer-alist
 
-(setopt display-buffer-base-action
-        '((display-buffer-reuse-window
-           display-buffer-use-some-window)))
-
 (defun my/display-buffer-alist/condition-by-major-modes (major-modes)
   (lambda (buffer-name action)
     (with-current-buffer buffer-name (apply #'derived-mode-p major-modes))))
+
+(add-to-list
+ 'display-buffer-alist
+ '(".*"
+   (display-buffer-reuse-window
+    display-buffer-same-window)))
 
 (add-to-list
  'display-buffer-alist
