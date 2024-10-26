@@ -1834,12 +1834,6 @@
 
 (add-to-list
  'display-buffer-alist
- `(,(rx (| "*edit-indirect "
-           "*yaml-pro-edit*"))
-   display-buffer-same-window))
-
-(add-to-list
- 'display-buffer-alist
  `(,(my/display-buffer-alist/condition-by-major-modes
      '(grep-mode
        occur-mode
@@ -2576,7 +2570,7 @@
     (setq edit-indirect--overlay nil)
     (when kill
       (kill-buffer)
-      (display-buffer-same-window parent-buffer nil))))
+      (select-window (display-buffer parent-buffer)))))
 ;; >-------------------------
 
 ;; <-------------------------
